@@ -40,6 +40,7 @@ This project and everyone participating in it is governed by our commitment to c
 ### Getting Started
 
 1. **Fork the repository**
+
    ```bash
    # Click "Fork" on GitHub, then clone your fork
    git clone https://github.com/YOUR_USERNAME/astrodeck.git
@@ -47,17 +48,21 @@ This project and everyone participating in it is governed by our commitment to c
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
+
    Open http://localhost:4321 in your browser
 
 4. **Create a branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    # or

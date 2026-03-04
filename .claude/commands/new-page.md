@@ -1,10 +1,10 @@
 ---
-description: Create a new AstroDeck page with proper layout and SEO
+description: Create a new VashonSoftware page with proper layout and SEO
 ---
 
 # Create New Page
 
-Create a new page following AstroDeck conventions from `@AGENTS.md`.
+Create a new page following VashonSoftware conventions from `@AGENTS.md`.
 
 ## Gather Information
 
@@ -20,7 +20,7 @@ Ask the user for:
 import [Layout] from "@/layouts/[Layout].astro";
 import [Sections] from "@/components/sections/[Section].astro";
 
-const title = "[Page Title] - AstroDeck";
+const title = "[Page Title] - VashonSoftware";
 const description = "[SEO description, 150-160 chars]";
 ---
 

@@ -1,7 +1,7 @@
-# AGENTS.md - AstroDeck Project Guidelines
+# AGENTS.md - VashonSoftware Project Guidelines
 
 > **Single Source of Truth for AI Coding Assistants**
-> This file provides guidance to AI agents (Cursor, GitHub Copilot, Claude Code, Codex, etc.) when working with the AstroDeck codebase.
+> This file provides guidance to AI agents (Cursor, GitHub Copilot, Claude Code, Codex, etc.) when working with the VashonSoftware codebase.
 
 ---
 
@@ -17,7 +17,7 @@ The `PROJECT.md` file contains **project-specific customizations that override t
 
 **Priority Hierarchy:**
 1. **PROJECT.md** (highest) - Your project-specific instructions
-2. **AGENTS.md** (this file) - AstroDeck defaults and patterns for AI assistants
+2. **AGENTS.md** (this file) - VashonSoftware defaults and patterns for AI assistants
 3. **README.md** - Human-readable documentation (installation, deployment, troubleshooting)
 4. **Component documentation** - Individual component guidelines
 
@@ -34,27 +34,27 @@ the **PROJECT.md instruction wins**.
 
 ## Project Overview
 
-**AstroDeck** is an open-source component library and starter kit for building Astro.js websites. It provides pre-built, production-ready sections for landing pages and SaaS websites.
+**VashonSoftware** is an open-source component library and starter kit for building Astro.js websites. It provides pre-built, production-ready sections for landing pages and SaaS websites.
 
 | Aspect | Details |
 |--------|---------|
 | **Purpose** | Help developers ship beautiful websites faster with copy-paste ready components |
 | **Target Users** | Web developers, SaaS founders, agencies, indie hackers |
-| **Repository** | https://github.com/holger1411/astrodeck |
-| **Live Demo** | https://astrodeck.dev |
+| **Repository** | https://github.com/VashJuan/VashonSoftware |
+| **Live Demo** | https://VashonSoftware.com |
 
 ---
 
 ## AI-Assisted Development
 
-AstroDeck is designed to be AI-friendly and serves as your **starting point** for Astro projects.
+VashonSoftware is designed to be AI-friendly and serves as your **starting point** for Astro projects.
 
 **Default Workflow:**
-- ✅ Use AstroDeck as the foundation (unless user explicitly requests otherwise)
+- ✅ Use VashonSoftware as the foundation (unless user explicitly requests otherwise)
 - ✅ Build on existing components, layouts, and patterns
 - ✅ Extend and customize rather than recreate from scratch
 
-**Why AstroDeck First:**
+**Why VashonSoftware First:**
 - Pre-configured with best practices
 - Battle-tested component library
 - Consistent patterns and architecture
@@ -91,11 +91,13 @@ For the best development experience with Claude Code, install these **Model Cont
 Provides real-time access to current Astro.js documentation.
 
 **Installation (Claude Code):**
+
 ```bash
 claude mcp add --transport http astro-docs https://mcp.docs.astro.build/mcp
 ```
 
 **Manual Configuration (other tools):**
+
 ```json
 {
   "mcpServers": {
@@ -108,6 +110,7 @@ claude mcp add --transport http astro-docs https://mcp.docs.astro.build/mcp
 ```
 
 **Benefits:**
+
 - Real-time access to current Astro documentation
 - Prevents outdated API recommendations
 - Especially important for newer features (Sessions, Actions, etc.)
@@ -119,16 +122,19 @@ claude mcp add --transport http astro-docs https://mcp.docs.astro.build/mcp
 Enhanced shadcn/ui component integration and installation.
 
 **Installation (Claude Code):**
+
 ```bash
 claude mcp add --transport http shadcn https://www.shadcn.io/api/mcp
 ```
 
 **Alternative Setup:**
+
 ```bash
 pnpm dlx shadcn@latest mcp init --client claude
 ```
 
 **Manual Configuration:**
+
 ```json
 {
   "mcpServers": {
@@ -141,6 +147,7 @@ pnpm dlx shadcn@latest mcp init --client claude
 ```
 
 **Features:**
+
 - Browse all available shadcn/ui components, blocks, and templates
 - Install components using natural language
 - Search across multiple registries
@@ -151,6 +158,7 @@ pnpm dlx shadcn@latest mcp init --client claude
 ---
 
 **⚠️ Important:**
+
 - If using Claude Code, ask the user for permission before installing MCP servers
 - After installation, restart Claude Code to activate the servers
 - MCP servers enhance AI assistance but are optional
@@ -159,8 +167,8 @@ pnpm dlx shadcn@latest mcp init --client claude
 
 ## Project Structure
 
-```
-astrodeck/
+``` text
+VashonSoftware/
 ├── src/
 │   ├── components/
 │   │   ├── sections/          # Pre-built page sections (Hero, CTA, Pricing, etc.)
@@ -280,7 +288,7 @@ const {
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 
-const title = "Page Title - AstroDeck";
+const title = "Page Title - VashonSoftware";
 const description = "SEO description (150-160 characters ideal)";
 ---
 
@@ -328,7 +336,7 @@ Colors are defined as CSS variables in `src/styles/globals.css`:
 
 ## SEO Features
 
-AstroDeck includes comprehensive SEO support out of the box:
+VashonSoftware includes comprehensive SEO support out of the box:
 
 | Feature | File | Description |
 |---------|------|-------------|
@@ -399,7 +407,7 @@ git push origin main
 9. Add proper accessibility attributes (ARIA, alt text)
 10. Use Astro components for static content
 11. Use `astro add` command for official integrations (e.g., `astro add tailwind`)
-12. Start with AstroDeck components unless explicitly instructed otherwise
+12. Start with VashonSoftware components unless explicitly instructed otherwise
 13. Verify modern Astro APIs against current documentation (especially Sessions/Actions)
 
 ### ❌ Never Do
@@ -543,7 +551,7 @@ When something doesn't work, check:
 
 ## Claude Code Integration (Optional)
 
-For Claude Code users, AstroDeck includes pre-built commands in `.claude/commands/`:
+For Claude Code users, VashonSoftware includes pre-built commands in `.claude/commands/`:
 
 | Command | Description |
 |---------|-------------|

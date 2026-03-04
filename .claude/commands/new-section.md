@@ -4,11 +4,12 @@ description: Create a new reusable section component
 
 # Create New Section
 
-Create a new section component following AstroDeck patterns from `@AGENTS.md`.
+Create a new section component following VashonSoftware patterns from `@AGENTS.md`.
 
 ## Gather Information
 
 Ask the user for:
+
 1. **Section name** (PascalCase, e.g., "TeamGrid", "PricingTable")
 2. **Purpose** - What content will it display?
 3. **Variants needed** - default | centered | wide | compact

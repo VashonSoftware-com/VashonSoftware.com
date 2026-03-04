@@ -1,15 +1,15 @@
 ---
 name: readme
-description: AstroDeck project documentation and component library reference. Use when working with AstroDeck projects, creating pages, components, or needing to understand the project structure.
+description: VashonSoftware project documentation and component library reference. Use when working with VashonSoftware projects, creating pages, components, or needing to understand the project structure.
 ---
 
-# AstroDeck README Skill
+# VashonSoftware README Skill
 
-This skill provides access to the complete AstroDeck project documentation.
+This skill provides access to the complete VashonSoftware project documentation.
 
 ## When to Use This Skill
 
-- Starting work on an AstroDeck project
+- Starting work on an VashonSoftware project
 - Creating new pages or components
 - Understanding available sections and layouts
 - Troubleshooting installation or configuration

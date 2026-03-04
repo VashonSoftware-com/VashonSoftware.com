@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 
 export default defineConfig({
-  site: 'https://astrodeck.dev',
+  site: 'https://VashonSoftware.com',
   integrations: [sitemap({
     changefreq: 'weekly',
     priority: 0.7,

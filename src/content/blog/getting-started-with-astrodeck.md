@@ -23,7 +23,7 @@ Before you begin, make sure you have:
 ### Option 1: Clone from GitHub
 
 ```bash
-git clone https://github.com/holger1411/astrodeck.git my-project
+git clone https://github.com/VashJuan/astrodeck.git my-project
 cd my-project
 npm install
 npm run dev
@@ -32,7 +32,7 @@ npm run dev
 ### Option 2: Use degit (recommended)
 
 ```bash
-npx degit holger1411/astrodeck my-project
+npx degit VashJuan/astrodeck my-project
 cd my-project
 npm install
 npm run dev
@@ -148,7 +148,7 @@ Now that you're up and running:
 ## Getting Help
 
 - **Documentation**: Check `AGENTS.md` for detailed component docs
-- **Issues**: Report bugs on [GitHub](https://github.com/holger1411/astrodeck/issues)
+- **Issues**: Report bugs on [GitHub](https://github.com/VashJuan/astrodeck/issues)
 - **AI Assistance**: Use Claude Code or Cursor with the included AI documentation
 
 Happy building! 🚀

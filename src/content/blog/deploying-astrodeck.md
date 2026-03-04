@@ -47,7 +47,7 @@ Vercel is the recommended platform for Astro projects. It offers automatic deplo
 
 Click the button on AstroDeck's GitHub page or use:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/holger1411/astrodeck)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VashJuan/astrodeck)
 
 ### Option 2: Connect Your Repository
 

@@ -1,5 +1,5 @@
 ---
-description: Customize the AstroDeck theme colors and design tokens
+description: Customize the VashonSoftware theme colors and design tokens
 ---
 
 # Customize Theme

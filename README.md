@@ -1,14 +1,14 @@
-# AstroDeck
+# VashonSoftware
 
-[![Version](https://img.shields.io/badge/version-1.5.1-blue.svg)](https://github.com/holger1411/astrodeck/releases)
+[![Version](https://img.shields.io/badge/version-1.5.1-blue.svg)](https://github.com/VashJuan/VashonSoftware/releases)
 [![Astro](https://img.shields.io/badge/Astro-5.x%20%7C%206.x-orange.svg)](https://astro.build)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 **A modern, open-source component library and starter kit for building stunning Astro.js websites in minutes. Built AI-friendly for seamless development with Claude, Cursor, and other coding assistants.**
 
-AstroDeck provides pre-built, production-ready components that help you launch landing pages, SaaS websites, and marketing sites faster. Built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and [shadcn/ui](https://ui.shadcn.com) components.
+VashonSoftware provides pre-built, production-ready components that help you launch landing pages, SaaS websites, and marketing sites faster. Built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and [shadcn/ui](https://ui.shadcn.com) components.
 
-![AstroDeck Preview](cover.png)
+![VashonSoftware Preview](cover.png)
 
 ---
 
@@ -70,17 +70,17 @@ node --version
 
 If you need to install or update Node.js, visit [nodejs.org](https://nodejs.org).
 
-**Important:** AstroDeck uses the **latest versions** of Astro and Tailwind CSS. Always run `npm install` to get the most recent versions.
+**Important:** VashonSoftware uses the **latest versions** of Astro and Tailwind CSS. Always run `npm install` to get the most recent versions.
 
 ---
 
 ## ⚡ Quick Start
 
-Get AstroDeck running in 3 steps:
+Get VashonSoftware running in 3 steps:
 
 ```bash
 # 1. Create a new project using degit
-npx degit holger1411/astrodeck my-project
+npx degit VashJuan/VashonSoftware my-project
 cd my-project
 
 # 2. Install dependencies
@@ -102,7 +102,7 @@ The fastest way to get started - no git history, clean project:
 
 ```bash
 # Create a new project
-npx degit holger1411/astrodeck my-project
+npx degit VashJuan/VashonSoftware my-project
 cd my-project
 
 # Install dependencies
@@ -118,11 +118,11 @@ Download the latest release directly:
 
 ```bash
 # Download the latest version
-wget https://github.com/holger1411/astrodeck/archive/refs/tags/v1.5.1.zip
+wget https://github.com/VashJuan/VashonSoftware/archive/refs/tags/v1.5.1.zip
 
 # Extract
 unzip v1.5.1.zip
-cd astrodeck-1.5.1
+cd VashonSoftware-1.5.1
 
 # Install and run
 npm install
@@ -133,10 +133,10 @@ npm run dev
 
 ```bash
 # Clone the repository
-git clone https://github.com/holger1411/astrodeck.git my-project
+git clone https://github.com/VashJuan/VashonSoftware.git my-project
 
 # Navigate into the directory
-cd astrodeck
+cd VashonSoftware
 
 # Install dependencies
 npm install
@@ -181,7 +181,7 @@ This command:
   ┃ Network  use --host to expose
 ```
 
-**Note:** Version numbers will vary based on your installed Astro version. AstroDeck always uses the latest stable release.
+**Note:** Version numbers will vary based on your installed Astro version. VashonSoftware always uses the latest stable release.
 
 ### Alternative Start Command
 
@@ -201,10 +201,10 @@ This is an alias for `npm run dev` and does the same thing.
 
 ## 📁 Project Structure
 
-Understanding the folder structure helps you navigate and customize AstroDeck:
+Understanding the folder structure helps you navigate and customize VashonSoftware:
 
 ```
-astrodeck/
+VashonSoftware/
 ├── public/                 # Static assets (fonts, images, favicon)
 │   ├── favicon.svg
 │   └── fonts/
@@ -282,7 +282,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   description="Learn more about our mission and team"
 >
   <div class="py-16">
-    <h1 class="text-4xl font-bold mb-6">About AstroDeck</h1>
+    <h1 class="text-4xl font-bold mb-6">About VashonSoftware</h1>
     <p class="text-lg text-muted-foreground">
       We're building the best component library for Astro.
     </p>
@@ -294,7 +294,7 @@ Now visit `http://localhost:4321/about` to see your new page!
 
 ### Using Components
 
-AstroDeck components are modular and easy to use. Import them into your pages.
+VashonSoftware components are modular and easy to use. Import them into your pages.
 
 **Example: Adding a Hero section**
 
@@ -328,7 +328,7 @@ import { Badge } from "@/components/ui/badge";
 
 ### Working with Layouts
 
-Layouts provide consistent page structure. AstroDeck includes several layouts:
+Layouts provide consistent page structure. VashonSoftware includes several layouts:
 
 #### 1. BaseLayout (Boxed)
 
@@ -393,11 +393,11 @@ import MinimalLayout from "@/layouts/MinimalLayout.astro";
 
 ### Customizing Styles
 
-AstroDeck uses Tailwind CSS for styling. Here's how to customize:
+VashonSoftware uses Tailwind CSS for styling. Here's how to customize:
 
 #### Changing Colors
 
-AstroDeck uses **Tailwind CSS v4** with the modern **OKLCH color format**. Edit `src/styles/globals.css`:
+VashonSoftware uses **Tailwind CSS v4** with the modern **OKLCH color format**. Edit `src/styles/globals.css`:
 
 ```css
 @theme {
@@ -462,7 +462,7 @@ Then use in components:
 
 ## 🎨 Component Library
 
-AstroDeck includes 15+ production-ready sections. Visit `/sections` in your browser to see all components with live previews.
+VashonSoftware includes 15+ production-ready sections. Visit `/sections` in your browser to see all components with live previews.
 
 ### Available Sections
 
@@ -477,7 +477,7 @@ AstroDeck includes 15+ production-ready sections. Visit `/sections` in your brow
 - **Banner Style** - Bottom banner for conversions
 
 #### Pricing Tables (4 variants)
-- **AstroDeck Open Source** - Free tier showcase
+- **VashonSoftware Open Source** - Free tier showcase
 - **Three Column** - Standard pricing grid
 - **Comparison Table** - Feature comparison layout
 - **Monthly/Yearly Toggle** - Pricing with billing toggle
@@ -517,7 +517,7 @@ import CTA from "@/components/sections/CTA.astro";
 
 ### Theme Configuration
 
-AstroDeck uses CSS variables for theming, making it easy to switch between light and dark modes.
+VashonSoftware uses CSS variables for theming, making it easy to switch between light and dark modes.
 
 #### Customizing Theme Colors
 
@@ -572,7 +572,7 @@ Edit `src/components/sections/Hero.astro`:
 
 ### Adding Analytics
 
-AstroDeck includes Vercel Analytics integration. To enable:
+VashonSoftware includes Vercel Analytics integration. To enable:
 
 1. Deploy to Vercel
 2. Analytics are automatically enabled
@@ -647,7 +647,7 @@ This starts a local server serving your `dist/` folder at `http://localhost:4321
 
 ## 🚀 Deployment
 
-AstroDeck works with any static hosting provider. Here are the most popular options:
+VashonSoftware works with any static hosting provider. Here are the most popular options:
 
 ### Deploy to Vercel (Recommended)
 
@@ -749,7 +749,7 @@ jobs:
 
 ### Other Platforms
 
-AstroDeck works with:
+VashonSoftware works with:
 - **AWS Amplify** - Connect GitHub and deploy
 - **Render** - Static site hosting
 - **Digital Ocean App Platform**
@@ -829,18 +829,18 @@ content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}']
 ### Getting Help
 
 - **Documentation**: [docs.astro.build](https://docs.astro.build)
-- **GitHub Issues**: [Report a bug](https://github.com/yourusername/astrodeck/issues)
+- **GitHub Issues**: [Report a bug](https://github.com/yourusername/VashonSoftware/issues)
 - **Discord**: [Join Astro community](https://astro.build/chat)
 
 ---
 
 ## 🤖 AI-Friendly Development
 
-AstroDeck is designed to work seamlessly with AI coding assistants like Claude, ChatGPT, Cursor, GitHub Copilot, and others. We've included specialized documentation to help AI tools understand the project structure and provide better assistance.
+VashonSoftware is designed to work seamlessly with AI coding assistants like Claude, ChatGPT, Cursor, GitHub Copilot, and others. We've included specialized documentation to help AI tools understand the project structure and provide better assistance.
 
 ### Claude Code Agent
 
-AstroDeck includes a dedicated **Claude Code Agent** that acts as your personal project expert. The agent understands AstroDeck's architecture, conventions, and best practices—helping you build faster while maintaining quality.
+VashonSoftware includes a dedicated **Claude Code Agent** that acts as your personal project expert. The agent understands VashonSoftware's architecture, conventions, and best practices—helping you build faster while maintaining quality.
 
 #### What the Agent Does
 
@@ -855,16 +855,16 @@ AstroDeck includes a dedicated **Claude Code Agent** that acts as your personal 
 
 #### Using the Agent
 
-The agent is located at `.claude/agents/astrodeck.md` and works automatically with [Claude Code](https://claude.ai/code).
+The agent is located at `.claude/agents/VashonSoftware.md` and works automatically with [Claude Code](https://claude.ai/code).
 
 **Automatic Usage:**
-When you work on AstroDeck with Claude Code, the agent activates automatically for relevant tasks.
+When you work on VashonSoftware with Claude Code, the agent activates automatically for relevant tasks.
 
 **Explicit Usage:**
 ```
-> Use the astrodeck agent to create a new pricing page
-> Have astrodeck review my component for accessibility issues
-> Ask astrodeck to check the SEO of this page
+> Use the VashonSoftware agent to create a new pricing page
+> Have VashonSoftware review my component for accessibility issues
+> Ask VashonSoftware to check the SEO of this page
 ```
 
 **Model Selection:**
@@ -874,7 +874,7 @@ The agent supports different models based on your needs:
 - **Haiku**: Quick lookups and simple operations
 
 ```
-> Use astrodeck with opus to review the project architecture
+> Use VashonSoftware with opus to review the project architecture
 ```
 
 #### Agent Capabilities
@@ -935,7 +935,7 @@ For the best experience, the agent can leverage these optional MCP servers:
 
 ### AI Documentation Files
 
-AstroDeck follows the **[AGENTS.md standard](https://agents.md)** – an open format for guiding AI coding agents, used by **60,000+ open-source projects** and stewarded by the Linux Foundation.
+VashonSoftware follows the **[AGENTS.md standard](https://agents.md)** – an open format for guiding AI coding agents, used by **60,000+ open-source projects** and stewarded by the Linux Foundation.
 
 > *Think of AGENTS.md as a README for AI agents: a dedicated, predictable place to provide context and instructions.*
 
@@ -959,13 +959,13 @@ AstroDeck follows the **[AGENTS.md standard](https://agents.md)** – an open fo
 #### File Structure
 
 ```
-astrodeck/
+VashonSoftware/
 ├── PROJECT.md              # 🎯 YOUR project customizations (HIGHEST PRIORITY)
-├── AGENTS.md              # 📄 AstroDeck defaults (all AI tools)
+├── AGENTS.md              # 📄 VashonSoftware defaults (all AI tools)
 ├── .cursorrules           # 🔗 Symlink → AGENTS.md (Cursor)
 └── .claude/
     ├── agents/
-    │   └── astrodeck.md   # 🤖 Claude Code Agent (quality guardian)
+    │   └── VashonSoftware.md   # 🤖 Claude Code Agent (quality guardian)
     ├── commands/          # ⚡ Slash commands for common tasks
     │   ├── new-page.md    #    /new-page - Create pages
     │   ├── new-section.md #    /new-section - Create components
@@ -979,7 +979,7 @@ astrodeck/
 
 **Priority: HIGHEST** - Overrides all other AI documentation.
 
-Use this file to customize AstroDeck for YOUR project:
+Use this file to customize VashonSoftware for YOUR project:
 
 **🎨 Design Customizations:**
 ```markdown
@@ -1013,11 +1013,11 @@ Our brand color is electric blue (#0066FF). Use this for:
 - Active states and highlights
 ```
 
-Now every AI assistant will use electric blue instead of AstroDeck's default!
+Now every AI assistant will use electric blue instead of VashonSoftware's default!
 
 See `PROJECT.md` for a complete template with examples.
 
-#### `AGENTS.md` - AstroDeck Defaults
+#### `AGENTS.md` - VashonSoftware Defaults
 
 The main configuration file containing:
 - Project overview and tech stack (Astro v5, Tailwind v4)
@@ -1028,14 +1028,14 @@ The main configuration file containing:
 
 **Note:** Instructions in `PROJECT.md` override these defaults.
 
-#### `.claude/agents/astrodeck.md` - Claude Code Agent
+#### `.claude/agents/VashonSoftware.md` - Claude Code Agent
 
-Lightweight agent with AstroDeck-specific capabilities:
+Lightweight agent with VashonSoftware-specific capabilities:
 - Proactive security, accessibility, SEO, performance warnings
 - Quick reference to AGENTS.md conventions
 - Streamlined for fast activation
 
-**Usage:** Automatically activated when using Claude Code on AstroDeck.
+**Usage:** Automatically activated when using Claude Code on VashonSoftware.
 
 #### `.claude/commands/` - Slash Commands
 
@@ -1068,7 +1068,7 @@ Pre-built commands for common tasks:
 
 ### How to Use
 
-When working with AI assistants on AstroDeck:
+When working with AI assistants on VashonSoftware:
 
 1. **Ask specific questions** - AI tools have context from documentation files
 2. **Reference conventions** - AI will follow the patterns defined in `.cursorrules`
@@ -1079,7 +1079,7 @@ When working with AI assistants on AstroDeck:
 
 ```
 You: "Create a new pricing section component"
-AI: *Generates component following AstroDeck patterns*
+AI: *Generates component following VashonSoftware patterns*
     - Uses @/ imports
     - Includes TypeScript types
     - Applies proper styling with Tailwind v4
@@ -1098,10 +1098,10 @@ AI: *Checks against AGENTS.md knowledge*
 
 ### Contributing AI Improvements
 
-If you find ways to improve AI assistance for AstroDeck:
+If you find ways to improve AI assistance for VashonSoftware:
 
 1. Suggest updates to `AGENTS.md` for better conventions
-2. Improve the Claude Code agent in `.claude/agents/astrodeck.md`
+2. Improve the Claude Code agent in `.claude/agents/VashonSoftware.md`
 3. Report AI-related issues or confusions
 4. Share successful AI interaction patterns
 
@@ -1159,7 +1159,7 @@ We welcome contributions! Here's how you can help:
 
 ## 📄 License
 
-AstroDeck is open source software licensed under the [MIT License](LICENSE).
+VashonSoftware is open source software licensed under the [MIT License](LICENSE).
 
 This means you can:
 - ✅ Use commercially
@@ -1173,7 +1173,7 @@ This means you can:
 
 ## 🙏 Acknowledgments
 
-AstroDeck is built with amazing open-source projects:
+VashonSoftware is built with amazing open-source projects:
 
 - [Astro](https://astro.build) - The web framework for content-driven websites
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
@@ -1185,7 +1185,7 @@ AstroDeck is built with amazing open-source projects:
 
 ## 🌟 Support
 
-If you find AstroDeck helpful, please:
+If you find VashonSoftware helpful, please:
 
 - ⭐ Star the repository on GitHub
 - 🐦 Share it on social media
@@ -1195,6 +1195,6 @@ If you find AstroDeck helpful, please:
 
 ---
 
-**Built with ❤️ by the AstroDeck team**
+**Built with ❤️ by the VashonSoftware team**
 
 Start building your next amazing website today! 🚀
