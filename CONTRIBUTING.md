@@ -59,7 +59,7 @@ This project and everyone participating in it is governed by our commitment to c
    npm run dev
    ```
 
-   Open http://localhost:4321 in your browser
+   Open <http://localhost:4321> in your browser
 
 4. **Create a branch**
 
@@ -71,7 +71,7 @@ This project and everyone participating in it is governed by our commitment to c
 
 ### Project Structure
 
-```
+```text
 src/
 ├── components/
 │   ├── sections/      # Page sections (Hero, CTA, etc.)
@@ -102,12 +102,14 @@ src/
 ### Import Guidelines
 
 ✅ **Always use the `@/` alias:**
+
 ```astro
 import Hero from "@/components/sections/Hero.astro";
 import { Button } from "@/components/ui/button";
 ```
 
 ❌ **Don't use relative imports:**
+
 ```astro
 import Hero from "../components/sections/Hero.astro"; // Wrong!
 ```
@@ -127,6 +129,7 @@ import Hero from "../components/sections/Hero.astro"; // Wrong!
 - Use CSS-in-JS libraries
 
 **Example - Correct styling:**
+
 ```astro
 <section class="py-20 px-6 bg-background">
   <h1 class="text-4xl md:text-6xl font-bold text-foreground">
@@ -213,6 +216,7 @@ Use mobile-first approach with Tailwind breakpoints:
 - Maintain color contrast ratios
 
 **Example:**
+
 ```astro
 <!-- ✅ Good accessibility -->
 <button aria-label="Close menu" class="...">
@@ -303,6 +307,7 @@ const {
 ### Common Patterns
 
 **Page creation:**
+
 ```astro
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -315,6 +320,7 @@ import Hero from "@/components/sections/Hero.astro";
 ```
 
 **Using shadcn/ui components:**
+
 ```astro
 ---
 import { Button } from "@/components/ui/button";
@@ -415,6 +421,7 @@ Before suggesting a fix, check:
 - Related issue numbers
 
 **Example PR Description:**
+
 ```markdown
 ## Changes
 Added a new Newsletter section component with email input and subscribe button.

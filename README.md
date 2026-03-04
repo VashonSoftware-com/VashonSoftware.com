@@ -174,7 +174,7 @@ This command:
 
 **Expected output:**
 
-```
+```text
   🚀  astro  v5.x.x started in 234ms
 
   ┃ Local    http://localhost:4321/
@@ -203,7 +203,7 @@ This is an alias for `npm run dev` and does the same thing.
 
 Understanding the folder structure helps you navigate and customize VashonSoftware:
 
-```
+```text
 VashonSoftware/
 ├── public/                 # Static assets (fonts, images, favicon)
 │   ├── favicon.svg
@@ -467,27 +467,32 @@ VashonSoftware includes 15+ production-ready sections. Visit `/sections` in your
 ### Available Sections
 
 #### Hero Sections (3 variants)
+
 - **Centered with Badge** - Classic hero with announcement badge
 - **Left Aligned** - Split layout with content and visual
 - **Minimal with Stats** - Clean design with social proof metrics
 
 #### Call-to-Action (3 variants)
+
 - **Simple Centered** - Focused conversion section
 - **Split with Features** - CTA with feature highlights
 - **Banner Style** - Bottom banner for conversions
 
 #### Pricing Tables (4 variants)
+
 - **VashonSoftware Open Source** - Free tier showcase
 - **Three Column** - Standard pricing grid
 - **Comparison Table** - Feature comparison layout
 - **Monthly/Yearly Toggle** - Pricing with billing toggle
 
 #### Testimonials (3 variants)
+
 - **Grid Layout** - Multiple testimonials in a grid
 - **Featured Single** - Highlight one customer story
 - **Horizontal Scroll** - Scrollable testimonial cards
 
 #### Newsletters (3 variants)
+
 - **Simple Inline** - Classic email capture
 - **Split with Visual** - Newsletter with image
 - **Bottom Bar** - Minimal footer signup
@@ -614,7 +619,7 @@ This command:
 
 **Expected output:**
 
-```
+```text
 building client (vite)
 building server (vite)
 generating static routes
@@ -670,10 +675,10 @@ git remote add origin https://github.com/yourusername/your-repo.git
 git push -u origin main
 ```
 
-2. Visit [vercel.com](https://vercel.com)
-3. Click "Import Project"
-4. Select your GitHub repository
-5. Click "Deploy"
+1. Visit [vercel.com](https://vercel.com)
+2. Click "Import Project"
+3. Select your GitHub repository
+4. Click "Deploy"
 
 **Done!** Your site is live in ~30 seconds.
 
@@ -709,7 +714,7 @@ npx wrangler pages deploy dist
 npm install --save-dev @astrojs/github-pages
 ```
 
-2. Update `astro.config.mjs`:
+1. Update `astro.config.mjs`:
 
 ```js
 import { defineConfig } from 'astro/config';
@@ -720,7 +725,7 @@ export default defineConfig({
 });
 ```
 
-3. Create `.github/workflows/deploy.yml`:
+1. Create `.github/workflows/deploy.yml`:
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -745,7 +750,7 @@ jobs:
           publish_dir: ./dist
 ```
 
-4. Enable GitHub Pages in your repository settings
+1. Enable GitHub Pages in your repository settings
 
 ### Other Platforms
 
@@ -772,6 +777,7 @@ All require the same build settings:
 **Problem:** `Error: listen EADDRINUSE: address already in use :::4321`
 
 **Solution:**
+
 ```bash
 # Kill the process using port 4321
 lsof -ti:4321 | xargs kill
@@ -785,6 +791,7 @@ npm run dev -- --port 3000
 **Problem:** `Cannot find module '@/components/...'`
 
 **Solution:**
+
 ```bash
 # Delete node_modules and reinstall
 rm -rf node_modules package-lock.json
@@ -805,6 +812,7 @@ npm install
 **Problem:** `tsc` errors during build
 
 **Solution:**
+
 ```bash
 # Check for type errors
 npm run build
@@ -820,11 +828,13 @@ npm run build
 
 **Solution:**
 1. Check if file is included in `tailwind.config.mjs`:
+
 ```js
 content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}']
 ```
-2. Restart dev server after config changes
-3. Check for typos in class names
+
+1. Restart dev server after config changes
+2. Check for typos in class names
 
 ### Getting Help
 
@@ -861,7 +871,8 @@ The agent is located at `.claude/agents/VashonSoftware.md` and works automatical
 When you work on VashonSoftware with Claude Code, the agent activates automatically for relevant tasks.
 
 **Explicit Usage:**
-```
+
+```text
 > Use the VashonSoftware agent to create a new pricing page
 > Have VashonSoftware review my component for accessibility issues
 > Ask VashonSoftware to check the SEO of this page
@@ -873,7 +884,7 @@ The agent supports different models based on your needs:
 - **Opus**: Complex architectural decisions and deep analysis
 - **Haiku**: Quick lookups and simple operations
 
-```
+```text
 > Use VashonSoftware with opus to review the project architecture
 ```
 
@@ -882,7 +893,7 @@ The agent supports different models based on your needs:
 **Proactive Warnings:**
 The agent warns you before potential issues become problems:
 
-```
+```text
 🛡️ SECURITY WARNING
 Issue: External script without Subresource Integrity (SRI)
 Risk: Script could be modified by attackers
@@ -902,7 +913,7 @@ Fix: Add og:title, og:description, og:image
 **DRY Enforcement:**
 The agent detects code duplication and suggests improvements:
 
-```
+```text
 ⚠️ DRY WARNING
 Similar code found in:
 - src/components/sections/Hero.astro
@@ -916,12 +927,14 @@ Recommendation: Extract into a reusable component
 For the best experience, the agent can leverage these optional MCP servers:
 
 **Context7** (Documentation):
+
 ```json
 // For up-to-date Astro, Tailwind, React, shadcn/ui docs
 // https://github.com/upstash/context7
 ```
 
 **Lighthouse MCP** (Audits):
+
 ```json
 {
   "mcpServers": {
@@ -958,7 +971,7 @@ VashonSoftware follows the **[AGENTS.md standard](https://agents.md)** – an op
 
 #### File Structure
 
-```
+```text
 VashonSoftware/
 ├── PROJECT.md              # 🎯 YOUR project customizations (HIGHEST PRIORITY)
 ├── AGENTS.md              # 📄 VashonSoftware defaults (all AI tools)
@@ -982,12 +995,14 @@ VashonSoftware/
 Use this file to customize VashonSoftware for YOUR project:
 
 **🎨 Design Customizations:**
+
 ```markdown
 ## Colors
 Primary color: Vibrant electric blue (#0066FF) instead of default blue
 ```
 
 **✍️ Content Guidelines:**
+
 ```markdown
 ## Tone of Voice
 - Style: Professional but friendly, conversational
@@ -996,6 +1011,7 @@ Primary color: Vibrant electric blue (#0066FF) instead of default blue
 ```
 
 **🚀 Project-Specific Rules:**
+
 ```markdown
 ## Component Preferences
 - All forms must include Zod validation
@@ -1077,7 +1093,7 @@ When working with AI assistants on VashonSoftware:
 
 ### Example Interactions
 
-```
+```text
 You: "Create a new pricing section component"
 AI: *Generates component following VashonSoftware patterns*
     - Uses @/ imports
@@ -1087,7 +1103,7 @@ AI: *Generates component following VashonSoftware patterns*
     - Matches existing component structure
 ```
 
-```
+```text
 You: "Why am I getting Tailwind errors?"
 AI: *Checks against AGENTS.md knowledge*
     - Recognizes Tailwind v4 is used
@@ -1191,7 +1207,6 @@ If you find VashonSoftware helpful, please:
 - 🐦 Share it on social media
 - 📝 Write about it on your blog
 - 🤝 Contribute improvements
-
 
 ---
 

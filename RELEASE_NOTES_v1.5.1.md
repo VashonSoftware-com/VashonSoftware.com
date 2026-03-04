@@ -9,12 +9,14 @@ This patch release focuses on improving dark mode accessibility and fixing theme
 ## Bug Fixes
 
 ### Dark Mode Contrast Improvements
+
 - **Increased `muted-foreground` contrast** in dark mode from `oklch(60% 0 0)` to `oklch(71% 0 0)` for better text readability
 - **Improved border visibility** in dark mode by increasing `--color-border` from `oklch(12% 0 0)` to `oklch(25% 0 0)`
 - Added explicit dark mode styles for headings (h1-h6), paragraphs, lists, tables, and blockquotes
 - Added Tailwind Typography plugin prose variables for dark mode
 
 ### Theme Persistence Fix
+
 - **Fixed theme not persisting across page navigations** when using View Transitions
 - Theme selection now properly overrides system preferences when explicitly set by user
 - Added `astro:after-swap` event listener to reapply theme after View Transitions navigation
@@ -23,6 +25,7 @@ This patch release focuses on improving dark mode accessibility and fixing theme
 ## Technical Details
 
 ### CSS Changes (`src/styles/globals.css`)
+
 ```css
 /* Dark mode border now visible */
 --color-border: oklch(25% 0 0);  /* was 12% */
@@ -38,6 +41,7 @@ This patch release focuses on improving dark mode accessibility and fixing theme
 ```
 
 ### Theme Script Changes (all layouts)
+
 ```javascript
 // Now respects explicit "light" choice over system preference
 if (theme === "dark") {

@@ -1,0 +1,11 @@
+# Don't lint Astro blog content (different authoring conventions)
+src/content/**
+
+# Don't lint build output
+dist/**
+
+# Don't lint Claude agent/skill/command files (not project docs)
+.claude/**
+
+# Don't lint stray public notes
+public/**

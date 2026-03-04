@@ -40,8 +40,8 @@ the **PROJECT.md instruction wins**.
 |--------|---------|
 | **Purpose** | Help developers ship beautiful websites faster with copy-paste ready components |
 | **Target Users** | Web developers, SaaS founders, agencies, indie hackers |
-| **Repository** | https://github.com/VashJuan/VashonSoftware |
-| **Live Demo** | https://VashonSoftware.com |
+| **Repository** | <https://github.com/VashJuan/VashonSoftware> |
+| **Live Demo** | <https://VashonSoftware.com> |
 
 ---
 
@@ -64,7 +64,7 @@ VashonSoftware is designed to be AI-friendly and serves as your **starting point
 
 ## Tech Stack
 
-```
+```text
 ┌─────────────────────────────────────┐
 │         Astro v5.x (latest)         │  ← Framework (island architecture)
 ├─────────────────────────────────────┤
@@ -346,6 +346,7 @@ VashonSoftware includes comprehensive SEO support out of the box:
 | **robots.txt** | `public/robots.txt` | Search engine directives |
 
 **Usage in layouts:**
+
 ```astro
 <SEO 
   title="Page Title"
@@ -529,14 +530,14 @@ When something doesn't work, check:
 
 ## Resources
 
-- **Astro Docs:** https://docs.astro.build
-- **Astro AI Guide:** https://docs.astro.build/en/guides/build-with-ai/
-- **Astro MCP Server:** https://mcp.docs.astro.build/mcp
-- **Astro Discord (#support-ai):** https://astro.build/chat
-- **Astro Templates:** https://astro.build/themes/
-- **Tailwind CSS Docs:** https://tailwindcss.com/docs
-- **shadcn/ui:** https://ui.shadcn.com
-- **shadcn/ui MCP Server:** https://ui.shadcn.com/docs/mcp
+- **Astro Docs:** <https://docs.astro.build>
+- **Astro AI Guide:** <https://docs.astro.build/en/guides/build-with-ai/>
+- **Astro MCP Server:** <https://mcp.docs.astro.build/mcp>
+- **Astro Discord (#support-ai):** <https://astro.build/chat>
+- **Astro Templates:** <https://astro.build/themes/>
+- **Tailwind CSS Docs:** <https://tailwindcss.com/docs>
+- **shadcn/ui:** <https://ui.shadcn.com>
+- **shadcn/ui MCP Server:** <https://ui.shadcn.com/docs/mcp>
 - **Project README:** See `README.md` for:
   - 📦 Installation options (degit, ZIP download, GitHub clone)
   - 🚀 Deployment guides (Vercel, Netlify, Cloudflare, GitHub Pages)

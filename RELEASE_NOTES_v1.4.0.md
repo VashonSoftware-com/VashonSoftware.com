@@ -19,6 +19,7 @@ This is a **non-breaking upgrade for end users**. All existing content and confi
 The theme now uses Astro's modern Content Layer API introduced in Astro v5, which will be mandatory in Astro v6.
 
 **Before (Legacy API):**
+
 ```typescript
 // src/content/config.ts
 const blog = defineCollection({
@@ -28,6 +29,7 @@ const blog = defineCollection({
 ```
 
 **After (Content Layer API):**
+
 ```typescript
 // src/content.config.ts
 import { glob } from 'astro/loaders';

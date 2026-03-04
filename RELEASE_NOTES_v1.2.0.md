@@ -47,6 +47,7 @@ A custom sub-agent configuration (`.claude/agents/astrodeck.md`) that:
 ## 📝 All Changes
 
 ### Features
+
 - Add Claude Code AI Agent for project assistance
 - Consolidate AI guidelines into AGENTS.md standard
 - Use lobe-icons CDN for AI tool logos (OpenAI, GitHub Copilot, Cursor, Gemini, Windsurf, Claude)
@@ -55,6 +56,7 @@ A custom sub-agent configuration (`.claude/agents/astrodeck.md`) that:
 - Move AI section before Features section (key USP positioning)
 
 ### Improvements
+
 - Update Hero title: "ready to go" → "ready to take off" (matches Astro rocket logo)
 - Update Hero subtitle with AGENTS.md standard and major supporters (OpenAI, GitHub, Google)
 - Redesign AI tools grid to match Features section style (gap-px borders, shadows)
@@ -63,11 +65,13 @@ A custom sub-agent configuration (`.claude/agents/astrodeck.md`) that:
 - Rename badge from "AI-Powered" to "AI-Friendly Development"
 
 ### Documentation
+
 - Add comprehensive AGENTS.md tool support documentation with verification links
 - Add Git workflow rules: no auto-push without explicit user request
 - Update README with Claude Code Agent documentation
 
 ### Fixes
+
 - Align AI section container width with rest of page (max-w-5xl)
 - Fix mark styling for dark mode compatibility
 
@@ -76,11 +80,13 @@ A custom sub-agent configuration (`.claude/agents/astrodeck.md`) that:
 ## 🔧 Technical Details
 
 ### New Files
+
 - `AGENTS.md` – Single source of truth for AI coding assistants (361 lines)
 - `.claude/agents/astrodeck.md` – Claude Code sub-agent configuration
 - `CLAUDE.md` – Symlink to AGENTS.md for Claude Code compatibility
 
 ### Modified Files
+
 - `src/components/sections/Hero.astro` – HTML subtitle support via `set:html`
 - `src/components/sections/AIFeature.astro` – Complete redesign with lobe-icons
 - `src/pages/index.astro` – Updated Hero props, section reordering
