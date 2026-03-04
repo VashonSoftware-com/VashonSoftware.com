@@ -1,0 +1,216 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact Us — Vashon Software"
+  description="Get in touch with Vashon Software. We're ready to help with your software development, web development, mobile apps, cloud, and technology needs."
+>
+  <section class="py-20 md:py-28">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <!-- Left: Contact info -->
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight md:text-5xl">Get in Touch</h1>
+          <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+            Ready to start a project, or just want to learn more about what we do? We'd love to hear
+            from you. Drop us an email and we'll get back to you promptly.
+          </p>
+
+          <div class="mt-10 space-y-6">
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="mt-1 flex-shrink-0 rounded-md border p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold">Email</p>
+                <a
+                  href="mailto:info@VashonSoftware.com"
+                  class="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  info@VashonSoftware.com
+                </a>
+              </div>
+            </div>
+
+            <!-- Location hint -->
+            <div class="flex items-start gap-4">
+              <div class="mt-1 flex-shrink-0 rounded-md border p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold">Location</p>
+                <p class="text-muted-foreground">Vashon Island, Washington</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- What to expect -->
+          <div class="mt-12 rounded-lg border bg-muted/40 p-6">
+            <h2 class="font-semibold mb-3">What to expect</h2>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                Response within one business day
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                Free initial consultation
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                No-obligation project scoping
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div>
+          <div class="rounded-lg border bg-card p-8">
+            <h2 class="text-xl font-semibold mb-6">Send us a message</h2>
+            <form
+              action="mailto:info@VashonSoftware.com"
+              method="dialog"
+              class="space-y-5"
+              aria-label="Contact form"
+            >
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="name" class="text-sm font-medium leading-none">
+                    Name <span class="text-destructive" aria-label="required">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    placeholder="Jane Smith"
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="email" class="text-sm font-medium leading-none">
+                    Email <span class="text-destructive" aria-label="required">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="jane@example.com"
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                  />
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="subject" class="text-sm font-medium leading-none">Subject</label>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="What can we help you with?"
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="message" class="text-sm font-medium leading-none">
+                  Message <span class="text-destructive" aria-label="required">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Tell us about your project..."
+                  class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Send Message
+              </button>
+
+              <p class="text-xs text-muted-foreground text-center">
+                Or email us directly at{' '}
+                <a href="mailto:info@VashonSoftware.com" class="text-primary hover:underline">
+                  info@VashonSoftware.com
+                </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

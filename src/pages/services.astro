@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const serviceGroups = [
+  {
+    category: 'Crafted Software',
+    description: 'We build software that fits your exact requirements — not the other way around.',
+    services: [
+      {
+        title: 'Custom Applications',
+        description:
+          'Bespoke desktop, web, and enterprise applications engineered around your unique workflows. We analyse your requirements, design an architecture that scales, and deliver maintainable code your team can own.',
+      },
+      {
+        title: 'Mobile Apps',
+        description:
+          'Native iOS and Android apps, or cross-platform solutions using modern frameworks. We design for performance and polish — delivering experiences your users will actually enjoy.',
+      },
+      {
+        title: 'Cloud Solutions',
+        description:
+          'Architecture design, cloud migration, serverless functions, and managed infrastructure on AWS, Azure, or GCP. We build systems that stay up, scale automatically, and cost less to run.',
+      },
+    ],
+  },
+  {
+    category: 'Websites',
+    description:
+      'Fast, accessible, and search-optimised sites that represent your brand at its best.',
+    services: [
+      {
+        title: 'Web Development',
+        description:
+          'From marketing sites to full web applications, we build with performance-first frameworks, semantic HTML, and accessibility baked in from day one.',
+      },
+      {
+        title: 'Responsive Design',
+        description:
+          'Every site we build looks and works perfectly across all screen sizes — mobile, tablet, and desktop — without compromise.',
+      },
+      {
+        title: 'E-commerce Solutions',
+        description:
+          'End-to-end online stores with smooth checkout experiences, inventory management, and the integrations you need to sell effectively.',
+      },
+      {
+        title: 'Content Management Systems',
+        description:
+          'Powerful CMS implementations that give your team the freedom to publish and manage content without needing a developer for every change.',
+      },
+      {
+        title: 'SEO Optimization',
+        description:
+          'Technical SEO audits, structured data, Core Web Vitals tuning, and on-page optimisation so your site gets found by the right people.',
+      },
+    ],
+  },
+  {
+    category: 'Disaster Technology',
+    description:
+      'Mission-critical systems built for resilience — because some failures are not an option.',
+    services: [
+      {
+        title: 'Resilient Infrastructure',
+        description:
+          'Highly-available, fault-tolerant systems with redundancy, automated failover, and disaster recovery planning built into the architecture from the start.',
+      },
+      {
+        title: 'Backup & Recovery Systems',
+        description:
+          'Automated backup pipelines and recovery workflows that ensure your data and services can be restored quickly after any incident.',
+      },
+      {
+        title: 'Emergency Communication Platforms',
+        description:
+          'Communication tools and coordination platforms designed for high-stress, high-stakes situations where reliability is non-negotiable.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Services — Vashon Software"
+  description="Vashon Software offers custom application development, web development, mobile apps, cloud solutions, e-commerce, CMS, SEO, and disaster technology services."
+>
+  <!-- Page Header -->
+  <section class="py-20 md:py-28">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">Our Services</h1>
+        <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+          We specialise in building software that solves real problems. Whether you need a custom
+          application, a polished website, or infrastructure that holds up under pressure — we've
+          got the expertise to deliver it.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            Discuss Your Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Groups -->
+  {
+    serviceGroups.map((group) => (
+      <section class="py-16 border-t">
+        <div class="container max-w-5xl mx-auto px-4">
+          <div class="mb-10">
+            <h2 class="text-2xl font-bold md:text-3xl">{group.category}</h2>
+            <p class="mt-2 text-muted-foreground">{group.description}</p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {group.services.map((service) => (
+              <div class="rounded-lg border bg-card p-6 hover:shadow-md transition-shadow">
+                <h3 class="font-semibold text-lg mb-2">{service.title}</h3>
+                <p class="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <CTA
+    title="Have a project in mind?"
+    description="We'd love to hear about it. Reach out and let's talk about what we can build together."
+    cta={{ href: '/contact', label: 'Get in Touch' }}
+  />
+</BaseLayout>

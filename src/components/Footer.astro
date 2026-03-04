@@ -11,7 +11,7 @@
  * <Footer variant="fullWidth" />
  * ```
  */
-import Logo from "./Logo.astro";
+import Logo from './Logo.astro';
 
 interface Props {
   /** Layout variant - boxed (default) or fullWidth */
@@ -22,92 +22,121 @@ const { variant = 'boxed' } = Astro.props;
 
 const footerLinks = {
   pages: [
-    { href: "/", label: "Home" },
-    { href: "/sections", label: "Sections" },
-    { href: "/blog", label: "Blog" },
-    { href: "/login", label: "Login" },
-    { href: "/privacy", label: "Privacy" },
+    { href: '/', label: 'Home' },
+    { href: '/services', label: 'Services' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/privacy', label: 'Privacy' },
   ],
-  resources: [
-    { href: "https://astro.build", label: "Astro.js", external: true },
-    { href: "https://tailwindcss.com", label: "Tailwind CSS", external: true },
-    { href: "https://ui.shadcn.com", label: "shadcn/ui", external: true },
+  services: [
+    { href: '/services#crafted-software', label: 'Custom Applications' },
+    { href: '/services#crafted-software', label: 'Mobile Apps' },
+    { href: '/services#crafted-software', label: 'Cloud Solutions' },
+    { href: '/services#websites', label: 'Web Development' },
+    { href: '/services#websites', label: 'E-commerce & CMS' },
+    { href: '/services#disaster-technology', label: 'Disaster Technology' },
   ],
 };
 
-const containerClass = variant === 'fullWidth' 
-  ? 'w-full px-4' 
-  : 'container max-w-5xl mx-auto px-4 sm:px-6';
+const containerClass =
+  variant === 'fullWidth' ? 'w-full px-4' : 'container max-w-5xl mx-auto px-4 sm:px-6';
 ---
 
 <footer class="border-t bg-background">
-  <div class:list={[containerClass, "py-12"]}>
+  <div class:list={[containerClass, 'py-12']}>
     <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
       <!-- Brand -->
       <div class="col-span-2 md:col-span-1">
         <Logo />
         <p class="mt-4 text-sm text-muted-foreground">
-          Open-source Astro.js starter kit with ready-to-use components. Start building faster.
+          Custom software development and technology solutions for businesses that need technology
+          that works.
         </p>
-      </div>
-
-      <!-- Pages -->
-      <div>
-        <h3 class="font-semibold mb-4">Pages</h3>
-        <ul class="space-y-2">
-          {footerLinks.pages.map((link) => (
-            <li>
-              <a href={link.href} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Built With -->
-      <div>
-        <h3 class="font-semibold mb-4">Built With</h3>
-        <ul class="space-y-2">
-          {footerLinks.resources.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-                <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                </svg>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Creator -->
-      <div>
-        <h3 class="font-semibold mb-4">Creator</h3>
-        <p class="text-sm text-muted-foreground">Created by</p>
         <a
-          href="https://holgerkoenemann.com"
-          class="text-sm font-medium hover:text-foreground transition-colors inline-flex items-center gap-1 mt-2"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mailto:info@VashonSoftware.com"
+          class="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
         >
-          Holger Könemann
-          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
+          info@VashonSoftware.com
         </a>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="font-semibold mb-4">Navigation</h3>
+        <ul class="space-y-2">
+          {
+            footerLinks.pages.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="font-semibold mb-4">Services</h3>
+        <ul class="space-y-2">
+          {
+            footerLinks.services.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-semibold mb-4">Contact</h3>
+        <ul class="space-y-3 text-sm text-muted-foreground">
+          <li>Vashon Island, Washington</li>
+          <li>
+            <a
+              href="mailto:info@VashonSoftware.com"
+              class="hover:text-foreground transition-colors"
+            >
+              info@VashonSoftware.com
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-foreground transition-colors">
+              Send a message →
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- Copyright -->
     <div class="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-      <p>&copy; {new Date().getFullYear()} AstroDeck. MIT License. Open Source.</p>
+      <p>&copy; {new Date().getFullYear()} Vashon Software. All rights reserved.</p>
     </div>
   </div>
 </footer>

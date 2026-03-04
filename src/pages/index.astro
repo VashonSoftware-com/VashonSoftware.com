@@ -1,60 +1,69 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/sections/Hero.astro";
-import LogoCloud from "@/components/sections/LogoCloud.astro";
-import Features from "@/components/sections/Features.astro";
-import AIFeature from "@/components/sections/AIFeature.astro";
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Features from '@/components/sections/Features.astro';
+import CTA from '@/components/sections/CTA.astro';
 
-const features = [
+const services = [
   {
-    title: "Astro.js Powered",
-    description: "Built with Astro for lightning-fast performance and optimal SEO out of the box.",
-    icon: "zap",
+    title: 'Custom Applications',
+    description:
+      'Bespoke software engineered around your business processes — from internal tools to customer-facing platforms.',
+    icon: 'zap',
   },
   {
-    title: "shadcn/ui Components",
-    description: "Beautiful, accessible components built with Radix UI and Tailwind CSS.",
-    icon: "shield",
+    title: 'Web Development',
+    description:
+      'High-performance, accessible websites and web applications built with modern frameworks and best practices.',
+    icon: 'globe',
   },
   {
-    title: "TypeScript Ready",
-    description: "Full TypeScript support for type-safe development and better DX.",
-    icon: "chart",
+    title: 'Mobile Apps',
+    description:
+      'Native and cross-platform mobile applications for iOS and Android, crafted for seamless user experiences.',
+    icon: 'users',
   },
   {
-    title: "Dark Mode",
-    description: "Built-in dark mode support with seamless theme switching.",
-    icon: "users",
+    title: 'Cloud Solutions',
+    description:
+      'Scalable cloud architecture, infrastructure design, and migration services to modernize your technology stack.',
+    icon: 'chart',
   },
   {
-    title: "Responsive Design",
-    description: "Mobile-first approach ensuring perfect display on all devices.",
-    icon: "globe",
+    title: 'E-commerce & CMS',
+    description:
+      'Online storefronts and content management systems that are easy to manage and built to convert.',
+    icon: 'lock',
   },
   {
-    title: "Ready to Deploy",
-    description: "Optimized for Vercel, Netlify, and other modern hosting platforms.",
-    icon: "lock",
+    title: 'Disaster Technology',
+    description:
+      'Resilient, mission-critical systems designed to keep you operational when it matters most.',
+    icon: 'shield',
   },
 ];
 ---
 
-<BaseLayout title="AstroDeck - Astro.js Starter Kit" description="Open-source Astro.js starter kit with ready-to-use components, shadcn/ui, Tailwind CSS, and TypeScript. Install and start building.">
+<BaseLayout
+  title="Vashon Software — Crafted Software Solutions"
+  description="Vashon Software specializes in custom application development, web development, mobile apps, cloud solutions, and disaster technology. Contact us to get started."
+>
   <Hero
-    badge="true"
-    title="Your Astro project, ready to take off."
-    subtitle="AstroDeck is a production-ready <mark>Astro.js starter kit</mark> with pre-built components, shadcn/ui, dark mode, and TypeScript. <mark>Built AI-friendly</mark> with <mark>AGENTS.md</mark> – the open standard supported by OpenAI, GitHub, Google, and all major coding assistants. Plus a dedicated <mark>Claude Code Agent</mark> for intelligent project guidance."
-    primaryCta={{ href: "https://github.com/holger1411/astrodeck/archive/refs/tags/v1.5.1.zip", label: "Download" }}
-    secondaryCta={{ href: "https://github.com/holger1411/astrodeck", label: "GitHub" }}
+    title="Software crafted to fit your needs."
+    subtitle="Vashon Software builds <mark>custom applications</mark>, websites, mobile apps, and <mark>cloud solutions</mark> for businesses that need technology that works — reliably and beautifully."
+    primaryCta={{ href: '/contact', label: 'Get in Touch' }}
+    secondaryCta={{ href: '/services', label: 'Our Services' }}
   />
 
-  <LogoCloud />
-
-  <AIFeature />
-
   <Features
-    title="Everything you need, right out of the box"
-    subtitle="Built with modern technologies and best practices to help you ship faster."
-    features={features}
+    title="What we build"
+    subtitle="From bespoke software to resilient infrastructure, we deliver solutions across the full technology stack."
+    features={services}
+  />
+
+  <CTA
+    title="Ready to start your project?"
+    description="Tell us what you need. We'll work with you to scope, design, and deliver software that solves real problems."
+    cta={{ href: '/contact', label: 'Contact Us' }}
   />
 </BaseLayout>
