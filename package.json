@@ -2,6 +2,7 @@
   "name": "VashonSoftware",
   "type": "module",
   "version": "1.5.1",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,18 +16,18 @@
     "lint:md": "markdownlint-cli2 \"*.md\""
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "4.0.18",
     "@astrojs/sitemap": "3.7.2",
     "@astrojs/svelte": "8.0.5",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.4",
     "@vercel/analytics": "^1.6.1",
     "astro": "6.1.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "pnpm": "^10.33.0",
-    "svelte": "^5.55.4",
+    "pnpm": "^10.33.2",
+    "svelte": "^5.55.5",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
@@ -36,9 +37,9 @@
     "markdownlint-cli2": "^0.21.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
-    "tailwindcss": "^4.2.2",
+    "tailwindcss": "^4.2.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.59.1"
   }
 }
