@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import logoSrc from '@/assets/logo-navbar-128.png';
+
 /**
  * Logo Component
  *
- * AstroDeck brand logo with card deck icon and wordmark.
+ * Vashon Software brand logo with wordmark.
  * Used consistently across Header, Footer, and Auth layouts.
  *
  * @example
@@ -49,14 +52,15 @@ const textSizeClasses = {
 ---
 
 <a href="/" class:list={['flex items-center space-x-2', className]}>
-  <img
-    src="/icons/logo-navbar-128.png"
+  <Image
+    src={logoSrc}
     alt="Vashon Software logo"
     width={imageSizes[size]}
     height={imageSizes[size]}
     class={sizeClasses[size]}
     loading="eager"
-    decoding="async"
+    fetchpriority="high"
+    format="webp"
   />
   {showText && <span class:list={['font-bold', textSizeClasses[size]]}>Vashon Software</span>}
 </a>
