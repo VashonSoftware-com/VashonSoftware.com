@@ -1,7 +1,7 @@
 ---
 title: "Kraken Demands Better WiFi, Threatens to Cancel Cloud Subscription"
 description: "Ancient sea monster discovers technology, immediately becomes everyone's most annoying coworker"
-pubDate: 2025-12-18
+pubDate: 2026-06-30
 author: "Tech Support Nightmares Weekly"
 tags: ["humor", "technology", "mythology"]
 ---

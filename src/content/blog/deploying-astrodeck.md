@@ -1,7 +1,7 @@
 ---
 title: "Deploying AstroDeck to Production"
 description: "Step-by-step guide to deploying your AstroDeck site to Vercel, Netlify, or Cloudflare Pages."
-pubDate: 2025-12-24
+pubDate: 2026-06-30
 author: "AstroDeck Team"
 tags: ["tutorial", "deployment", "vercel", "netlify"]
 ---

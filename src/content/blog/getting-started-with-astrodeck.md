@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with AstroDeck"
 description: "Learn how to install, configure, and customize AstroDeck - the AI-ready Astro.js starter kit with pre-built components."
-pubDate: 2025-12-26
+pubDate: 2026-06-30
 author: "AstroDeck Team"
 tags: ["tutorial", "getting-started", "astro"]
 ---

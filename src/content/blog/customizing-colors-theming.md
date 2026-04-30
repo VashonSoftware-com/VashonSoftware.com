@@ -1,7 +1,7 @@
 ---
 title: "Customizing AstroDeck Colors and Theming"
 description: "Master the OKLCH color system in AstroDeck to create beautiful, accessible themes for your website."
-pubDate: 2025-12-25
+pubDate: 2026-06-30
 author: "AstroDeck Team"
 tags: ["tutorial", "theming", "css", "tailwind"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Medusa Starts Hair Salon, Accidentally Creates World's Best Security System"
 description: "Local gorgon's beauty business thrives despite minor petrification incidents"
-pubDate: 2025-12-20
+pubDate: 2026-06-30
 author: "Stone Cold Beauty News"
 tags: ["humor", "business", "mythology"]
 ---
