@@ -45,11 +45,14 @@ const containerClass =
 
 <footer class="border-t bg-background">
   <div class:list={[containerClass, 'py-12']}>
-    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
-      <div class="col-span-2 md:col-span-1">
-        <Logo />
-        <p class="mt-4 text-sm text-muted-foreground">
+      <div class="md:col-span-2 lg:col-span-1">
+        <Logo
+          size="xl"
+          class="origin-left inline-flex transition-transform duration-200 ease-out hover:scale-110"
+        />
+        <p class="mt-5 text-sm text-muted-foreground">
           Custom software development and technology solutions for businesses that need technology
           that works.
         </p>
@@ -68,7 +71,11 @@ const containerClass =
             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
-          <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="text-primary hover:underline" />
+          <ObfuscatedEmail
+            user="info"
+            domain="VashonSoftware.com"
+            class="text-primary hover:underline"
+          />
         </div>
       </div>
 
@@ -116,7 +123,11 @@ const containerClass =
         <ul class="space-y-3 text-sm text-muted-foreground">
           <li>Vashon Island, Washington</li>
           <li>
-            <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="hover:text-foreground transition-colors" />
+            <ObfuscatedEmail
+              user="info"
+              domain="VashonSoftware.com"
+              class="hover:text-foreground transition-colors"
+            />
           </li>
           <li>
             <a href="/contact" class="hover:text-foreground transition-colors">

@@ -16,7 +16,7 @@ interface Props {
   /** Show the "AstroDeck" text next to the icon */
   showText?: boolean;
   /** Size variant */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   /** Additional CSS classes */
   class?: string;
 }
@@ -27,18 +27,21 @@ const sizeClasses = {
   sm: 'h-5 w-5',
   md: 'h-6 w-6',
   lg: 'h-8 w-8',
+  xl: 'h-10 w-10',
 };
 
 const imageSizes = {
   sm: 20,
   md: 24,
   lg: 32,
+  xl: 40,
 };
 
 const textSizeClasses = {
   sm: 'text-sm',
   md: 'text-base',
   lg: 'text-lg',
+  xl: 'text-xl',
 };
 ---
 
