@@ -39,7 +39,11 @@ import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
               </div>
               <div>
                 <p class="font-semibold">Email</p>
-                <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="text-muted-foreground hover:text-primary transition-colors" />
+                <ObfuscatedEmail
+                  user="inquiry"
+                  domain="VashonSoftware.com"
+                  class="text-muted-foreground hover:text-primary transition-colors"
+                />
               </div>
             </div>
 
@@ -128,12 +132,50 @@ import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
         <div>
           <div class="rounded-lg border bg-card p-8">
             <h2 class="text-xl font-semibold mb-6">Send us a message</h2>
-            <form
-              action="mailto:info@VashonSoftware.com"
-              method="dialog"
-              class="space-y-5"
-              aria-label="Contact form"
+
+            <!-- Success state (hidden by default) -->
+            <div id="form-success" class="hidden text-center py-10 space-y-4">
+              <div
+                class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-7 w-7 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg
+                >
+              </div>
+              <p class="text-lg font-semibold">Message sent!</p>
+              <p class="text-sm text-muted-foreground">
+                Thanks for reaching out. We'll get back to you within one business day.
+              </p>
+              <button id="send-another" class="text-sm text-primary hover:underline"
+                >Send another message</button
+              >
+            </div>
+
+            <!-- Error banner (hidden by default) -->
+            <div
+              id="form-error"
+              class="hidden mb-5 rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+              role="alert"
             >
+              Something went wrong. Please try again or email us directly.
+            </div>
+
+            <form id="contact-form" class="space-y-5" aria-label="Contact form" novalidate>
+              <!-- Web3Forms access key — replace with your key from https://web3forms.com -->
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="subject" value="New contact from VashonSoftware.com" />
+              <input type="hidden" name="from_name" value="VashonSoftware.com Contact Form" />
+              <!-- Honeypot spam protection -->
+              <input type="checkbox" name="botcheck" class="hidden" aria-hidden="true" />
+
               <div class="grid gap-5 sm:grid-cols-2">
                 <div class="space-y-2">
                   <label for="name" class="text-sm font-medium leading-none">
@@ -166,10 +208,10 @@ import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
               </div>
 
               <div class="space-y-2">
-                <label for="subject" class="text-sm font-medium leading-none">Subject</label>
+                <label for="topic" class="text-sm font-medium leading-none">Subject</label>
                 <input
-                  id="subject"
-                  name="subject"
+                  id="topic"
+                  name="topic"
                   type="text"
                   placeholder="What can we help you with?"
                   class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -191,17 +233,37 @@ import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
               </div>
 
               <button
+                id="submit-btn"
                 type="submit"
-                class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                class="w-full inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send Message
+                <span id="submit-label">Send Message</span>
+                <svg
+                  id="submit-spinner"
+                  class="hidden h-4 w-4 animate-spin"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                </svg>
               </button>
 
               <p class="text-xs text-muted-foreground text-center">
                 Or email us directly at{' '}
-                <a href="mailto:info@VashonSoftware.com" class="text-primary hover:underline">
-                  info@VashonSoftware.com
-                </a>
+                <ObfuscatedEmail
+                  user="inquiry"
+                  domain="VashonSoftware.com"
+                  class="text-primary hover:underline"
+                />
               </p>
             </form>
           </div>
@@ -210,3 +272,51 @@ import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const submitLabel = document.getElementById('submit-label');
+  const submitSpinner = document.getElementById('submit-spinner');
+  const sendAnother = document.getElementById('send-another');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !submitBtn) return;
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitLabel?.classList.add('hidden');
+    submitSpinner?.classList.remove('hidden');
+    errorEl?.classList.add('hidden');
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.classList.add('hidden');
+        successEl?.classList.remove('hidden');
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch {
+      errorEl?.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitLabel?.classList.remove('hidden');
+      submitSpinner?.classList.add('hidden');
+    }
+  });
+
+  sendAnother?.addEventListener('click', () => {
+    form?.reset();
+    form?.classList.remove('hidden');
+    successEl?.classList.add('hidden');
+  });
+</script>
