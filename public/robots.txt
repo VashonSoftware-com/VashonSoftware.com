@@ -1,4 +1,4 @@
-# robots.txt for AstroDeck
+# robots.txt for VashonSoftware.com
 # https://VashonSoftware.com
 
 User-agent: *
