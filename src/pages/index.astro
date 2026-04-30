@@ -6,64 +6,46 @@ import CTA from '@/components/sections/CTA.astro';
 
 const services = [
   {
-    title: 'Custom Applications',
+    title: 'Websites',
     description:
-      'Bespoke software engineered around your business processes — from internal tools to customer-facing platforms.',
-    icon: 'zap',
-  },
-  {
-    title: 'Web Development',
-    description:
-      'High-performance, accessible websites and web applications built with modern frameworks and best practices.',
+      'Modern low-JS, static mobile-first sites with proven 100 PageSpeed scores for Performance, Accessibility, Best Practices & SEO. Creative design, user editable — all at an economical price.',
     icon: 'globe',
   },
   {
-    title: 'Mobile Apps',
+    title: 'Crafted Software',
     description:
-      'Native and cross-platform mobile applications for iOS and Android, crafted for seamless user experiences.',
-    icon: 'users',
-  },
-  {
-    title: 'Cloud Solutions',
-    description:
-      'Scalable cloud architecture, infrastructure design, and migration services to modernize your technology stack.',
-    icon: 'chart',
-  },
-  {
-    title: 'E-commerce & CMS',
-    description:
-      'Online storefronts and content management systems that are easy to manage and built to convert.',
-    icon: 'lock',
+      'Microservices-based custom applications using C#, TypeScript, Python, C++ and more. AI with Small Language Models for GIS & IoT, Secure IoT Development, and Data Analytics on modern cloud solutions.',
+    icon: 'zap',
   },
   {
     title: 'Disaster Technology',
     description:
-      'Resilient, mission-critical systems designed to keep you operational when it matters most.',
+      'ICS, NIMS & NRF-based solutions for Emergency Operations Centers. Resilient systems that operate independently of the cloud — but leverage it when available.',
     icon: 'shield',
   },
 ];
 ---
 
 <BaseLayout
-  title="Vashon Software — Crafted Software Solutions"
-  description="Vashon Software specializes in custom application development, web development, mobile apps, cloud solutions, and disaster technology. Contact us to get started."
+  title="Vashon Software — Innovative Solutions Since 2002"
+  description="Founded in 2002, Vashon Software delivers websites, crafted software, and disaster technology — cutting-edge, agile, modular solutions built for today and designed to grow for tomorrow."
 >
   <Hero
-    title="Software crafted to fit your needs."
-    subtitle="Vashon Software builds <mark>custom applications</mark>, websites, mobile apps, and <mark>cloud solutions</mark> for businesses that need technology that works — reliably and beautifully."
+    title="Innovative solutions for your goals and mission."
+    subtitle="Founded in 2002, Vashon Software uses <mark>cutting-edge technologies</mark> enabling agile projects that are creative, modular, and simple — built to fit today's objectives and <mark>grow for tomorrow's</mark>."
     primaryCta={{ href: '/contact', label: 'Get in Touch' }}
     secondaryCta={{ href: '/services', label: 'Our Services' }}
   />
 
   <Features
     title="What we build"
-    subtitle="From bespoke software to resilient infrastructure, we deliver solutions across the full technology stack."
+    subtitle="Websites, crafted software, and disaster technology — delivered with expertise across the full technology stack."
     features={services}
   />
 
   <CTA
     title="Ready to start your project?"
-    description="Tell us what you need. We'll work with you to scope, design, and deliver software that solves real problems."
+    description="Tell us what you need. We'll work with you to scope, design, and deliver solutions that solve real problems — reliably and creatively."
     cta={{ href: '/contact', label: 'Contact Us' }}
   />
 </BaseLayout>

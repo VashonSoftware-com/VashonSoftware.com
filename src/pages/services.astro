@@ -4,77 +4,87 @@ import CTA from '@/components/sections/CTA.astro';
 
 const serviceGroups = [
   {
-    category: 'Crafted Software',
-    description: 'We build software that fits your exact requirements — not the other way around.',
+    category: 'Websites',
+    description: 'Modern low-JS, static mobile-first sites with proven 100 PageSpeed scores for Performance, Accessibility, Best Practices & SEO.',
     services: [
       {
-        title: 'Custom Applications',
+        title: 'Performance-First Static Sites',
         description:
-          'Bespoke desktop, web, and enterprise applications engineered around your unique workflows. We analyse your requirements, design an architecture that scales, and deliver maintainable code your team can own.',
+          'Reliable Svelte and Angular component-focused solutions using Astro, Eleventy, Hugo, Decap, Nunjucks, HTML5, CSS3+, TypeScript, and Markdown — with modern versioning & CI/CD pipelines.',
       },
       {
-        title: 'Mobile Apps',
+        title: 'Creative Design & User Editable',
         description:
-          'Native iOS and Android apps, or cross-platform solutions using modern frameworks. We design for performance and polish — delivering experiences your users will actually enjoy.',
+          'Creative design that your team can manage and update without developer involvement — all at an economical price.',
       },
       {
-        title: 'Cloud Solutions',
+        title: 'Example Sites',
         description:
-          'Architecture design, cloud migration, serverless functions, and managed infrastructure on AWS, Azure, or GCP. We build systems that stay up, scale automatically, and cost less to run.',
+          'VashonSoftware.com, eoc.online, Mesh101.com, VashonMesh.com, MadeInParadiseRocks.com, VashonTaiChi.com, VashonMassage.com, Cornelisons.com, VashonBePrepared, VashonEOC, and many others over the years.',
       },
     ],
   },
   {
-    category: 'Websites',
+    category: 'Crafted Software',
     description:
-      'Fast, accessible, and search-optimised sites that represent your brand at its best.',
+      'Custom applications engineered with modern architectures and technologies to meet your exact requirements.',
     services: [
       {
-        title: 'Web Development',
+        title: 'Microservices & Containerized Systems',
         description:
-          'From marketing sites to full web applications, we build with performance-first frameworks, semantic HTML, and accessibility baked in from day one.',
+          'Microservices-based architectural design on containerized systems — scalable, maintainable, and built for long-term operation.',
       },
       {
-        title: 'Responsive Design',
+        title: 'Custom Applications',
         description:
-          'Every site we build looks and works perfectly across all screen sizes — mobile, tablet, and desktop — without compromise.',
+          'Bespoke software using C#, TypeScript, Python, C++, pnpm, SQL & NoSQL — designed around your workflows and delivered with clean, maintainable code.',
       },
       {
-        title: 'E-commerce Solutions',
+        title: 'Artificial Intelligence',
         description:
-          'End-to-end online stores with smooth checkout experiences, inventory management, and the integrations you need to sell effectively.',
+          'Small Language Models (SLMs) applied to GIS & Geomatics, IoT, and domain-specific problem solving — practical AI without the overhead.',
       },
       {
-        title: 'Content Management Systems',
+        title: 'Secure IoT Development',
         description:
-          'Powerful CMS implementations that give your team the freedom to publish and manage content without needing a developer for every change.',
+          'End-to-end IoT solutions with security designed in from the ground up — from edge devices to data pipelines.',
       },
       {
-        title: 'SEO Optimization',
+        title: 'Data Analytics',
         description:
-          'Technical SEO audits, structured data, Core Web Vitals tuning, and on-page optimisation so your site gets found by the right people.',
+          'Data analytics solutions deployed across a variety of cloud platforms — turning raw data into actionable insight.',
       },
     ],
   },
   {
     category: 'Disaster Technology',
     description:
-      'Mission-critical systems built for resilience — because some failures are not an option.',
+      'Mission-critical software for Emergency Operations Centers — resilient by design, reliable when it matters most.',
     services: [
       {
-        title: 'Resilient Infrastructure',
+        title: 'Emergency Operations Centers',
         description:
-          'Highly-available, fault-tolerant systems with redundancy, automated failover, and disaster recovery planning built into the architecture from the start.',
+          'Software solutions focused on small & international EOCs — systems that are NOT reliant on the cloud but can leverage those abilities when the Internet is available, even intermittently.',
       },
       {
-        title: 'Backup & Recovery Systems',
+        title: 'ICS / NIMS / NRF Based Solutions',
         description:
-          'Automated backup pipelines and recovery workflows that ensure your data and services can be restored quickly after any incident.',
+          'Incident Command System (ICS), National Incident Management System (NIMS) & National Response Framework (NRF) compliant platforms for structured emergency response.',
       },
       {
-        title: 'Emergency Communication Platforms',
+        title: 'Emergency Response Systems',
         description:
-          'Communication tools and coordination platforms designed for high-stress, high-stakes situations where reliability is non-negotiable.',
+          'Coordination tools and communication platforms built for high-stress, high-stakes situations where reliability is non-negotiable.',
+      },
+      {
+        title: 'Data Recovery Solutions',
+        description:
+          'Automated backup pipelines and recovery workflows ensuring your data and services can be restored quickly after any incident.',
+      },
+      {
+        title: 'Risk Assessment Tools',
+        description:
+          'Tools for identifying, evaluating, and mitigating risks before they become incidents — built for operational teams in the field.',
       },
     ],
   },
@@ -83,7 +93,7 @@ const serviceGroups = [
 
 <BaseLayout
   title="Services — Vashon Software"
-  description="Vashon Software offers custom application development, web development, mobile apps, cloud solutions, e-commerce, CMS, SEO, and disaster technology services."
+  description="Founded in 2002, Vashon Software delivers websites, crafted software, and disaster technology solutions. Innovative, modular, and built to grow."
 >
   <!-- Page Header -->
   <section class="py-20 md:py-28">
@@ -91,9 +101,10 @@ const serviceGroups = [
       <div class="max-w-2xl">
         <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">Our Services</h1>
         <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-          We specialise in building software that solves real problems. Whether you need a custom
-          application, a polished website, or infrastructure that holds up under pressure — we've
-          got the expertise to deliver it.
+          Founded in 2002, Vashon Software focuses on innovative solutions to facilitate our
+          customers’ goals and mission. We strive to use cutting-edge technologies enabling agile
+          projects that are creative, modular, and simple — built to fit today’s objectives and
+          grow for tomorrow’s.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
           <a
