@@ -1,0 +1,37 @@
+---
+/**
+ * ObfuscatedEmail
+ *
+ * Renders an email link that is assembled client-side from split data attributes,
+ * preventing naive email harvesting bots from scraping the address.
+ *
+ * Usage:
+ *   <ObfuscatedEmail user="info" domain="VashonSoftware.com" />
+ *   <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="text-primary hover:underline" />
+ */
+interface Props {
+  user: string;
+  domain: string;
+  class?: string;
+}
+
+const { user, domain, class: className = "" } = Astro.props;
+---
+
+<span
+  class:list={["obf-email", className]}
+  data-u={user}
+  data-d={domain}
+  aria-label={`Email: ${user} at ${domain}`}
+></span>
+
+<script>
+  document.querySelectorAll<HTMLSpanElement>(".obf-email").forEach(function (el) {
+    var addr = el.dataset.u + "@" + el.dataset.d;
+    var a = document.createElement("a");
+    a.href = "mailto:" + addr;
+    a.textContent = addr;
+    a.className = el.className.replace(/\bobf-email\b/, "").trim();
+    el.replaceWith(a);
+  });
+</script>

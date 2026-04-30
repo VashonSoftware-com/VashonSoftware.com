@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
 ---
 
 <BaseLayout
@@ -38,12 +39,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </div>
               <div>
                 <p class="font-semibold">Email</p>
-                <a
-                  href="mailto:info@VashonSoftware.com"
-                  class="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  info@VashonSoftware.com
-                </a>
+                <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="text-muted-foreground hover:text-primary transition-colors" />
               </div>
             </div>
 

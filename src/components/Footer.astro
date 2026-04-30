@@ -12,6 +12,7 @@
  * ```
  */
 import Logo from './Logo.astro';
+import ObfuscatedEmail from './ObfuscatedEmail.astro';
 
 interface Props {
   /** Layout variant - boxed (default) or fullWidth */
@@ -52,13 +53,10 @@ const containerClass =
           Custom software development and technology solutions for businesses that need technology
           that works.
         </p>
-        <a
-          href="mailto:info@VashonSoftware.com"
-          class="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
-        >
+        <div class="mt-4 inline-flex items-center gap-2 text-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
+            class="h-4 w-4 text-primary"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -70,8 +68,8 @@ const containerClass =
             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
-          info@VashonSoftware.com
-        </a>
+          <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="text-primary hover:underline" />
+        </div>
       </div>
 
       <!-- Navigation -->
@@ -118,12 +116,7 @@ const containerClass =
         <ul class="space-y-3 text-sm text-muted-foreground">
           <li>Vashon Island, Washington</li>
           <li>
-            <a
-              href="mailto:info@VashonSoftware.com"
-              class="hover:text-foreground transition-colors"
-            >
-              info@VashonSoftware.com
-            </a>
+            <ObfuscatedEmail user="info" domain="VashonSoftware.com" class="hover:text-foreground transition-colors" />
           </li>
           <li>
             <a href="/contact" class="hover:text-foreground transition-colors">

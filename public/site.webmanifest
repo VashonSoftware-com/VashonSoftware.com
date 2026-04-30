@@ -1,0 +1,27 @@
+{
+    "name": "Vashon Software",
+    "short_name": "VashonSoft",
+    "description": "Custom software development and technology solutions from Vashon Software.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0f172a",
+    "icons": [
+        {
+            "src": "/icons/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/vashonsoftwarelogo.png",
+            "sizes": "2000x2000",
+            "type": "image/png"
+        }
+    ]
+}
