@@ -35,10 +35,13 @@ const containerClass =
 <header
   class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
 >
-  <div class:list={[containerClass, 'flex h-14 items-center justify-between']}>
+  <div class:list={[containerClass, 'flex h-20 items-center justify-between']}>
     <!-- Logo -->
     <div class="flex">
-      <Logo />
+      <Logo
+        size="lg"
+        class="origin-left scale-[2] transition-transform duration-200 ease-out hover:scale-[2.6]"
+      />
     </div>
 
     <!-- Desktop Navigation (hidden on mobile) -->
