@@ -5,7 +5,6 @@
  * Minimal layout for authentication pages (login, signup, password reset).
  * No header/footer, includes SEO with noindex for auth pages.
  */
-import { ClientRouter } from 'astro:transitions';
 import '@/styles/globals.css';
 import SEO from '@/components/SEO.astro';
 import Logo from '@/components/Logo.astro';
@@ -34,7 +33,6 @@ const fullTitle = `${title} | Vashon Software`;
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     <title>{fullTitle}</title>
     <SEO title={fullTitle} description={description} noindex={true} />
-    <ClientRouter />
     <script is:inline>
       // Prevent flash of wrong theme - respects explicit user choice over system preference
       (function () {
@@ -47,19 +45,6 @@ const fullTitle = `${title} | Vashon Software`;
           document.documentElement.classList.add('dark');
         }
       })();
-      // Re-apply theme after View Transitions navigation
-      document.addEventListener('astro:after-swap', function () {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else if (theme === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      });
     </script>
   </head>
   <body class="min-h-screen antialiased">
@@ -74,7 +59,7 @@ const fullTitle = `${title} | Vashon Software`;
         <div class="relative z-20 mt-auto">
           <blockquote class="space-y-2">
             <p class="text-lg">
-              "AstroDeck gave us the perfect foundation to build our SaaS. Clean code, great design,
+              "Vashon Software gave us the perfect foundation to build our SaaS. Clean code, great design,
               and saved us months of development time."
             </p>
             <footer class="text-sm">Sofia Chen, CTO at TechStart</footer>

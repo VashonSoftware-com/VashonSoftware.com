@@ -1,14 +1,14 @@
 ---
-title: "Getting Started with AstroDeck"
-description: "Learn how to install, configure, and customize AstroDeck - the AI-ready Astro.js starter kit with pre-built components."
+title: "Getting Started with Vashon Software"
+description: "Learn how to install, configure, and customize Vashon Software - the AI-ready Astro.js starter kit with pre-built components."
 pubDate: 2026-06-30
-author: "AstroDeck Team"
+author: "Vashon Software Team"
 tags: ["tutorial", "getting-started", "astro"]
 ---
 
-# Getting Started with AstroDeck
+# Getting Started with Vashon Software
 
-Welcome to AstroDeck! This guide will walk you through setting up your new project and making your first customizations.
+Welcome to Vashon Software! This guide will walk you through setting up your new project and making your first customizations.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Before you begin, make sure you have:
 ### Option 1: Clone from GitHub
 
 ```bash
-git clone https://github.com/VashJuan/astrodeck.git my-project
+git clone https://github.com/VashJuan/VashonSoftware.git my-project
 cd my-project
 npm install
 npm run dev
@@ -32,7 +32,7 @@ npm run dev
 ### Option 2: Use degit (recommended)
 
 ```bash
-npx degit VashJuan/astrodeck my-project
+npx degit VashJuan/VashonSoftware my-project
 cd my-project
 npm install
 npm run dev
@@ -42,10 +42,10 @@ Your site is now running at `http://localhost:4321`!
 
 ## Project Structure
 
-Here's what you'll find in your new AstroDeck project:
+Here's what you'll find in your new Vashon Software project:
 
 ```
-astrodeck/
+vashonsoftware/
 ├── public/              # Static assets (images, fonts, favicon)
 ├── src/
 │   ├── components/      # Reusable components
@@ -122,7 +122,7 @@ Visit `http://localhost:4321/about` to see your new page!
 
 ## Using Pre-built Sections
 
-AstroDeck includes ready-to-use sections. Check them out at `/sections` on your local site, then import them:
+Vashon Software includes ready-to-use sections. Check them out at `/sections` on your local site, then import them:
 
 ```astro
 ---
@@ -148,7 +148,7 @@ Now that you're up and running:
 ## Getting Help
 
 - **Documentation**: Check `AGENTS.md` for detailed component docs
-- **Issues**: Report bugs on [GitHub](https://github.com/VashJuan/astrodeck/issues)
+- **Issues**: Report bugs on [GitHub](https://github.com/VashJuan/VashonSoftware/issues)
 - **AI Assistance**: Use Claude Code or Cursor with the included AI documentation
 
 Happy building! 🚀

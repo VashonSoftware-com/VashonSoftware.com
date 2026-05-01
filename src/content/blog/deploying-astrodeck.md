@@ -1,14 +1,14 @@
 ---
-title: "Deploying AstroDeck to Production"
-description: "Step-by-step guide to deploying your AstroDeck site to Vercel, Netlify, or Cloudflare Pages."
+title: "Deploying Vashon Software to Production"
+description: "Step-by-step guide to deploying your Vashon Software site to Vercel, Netlify, or Cloudflare Pages."
 pubDate: 2026-06-30
-author: "AstroDeck Team"
+author: "Vashon Software Team"
 tags: ["tutorial", "deployment", "vercel", "netlify"]
 ---
 
-# Deploying AstroDeck to Production
+# Deploying Vashon Software to Production
 
-Ready to share your AstroDeck site with the world? This guide covers deploying to the most popular hosting platforms.
+Ready to share your Vashon Software site with the world? This guide covers deploying to the most popular hosting platforms.
 
 ## Before You Deploy
 
@@ -45,9 +45,9 @@ Vercel is the recommended platform for Astro projects. It offers automatic deplo
 
 ### Option 1: One-Click Deploy
 
-Click the button on AstroDeck's GitHub page or use:
+Click the button on Vashon Software's GitHub page or use:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VashJuan/astrodeck)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VashJuan/VashonSoftware)
 
 ### Option 2: Connect Your Repository
 
@@ -225,7 +225,7 @@ Pull requests automatically get preview URLs:
 
 ### Enable Caching
 
-AstroDeck is configured for optimal caching. Verify your platform settings include:
+Vashon Software is configured for optimal caching. Verify your platform settings include:
 
 - Static assets: 1 year cache
 - HTML: No cache or short cache
@@ -266,4 +266,4 @@ After deploying:
 3. Set up monitoring and alerts
 4. Enable automatic security updates
 
-Your AstroDeck site is now live! 🚀
+Your Vashon Software site is now live! 🚀

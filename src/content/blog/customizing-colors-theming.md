@@ -1,14 +1,14 @@
 ---
-title: "Customizing AstroDeck Colors and Theming"
-description: "Master the OKLCH color system in AstroDeck to create beautiful, accessible themes for your website."
+title: "Customizing Vashon Software Colors and Theming"
+description: "Master the OKLCH color system in Vashon Software to create beautiful, accessible themes for your website."
 pubDate: 2026-06-30
-author: "AstroDeck Team"
+author: "Vashon Software Team"
 tags: ["tutorial", "theming", "css", "tailwind"]
 ---
 
-# Customizing AstroDeck Colors and Theming
+# Customizing Vashon Software Colors and Theming
 
-AstroDeck uses the modern **OKLCH color format** for all its design tokens. This guide will teach you how to customize colors and create your own themes.
+Vashon Software uses the modern **OKLCH color format** for all its design tokens. This guide will teach you how to customize colors and create your own themes.
 
 ## Why OKLCH?
 
@@ -100,7 +100,7 @@ Here's an example creating a green theme:
 
 ### Step 3: Dark Mode
 
-AstroDeck includes automatic dark mode. Customize it in the `.dark` selector:
+Vashon Software includes automatic dark mode. Customize it in the `.dark` selector:
 
 ```css
 .dark {

@@ -1,6 +1,6 @@
-# Contributing to AstroDeck
+# Contributing to Vashon Software
 
-Thank you for your interest in contributing to AstroDeck! We're excited to have you join our community.
+Thank you for your interest in contributing to Vashon Software! We're excited to have you join our community.
 
 ## Table of Contents
 
@@ -43,8 +43,8 @@ This project and everyone participating in it is governed by our commitment to c
 
    ```bash
    # Click "Fork" on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/astrodeck.git
-   cd astrodeck
+  git clone https://github.com/YOUR_USERNAME/VashonSoftware.git
+  cd VashonSoftware
    ```
 
 2. **Install dependencies**
@@ -231,7 +231,7 @@ Use mobile-first approach with Tailwind breakpoints:
 
 ## For AI Assistants
 
-**👋 If you're an AI coding assistant (Claude, ChatGPT, Cursor, Copilot, etc.) helping a developer contribute to AstroDeck, please read this section carefully.**
+**👋 If you're an AI coding assistant (Claude, ChatGPT, Cursor, Copilot, etc.) helping a developer contribute to Vashon Software, please read this section carefully.**
 
 ### Quick Context for AI
 
@@ -445,13 +445,13 @@ Closes #42
 
 ### Before Submitting a Bug Report
 
-- Check if the issue already exists in [Issues](https://github.com/holger1411/astrodeck/issues)
+- Check if the issue already exists in [Issues](https://github.com/VashJuan/VashonSoftware/issues)
 - Ensure it's actually a bug (not a configuration issue)
 - Collect information about the bug
 
 ### How to Submit a Bug Report
 
-1. Go to [Issues](https://github.com/holger1411/astrodeck/issues)
+1. Go to [Issues](https://github.com/VashJuan/VashonSoftware/issues)
 2. Click "New Issue"
 3. Choose "Bug Report" template
 4. Fill in all sections:
@@ -478,7 +478,7 @@ If applicable
 - OS: [e.g., macOS 14.1]
 - Browser: [e.g., Chrome 120]
 - Node version: [e.g., 18.17.0]
-- AstroDeck version: [e.g., 1.0.0]
+- Vashon Software version: [e.g., 1.0.0]
 
 ## Additional Context
 Any other relevant information
@@ -489,12 +489,12 @@ Any other relevant information
 ### Before Suggesting a Feature
 
 - Check if the feature already exists
-- Check if it's already requested in [Issues](https://github.com/holger1411/astrodeck/issues)
-- Consider if it fits AstroDeck's scope (component library for landing pages)
+- Check if it's already requested in [Issues](https://github.com/VashJuan/VashonSoftware/issues)
+- Consider if it fits Vashon Software's scope (component library for landing pages)
 
 ### How to Suggest a Feature
 
-1. Go to [Issues](https://github.com/holger1411/astrodeck/issues)
+1. Go to [Issues](https://github.com/VashJuan/VashonSoftware/issues)
 2. Click "New Issue"
 3. Choose "Feature Request" template
 4. Fill in details:
@@ -534,7 +534,7 @@ Contributors will be:
 
 ## License
 
-By contributing to AstroDeck, you agree that your contributions will be licensed under the MIT License.
+By contributing to Vashon Software, you agree that your contributions will be licensed under the MIT License.
 
 ---
 
@@ -542,12 +542,12 @@ By contributing to AstroDeck, you agree that your contributions will be licensed
 
 - 📝 [AI Developer Guide](./AI.md) - For AI assistants
 - 📋 [Code Rules](./.cursorrules) - Detailed coding conventions
-- 🐛 [Report Bug](https://github.com/holger1411/astrodeck/issues/new)
-- 💡 [Request Feature](https://github.com/holger1411/astrodeck/issues/new)
-- ⭐ [Star the Repo](https://github.com/holger1411/astrodeck)
+- 🐛 [Report Bug](https://github.com/VashJuan/VashonSoftware/issues/new)
+- 💡 [Request Feature](https://github.com/VashJuan/VashonSoftware/issues/new)
+- ⭐ [Star the Repo](https://github.com/VashJuan/VashonSoftware)
 
 ---
 
-**Thank you for contributing to AstroDeck! 🚀**
+**Thank you for contributing to Vashon Software! 🚀**
 
-Every contribution, no matter how small, helps make AstroDeck better for everyone.
+Every contribution, no matter how small, helps make Vashon Software better for everyone.
