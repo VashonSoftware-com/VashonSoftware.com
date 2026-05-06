@@ -71,3 +71,9 @@
 No free public tool combines **performance + security headers + SSL + carbon + discoverability + uptime** in a single scored report. Most all-in-one tools are SEO-centric and skip security and sustainability entirely.
 
 A genuinely comprehensive "website health score" page would be distinctive — especially as a lead-gen tool for a web dev agency or consultancy.
+
+### Also consider
+
+- Google Rich Results Test (for schema validation).
+- Facebook Sharing Debugger (for OG cache/preview).
+- Twitter Card Validator (for large-image card preview). 

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@vashonsoftware/site-branding/site-credit.css';
 @plugin "@tailwindcss/typography";
 
 @font-face {

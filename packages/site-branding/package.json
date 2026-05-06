@@ -1,0 +1,11 @@
+{
+    "name": "@vashonsoftware/site-branding",
+    "version": "0.1.0",
+    "type": "module",
+    "sideEffects": [
+        "*.css"
+    ],
+    "exports": {
+        "./site-credit.css": "./site-credit.css"
+    }
+}
