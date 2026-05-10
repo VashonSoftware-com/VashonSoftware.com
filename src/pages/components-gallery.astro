@@ -1,0 +1,341 @@
+---
+// Example page showcasing all CodePen-based components
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="CodePen Components Gallery" description="Interactive showcase of CodePen-based Svelte components">
+  <section class="components-gallery">
+    <h1>CodePen Components Gallery</h1>
+    <p class="intro">
+      Reusable Svelte components adapted from creative CodePen animations. All components are
+      standalone and can be integrated into any Astro or Svelte project.
+    </p>
+
+    <div class="components-grid">
+      <div class="component-card">
+        <h2>1. LineFlower</h2>
+        <p>Canvas-based animated line drawing with multiple walkers creating organic patterns.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/DonKarlssonSan/pen/PoeyBog" target="_blank">
+            DonKarlssonSan - Line Flower
+          </a></li>
+          <li>Import: <code>LineFlower.svelte</code></li>
+          <li>Type: Full-screen canvas animation</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>2. WebGLFlowers</h2>
+        <p>Three.js-based interactive 3D particle flowers. Click to add more flowers.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/ksenia-k/pen/RwqrxBG" target="_blank">
+            ksenia-k - WebGL Flowers
+          </a></li>
+          <li>Import: <code>WebGLFlowers.svelte</code></li>
+          <li>Type: WebGL 3D animation</li>
+          <li>Dependencies: three.js</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>3. CloudGenerator</h2>
+        <p>Draggable SVG clouds with procedural noise filters and beautiful gradient sky.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/BalintFerenczy/pen/qENdpoL" target="_blank">
+            BalintFerenczy - Cloud Generator
+          </a></li>
+          <li>Import: <code>CloudGenerator.svelte</code></li>
+          <li>Type: Interactive SVG component</li>
+          <li>Features: Drag interaction, procedural effects</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>4. ElasticPebbles</h2>
+        <p>Bouncing colored polygons with physics simulation. Click to regenerate colors.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/Dillo/pen/KKrjKpa" target="_blank">
+            Dillo - Elastic Pebbles
+          </a></li>
+          <li>Import: <code>ElasticPebbles.svelte</code></li>
+          <li>Type: Canvas physics animation</li>
+          <li>Features: Gravity, bounce collision detection</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>5. AnimatedLoader</h2>
+        <p>SVG-based rotating loader with 12 colored segments. Perfect for loading states.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/chrisgannon/pen/bGKeovd" target="_blank">
+            chrisgannon - Manual Loader
+          </a></li>
+          <li>Import: <code>AnimatedLoader.svelte</code></li>
+          <li>Type: SVG spinner/loader</li>
+          <li>Use case: Loading indicators, hover effects</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>6. ParticleAnimation</h2>
+        <p>GSAP-powered particle system with complex motion paths. Click to burst particles.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/chrisgannon/pen/KKGYxxR" target="_blank">
+            chrisgannon - Your Other Me
+          </a></li>
+          <li>Import: <code>ParticleAnimation.svelte</code></li>
+          <li>Type: Interactive particle system</li>
+          <li>Dependencies: gsap</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>7. TextStrokeAnimation</h2>
+        <p>SVG text with animated stroke effects and smooth color transitions.</p>
+        <ul>
+          <li>Source: <a href="https://codepen.io/Taluska/pen/yLRZRoY" target="_blank">
+            Taluska - Text Stroke Animation
+          </a></li>
+          <li>Import: <code>TextStrokeAnimation.svelte</code></li>
+          <li>Type: SVG text animation</li>
+          <li>Features: Color transition, toggle animation</li>
+        </ul>
+      </div>
+
+      <div class="component-card">
+        <h2>8. HoverCursorLoader</h2>
+        <p>Specialized hover cursor that shows an animated loader following the mouse position.</p>
+        <ul>
+          <li>Composite: Uses AnimatedLoader</li>
+          <li>Import: <code>HoverCursorLoader.svelte</code></li>
+          <li>Type: Interactive UI overlay</li>
+          <li>Features: Custom cursor, hover effects</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="usage-guide">
+      <h2>Quick Start</h2>
+      <p>All components are located in <code>src/components/ui/</code></p>
+      
+      <h3>Basic Usage in Astro</h3>
+      <pre><code>---
+import LineFlower from '@/components/ui/LineFlower.svelte';
+---
+
+&lt;LineFlower client:load /&gt;</code></pre>
+
+      <h3>Using in Svelte</h3>
+      <pre><code>&lt;script&gt;
+  import CloudGenerator from './components/ui/CloudGenerator.svelte';
+&lt;/script&gt;
+
+&lt;CloudGenerator /&gt;</code></pre>
+
+      <h3>Custom Props</h3>
+      <pre><code>&lt;script&gt;
+  import ElasticPebbles from '@/components/ui/ElasticPebbles.svelte';
+  
+  const customColors = ['#FF1493', '#00FF00', '#87CEEB'];
+&lt;/script&gt;
+
+&lt;ElasticPebbles &#123;customColors&#125; /&gt;</code></pre>
+    </section>
+
+    <section class="features-list">
+      <h2>Key Features</h2>
+      <ul>
+        <li>✨ <strong>Production Ready</strong> - Fully tested and optimized</li>
+        <li>📱 <strong>Responsive</strong> - Works on all screen sizes</li>
+        <li>⚡ <strong>Performance</strong> - Uses requestAnimationFrame and WebGL where appropriate</li>
+        <li>🎨 <strong>Customizable</strong> - Configurable colors, speeds, and behaviors</li>
+        <li>🔧 <strong>Lightweight</strong> - Minimal dependencies (three.js, gsap optional)</li>
+        <li>📚 <strong>Well Documented</strong> - See CODEPEN_COMPONENTS.md for details</li>
+        <li>♿ <strong>Accessible</strong> - Semantic HTML, ARIA labels where applicable</li>
+        <li>🌙 <strong>Dark Mode Ready</strong> - Uses CSS variables for theming</li>
+      </ul>
+    </section>
+
+    <section class="dependencies">
+      <h2>Dependencies</h2>
+      <p>Required packages (install as needed):</p>
+      <pre><code>pnpm add three       # For WebGLFlowers
+pnpm add gsap        # For ParticleAnimation</code></pre>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .components-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-foreground) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .intro {
+    font-size: 18px;
+    color: var(--muted-foreground);
+    margin-bottom: 60px;
+    line-height: 1.6;
+  }
+
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .component-card {
+    padding: 24px;
+    border: 1px solid var(--muted);
+    border-radius: 12px;
+    background: var(--card);
+    transition: all 0.3s ease;
+  }
+
+  .component-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .component-card h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--primary);
+  }
+
+  .component-card p {
+    color: var(--muted-foreground);
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .component-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .component-card li {
+    font-size: 13px;
+    color: var(--muted-foreground);
+  }
+
+  .component-card code {
+    background: var(--muted);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .component-card a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .component-card a:hover {
+    color: var(--primary-foreground);
+    text-decoration: underline;
+  }
+
+  .usage-guide {
+    background: var(--muted);
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+
+  .usage-guide h2 {
+    margin-top: 0;
+  }
+
+  .usage-guide h3 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  pre {
+    background: var(--background);
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--muted);
+  }
+
+  code {
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--foreground);
+  }
+
+  .features-list {
+    background: var(--card);
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    border: 1px solid var(--primary);
+  }
+
+  .features-list ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .features-list li {
+    padding: 12px;
+    background: var(--muted);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .dependencies {
+    padding: 24px;
+    background: var(--muted);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+  }
+
+  .dependencies pre {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .components-gallery {
+      padding: 40px 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .usage-guide,
+    .features-list,
+    .dependencies {
+      padding: 24px;
+    }
+  }
+</style>
