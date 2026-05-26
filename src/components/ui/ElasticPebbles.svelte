@@ -1,11 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  export let preview = false;
+
+  let container: HTMLDivElement;
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let width: number;
   let height: number;
   let animationId: number;
+  let resizeObserver: ResizeObserver | undefined;
 
   const DIST_BRIDSON_MIN = 0.1;
   const DIST_BRIDSON_MAX = 0.2;
@@ -102,49 +106,70 @@
     generatePolygons();
   }
 
+  function resizeCanvas() {
+    const rect = preview && container
+      ? container.getBoundingClientRect()
+      : { width: window.innerWidth, height: window.innerHeight };
+
+    width = canvas.width = Math.max(1, Math.round(rect.width));
+    height = canvas.height = Math.max(1, Math.round(rect.height));
+    generatePolygons();
+  }
+
   onMount(() => {
     ctx = canvas.getContext('2d')!;
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-
-    generatePolygons();
+    resizeCanvas();
     animate();
 
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
+    if (preview) {
+      resizeObserver = new ResizeObserver(() => {
+        resizeCanvas();
+      });
+      resizeObserver.observe(container);
+    } else {
+      window.addEventListener('resize', resizeCanvas);
+    }
     canvas.addEventListener('click', handleCanvasClick);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', resizeCanvas);
       canvas.removeEventListener('click', handleCanvasClick);
     };
   });
 </script>
 
-<canvas bind:this={canvas}></canvas>
-<div class="hint">Click to change colors</div>
+<div class:preview class="elastic-pebbles-container" bind:this={container}>
+  <canvas bind:this={canvas}></canvas>
+  <div class="hint">Click to change colors</div>
+</div>
 
 <style>
-  :global(body) {
-    margin: 0;
-    padding: 0;
+  .elastic-pebbles-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
+    background: #000;
+  }
+
+  .elastic-pebbles-container.preview {
+    height: 100%;
+    min-height: 100%;
   }
 
   canvas {
     display: block;
     cursor: pointer;
     background: #000;
+    width: 100%;
+    height: 100%;
   }
 
   .hint {
-    position: fixed;
-    bottom: 30px;
+    position: absolute;
+    bottom: 18px;
     left: 50%;
     transform: translateX(-50%);
     color: #888;

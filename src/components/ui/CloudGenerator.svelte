@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  export let preview = false;
+
   let cloudEl: SVGGElement;
   let isDragging = false;
   let offsetX = 0;
@@ -48,7 +50,7 @@
   });
 </script>
 
-<div class="cloud-generator-container">
+<div class:preview class="cloud-generator-container">
   <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <filter id="cloudFilter" x="-50%" y="-50%" width="200%" height="200%">
@@ -91,6 +93,12 @@
     overflow: hidden;
   }
 
+  .cloud-generator-container.preview {
+    height: 100%;
+    min-height: 100%;
+    padding: 24px;
+  }
+
   svg {
     width: 100%;
     max-width: 900px;
@@ -106,6 +114,11 @@
     text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     animation: float 3s ease-in-out infinite;
+  }
+
+  .cloud-generator-container.preview .hint {
+    margin-top: 16px;
+    font-size: 14px;
   }
 
   @keyframes float {

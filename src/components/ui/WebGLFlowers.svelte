@@ -2,6 +2,8 @@
   import { onMount } from 'svelte';
   import * as THREE from 'three';
 
+  export let preview = false;
+
   let container: HTMLDivElement;
   let scene: THREE.Scene;
   let camera: THREE.Camera;
@@ -169,7 +171,7 @@
   });
 </script>
 
-<div bind:this={container} class="webgl-flowers-container">
+<div bind:this={container} class:preview class="webgl-flowers-container">
   <div class="overlay">
     <p>Click to Add Flowers</p>
   </div>
@@ -186,6 +188,11 @@
     position: relative;
   }
 
+  .webgl-flowers-container.preview {
+    height: 100%;
+    min-height: 100%;
+  }
+
   .overlay {
     position: absolute;
     top: 50%;
@@ -197,6 +204,10 @@
     text-align: center;
     pointer-events: none;
     z-index: 10;
+  }
+
+  .webgl-flowers-container.preview .overlay {
+    font-size: 1.25rem;
   }
 
   p {

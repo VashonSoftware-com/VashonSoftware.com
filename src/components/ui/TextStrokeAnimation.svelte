@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let preview = false;
+
   let text = 'SVELTE';
   let animating = true;
 
@@ -7,7 +9,7 @@
   }
 </script>
 
-<div class="text-stroke-container">
+<div class:preview class="text-stroke-container">
   <main>
     <svg class="text-stroke" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -70,6 +72,12 @@
     font-family: 'Arial', sans-serif;
   }
 
+  .text-stroke-container.preview {
+    height: 100%;
+    min-height: 100%;
+    padding: 24px;
+  }
+
   main {
     width: 100%;
     max-width: 500px;
@@ -102,5 +110,9 @@
 
   .toggle-btn:active {
     transform: translateY(0);
+  }
+
+  .text-stroke-container.preview .toggle-btn {
+    margin-bottom: 0;
   }
 </style>

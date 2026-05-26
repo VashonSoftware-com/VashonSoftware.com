@@ -84,6 +84,40 @@ This directory contains reusable Svelte components based on creative CodePen ani
   - CSS-based keyframe animations
   - Smooth color transitions
 
+### 8. **DigitalRain.svelte**
+- **Source**: Seeed Studio Meshtastic Build-Off landing page
+- **Description**: Full-screen canvas background with glowing digit streams inspired by the meshtastic-build-off hero effect.
+- **Features**:
+  - Canvas-based matrix-style rain animation
+  - Subtle radial glow and dark gradient background
+  - Configurable density, speed, font size, and colors
+  - No external dependencies
+  - Responsive full-viewport rendering
+- **Recommended Astro usage**: `client:load` for a decorative background layer that should wait until the page finishes loading.
+- **Key props**:
+  - `characters`: String used to build the glyph pool
+  - `backgroundColor`: Midpoint color for the backdrop gradient
+  - `glowColor`: Highlight and shadow color for active glyphs
+  - `fontSize`: Base glyph size in pixels
+  - `trailLength`: Number of glyphs rendered in each stream tail
+  - `fadeOpacity`: Per-frame fade strength for motion persistence
+  - `speedMin` / `speedMax`: Lower and upper movement bounds for stream speed
+  - `density`: Relative number of vertical streams
+
+### 9. **SymmetrishQuality.svelte**
+
+- **Source**: [https://codepen.io/fractalkitty/pen/qEqrqoW](https://codepen.io/fractalkitty/pen/qEqrqoW)
+- **Author**: Sophia / fractal kitty (@fractalkitty)
+- **Title**: "theSymmetrishQuality"
+- **Description**: Rotationally symmetric, water-like line streams that build a mandala-style center pulse over a dark teal backdrop.
+- **Features**:
+  - Canvas-based generative animation loop
+  - Randomized symmetry count, density, amplitude, and flow factors
+  - Soft alpha-stroked trails that create blurred, river-like motion
+  - Click-to-reseed behavior for new compositions
+  - Responsive preview mode for gallery embedding
+
+
 ## Installation
 
 All components are ready to use in your Svelte projects. Dependencies:
@@ -103,10 +137,12 @@ pnpm add gsap
 <script>
   import LineFlower from '@/components/ui/LineFlower.svelte';
   import CloudGenerator from '@/components/ui/CloudGenerator.svelte';
+  import DigitalRain from '@/components/ui/DigitalRain.svelte';
 </script>
 
 <LineFlower />
 <CloudGenerator />
+<DigitalRain />
 ```
 
 ### Using in Astro
@@ -132,6 +168,7 @@ Most components are self-contained and don't require props, but can be extended 
 ## Performance Notes
 
 - **Canvas components** (LineFlower, ElasticPebbles, ParticleAnimation): Use requestAnimationFrame for smooth 60fps
+- **Canvas background components** (DigitalRain): Use requestAnimationFrame with resize-aware drawing
 - **WebGL components** (WebGLFlowers): Use Three.js with shader optimization
 - **SVG components** (CloudGenerator, AnimatedLoader, TextStrokeAnimation): Lightweight, GPU-accelerated transforms
 
@@ -145,6 +182,7 @@ These components are faithful Svelte adaptations of the original CodePen creatio
 - Dillon - Elastic Pebbles
 - Chris Gannon - Loaders and Particle Animations
 - Taluska - Text Stroke Animation
+- Seeed Studio Meshtastic Build-Off landing page - DigitalRain background effect
 
 ## Licensing
 
@@ -181,6 +219,17 @@ Most original CodePen pens are available under Creative Commons licenses or prof
   let spinDuration = 3; // Faster rotation
   const colors = [...]; // Customize segment colors
 </script>
+```
+
+### DigitalRain
+```svelte
+<script>
+  const characters = '0123456789';
+  const density = 1.2;
+  const glowColor = '#9cff2e';
+</script>
+
+<DigitalRain {characters} {density} {glowColor} />
 ```
 
 ## Future Enhancements

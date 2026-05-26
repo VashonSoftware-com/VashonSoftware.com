@@ -2,20 +2,31 @@
   import { onMount } from 'svelte';
   import AnimatedLoader from './AnimatedLoader.svelte';
 
+  export let preview = false;
+
+  let container: HTMLDivElement;
   let x = 0;
   let y = 0;
   let isLoading = false;
 
   onMount(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (preview && container) {
+        const rect = container.getBoundingClientRect();
+        x = e.clientX - rect.left;
+        y = e.clientY - rect.top;
+        return;
+      }
+
       x = e.clientX;
       y = e.clientY;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    const eventTarget: HTMLElement | Window = preview && container ? container : window;
+    eventTarget.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      eventTarget.removeEventListener('mousemove', handleMouseMove);
     };
   });
 
@@ -24,8 +35,8 @@
   }
 </script>
 
-<div class="cursor-loader-container">
-  <div class="custom-cursor" style="left: {x}px; top: {y}px; opacity: {isLoading ? 1 : 0};">
+<div class:preview class="cursor-loader-container" bind:this={container}>
+  <div class:preview={preview} class="custom-cursor" style="left: {x}px; top: {y}px; opacity: {isLoading ? 1 : 0};">
     <div class="loader-wrapper" style="scale: {isLoading ? 1 : 0.5};">
       <AnimatedLoader />
     </div>
@@ -49,10 +60,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     font-family: 'Arial', sans-serif;
     color: white;
     cursor: none;
     overflow: hidden;
+  }
+
+  .cursor-loader-container.preview {
+    height: 100%;
+    min-height: 100%;
+    padding: 24px;
   }
 
   .custom-cursor {
@@ -61,6 +79,10 @@
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease;
     z-index: 1000;
+  }
+
+  .custom-cursor.preview {
+    position: absolute;
   }
 
   .loader-wrapper {
@@ -78,6 +100,10 @@
     font-size: 48px;
     margin-bottom: 20px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .cursor-loader-container.preview h1 {
+    font-size: 34px;
   }
 
   p {
@@ -113,5 +139,9 @@
     font-size: 14px;
     margin-top: 20px;
     opacity: 0.7;
+  }
+
+  .cursor-loader-container.preview p {
+    font-size: 16px;
   }
 </style>

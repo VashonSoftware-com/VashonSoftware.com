@@ -1,0 +1,20 @@
+---
+import SymmetrishQualityEffect from '@/components/ui/SymmetrishQuality.svelte';
+import FullWidthLayout from '@/layouts/FullWidthLayout.astro';
+---
+
+<FullWidthLayout
+  title="Symmetrish Quality Demo"
+  description="Standalone demo of the rotational flow-line animation adapted from fractal kitty's theSymmetrishQuality sketch."
+>
+  <main class="symmetrish-demo">
+    <SymmetrishQualityEffect client:load />
+  </main>
+</FullWidthLayout>
+
+<style>
+  .symmetrish-demo {
+    width: 100%;
+    min-height: 100vh;
+  }
+</style>

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  export let preview = false;
+
   interface Walker {
     x: number;
     y: number;
@@ -9,6 +11,7 @@
     walk(): void;
   }
 
+  let container: HTMLDivElement;
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let w: number;
@@ -17,6 +20,7 @@
   const numWalkers = 20;
   const maxStep = 5;
   let animationFrameId: number;
+  let resizeObserver: ResizeObserver | undefined;
 
   class Walker implements Walker {
     x: number;
@@ -66,32 +70,47 @@
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  onMount(() => {
-    ctx = canvas.getContext('2d')!;
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-
+  function resetScene() {
+    walkers = [];
     for (let i = 0; i < numWalkers; i++) {
       walkers.push(new Walker());
     }
+  }
+
+  function resizeCanvas() {
+    const rect = preview && container
+      ? container.getBoundingClientRect()
+      : { width: window.innerWidth, height: window.innerHeight };
+
+    w = canvas.width = Math.max(1, Math.round(rect.width));
+    h = canvas.height = Math.max(1, Math.round(rect.height));
+    resetScene();
+  }
+
+  onMount(() => {
+    ctx = canvas.getContext('2d')!;
+    resizeCanvas();
 
     animate();
 
-    const handleResize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
+    if (preview) {
+      resizeObserver = new ResizeObserver(() => {
+        resizeCanvas();
+      });
+      resizeObserver.observe(container);
+    } else {
+      window.addEventListener('resize', resizeCanvas);
+    }
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', resizeCanvas);
     };
   });
 </script>
 
-<div class="line-flower-container">
+<div class:preview class="line-flower-container" bind:this={container}>
   <canvas bind:this={canvas}></canvas>
 </div>
 
@@ -99,14 +118,22 @@
   .line-flower-container {
     width: 100%;
     height: 100vh;
+    position: relative;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background: white;
   }
 
+  .line-flower-container.preview {
+    height: 100%;
+    min-height: 100%;
+  }
+
   canvas {
     display: block;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
   }
 </style>
