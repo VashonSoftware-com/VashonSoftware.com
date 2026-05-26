@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process';
+/* global console, process, setTimeout */
 
 const MAX_ATTEMPTS = 4;
 const RETRY_DELAY_MS = 1200;

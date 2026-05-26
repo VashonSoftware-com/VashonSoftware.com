@@ -992,7 +992,6 @@ import Testimonials from "@/components/sections/Testimonials.astro";
             
             try {
               await navigator.clipboard.writeText(codeText);
-              const originalText = button.textContent;
               button.textContent = 'Copied!';
               button.classList.add('bg-primary', 'text-primary-foreground');
               
