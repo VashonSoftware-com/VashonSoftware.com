@@ -49,6 +49,50 @@ Run commands from the repository root.
 | pnpm | pnpm run lint:md | Lint markdown files |
 | pnpm | pnpm run astro -- --help | Show Astro CLI help |
 
+## Commit message standard
+
+This repository uses a lightweight Conventional Commits format:
+
+```text
+type(scope): purpose
+```
+
+Scope is optional:
+
+```text
+type: purpose
+```
+
+Use these core types:
+
+- `feat` - new feature or behavior
+- `fix` - bug fix
+- `docs` - documentation-only change
+- `refactor` - internal code improvement with no behavior change
+- `perf` - performance improvement
+- `test` - tests added or updated
+- `chore` - maintenance and housekeeping
+
+Optional types when useful:
+
+- `ci` - CI/CD workflow changes
+- `build` - build or tooling changes
+- `revert` - revert a previous commit
+
+Examples:
+
+- `feat(hero): add reusable CTA slot`
+- `fix(nav): handle keyboard focus trap`
+- `docs(readme): document deployment flow`
+- `chore(deps): bump astro dependencies`
+
+Quick checks:
+
+```bash
+pnpm run lint:commit:last
+pnpm run lint:commit
+```
+
 ## Updating the toolchain
 
 This section separates PowerShell environment commands from pnpm project dependency commands.

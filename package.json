@@ -13,7 +13,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint:md": "markdownlint-cli2 \"*.md\""
+    "lint:md": "markdownlint-cli2 \"*.md\"",
+    "lint:commit:last": "pnpm dlx commitlint --from=HEAD~1 --to=HEAD",
+    "lint:commit": "pnpm dlx commitlint --from=HEAD~20 --to=HEAD"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
