@@ -63,6 +63,14 @@ For setup, commands, and deployment workflow, see README.md.
 5. Verify mobile and desktop layouts.
 6. Document meaningful behavior changes in README.md when needed.
 
+## Tooling maintenance cadence
+
+- Once per month, bump packageManager in package.json to the latest stable pnpm 11.x patch release.
+- Keep .npmrc with package-manager-strict=true and package-manager-strict-version=false so patch mismatch does not block contributors.
+- After bumping packageManager, run:
+  - pnpm install
+  - pnpm run build
+
 ## Quick review checklist
 
 - Imports use @/ alias.

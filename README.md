@@ -97,6 +97,14 @@ pnpm run lint:commit
 
 This section separates PowerShell environment commands from pnpm project dependency commands.
 
+### Lightweight maintenance cadence
+
+Use this low-effort schedule to stay current without relying on cutting-edge tooling:
+
+- Once per month, bump packageManager in package.json to the latest stable pnpm 11.x patch release.
+- Keep .npmrc with package-manager-strict=true and package-manager-strict-version=false so patch mismatch does not block contributors.
+- After bumping packageManager, run pnpm install and pnpm run build to confirm the workspace is healthy.
+
 ### PowerShell environment commands
 
 Use these to verify or update developer tooling installed on your machine.
