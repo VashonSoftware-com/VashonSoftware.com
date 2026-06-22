@@ -14,17 +14,13 @@
 import Logo from './Logo.astro';
 import ObfuscatedEmail from './ObfuscatedEmail.astro';
 
-interface Props {
-  /** Layout variant - boxed (default) or fullWidth */
-  variant?: 'boxed' | 'fullWidth';
-}
-
 const { variant = 'boxed' } = Astro.props;
 
 const footerLinks = {
   pages: [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
+    { href: '/about', label: 'About' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
     { href: '/privacy', label: 'Privacy' },
@@ -121,10 +117,16 @@ const containerClass =
       <div>
         <h3 class="font-semibold mb-4">Contact</h3>
         <ul class="space-y-3 text-sm text-muted-foreground">
-          <li>Vashon Island, Washington</li>
+          <li class="font-medium text-foreground">John Cornelison</li>
+          <li>Vashon Island, WA</li>
+          <li>
+            <a href="tel:+12069143050" class="hover:text-foreground transition-colors">
+              206.914.3050
+            </a>
+          </li>
           <li>
             <ObfuscatedEmail
-              user="info"
+              user="John"
               domain="VashonSoftware.com"
               class="hover:text-foreground transition-colors"
             />

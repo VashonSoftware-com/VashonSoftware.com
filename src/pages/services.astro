@@ -2,6 +2,14 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CTA from '@/components/sections/CTA.astro';
 
+const localProjects = [
+  { title: 'Website refresh or fix', desc: "Update an existing site, fix what's broken" },
+  { title: 'New small site', desc: 'One-page to five-page business or portfolio site' },
+  { title: 'Tech consult', desc: 'An hour or two to get your project pointed in the right direction' },
+  { title: 'Custom script or tool', desc: "Automate something that's wasting your time" },
+  { title: 'Emergency / off-hours help', desc: 'When something breaks and you need it fixed fast' },
+];
+
 const serviceGroups = [
   {
     category: 'Websites',
@@ -54,6 +62,11 @@ const serviceGroups = [
         description:
           'Data analytics solutions deployed across a variety of cloud platforms — turning raw data into actionable insight.',
       },
+      {
+        title: 'Healthcare IT',
+        description:
+          'Deep experience in health information exchange, clinical systems integration, and federal health architecture — including Epic gateway (via InterSystems HealthShare/MultiCare), CONNECT, HL7, C32/CCD, and AHLTA.',
+      },
     ],
   },
   {
@@ -93,7 +106,7 @@ const serviceGroups = [
 
 <BaseLayout
   title="Services — Vashon Software"
-  description="Founded in 2002, Vashon Software delivers websites, crafted software, and disaster technology solutions. Innovative, modular, and built to grow."
+  description="Vashon Software services: websites, custom applications, disaster tech, and small local projects. Serving Vashon Island and the greater Seattle area since 2010."
 >
   <!-- Page Header -->
   <section class="py-20 md:py-28">
@@ -101,10 +114,14 @@ const serviceGroups = [
       <div class="max-w-2xl">
         <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">Our Services</h1>
         <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-          Founded in 2002, Vashon Software focuses on innovative solutions to facilitate our
+          Founded in 2010, Vashon Software focuses on innovative solutions to facilitate our
           customers’ goals and mission. We strive to use cutting-edge technologies enabling agile
           projects that are creative, modular, and simple — built to fit today’s objectives and
           grow for tomorrow’s.
+        </p>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          John Cornelison, principal architect and developer, brings 30+ years of experience across
+          healthcare IT, emergency management, and commercial software to every engagement.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
           <a
@@ -114,6 +131,33 @@ const serviceGroups = [
             Discuss Your Project
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Small & Local Projects -->
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Small &amp; Local Projects</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Need something smaller? I take on one-off and short-term engagements for local businesses,
+          nonprofits, and individuals:
+        </p>
+        <ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+          {localProjects.map((item) => (
+            <li><span class="font-medium text-foreground">{item.title}</span> — {item.desc}</li>
+          ))}
+        </ul>
+        <p class="mt-6 text-sm text-muted-foreground">
+          Reach out and describe what you need. Most small projects get a same-week response.
+        </p>
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Contact John
+        </a>
       </div>
     </div>
   </section>

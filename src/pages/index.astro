@@ -28,11 +28,11 @@ const services = [
 
 <BaseLayout
   title="Vashon Software"
-  description="Founded in 2002, Vashon Software delivers websites, crafted software, and disaster technology — cutting-edge, agile, modular solutions built for today and designed to grow for tomorrow."
+  description="John Cornelison · Vashon Software · Software architect and developer on Vashon Island, WA. Websites, custom software, and emergency tech. Local projects welcome. Founded 2010."
 >
   <Hero
-    title="Innovative solutions for your goals and mission."
-    subtitle="Founded in 2002, Vashon Software uses <mark>cutting-edge technologies</mark> enabling agile projects that are creative, modular, and simple — built to fit today's objectives and <mark>grow for tomorrow's</mark>."
+    title="I'm John Cornelison — software architect, Vashon islander, one-person studio."
+    subtitle="30+ years building websites, custom software, and emergency technology. <mark>Founded in 2010</mark>, Vashon Software takes on projects of any size — from a quick site fix to a complex system architecture."
     primaryCta={{ href: '/contact', label: 'Get in Touch' }}
     secondaryCta={{ href: '/services', label: 'Our Services' }}
   />
@@ -43,9 +43,66 @@ const services = [
     features={services}
   />
 
+  <!-- Local Projects -->
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Local &amp; One-Off Projects Welcome</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Not every project needs a big agency. I work with Vashon businesses, nonprofits, and
+          neighbors on:
+        </p>
+        <ul class="mt-4 space-y-2 text-muted-foreground">
+          {
+            [
+              'Website fixes, updates, and refreshes',
+              'One-page sites and landing pages',
+              'Small custom tools and automations',
+              'Tech consulting and second opinions',
+              'Helping you get unstuck on a project',
+            ].map((item) => (
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-sm font-medium">Island rates. Quick turnaround. No overhead.</p>
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </section>
+
   <CTA
     title="Ready to start your project?"
     description="Tell us what you need. We'll work with you to scope, design, and deliver solutions that solve real problems — reliably and creatively."
     cta={{ href: '/contact', label: 'Contact Us' }}
   />
+
+  <!-- Credentials trust line -->
+  <section class="py-6 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <p class="text-center text-sm text-muted-foreground">
+        30+ years in software · Microsoft · IBM · MEDCOM · Founded 2010 · Vashon Island
+      </p>
+    </div>
+  </section>
 </BaseLayout>

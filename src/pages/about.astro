@@ -1,0 +1,143 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About John Cornelison — Vashon Software"
+  description="About John Cornelison — 30+ years in software, IBM, U.S. Army healthcare IT, FEMA graduate, and founding president of VashonBePrepared. Based on Vashon Island, WA."
+>
+  <!-- Hero -->
+  <section class="py-20 md:py-28">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          About John Cornelison
+        </h1>
+        <p class="mt-6 text-xl text-muted-foreground leading-relaxed">
+          Software architect, emergency tech builder, and Vashon islander since 2005.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="py-12 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl space-y-5 text-muted-foreground leading-relaxed">
+        <p>
+          I've been writing software professionally since 1992 — from porting Windows NT to PowerPC
+          at IBM's Kirkland Programming Center, to building healthcare information exchanges for the
+          U.S. Army at Madigan, to preparing designs for Thailand's Phuket Provincial Intelligent
+          Operations Center.
+        </p>
+        <p>
+          Since 2010, I've run Vashon Software from the island — taking on everything from modern
+          static websites for local businesses to complex microservices architectures for emergency
+          operations centers.
+        </p>
+        <p>
+          I'm a full-stack developer, system architect, and longtime Vashon community member. If you
+          need something built — big or small — let's talk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="py-12 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-8">Background & Credentials</h2>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          [
+            { label: 'Founded Vashon Software', value: '2010' },
+            { label: 'IBM Kirkland', value: 'NT/PowerPC team, 1993–1995' },
+            { label: 'Madigan Army / WRMC', value: 'Healthcare IT Architect, 2006–2010' },
+            { label: 'FEMA EMI Graduate', value: '35+ courses, 2009–present' },
+            { label: 'FCC Licensed', value: 'KE7KDQ General Class' },
+            { label: 'VashonBePrepared', value: 'Founding President & CTO, 2005–2024' },
+            { label: 'Seeed Studio Ranger', value: 'IoT consultant & community advocate' },
+            { label: 'BA Mathematics', value: 'The Colorado College, 1981' },
+          ].map((item) => (
+            <div class="rounded-lg border bg-card p-5">
+              <p class="font-semibold text-sm">{item.label}</p>
+              <p class="mt-1 text-sm text-muted-foreground">{item.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source Projects -->
+  <section class="py-12 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-2">Projects I've Built</h2>
+      <p class="text-muted-foreground mb-8">
+        Just a few of the open-source tools I've developed and maintain:
+      </p>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          [
+            {
+              name: 'EOC.online',
+              href: 'https://eoc.online/',
+              description:
+                'Software for Emergency Operations Centers — designed to run cloud or on-prem, with or without internet.',
+            },
+            {
+              name: 'VashonMesh / Mesh101',
+              href: 'https://VashonMesh.org',
+              description:
+                'LoRa radio mesh network using LoRaWAN, MeshCore & Meshtastic for off-grid communications.',
+            },
+            {
+              name: 'RangerTrak',
+              href: 'https://www.RangerTrak.org',
+              description:
+                'Angular PWA for Search & Rescue member tracking — works without cell or internet coverage.',
+            },
+            {
+              name: 'OpenFemaNgClient',
+              href: 'https://github.com/eoconline/OpenFemaNgClient',
+              description:
+                'Angular + Google Maps tool for analyzing and visualizing OpenFEMA disaster data APIs.',
+            },
+          ].map((project) => (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg border bg-card p-6 hover:shadow-md transition-shadow group"
+            >
+              <h3 class="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                {project.name} →
+              </h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Hire Me for a Project
+        </a>
+        <a
+          href="/services"
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          View Services
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
