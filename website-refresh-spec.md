@@ -1,11 +1,12 @@
 # VashonSoftware.com — Website Refresh Spec
 
 > **Purpose:** Align the site with John Cornelison's resume, surface his 30+ year background,
-> and attract local Vashon / small-business clients for temp and one-off projects.
+> attract local Vashon / small-business clients for temp and one-off projects,
+> and position him for senior Health IT and Architecture Modernization engagements.
 >
 > **Stack:** Astro 6 · Svelte 5 · Tailwind CSS 4 · Cloudflare Pages
 > **Repo:** https://github.com/VashonSoftware-com/VashonSoftware.com
-> **Generated:** 2026-06-21 · Claude Sonnet 4.6
+> **Updated:** 2026-08-05 · Claude Sonnet 4.6 (added Health IT + Architecture Modernization section)
 
 ---
 
@@ -130,7 +131,112 @@ A single trust-building line, e.g.:
 
 ## 4. Services Page — `src/pages/services.astro`
 
-### 4a. Add intro attribution
+### 4a. NEW — Health IT & Architecture Modernization (primary section, top of Services)
+
+This is the highest-signal section for the job search. Give it equal visual weight to the
+existing three pillars (Websites / Crafted Software / Disaster Technology), or make it
+the **lead** section given current job search focus.
+
+---
+
+#### Suggested section heading and intro
+
+```
+## Healthcare IT & Architecture Modernization
+
+Thirty years of enterprise architecture experience — including hands-on work inside
+federal health systems, health information exchanges, and clinical EHR integrations.
+Available for senior consulting, staff augmentation, and architecture advisory roles.
+```
+
+---
+
+#### Sub-section 1: Health IT & Interoperability
+
+```
+### Health IT & Interoperability
+
+Deep, hands-on experience across the full health information exchange stack:
+
+- **HIE Architecture & Leadership** — Technical lead for the South Sound Health
+  Information Exchange (SSHIE); architecture, ONC onboarding compliance, partner
+  communications, NHIN briefings, and use case specification.
+
+- **EHR Integration** — Direct integration-layer work with Epic's gateway (via
+  InterSystems HealthShare/MultiCare at Madigan), AHLTA, Essentris, CHCS, and
+  GE Centricity PACS. Hands-on, not adjacent.
+
+- **Clinical Interoperability Standards** — HL7, C32/CCD/C84/C62, NwHIN/NHIN Direct,
+  CONNECT. Designed ED-specific document exchange use cases: C32 on patient arrival,
+  C84/C62 on discharge.
+
+- **SSO & Context Management** — Microsoft/Sentillion CCOW-compliant single sign-on
+  across disconnected clinical systems; DoD CAC smart card integration (MiCARE PHR).
+
+- **Federal & Regulated Environments** — DIACAP, SDL, DOJ SDLC, TATRC-funded projects.
+  Comfortable in VA, DoD, and federal-adjacent health IT contexts.
+
+HIMSS member · MS-HUG (Microsoft Healthcare Users Group) member · CONNECT-a-thon participant
+```
+
+---
+
+#### Sub-section 2: Architecture Modernization
+
+```
+### Architecture Modernization
+
+Experienced in the full socio-technical scope of modernization — not just the technology,
+but the organizational alignment, domain modeling, and change management that make it stick.
+
+**Modernization approaches I bring:**
+
+- **Domain-Driven Design (DDD)** — Bounded contexts, domain events, and strategic design
+  to decompose legacy monoliths into maintainable, independently deployable services.
+
+- **EventStorming & Domain Discovery** — Collaborative workshops to surface domain models,
+  identify boundaries, and build shared understanding across technical and business teams.
+
+- **Team Topologies** — Aligning team structures and interaction modes with software
+  architecture for sustainable delivery. Conway's Law applied intentionally.
+
+- **Microservices & API Architecture** — MEAN/.NET stacks, Docker/Kubernetes, Azure/AWS/GCP.
+  Enterprise integration patterns, BizTalk SOA message brokering, and modern API design.
+
+- **Cloud Migration & Modernization** — Azure, AWS, and Google Cloud; CI/CD pipelines;
+  Cloudflare Pages and Workers for modern edge-deployed architectures.
+
+- **AI/LLM Integration** — Active, current experience evaluating and integrating Copilot,
+  Claude, GPT, and Gemini into development and operational workflows. Early work on an
+  emergency-management LLM ontology.
+
+**Representative work:**
+- Implemented Federal Health Architecture for Franciscan, MultiCare & Madigan Regional HIO
+- Designed the MERIT message broker architecture for WRMC (BizTalk SOA)
+- Contributed to the Phuket Provincial Intelligent Operations Center architecture
+- Built and maintains EOC.online — open-source microservice platform for emergency operations
+```
+
+---
+
+#### Sub-section 3: Engagement types CTA
+
+```
+### How to Engage
+
+Available for:
+- **Senior consulting & staff augmentation** — architecture advisory, technical lead,
+  hands-on development
+- **Architecture reviews & second opinions** — assess what you have, recommend a path
+- **Short-term & project-based** — discovery sprints, proof-of-concept work, targeted fixes
+- **Healthcare IT contract roles** — HIE, EHR integration, federal health systems
+
+[Contact John →](/contact)
+```
+
+---
+
+### 4b. Add intro attribution
 
 Add a line to the opening paragraph:
 ```
@@ -138,7 +244,7 @@ John Cornelison, principal architect and developer, brings 30+ years of experien
 across healthcare IT, emergency management, and commercial software to every engagement.
 ```
 
-### 4b. Add "Small & Local Projects" section (new section at the top or bottom)
+### 4c. Add "Small & Local Projects" section (new section at the top or bottom)
 
 ```
 ## Small & Local Projects
@@ -157,7 +263,7 @@ Reach out and describe what you need. Most small projects get a same-week respon
 [Contact John →](/contact)
 ```
 
-### 4c. Clarify "Crafted Software" with Healthcare IT subsection
+### 4d. Clarify "Crafted Software" with Healthcare IT subsection
 
 Add a new subsection under Crafted Software:
 
@@ -223,13 +329,13 @@ projects. Serving Vashon Island and the greater Seattle area since 2002.
 
 ## 8. Priority Order for Implementation
 
-1. **About page** — highest impact, completely missing today
-2. **Home page personal intro + "Local Projects" section** — changes the first impression
-3. **Footer phone/email** — quick win, every page
-4. **Services "Small & Local" section** — directly supports local gig goal
-5. **Contact page personal note** — lowers barrier for small clients
-6. **Services Healthcare IT subsection** — differentiator for larger engagements
-7. **Meta descriptions** — SEO, lower urgency
+1. **Services — Health IT & Architecture Modernization section (§4a)** — primary job search signal; directly supports senior role targeting
+2. **About page (§2)** — completely missing today; local clients and recruiters both need it
+3. **Home page personal intro + "Local Projects" section (§3)** — changes the first impression
+4. **Footer phone/email (§6)** — quick win, every page
+5. **Services "Small & Local" section (§4c)** — supports local gig goal
+6. **Contact page personal note (§5)** — lowers barrier for small clients
+7. **Meta descriptions (§7)** — SEO, lower urgency
 
 ---
 
