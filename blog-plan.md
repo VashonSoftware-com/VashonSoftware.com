@@ -36,7 +36,7 @@ The architecture series fits that plan rather than competing with it:
 - **Shared cadence:** one post every 7–10 days across *both* plans, not each. Recommended order:
   architecture post 1, healthcare post H1 when unblocked, architecture post 2, H2, then the rest.
 - **Same distribution:** the long post here; a 250–400-word native LinkedIn post with the link in
-  the first comment; add it to LinkedIn Featured. Contact line: John@VashonSoftware.com.
+  the first comment; add it to LinkedIn Featured. Contact line: `John@VashonSoftware.com`.
 - **Same kill criterion:** if two posts bring no inbound and no engagement from named contacts,
   stop the job-search framing; the architecture posts can still go out as a portfolio, but slower.
 
