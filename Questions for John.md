@@ -7,4 +7,5 @@
 - **Q-VS-3 (2026-10-27):** OK to delete the five AstroDeck template posts in `src/content/blog/`, including the Kraken and Medusa joke posts?
 - **Q-VS-4 (2026-10-27):** Is the RangerTrak repo (`github.com/SteadyEOC/RangerTrak`) public? Which code excerpts may appear: the ESLint boundary config, `domain/usage-state.ts`, the three-line `ApplicationRef.tick()` fix?
 - **Q-VS-5 (2026-10-27):** Byline "John Cornelison", first person, with a closing line on how Claude helped? Or no AI note?
+- **Q-VS-7 (2026-10-27):** The job-search Content Strategy plans two healthcare posts on this blog in eight weeks. OK to make RangerTrak architecture post 1 the first real post (it's ready; the healthcare posts are waiting on your answers), then alternate the two plans at one post every 7–10 days?
 - **Q-VS-6 (2026-10-27):** Go ahead with step 1 (blog prep) and a draft of post 1?

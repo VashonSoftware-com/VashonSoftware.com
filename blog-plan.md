@@ -20,6 +20,26 @@ all dated 2026-06-30. Two are joke posts ("Kraken Demands Better WiFi", "Medusa 
 Salon") and three are template how-tos ("Getting Started with Vashon Software" and so on). None
 belong on a portfolio site that recruiters read. They must go before the first real post (Q-VS-3).
 
+### Fit with the job-search content strategy
+
+This blog already has a plan: `D:\sys\john\docs\_Obsidian\JobSearch\Content Strategy\Content Strategy - Current State.md`
+(2026-10-19/20). It makes VashonSoftware.com the host for job-search posts: healthcare first,
+under the frame **high-consequence systems**, two posts in eight weeks, LinkedIn-native. Its first
+two posts (the interoperability retrospective and the evals post) are blocked on John's answers.
+
+The architecture series fits that plan rather than competing with it:
+- It is **"general argument, domain-specific evidence"**: the argument is architecture; the
+  evidence is a field app for emergency responders (offline, encrypted, relied on in incidents),
+  which is a high-consequence system.
+- **Post 1 is not blocked.** It can be the first real post on the site while the healthcare posts
+  wait for John's answers.
+- **Shared cadence:** one post every 7–10 days across *both* plans, not each. Recommended order:
+  architecture post 1, healthcare post H1 when unblocked, architecture post 2, H2, then the rest.
+- **Same distribution:** the long post here; a 250–400-word native LinkedIn post with the link in
+  the first comment; add it to LinkedIn Featured. Contact line: John@VashonSoftware.com.
+- **Same kill criterion:** if two posts bring no inbound and no engagement from named contacts,
+  stop the job-search framing; the architecture posts can still go out as a portfolio, but slower.
+
 ## 2. The series
 
 **Working name:** *Architecture in practice*. Real systems, dated numbers, including what didn't
