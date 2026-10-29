@@ -28,6 +28,12 @@ Next:
    posted the morning its blog post goes live. A1's is needed by 2026-11-03.
 3. **Draft A2** (the layout-shift story, E-171) from the running notes.
 
+**Done 2026-10-29 (C1):** GPG P0 done and the repo is public (`0.4.0b1`), so **C1 drafted** as
+`src/content/blog/never-auto-delete-always-auto-flag.md` (`draft: true`, placeholder pubDate
+2026-12-08, ~1,390 words). Every code claim checked against the GPG repo (tests, `samefile`,
+`--force`, line checks, action priority, sample note). Waiting on John: approval and Q-VS-11
+(series order: C1 is part 1 but would publish after parts 2 and 3).
+
 Note: the blog is empty in production until A1 goes live on 2026-11-03.
 Still open: Q-VS-10 (a ROADMAP fix in the GEDCOM Privacy Guard repo; doesn't block anything here).
 
