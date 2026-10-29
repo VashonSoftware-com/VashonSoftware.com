@@ -1,16 +1,14 @@
 ---
 title: "The Great Depression is not a diagnosis: the limits of keyword scanning"
 description: "A family-tree privacy scanner flagged the Great Depression as a mental-health finding. Fixing that taught me where word lists stop working, why the report must never guess who someone is, and what an AI scanner would have to respect."
-# pubDate is a placeholder; VS sets it when the post is scheduled (blog-plan.md section 5).
 pubDate: 2026-11-17
 tags: ["architecture", "privacy", "genealogy", "python", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 2 }
-draft: true
 ---
 
 GEDCOM Privacy Guard is a small open-source tool I'm building for genealogists. Before you
 share a family tree (with Ancestry, a cousin, a family website), it reads the GEDCOM export
-and flags text that shouldn't go along with it: mental illness, addiction, arrests, rumors,
+and flags text that shouldn't necessarily go along with it: mental illness, addiction, arrests, rumors,
 phone numbers. That kind of thing ends up in the free-text notes of a tree that's been
 built up over decades. It's harmless about someone who died in 1890. It isn't harmless about
 your living aunt.
@@ -141,5 +139,4 @@ The code goes public soon.
 
 *Examples are invented or taken from the tool's sample file; no real family notes are quoted.
 Behaviour described is as of 2026-10-29. I worked through this with Claude (Anthropic's AI
-model) as a pair: it helped write the matcher, the tests and drafts of this post. The design
-decisions are mine, and I reviewed every change.*
+model) as a pair: it helped write the matcher. The design and decisions are mine, and I reviewed every change.*

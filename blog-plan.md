@@ -17,13 +17,18 @@ defaults to John Cornelison) and **A1 drafted** as
 placeholder; numbers re-measured 2026-10-29: 0 boundary errors / 468 files, 702 warnings,
 44 domain files, map component 1,521 lines).
 
+**Done 2026-10-29 (later):** John approved A1, B1, B2, C2, C3. `draft` removed; weekly
+schedule A1 11-03, B1 11-10, C2 11-17, B2 11-24, C3 12-01 (`blog-cohosting.md` section 4c).
+Daily rebuild: `.github/workflows/scheduled-publish.yml` (needs secret `CF_PAGES_DEPLOY_HOOK`).
+
 Next:
-1. **John reviews A1** (`npm run dev`, then /blog/architecture-pass-rangertrak). On approval:
-   set the real `pubDate`, remove `draft`, re-measure the numbers if the date has moved, deploy.
-2. **The LinkedIn post** for A1 (250–400 words, link in the first comment; section 1).
+1. **John:** create the Cloudflare Pages deploy hook (vashonsoftware, branch main) and save it as
+   GitHub secret `CF_PAGES_DEPLOY_HOOK`; decide C2/C3 "Part 2/3" labels while C1 waits.
+2. **LinkedIn posts** for all five (250–400 words, link in the first comment; section 1), each
+   posted the morning its blog post goes live. A1's is needed by 2026-11-03.
 3. **Draft A2** (the layout-shift story, E-171) from the running notes.
 
-Note: the blog is empty in production until A1 is published (the template posts are gone).
+Note: the blog is empty in production until A1 goes live on 2026-11-03.
 Still open: Q-VS-10 (a ROADMAP fix in the GEDCOM Privacy Guard repo; doesn't block anything here).
 
 ## 1. The blog scene: who publishes what

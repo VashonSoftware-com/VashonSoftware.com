@@ -1,7 +1,7 @@
 # Co-hosted blog: VashonSoftware.com, Cornelisons.com and GEDCOM Privacy Guard
 
 **For:** the three Claude Code sessions below. **Status:** current state, rewritten as it changes.
-**Updated:** 2026-10-29 (Claude Opus 5.5, from the CC session)
+**Updated:** 2026-10-29 (Claude Opus 5.5, from the VS session)
 **Content plan (series A, B, C, cadence, LinkedIn):** `D:\Projects\VashonSoftware.com\VashonSoftware.com\blog-plan.md`
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md` (Q-VS-*)
 
@@ -13,9 +13,10 @@
 
 ## 1. Are we ready? (2026-10-29)
 
-- **VS: ready to host, not yet live.** Content collection, `draft` and `series` fields, RSS,
-  sitemap, archive, Cloudflare Pages. Production blog is empty until A1 (RangerTrak) is
-  approved. `canonical` field done (2026-10-29): sets `<link rel="canonical">`, `og:url` and
+- **VS: scheduled (2026-10-29).** John approved A1, B1, B2, C2, C3; `draft` removed, pubDates
+  set (section 4c). Future-dated posts build only after their date, so
+  `.github/workflows/scheduled-publish.yml` POSTs a Cloudflare Pages deploy hook daily at
+  14:00 UTC (needs repo secret `CF_PAGES_DEPLOY_HOOK`; John creates it). `canonical` field done (2026-10-29): sets `<link rel="canonical">`, `og:url` and
   "First published on {host}"; post pages now also send `og:type=article`, date, author, image.
 - **CC: ready to host, not yet live** (2026-10-29, v0.2.42, committed, not pushed). `blog`
   collection with the shared front matter (incl. `canonical`), `/blog`, `/blog/<slug>`,
@@ -24,8 +25,8 @@
   the first copy or CC post. **B1, B2 drafted** in VS's `src/content/blog/` (see 4b).
   John 2026-10-29: `/blog` and `/stories` (Q-AC-35) stay **separate**.
 - **GPG: C2 and C3 drafted** (2026-10-29, `draft: true` in VS's `src/content/blog/`:
-  `great-depression-is-not-a-diagnosis.md`, `fix-it-at-the-source.md`; pubDates are
-  placeholders for VS to set). ROADMAP "Blog posts" fixed. John 2026-10-29 (Q-VS-10, Q-PG-07):
+  `great-depression-is-not-a-diagnosis.md`, `fix-it-at-the-source.md`); approved and
+  scheduled by VS 2026-10-29. ROADMAP "Blog posts" fixed. John 2026-10-29 (Q-VS-10, Q-PG-07):
   go public after P0, as a beta. GPG must update "Going public"; C1 can follow once public.
 
 ## 2. Who publishes what (John, 2026-10-27 and 2026-10-29)
@@ -90,6 +91,13 @@
 5. **Own CC-only genealogy posts** (family stories aside, see task 2): draft in CC's
    `src/content/blog/`, tell VS in this file (section 4b) so the cadence stays one post every
    7–10 days across both sites.
+6. **Daily deploy (new, John 2026-10-29).** CC's blog also hides future-dated posts until a
+   rebuild, and copies are future-dated too. Copy VS's `.github/workflows/scheduled-publish.yml`
+   (daily cron that POSTs a Cloudflare Pages deploy hook; skips if the secret is missing) and ask
+   John to create a deploy hook for the **public** Pages project only (circle projects don't
+   carry the blog) and save it as repo secret `CF_PAGES_DEPLOY_HOOK`.
+7. **Add the copies** of B1, B2, C2, C3 (section 4c): same slug, same `pubDate` as VS (or later),
+   `canonical: https://vashonsoftware.com/blog/<slug>`, a short intro for genealogists.
 
 ### GPG
 
@@ -111,19 +119,31 @@
 
 | Post | Author | Canonical | Copy | State |
 |---|---|---|---|---|
-| B1 Stories, not pedigrees | CC | VS | CC | draft in VS (`stories-not-pedigrees.md`), for John's review |
-| B2 Dead only on evidence | CC | VS | CC | draft in VS (`dead-only-on-evidence.md`; links to C2, so publish after it), for John's review |
+| B1 Stories, not pedigrees | CC | VS | CC | approved; VS 2026-11-10; CC copy to add |
+| B2 Dead only on evidence | CC | VS | CC | approved; VS 2026-11-24 (after C2, which it links to); CC copy to add |
 | B4 Make the build refuse to leak | CC | VS | CC | not started |
-| C2 The Great Depression is not a diagnosis | GPG | VS | CC | draft in VS, for John's review |
-| C3 Fix it at the source | GPG | VS | CC | draft in VS, for John's review |
+| C2 The Great Depression is not a diagnosis | GPG | VS | CC | approved; VS 2026-11-17; CC copy to add |
+| C3 Fix it at the source | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
 | What your family tree notes say about the living | GPG | CC | — | CC blog ready: GPG may draft |
 | How we checked our tree before putting it online | CC | CC | — | needs John's OK (living family) |
+
+## 4c. Publishing schedule (VS, weekly; each with a LinkedIn post that day)
+
+| Date | Post | Slug |
+|---|---|---|
+| 2026-11-03 | A1 "No spaghetti" as a check | `architecture-pass-rangertrak` |
+| 2026-11-10 | B1 Stories, not pedigrees | `stories-not-pedigrees` |
+| 2026-11-17 | C2 The Great Depression is not a diagnosis | `great-depression-is-not-a-diagnosis` |
+| 2026-11-24 | B2 Dead only on evidence | `dead-only-on-evidence` |
+| 2026-12-01 | C3 Fix it at the source | `fix-it-at-the-source` |
+
+Open: C2/C3 show "Part 2/3" while C1 waits for the repo to go public (John to decide).
 
 ## 5. Order
 
 1. CC builds the blog; VS adds `canonical` (✅ done 2026-10-29).
 2. GPG fixes its ROADMAP and drafts C2, C3; CC drafts B1 and B2.
-3. John reviews A1, then B and C drafts in `dev`; VS publishes in the plan's order.
+3. ✅ 2026-10-29 John approved A1, B1, B2, C2, C3; VS scheduled them (section 4c).
 4. Copies to CC; the genealogists' post on CC.
 5. Repo public → C1. 1.0 → launch post and outreach (GPG ROADMAP "Outreach").
 

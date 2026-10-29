@@ -1,17 +1,15 @@
 ---
 title: "Fix it at the source: working with the desktop app, not around it"
 description: "A privacy tool for family trees could clean every export forever, or point you at the one note to fix in the program you already use. Why I chose the second, rejected automatic reimport after checking how the import really works, and never 'fix' a name."
-# pubDate is a placeholder; VS sets it when the post is scheduled (blog-plan.md section 5).
 pubDate: 2026-12-01
 tags: ["architecture", "privacy", "genealogy", "adr", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 3 }
-draft: true
 ---
 
 GEDCOM Privacy Guard scans a family-tree export (a GEDCOM file) for notes that shouldn't be
 shared: a living cousin's diagnosis, an arrest, a rumor written down as fact. It lists every
 hit for a person to review, then writes a cleaned copy. The tool reads any GEDCOM, but it
-started with Legacy Family Tree, a Windows desktop program where many genealogists keep
+started with Legacy Family Tree, a free Windows desktop program where many genealogists keep
 decades of research.
 
 This post is about a decision that sounds minor and shaped most of the design: **the
@@ -126,5 +124,5 @@ The code goes public soon.
 
 *Behaviour described is as of 2026-10-29; Legacy's menus and features are described in my own
 words, from its help center. No real family notes are quoted. I worked through this with
-Claude (Anthropic's AI model) as a pair: it helped research Legacy's import behaviour, write
-the decision records and draft this post. The decisions are mine, and I reviewed every change.*
+Claude (Anthropic's AI model) as a pair: it helped research Legacy's import behavior, and write
+the decision records. The guidance and decisions are mine, and I reviewed every change.*

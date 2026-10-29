@@ -1,11 +1,9 @@
 ---
 title: "Dead only on evidence: the living-person rule as code"
 description: "A family tree is full of people with no death date, and many of them are alive. The rule that keeps them off a public website is about a hundred lines of JavaScript, written down once and shared by two tools."
-# pubDate is a placeholder; VS sets it when the post is scheduled (blog-plan.md section 5).
 pubDate: 2026-11-24
 tags: ["architecture", "privacy", "genealogy", "testing", "cornelisons-com"]
 series: { name: "Building a family history site that keeps the living private", part: 2 }
-draft: true
 ---
 
 Part 1 of this series explained why I built a small static site for my family's stories, with
@@ -166,5 +164,5 @@ deployment.
 
 *Examples use the test file's invented people; no living relatives are named. Figures and
 behaviour are as of 2026-10-29. I worked through this with Claude (Anthropic's AI model) as a
-pair: it helped write the rule module, the tests and drafts of this post. The design decisions
+pair: it helped write the rule module, and the tests. The guidance & design decisions
 are mine, and I reviewed every change.*

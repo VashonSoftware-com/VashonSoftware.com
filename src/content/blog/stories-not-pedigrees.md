@@ -1,14 +1,12 @@
 ---
 title: "Stories, not pedigrees: why build your own family history site"
 description: "FamilySearch and Ancestry already hold the family tree. What they don't hold is the stories. Here is why I built a small static site for those instead, with the genealogy program kept as the one master copy of the facts."
-# pubDate is a placeholder; VS sets it when the post is scheduled (blog-plan.md section 5).
 pubDate: 2026-11-10
 tags: ["architecture", "genealogy", "astro", "privacy", "cornelisons-com"]
 series: { name: "Building a family history site that keeps the living private", part: 1 }
-draft: true
 ---
 
-My family has a genealogy program file that has been growing for decades, boxes of letters, a
+My family has a genealogy data file that has been growing for decades, boxes of letters, a
 few hours of recorded interviews, and a lot of stories that only exist in the heads of people
 who are getting older. When I set out to put some of it online, the obvious first question was:
 why build anything? FamilySearch and Ancestry already do family trees, and do them well.
@@ -126,5 +124,5 @@ shared with a second tool.
 
 *Examples use invented people and IDs; no living relatives are named. Figures are as of
 2026-10-29. I worked through this with Claude (Anthropic's AI model) as a pair: it helped write
-the generator, the tests and drafts of this post. The design decisions are mine, and I
+the generator and the tests. The guidance, direction and design decisions are mine, and I
 reviewed every change.*

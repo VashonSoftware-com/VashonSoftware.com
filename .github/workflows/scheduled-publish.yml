@@ -1,0 +1,25 @@
+name: Scheduled publish
+
+# Posts with a future pubDate only appear after a rebuild on or after that date.
+# This triggers a Cloudflare Pages build each morning via a deploy hook.
+# Setup: Cloudflare Pages > vashonsoftware > Settings > Builds > Deploy hooks (branch main),
+# then save the URL as the repo secret CF_PAGES_DEPLOY_HOOK.
+
+on:
+  schedule:
+    - cron: '0 14 * * *' # 14:00 UTC = 06:00 Pacific (07:00 in summer)
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages build
+        env:
+          HOOK: ${{ secrets.CF_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::CF_PAGES_DEPLOY_HOOK is not set; skipping rebuild."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK"

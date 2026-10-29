@@ -4,7 +4,6 @@ description: "Three answers to one question, a decision record that had quietly 
 pubDate: 2026-11-03
 tags: ["architecture", "angular", "eslint", "rangertrak"]
 series: { name: "Architecture in practice", part: 1 }
-draft: true
 ---
 
 [RangerTrak](https://rangertrak.com) is an offline-first Angular app that emergency-response
@@ -230,4 +229,4 @@ on a live app that people were using the whole time.
 *Numbers are as of the dates given, from the public repository. I worked through this with
 Claude (Anthropic's AI model) as a pair: it helped find the duplicate checks, drafted the
 decision-record entries and the lint configuration, and ran the measurements. The
-recommendations and decisions are mine, and I reviewed every change.*
+guidance, recommendations and decisions are mine, and I reviewed every change.*
