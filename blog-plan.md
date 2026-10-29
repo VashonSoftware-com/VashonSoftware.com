@@ -6,19 +6,24 @@
 
 ---
 
-## 0. Next session: start here (John said go, 2026-10-29)
+## 0. Next session: start here
 
-Q-VS-2 to 7 are answered. Do these in order:
-1. **Blog prep** (section 5, step 1): delete the five template posts in `src/content/blog/`; add
-   `draft` and `series` fields to `src/content.config.ts` (drafts hidden from lists, RSS and the
-   build); show "Part n of the series" in `src/layouts/ArticleLayout.astro`; default `author`
-   to "John Cornelison". Build, and check that a draft post doesn't appear.
-2. **Draft A1** as `src/content/blog/architecture-pass-rangertrak.md` with `draft: true`, from
-   the post 1 outline (section 2) and the running notes. Name RangerTrak, link to rangertrak.com
-   and to the public AGPL repo github.com/SteadyEOC/RangerTrak; code excerpts only from that repo.
-   Re-measure every number on the day. End with a one-line note on how Claude helped.
-3. John reviews the draft before it's published. Then the LinkedIn post (section 1).
-Still open: Q-VS-9 (series C timing only; it doesn't block A1).
+**Done 2026-10-29:** blog prep (template posts deleted; `draft` and `series` fields; drafts
+show in `npm run dev` with a "Draft" banner but never in a build, RSS or tag pages, via
+`src/lib/posts.ts`; "Part n of the series" on `src/pages/blog/[...slug].astro`; author
+defaults to John Cornelison) and **A1 drafted** as
+`src/content/blog/architecture-pass-rangertrak.md` (`draft: true`, pubDate 2026-11-03 as a
+placeholder; numbers re-measured 2026-10-29: 0 boundary errors / 468 files, 702 warnings,
+44 domain files, map component 1,521 lines).
+
+Next:
+1. **John reviews A1** (`npm run dev`, then /blog/architecture-pass-rangertrak). On approval:
+   set the real `pubDate`, remove `draft`, re-measure the numbers if the date has moved, deploy.
+2. **The LinkedIn post** for A1 (250–400 words, link in the first comment; section 1).
+3. **Draft A2** (the layout-shift story, E-171) from the running notes.
+
+Note: the blog is empty in production until A1 is published (the template posts are gone).
+Still open: Q-VS-10 (a ROADMAP fix in the GEDCOM Privacy Guard repo; doesn't block anything here).
 
 ## 1. The blog scene: who publishes what
 
@@ -126,8 +131,23 @@ site build; series C is about the scanner, so B5 shrinks to a pointer. Sources, 
 | C4 | **One spec, two runtimes: a Python CLI and an in-browser app** | ADR-004/005: the platform goal (iPad and Android) as a constraint; the file never leaves the device; React + TS + Vite on Cloudflare Pages; the 154 MB / 192k-person baseline (10.1 s); one shared rules file with the Cornelisons build (ADR-007/008) | When the web version is live | ~1,200 words |
 | C5 (optional) | **Evaluating an LLM privacy scanner** | Building the `LLMScanner`: a labelled fixture set, false positives and false negatives against the keyword baseline, sensitivity profiles | When it's built; could be the evals post (H2) evidence | ~1,200 words |
 
-**Timing:** the ROADMAP says to publish only after 1.0, with the repo public, so every link
-works (Q-VS-9). C1–C3 can be drafted now and held as `draft: true`.
+**Timing (revised 2026-10-29, Q-VS-9):** the ROADMAP said to wait for 1.0. Waiting for all of
+1.0 buys little for *architecture* posts. What actually has to change first:
+- **C1's claim must be true in code.** "The original is never touched" isn't enforced yet:
+  `redact` doesn't refuse an `--out` that is the input (ROADMAP P0). Neither is spreadsheet
+  formula escaping, which a "spreadsheet as the review UI" post invites readers to probe.
+- **Links must work.** The repo is private (`github.com/VashonSoftware-com/gedcom-privacy-guard`),
+  so any link 404s until the P0 history audit is done and it's made public.
+
+Both are P0 (small, safety work). The rest of 1.0 (PyPI, fuzzing, the rules UI, the
+15-minute exit test) matters to genealogists installing it, not to developers reading about
+design. So:
+- **C2 and C3** make no safety claims; they can go out any time, with no repo link (or "the
+  code goes public soon").
+- **C1** goes out once the P0 list is done and the repo is public (labelled beta).
+- **Launch** (Show HN, r/Genealogy, the outreach list) still waits for 1.0, with a short
+  "1.0 is out" post linking to C1–C3, so the posts build an audience before the one-shot launch.
+- C4 when the web version is live; C5 when the LLM scanner is built.
 
 **Extra rule for series C:** examples use `sample_data\` or invented notes. Never quote a
 real scan or a `review*.xlsx` (those are sealed); report counts only, like the performance
@@ -139,8 +159,8 @@ Cornelisons.com sessions, and links to C1.
 
 ## 4. Publishing rules for all series
 
-- **Nothing confidential crosses.** The running notes stay private. Code excerpts and screen
-  captures appear only after John picks them (Q-VS-4).
+- **Nothing confidential crosses.** The running notes and internal docs stay private. Code from
+  the public AGPL repo and anything shown on the live rangertrak.com site may be quoted (Q-VS-4).
 - **Don't name the unreleased EOC product.** Same rule as W4 and Field Notes.
 - **No people, places or dates from exercises** (as with Q39 on the RangerTrak side).
 - **Cornelisons.com material is Private.** Series B covers how the site is built, never the family
@@ -160,8 +180,8 @@ Cornelisons.com sessions, and links to C1.
    reviews; publish.
 3. **Then alternate the two series**, one post every 7–10 days, with the healthcare posts slotted
    in when they're ready: A2, B1, A4, B2, A3, B4. B3 waits until `family.cornelisons.com` is live
-   and its Access rules are checked. Series C slots in once GEDCOM Privacy Guard 1.0 is public:
-   C1, C2, C3 in alternation with the others; C4 when the web version is live.
+   and its Access rules are checked. Series C: C2 and C3 can slot in any time; C1 once the
+   GEDCOM Privacy Guard P0 list is done and the repo is public; C4 when the web version is live.
 4. **For each post:** a LinkedIn post linking to it (the master plan's article → LinkedIn loop);
    check reach in `D:\Projects\VashonSoftware.com\LinkedinAnayltics\` after a week.
 5. **RangerTrak sessions keep appending** dated notes to the running notes file; post A5 is

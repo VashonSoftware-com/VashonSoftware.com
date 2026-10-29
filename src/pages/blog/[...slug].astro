@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
+import { getPublishedPosts } from '@/lib/posts';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const now = new Date();
-  const blogPosts = (await getCollection('blog')).filter((post) => post.data.pubDate <= now);
+  const blogPosts = await getPublishedPosts();
   const sortedPosts = blogPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   return sortedPosts.map((post, index) => ({
@@ -64,6 +64,22 @@ function formatDate(date: Date) {
 
     <header class="mb-12">
       <div class="container max-w-3xl mx-auto mb-8 space-y-4">
+        {
+          post.data.draft && (
+            <p class="inline-block px-3 py-1 rounded-md text-sm font-medium bg-destructive/10 text-destructive">
+              Draft: visible in dev only
+            </p>
+          )
+        }
+
+        {
+          post.data.series && (
+            <p class="text-sm font-medium text-primary">
+              Part {post.data.series.part} of the series <em>{post.data.series.name}</em>
+            </p>
+          )
+        }
+
         <h1 class="text-5xl font-bold tracking-tight">{post.data.title}</h1>
 
         <p class="text-xl text-muted-foreground">{post.data.description}</p>

@@ -7,9 +7,11 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    author: z.string().default('VashonSoftware Team'),
+    author: z.string().default('John Cornelison'),
     image: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    series: z.object({ name: z.string(), part: z.number().int().positive() }).optional(),
   }),
 });
 
