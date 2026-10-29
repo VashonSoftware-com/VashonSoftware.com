@@ -18,7 +18,7 @@ Q-VS-2 to 7 are answered. Do these in order:
    and to the public AGPL repo github.com/SteadyEOC/RangerTrak; code excerpts only from that repo.
    Re-measure every number on the day. End with a one-line note on how Claude helped.
 3. John reviews the draft before it's published. Then the LinkedIn post (section 1).
-Still open: Q-VS-8, Q-VS-9 (series C only; they don't block A1).
+Still open: Q-VS-9 (series C timing only; it doesn't block A1).
 
 ## 1. The blog scene: who publishes what
 
@@ -30,7 +30,7 @@ Each other site keeps only its own subject.
 | **VashonSoftware.com/blog** | this plan | **All software architecture posts**, whichever project they come from. John, first person, architect to architect | **Home of both series below.** Every post here is canonical. |
 | **rangertrak.com Field Notes** | RangerTrak blog session (`D:\Projects\_SteadyEOC\Rangertrak\rangertrak-com-site\`) | **How RangerTrak works**, for CERT / SAR / ACS / ham users | Not ours. RangerTrak's architecture comes here. At most a link to our posts (Q-VS-2). |
 | **eoc.online blog** | W4 (desktop chat; `D:\eoc.online\claude\blog\`) | **Generic EOC-focused software**, not RangerTrak, SteadyEOC or John's other products | Not ours and not a source. Never edit W4's files; route anything through John. |
-| **Cornelisons.com/blog** | Cornelisons.com sessions | **Genealogy only**: the family and its stories | Not ours. How to build a genealogy site comes here (series B). |
+| **Cornelisons.com/blog** | Cornelisons.com sessions | **Genealogy**: the family, its stories, and posts for genealogists | **Co-blog (John, 2026-10-29):** any genealogy post may be cross-posted there, or go only there. Series B and the genealogy-facing C posts are canonical here and cross-posted there, linking back; posts for genealogists (not architecture) go there only. |
 
 **State of the VashonSoftware blog today** (`src/content/blog/`): five AstroDeck template posts,
 all dated 2026-06-30. Two are joke posts ("Kraken Demands Better WiFi", "Medusa Starts Hair
@@ -134,7 +134,8 @@ real scan or a `review*.xlsx` (those are sealed); report counts only, like the p
 baseline.
 
 **Not on this blog:** the ROADMAP's other post, for genealogists ("What your family tree notes
-say about the living"), isn't architecture, so it doesn't belong here. Where it goes is Q-VS-8.
+say about the living"), isn't architecture. It goes on Cornelisons.com only (Q-VS-8), as a note for the
+Cornelisons.com sessions, and links to C1.
 
 ## 4. Publishing rules for all series
 
