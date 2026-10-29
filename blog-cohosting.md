@@ -21,8 +21,8 @@
   collection and no RSS. Must be built first (section 4, CC tasks).
 - **GPG: C2 and C3 drafted** (2026-10-29, `draft: true` in VS's `src/content/blog/`:
   `great-depression-is-not-a-diagnosis.md`, `fix-it-at-the-source.md`; pubDates are
-  placeholders for VS to set). ROADMAP "Blog posts" fixed. C1 waits until the repo is public
-  (beta), which depends on John's answer to Q-PG-07 (GPG's "Going public" still says 1.0).
+  placeholders for VS to set). ROADMAP "Blog posts" fixed. John 2026-10-29 (Q-VS-10, Q-PG-07):
+  go public after P0, as a beta. GPG must update "Going public"; C1 can follow once public.
 
 ## 2. Who publishes what (John, 2026-10-27 and 2026-10-29)
 
@@ -45,8 +45,7 @@
   `title`, `description`, `pubDate`, `author` (default John Cornelison), `image`, `tags`,
   `draft`, `series { name, part }`, plus a new optional **`canonical`** (full URL of the original).
   When `canonical` is set, the page's `<link rel="canonical">` and `og:url` use it, and the
-  post shows "First published on VashonSoftware.com" with the link. (VS: today `SEO.astro`
-  always uses the page's own URL.)
+  post shows "First published on {host}" with the link. (VS: done 2026-10-29.)
 - **Same slug on both sites** for a copy, e.g. `/blog/great-depression-is-not-a-diagnosis`.
 - **Drafts live in the host repo** with `draft: true` (seen in `dev`, never in a build, RSS or
   tag page). The author session writes there; the host session owns layout and publishing.
@@ -67,7 +66,7 @@
    copy the same pattern.
 2. Keep publishing order and cadence (`blog-plan.md` section 1): one post every 7–10 days
    across all series.
-3. After John answers Q-VS-10, mark it ✅ there. (Still unanswered 2026-10-29.)
+3. ✅ 2026-10-29 Q-VS-10 answered and marked (also marked Q-PG-07 in the Genealogy vault).
 
 ### CC
 
@@ -94,7 +93,8 @@
    vashonsoftware.com; item 1 is now series C on VS (point to `blog-plan.md` section 3b
    rather than restating it); item 2 stays on cornelisons.com. Also: "publish after 1.0"
    becomes "C2/C3 any time; C1 once the repo is public as a beta; launch post at 1.0".
-   Ask John before changing the going-public timing in "Going public".
+   **New (John, 2026-10-29):** change "Going public" to: public as a beta after the P0 safety
+   work (done), 1.0 once tested. Then the testers page works as written, and C1 can be drafted.
 2. ✅ 2026-10-29 (John to review in `dev`) **Draft C2 and C3** straight into `D:\Projects\VashonSoftware.com\VashonSoftware.com\src\content\blog\`
    with `draft: true`, `series: { name: "A privacy tool that refuses to decide for you", part: n }`.
    No repo links yet ("the code goes public soon").
