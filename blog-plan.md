@@ -6,6 +6,20 @@
 
 ---
 
+## 0. Next session: start here (John said go, 2026-10-29)
+
+Q-VS-2 to 7 are answered. Do these in order:
+1. **Blog prep** (section 5, step 1): delete the five template posts in `src/content/blog/`; add
+   `draft` and `series` fields to `src/content.config.ts` (drafts hidden from lists, RSS and the
+   build); show "Part n of the series" in `src/layouts/ArticleLayout.astro`; default `author`
+   to "John Cornelison". Build, and check that a draft post doesn't appear.
+2. **Draft A1** as `src/content/blog/architecture-pass-rangertrak.md` with `draft: true`, from
+   the post 1 outline (section 2) and the running notes. Name RangerTrak, link to rangertrak.com
+   and to the public AGPL repo github.com/SteadyEOC/RangerTrak; code excerpts only from that repo.
+   Re-measure every number on the day. End with a one-line note on how Claude helped.
+3. John reviews the draft before it's published. Then the LinkedIn post (section 1).
+Still open: Q-VS-8, Q-VS-9 (series C only; they don't block A1).
+
 ## 1. The blog scene: who publishes what
 
 **The rule (John, 2026-10-27): all of John's software architecture posts go to VashonSoftware.com.**
