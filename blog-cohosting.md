@@ -1,7 +1,7 @@
 # Co-hosted blog: VashonSoftware.com, Cornelisons.com and GEDCOM Privacy Guard
 
 **For:** the three Claude Code sessions below. **Status:** current state, rewritten as it changes.
-**Updated:** 2026-10-29 (Claude Opus 5.5, from the GPG session)
+**Updated:** 2026-10-29 (Claude Opus 5.5, from the CC session)
 **Content plan (series A, B, C, cadence, LinkedIn):** `D:\Projects\VashonSoftware.com\VashonSoftware.com\blog-plan.md`
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md` (Q-VS-*)
 
@@ -17,8 +17,12 @@
   sitemap, archive, Cloudflare Pages. Production blog is empty until A1 (RangerTrak) is
   approved. `canonical` field done (2026-10-29): sets `<link rel="canonical">`, `og:url` and
   "First published on {host}"; post pages now also send `og:type=article`, date, author, image.
-- **CC: not ready.** `/blog` (`src/pages/blog.astro`) is a placeholder with no posts, no
-  collection and no RSS. Must be built first (section 4, CC tasks).
+- **CC: ready to host, not yet live** (2026-10-29, v0.2.42, committed, not pushed). `blog`
+  collection with the shared front matter (incl. `canonical`), `/blog`, `/blog/<slug>`,
+  `/rss.xml`, Pagefind; public build only (family sites' Blog link goes to cornelisons.com/blog).
+  Drafts and future-dated posts show in `dev` only; e2e tests prove neither builds. Empty until
+  the first copy or CC post. **B1, B2 drafted** in VS's `src/content/blog/` (see 4b).
+  John 2026-10-29: `/blog` and `/stories` (Q-AC-35) stay **separate**.
 - **GPG: C2 and C3 drafted** (2026-10-29, `draft: true` in VS's `src/content/blog/`:
   `great-depression-is-not-a-diagnosis.md`, `fix-it-at-the-source.md`; pubDates are
   placeholders for VS to set). ROADMAP "Blog posts" fixed. John 2026-10-29 (Q-VS-10, Q-PG-07):
@@ -70,15 +74,16 @@
 
 ### CC
 
-1. **Build the blog** (small, one session): a `blog` content collection with the shared front
+1. ✅ 2026-10-29 **Build the blog** (small, one session): a `blog` content collection with the shared front
    matter; `/blog` list replacing the placeholder; `/blog/<slug>` post page; RSS
    (`/rss.xml`); tags optional. Public build only (other circles may link to the public
    blog). Pagefind indexes posts. Add e2e checks: links resolve; a `draft` never builds.
-2. Ask John: is `/blog` (genealogy posts, site news) the same thing as the `/stories` blog
+2. ✅ 2026-10-29 (John: keep separate) Ask John: is `/blog` (genealogy posts, site news) the same thing as the `/stories` blog
    proposed in Q-AC-35 (family stories linked to person pages)? Recommendation: keep them
    separate: `/blog` for essays and how-tos, `/stories` for family stories.
 3. Then host drafts from GPG (section 2) and copies from VS.
-4. **Author series B** (B1, B2, B4 ready now; B3 after family.cornelisons.com is live;
+4. **Author series B** (✅ B1, B2 drafted 2026-10-29; B4 next; B3 ready too now that
+   family.cornelisons.com is live, John only;
    B5 after C1). Drafts go into VS's `src/content/blog/` with `draft: true` and
    `series: { name: "Building a family history site that keeps the living private", part: n }`;
    the CC copy is added when VS publishes. Sources and outline: `blog-plan.md` section 3.
@@ -106,12 +111,12 @@
 
 | Post | Author | Canonical | Copy | State |
 |---|---|---|---|---|
-| B1 Stories, not pedigrees | CC | VS | CC | not started |
-| B2 Dead only on evidence | CC | VS | CC | not started |
+| B1 Stories, not pedigrees | CC | VS | CC | draft in VS (`stories-not-pedigrees.md`), for John's review |
+| B2 Dead only on evidence | CC | VS | CC | draft in VS (`dead-only-on-evidence.md`; links to C2, so publish after it), for John's review |
 | B4 Make the build refuse to leak | CC | VS | CC | not started |
 | C2 The Great Depression is not a diagnosis | GPG | VS | CC | draft in VS, for John's review |
 | C3 Fix it at the source | GPG | VS | CC | draft in VS, for John's review |
-| What your family tree notes say about the living | GPG | CC | — | after CC blog exists |
+| What your family tree notes say about the living | GPG | CC | — | CC blog ready: GPG may draft |
 | How we checked our tree before putting it online | CC | CC | — | needs John's OK (living family) |
 
 ## 5. Order
