@@ -101,7 +101,7 @@ relatives, no circle membership, and real ancestors only where they already appe
 fifth. They cover the design decisions behind the tool, not the family. The thread: **the
 tool flags, the person decides, and the original is never touched.** Series B is about the
 site build; series C is about the scanner, so B5 shrinks to a pointer. Sources, all in
-`D:\Projects\Genealogy\gedcom-privacy-guard\`: `docs\ARCHITECTURE.md`, `docsdr`–`008`,
+`D:\Projects\Genealogy\gedcom-privacy-guard\`: `docs\ARCHITECTURE.md`, `docs\adr`–`008`,
 `ROADMAP.md` (its "Goal 2" developer post becomes C1).
 
 | # | Post | Covers | Ready? | Length |
