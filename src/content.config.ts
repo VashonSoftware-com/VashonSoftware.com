@@ -12,6 +12,8 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     series: z.object({ name: z.string(), part: z.number().int().positive() }).optional(),
+    // Full URL of the original when this post is a copy (blog-cohosting.md section 3)
+    canonical: z.string().url().optional(),
   }),
 });
 

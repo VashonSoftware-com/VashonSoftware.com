@@ -35,9 +35,22 @@ function formatDate(date: Date) {
     day: 'numeric',
   });
 }
+
+// Copies name the site that first published them (blog-cohosting.md section 3)
+const canonicalHost = post.data.canonical
+  ? new URL(post.data.canonical).hostname.replace(/^www\./, '')
+  : null;
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+  publishedTime={post.data.pubDate}
+  author={post.data.author}
+  canonical={post.data.canonical}
+>
   <article class="pb-12">
     <div class="container max-w-3xl mx-auto pt-12 mb-8">
       <a
@@ -91,6 +104,17 @@ function formatDate(date: Date) {
           <span>•</span>
           <span>{post.data.author}</span>
         </div>
+
+        {
+          post.data.canonical && (
+            <p class="text-sm text-muted-foreground">
+              First published on{' '}
+              <a href={post.data.canonical} class="text-primary hover:underline">
+                {canonicalHost}
+              </a>
+            </p>
+          )
+        }
 
         {
           post.data.tags.length > 0 && (

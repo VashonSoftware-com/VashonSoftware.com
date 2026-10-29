@@ -27,6 +27,8 @@ interface Props {
   publishedTime?: Date;
   author?: string;
   noindex?: boolean;
+  /** Full URL of the original when this page is a copy; defaults to the page's own URL */
+  canonical?: string;
 }
 
 const {
@@ -37,11 +39,12 @@ const {
   publishedTime,
   author = 'VashonSoftware',
   noindex = false,
+  canonical,
 } = Astro.props;
 
 // Fallback for dev server when Astro.site might be undefined
 const siteUrl = Astro.site ?? new URL('http://localhost:4321');
-const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const canonicalURL = canonical ? new URL(canonical) : new URL(Astro.url.pathname, siteUrl);
 const socialImageURL = new URL(image, siteUrl);
 
 const siteName = 'VashonSoftware';

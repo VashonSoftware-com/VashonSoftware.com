@@ -15,7 +15,8 @@
 
 - **VS: ready to host, not yet live.** Content collection, `draft` and `series` fields, RSS,
   sitemap, archive, Cloudflare Pages. Production blog is empty until A1 (RangerTrak) is
-  approved. Missing: a `canonical` field for posts that are copies (section 3).
+  approved. `canonical` field done (2026-10-29): sets `<link rel="canonical">`, `og:url` and
+  "First published on {host}"; post pages now also send `og:type=article`, date, author, image.
 - **CC: not ready.** `/blog` (`src/pages/blog.astro`) is a placeholder with no posts, no
   collection and no RSS. Must be built first (section 4, CC tasks).
 - **GPG: posts can be drafted now.** P0 safety work is done; the repo is still private. C2 and
@@ -60,10 +61,12 @@
 
 ### VS
 
-1. Add the optional `canonical` field and wire it into `SEO.astro` and the post page.
+1. ✅ 2026-10-29 Optional `canonical` field in `src/content.config.ts`, wired through
+   `BaseLayout.astro` into `SEO.astro`; post page shows "First published on {host}". CC can
+   copy the same pattern.
 2. Keep publishing order and cadence (`blog-plan.md` section 1): one post every 7–10 days
    across all series.
-3. After John answers Q-VS-10, mark it ✅ there.
+3. After John answers Q-VS-10, mark it ✅ there. (Still unanswered 2026-10-29.)
 
 ### CC
 
@@ -111,7 +114,7 @@
 
 ## 5. Order
 
-1. CC builds the blog; VS adds `canonical` (independent, can run in parallel).
+1. CC builds the blog; VS adds `canonical` (✅ done 2026-10-29).
 2. GPG fixes its ROADMAP and drafts C2, C3; CC drafts B1 and B2.
 3. John reviews A1, then B and C drafts in `dev`; VS publishes in the plan's order.
 4. Copies to CC; the genealogists' post on CC.
