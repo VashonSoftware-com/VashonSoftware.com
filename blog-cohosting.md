@@ -1,7 +1,7 @@
 # Co-hosted blog: VashonSoftware.com, Cornelisons.com and GEDCOM Privacy Guard
 
 **For:** the three Claude Code sessions below. **Status:** current state, rewritten as it changes.
-**Updated:** 2026-10-29 (Claude Opus 5.5, from the Cornelisons.com session)
+**Updated:** 2026-10-29 (Claude Opus 5.5, from the GPG session)
 **Content plan (series A, B, C, cadence, LinkedIn):** `D:\Projects\VashonSoftware.com\VashonSoftware.com\blog-plan.md`
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md` (Q-VS-*)
 
@@ -19,9 +19,10 @@
   "First published on {host}"; post pages now also send `og:type=article`, date, author, image.
 - **CC: not ready.** `/blog` (`src/pages/blog.astro`) is a placeholder with no posts, no
   collection and no RSS. Must be built first (section 4, CC tasks).
-- **GPG: posts can be drafted now.** P0 safety work is done; the repo is still private. C2 and
-  C3 make no safety claims and need no repo link. C1 waits until the repo is public (beta).
-  Its `ROADMAP.md` "Blog posts" section is out of date (section 5).
+- **GPG: C2 and C3 drafted** (2026-10-29, `draft: true` in VS's `src/content/blog/`:
+  `great-depression-is-not-a-diagnosis.md`, `fix-it-at-the-source.md`; pubDates are
+  placeholders for VS to set). ROADMAP "Blog posts" fixed. C1 waits until the repo is public
+  (beta), which depends on John's answer to Q-PG-07 (GPG's "Going public" still says 1.0).
 
 ## 2. Who publishes what (John, 2026-10-27 and 2026-10-29)
 
@@ -88,12 +89,13 @@
 
 ### GPG
 
-1. **Fix `ROADMAP.md` "Blog posts"** (Q-VS-10): item 3 goes to cornelisons.com, not
+1. ✅ 2026-10-29 **Fix `ROADMAP.md` "Blog posts"** (Q-VS-10; no local path given, since the
+   ROADMAP goes public): item 3 goes to cornelisons.com, not
    vashonsoftware.com; item 1 is now series C on VS (point to `blog-plan.md` section 3b
    rather than restating it); item 2 stays on cornelisons.com. Also: "publish after 1.0"
    becomes "C2/C3 any time; C1 once the repo is public as a beta; launch post at 1.0".
    Ask John before changing the going-public timing in "Going public".
-2. **Draft C2 and C3** straight into `D:\Projects\VashonSoftware.com\VashonSoftware.com\src\content\blog\`
+2. ✅ 2026-10-29 (John to review in `dev`) **Draft C2 and C3** straight into `D:\Projects\VashonSoftware.com\VashonSoftware.com\src\content\blog\`
    with `draft: true`, `series: { name: "A privacy tool that refuses to decide for you", part: n }`.
    No repo links yet ("the code goes public soon").
 3. **Draft the genealogists' post** once CC's blog exists, into
@@ -107,8 +109,8 @@
 | B1 Stories, not pedigrees | CC | VS | CC | not started |
 | B2 Dead only on evidence | CC | VS | CC | not started |
 | B4 Make the build refuse to leak | CC | VS | CC | not started |
-| C2 The Great Depression is not a diagnosis | GPG | VS | CC | not started |
-| C3 Fix it at the source | GPG | VS | CC | not started |
+| C2 The Great Depression is not a diagnosis | GPG | VS | CC | draft in VS, for John's review |
+| C3 Fix it at the source | GPG | VS | CC | draft in VS, for John's review |
 | What your family tree notes say about the living | GPG | CC | — | after CC blog exists |
 | How we checked our tree before putting it online | CC | CC | — | needs John's OK (living family) |
 
