@@ -2,6 +2,7 @@
 
 **Status:** draft for John's review · **Updated:** 2026-10-29 (Claude Opus 5.5)
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md`
+**Co-hosting with Cornelisons.com and GEDCOM Privacy Guard (who hosts what, shared front matter, tasks per session):** `D:\Projects\VashonSoftware.com\VashonSoftware.comlog-cohosting.md`
 **Main source so far:** `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\VashonSoftware post - RangerTrak architecture pass - running notes.md`
 
 ---
