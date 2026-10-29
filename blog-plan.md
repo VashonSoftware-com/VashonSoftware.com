@@ -21,12 +21,17 @@ placeholder; numbers re-measured 2026-10-29: 0 boundary errors / 468 files, 702 
 schedule A1 11-03, B1 11-10, C2 11-17, B2 11-24, C3 12-01 (`blog-cohosting.md` section 4c).
 Daily rebuild: `.github/workflows/scheduled-publish.yml` (needs secret `CF_PAGES_DEPLOY_HOOK`).
 
+**Done 2026-10-29 (evening):** pushed; **LinkedIn posts** for A1, B1, C2, B2, C3 in
+`linkedin-posts.md` (with how-to-post steps and numbers to re-check on the day); **A2 drafted**
+as `src/content/blog/layout-shift-only-pagespeed-could-see.md` (`draft: true`, placeholder
+pubDate 2026-12-15, ~1,200 words; fix code checked against RangerTrak commit `15c79379`).
+
 Next:
 1. **John:** create the Cloudflare Pages deploy hook (vashonsoftware, branch main) and save it as
-   GitHub secret `CF_PAGES_DEPLOY_HOOK`; decide C2/C3 "Part 2/3" labels while C1 waits.
-2. **LinkedIn posts** for all five (250–400 words, link in the first comment; section 1), each
-   posted the morning its blog post goes live. A1's is needed by 2026-11-03.
-3. **Draft A2** (the layout-shift story, E-171) from the running notes.
+   GitHub secret `CF_PAGES_DEPLOY_HOOK`; answer Q-VS-11 (series C order), Q-VS-12 (LinkedIn
+   posts), Q-VS-13 (C2/C3 "goes public soon" line), Q-VS-14 (A2).
+2. **2026-11-03 morning:** check the A1 link opens, re-measure the ⟳ numbers, post A1's LinkedIn post.
+3. **Draft A4** ("Copies of knowledge rot", ~800 words) from the running notes (10-02, 10-13).
 
 **Done 2026-10-29 (C1):** GPG P0 done and the repo is public (`0.4.0b1`), so **C1 drafted** as
 `src/content/blog/never-auto-delete-always-auto-flag.md` (`draft: true`, placeholder pubDate
