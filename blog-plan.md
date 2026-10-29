@@ -1,6 +1,6 @@
 # VashonSoftware.com blog plan: the architecture series
 
-**Status:** draft for John's review · **Updated:** 2026-10-27 (Claude Opus 5.5)
+**Status:** draft for John's review · **Updated:** 2026-10-29 (Claude Opus 5.5)
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md`
 **Main source so far:** `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\VashonSoftware post - RangerTrak architecture pass - running notes.md`
 
@@ -89,13 +89,40 @@ and the build fails when one breaks. Sources: `D:\Projects\Cornelisons.com\READM
 | B2 | **Dead only on evidence: the living-person rule as code** | The living/dead rules (110 years, a relative's events), recently deceased, `RESN`, what is never copied; one rules file shared by two tools; unit tests on a fixture GEDCOM | Yes |
 | B3 | **One build per audience: privacy by construction** | `SITE_CIRCLE` builds, subdomains behind Cloudflare Access, per-build Pagefind search, closing `*.pages.dev`, nav filtered on the server | After family.cornelisons.com is live |
 | B4 | **Make the build refuse to leak** | Build-failing checks: living names, family-only media in `dist/`, EXIF/GPS stripping, e2e "no living name in public search", `noindex` on family builds; public copies boxed out, never blurred | Yes |
-| B5 | **Scan your GEDCOM before you share it** | GEDCOM Privacy Guard: a report first, never edits the original; desktop CLI now, browser version planned; AI-assisted scanning | When the browser version or AI scanning has news |
+| B5 | **Scan your GEDCOM before you share it** | Short pointer post: where the tool fits in the site workflow, linking to series C | After C1 is out |
 | B6 (optional) | **From notes vault to website** | Obsidian story import, draft banners for review, `:::note` side notes by circle | If B1–B4 land well |
 
 **Extra rule for series B:** examples use the test fixture or invented people. No living
 relatives, no circle membership, and real ancestors only where they already appear on the public site.
 
-## 4. Publishing rules for both series
+## 3b. Series C: A privacy tool that refuses to decide for you (from GEDCOM Privacy Guard)
+
+**Added 2026-10-29 (John asked for a short series).** Four short posts, plus an optional
+fifth. They cover the design decisions behind the tool, not the family. The thread: **the
+tool flags, the person decides, and the original is never touched.** Series B is about the
+site build; series C is about the scanner, so B5 shrinks to a pointer. Sources, all in
+`D:\Projects\Genealogy\gedcom-privacy-guard\`: `docs\ARCHITECTURE.md`, `docsdr`–`008`,
+`ROADMAP.md` (its "Goal 2" developer post becomes C1).
+
+| # | Post | Covers | Ready? | Length |
+|---|---|---|---|---|
+| C1 | **Never auto-delete, always auto-flag** | ADR-001: flag, review, then write a *new* file; a spreadsheet as the review UI (CSV → XLSX with highlighted matches, ADR-006); `keep` / `redact` / `rewrite` / `privatize` actions; idempotent scans | Yes | ~1,200 words |
+| C2 | **The Great Depression is not a diagnosis: the limits of keyword scanning** | Real false positives ("the Great Depression", "WWII prison camps"); the context columns that tell same-name relatives apart, filled only from the file and never guessed; why this argues for an LLM scanner with per-family sensitivity, and how its scores must sit beside the deterministic ones | Yes | ~1,000 words |
+| C3 | **Fix it at the source: working with the desktop app, not around it** | ADR-002 (Legacy's `[[ ]]` privacy marker), ADR-003 (automated reimport rejected after checking how Legacy imports really work), the one-click upload button that skips the checkpoint, never "fixing" name casing | Yes | ~1,000 words |
+| C4 | **One spec, two runtimes: a Python CLI and an in-browser app** | ADR-004/005: the platform goal (iPad and Android) as a constraint; the file never leaves the device; React + TS + Vite on Cloudflare Pages; the 154 MB / 192k-person baseline (10.1 s); one shared rules file with the Cornelisons build (ADR-007/008) | When the web version is live | ~1,200 words |
+| C5 (optional) | **Evaluating an LLM privacy scanner** | Building the `LLMScanner`: a labelled fixture set, false positives and false negatives against the keyword baseline, sensitivity profiles | When it's built; could be the evals post (H2) evidence | ~1,200 words |
+
+**Timing:** the ROADMAP says to publish only after 1.0, with the repo public, so every link
+works (Q-VS-9). C1–C3 can be drafted now and held as `draft: true`.
+
+**Extra rule for series C:** examples use `sample_data\` or invented notes. Never quote a
+real scan or a `review*.xlsx` (those are sealed); report counts only, like the performance
+baseline.
+
+**Not on this blog:** the ROADMAP's other post, for genealogists ("What your family tree notes
+say about the living"), isn't architecture, so it doesn't belong here. Where it goes is Q-VS-8.
+
+## 4. Publishing rules for all series
 
 - **Nothing confidential crosses.** The running notes stay private. Code excerpts and screen
   captures appear only after John picks them (Q-VS-4).
@@ -118,7 +145,8 @@ relatives, no circle membership, and real ancestors only where they already appe
    reviews; publish.
 3. **Then alternate the two series**, one post every 7–10 days, with the healthcare posts slotted
    in when they're ready: A2, B1, A4, B2, A3, B4. B3 waits until `family.cornelisons.com` is live
-   and its Access rules are checked.
+   and its Access rules are checked. Series C slots in once GEDCOM Privacy Guard 1.0 is public:
+   C1, C2, C3 in alternation with the others; C4 when the web version is live.
 4. **For each post:** a LinkedIn post linking to it (the master plan's article → LinkedIn loop);
    check reach in `D:\Projects\VashonSoftware.com\LinkedinAnayltics\` after a week.
 5. **RangerTrak sessions keep appending** dated notes to the running notes file; post A5 is

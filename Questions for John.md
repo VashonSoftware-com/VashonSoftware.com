@@ -9,3 +9,5 @@
 - **Q-VS-5 (2026-10-27):** Byline "John Cornelison", first person, with a closing line on how Claude helped? Or no AI note?
 - **Q-VS-7 (2026-10-27):** The job-search Content Strategy plans two healthcare posts on this blog in eight weeks. OK to make RangerTrak architecture post 1 the first real post (it's ready; the healthcare posts are waiting on your answers), then alternate the two plans at one post every 7–10 days?
 - **Q-VS-6 (2026-10-27):** Go ahead with step 1 (blog prep) and a draft of post 1?
+- **Q-VS-8 (2026-10-29):** The GEDCOM Privacy Guard ROADMAP also plans a post for genealogists ("What your family tree notes say about the living"). That isn't architecture, so it doesn't fit here. Where should it go: the tool's own README/site, a guest post, r/Genealogy, or Cornelisons.com (which is otherwise family-only)?
+- **Q-VS-9 (2026-10-29):** Series C (GEDCOM Privacy Guard): hold publishing until 1.0 is tagged and the repo is public, as its ROADMAP says? Or publish C1–C3 sooner, without repo links?
