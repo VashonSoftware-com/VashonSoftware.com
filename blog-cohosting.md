@@ -15,7 +15,7 @@
 
 VS goes live 2026-11-03 (deploy hook secret is set). CC status:
 - ✅ v0.2.42 **pushed** 2026-10-30: cornelisons.com/blog is live (empty).
-- ✅ `scheduled-publish.yml` added (v0.2.43, committed, **not pushed**). **Still missing:
+- ✅ `scheduled-publish.yml` added (v0.2.43, pushed 2026-10-30; the drafts stay hidden). **Still missing:
   `CF_PAGES_DEPLOY_HOOK`** (John, Q-AC-60), so a future-dated copy won't appear on its date yet.
 - ✅ B1 and B2 copies in CC's `src/content/blog/` with `draft: true`, `canonical` to VS and a
   short intro (v0.2.43). John reads them in `dev` (Q-AC-60); then CC drops `draft` and pushes.
