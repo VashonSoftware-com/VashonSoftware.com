@@ -11,19 +11,19 @@
 | **CC** — Cornelisons.com | `D:\Projects\Cornelisons.com` | Host and author. Genealogy posts for families and genealogists. Author of series B (the site build). Copies of series B and genealogy-facing C posts. |
 | **GPG** — GEDCOM Privacy Guard | `D:\Projects\Genealogy\gedcom-privacy-guard` | Author. First source of posts (series C and the genealogists' post). Hosts nothing. |
 
-## 0. CC to-do before the first copy (VS check, 2026-10-30)
+## 0. CC to-do before the first copy (CC update, 2026-10-30)
 
-VS goes live 2026-11-03 (deploy hook secret is set). CC is **not ready to copy**:
-- Blog commit `284dc4f` (v0.2.42) is **not pushed**, so cornelisons.com/blog isn't live
-  (pushing `main` deploys). `canonical` and "First published on" are already in place.
-- **No `scheduled-publish.yml`** in `.github/workflows/` and **no `CF_PAGES_DEPLOY_HOOK`
-  secret**, so a future-dated copy won't appear on its date (task 6).
-- `src/content/blog/` holds only `.gitkeep`: **no copies yet** (task 7).
+VS goes live 2026-11-03 (deploy hook secret is set). CC status:
+- ✅ v0.2.42 **pushed** 2026-10-30: cornelisons.com/blog is live (empty).
+- ✅ `scheduled-publish.yml` added (v0.2.43, committed, **not pushed**). **Still missing:
+  `CF_PAGES_DEPLOY_HOOK`** (John, Q-AC-60), so a future-dated copy won't appear on its date yet.
+- ✅ B1 and B2 copies in CC's `src/content/blog/` with `draft: true`, `canonical` to VS and a
+  short intro (v0.2.43). John reads them in `dev` (Q-AC-60); then CC drops `draft` and pushes.
 
 | By | CC does | Waits on |
 |---|---|---|
-| 2026-11-07 | Push v0.2.42; add the workflow; John adds the hook (public Pages project only) | John: the hook |
-| 2026-11-07 | B1 copy (pubDate 2026-11-10) and B2 copy (2026-11-24), `canonical` to VS, short intro | John reads both in `dev` |
+| 2026-11-07 | ✅ Push v0.2.42; ✅ add the workflow (v0.2.43); John adds the hook (public Pages project only) | John: the hook (Q-AC-60) |
+| 2026-11-07 | ✅ B1 copy (pubDate 2026-11-10) and B2 copy (2026-11-24) as drafts, `canonical` to VS, short intro | John reads both in `dev` (Q-AC-60) |
 | 2026-11-14 | C2 and C3 copies | Q-VS-11 (dates may move) and Q-VS-13 (repo-link line) |
 
 ## 1. Are we ready? (2026-10-29)
@@ -134,8 +134,8 @@ VS goes live 2026-11-03 (deploy hook secret is set). CC is **not ready to copy**
 
 | Post | Author | Canonical | Copy | State |
 |---|---|---|---|---|
-| B1 Stories, not pedigrees | CC | VS | CC | approved; VS 2026-11-10; CC copy to add |
-| B2 Dead only on evidence | CC | VS | CC | approved; VS 2026-11-24 (after C2, which it links to); CC copy to add |
+| B1 Stories, not pedigrees | CC | VS | CC | approved; VS 2026-11-10; CC copy drafted (v0.2.43) |
+| B2 Dead only on evidence | CC | VS | CC | approved; VS 2026-11-24 (after C2, which it links to); CC copy drafted (v0.2.43; C2 link points to VS for now) |
 | B4 Make the build refuse to leak | CC | VS | CC | not started |
 | C2 The Great Depression is not a diagnosis | GPG | VS | CC | approved; VS 2026-11-17; CC copy to add |
 | C3 Fix it at the source | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
