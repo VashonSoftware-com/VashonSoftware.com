@@ -11,6 +11,21 @@
 | **CC** — Cornelisons.com | `D:\Projects\Cornelisons.com` | Host and author. Genealogy posts for families and genealogists. Author of series B (the site build). Copies of series B and genealogy-facing C posts. |
 | **GPG** — GEDCOM Privacy Guard | `D:\Projects\Genealogy\gedcom-privacy-guard` | Author. First source of posts (series C and the genealogists' post). Hosts nothing. |
 
+## 0. CC to-do before the first copy (VS check, 2026-10-30)
+
+VS goes live 2026-11-03 (deploy hook secret is set). CC is **not ready to copy**:
+- Blog commit `284dc4f` (v0.2.42) is **not pushed**, so cornelisons.com/blog isn't live
+  (pushing `main` deploys). `canonical` and "First published on" are already in place.
+- **No `scheduled-publish.yml`** in `.github/workflows/` and **no `CF_PAGES_DEPLOY_HOOK`
+  secret**, so a future-dated copy won't appear on its date (task 6).
+- `src/content/blog/` holds only `.gitkeep`: **no copies yet** (task 7).
+
+| By | CC does | Waits on |
+|---|---|---|
+| 2026-11-07 | Push v0.2.42; add the workflow; John adds the hook (public Pages project only) | John: the hook |
+| 2026-11-07 | B1 copy (pubDate 2026-11-10) and B2 copy (2026-11-24), `canonical` to VS, short intro | John reads both in `dev` |
+| 2026-11-14 | C2 and C3 copies | Q-VS-11 (dates may move) and Q-VS-13 (repo-link line) |
+
 ## 1. Are we ready? (2026-10-29)
 
 - **VS: scheduled (2026-10-29).** John approved A1, B1, B2, C2, C3; `draft` removed, pubDates
