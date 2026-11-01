@@ -1,37 +1,53 @@
-# Parked domains: each gets a page at /domains/<domain>/ (src/pages/domains/[domain].astro).
-# One domain per line; # starts a comment. Master list with notes:
-# D:\Projects\domainManagement\Claude\parked-domains.txt; keep the two in step.
+# GENERATED: do not edit. Each domain gets a page at /domains/<domain>/.
+# Source of truth: D:\Projects\domainManagement\Claude\domain-uses.csv
+# Regenerate there with: python cf.py export-parked
 1foc.us
 213log.com
 213log.org
+active-code.com
 agileeoc.com
 agileeoc.org
 agileoc.org
 aglobalwarming.com
 akilter.com
+atvashon.com
 atvashonmaury.com
+bikevashon.com
 bikevashon.org
 climaterestored.org
 cornelisons.net
 cornelisons.org
 dnnnw.com
 dnnnw.org
+ehealthnw.com
+ehealthnw.net
 ehealthnw.org
 eocalways.com
 eocalways.org
 eocsoftware.com
 eocsoftware.org
 eocsw.org
+forvashon.com
 forvashon.org
 funsit.com
+greenwidgets.org
+healthreportcard.org
+healthyvashon.com
+healthyvashon.org
 jahnty.com
+johncornelison.net
 moderneoc.com
+myhealthreport.org
+myhealthsummary.org
 nwhin.org
 onvashonmaury.com
+pugethealth.com
+pugethealth.org
 v11.us
 valuesandverses.com
 valuesandverses.org
 vasho.com
+vashonhealth.org
 vashonisle.com
 vashonisle.org
 vashonmassage.com
