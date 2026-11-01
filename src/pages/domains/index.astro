@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DomainsLanding from '@/components/DomainsLanding.astro';
+import { parkedDomains } from '@/lib/parked-domains';
+---
+
+<BaseLayout
+  title="Domains & Email — Vashon Software"
+  description="Your own domain, email that reaches inboxes, and a website to match. Set up and looked after by Vashon Software for small businesses, nonprofits and community groups."
+>
+  <DomainsLanding>
+    <section class="py-16 border-t">
+      <div class="container max-w-5xl mx-auto px-4">
+        <div class="max-w-2xl">
+          <h2 class="text-2xl font-bold md:text-3xl">Domains held by Vashon Software</h2>
+          <p class="mt-4 text-muted-foreground leading-relaxed">
+            Looking for a group that used one of these names, or interested in one?
+            <a href="/contact" class="text-primary hover:underline">Ask</a>.
+          </p>
+        </div>
+        <ul class="mt-6 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2 md:grid-cols-3">
+          {parkedDomains.map((domain) => (
+            <li><a href={`/domains/${domain}/`} class="hover:underline">{domain}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </DomainsLanding>
+</BaseLayout>

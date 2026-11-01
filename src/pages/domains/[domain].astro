@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DomainsLanding from '@/components/DomainsLanding.astro';
+import { parkedDomains } from '@/lib/parked-domains';
+
+// One page per parked domain, so each has a real URL that Cloudflare Web Analytics
+// counts separately. Canonical points at /domains/ since the content is shared.
+
+export function getStaticPaths() {
+  return parkedDomains.map((domain) => ({ params: { domain } }));
+}
+
+const { domain } = Astro.params;
+---
+
+<BaseLayout
+  title={`${domain} — Domains & Email`}
+  description={`${domain} is held by Vashon Software. Your own domain, email that reaches inboxes, and a website to match, for small businesses, nonprofits and community groups.`}
+  canonical={new URL('/domains/', Astro.site).href}
+>
+  <DomainsLanding domain={domain} />
+</BaseLayout>

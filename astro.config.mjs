@@ -9,6 +9,8 @@ export default defineConfig({
     changefreq: 'weekly',
     priority: 0.7,
     lastmod: new Date(),
+    // Per-domain parked pages are canonical to /domains/; list only that one
+    filter: (page) => !/\/domains\/[^/]+\/$/.test(page),
   }), svelte()],
   vite: {
     plugins: [tailwindcss()],

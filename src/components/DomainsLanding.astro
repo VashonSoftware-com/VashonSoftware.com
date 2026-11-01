@@ -1,0 +1,127 @@
+---
+import CTA from '@/components/sections/CTA.astro';
+
+// Body of the /domains/ pages. With `domain`, a banner names the parked domain
+// the visitor came from (Cloudflare 301s each parked domain to /domains/<domain>/).
+
+interface Props {
+  domain?: string;
+}
+
+const { domain } = Astro.props;
+
+const offers = [
+  {
+    title: 'Domains',
+    items: [
+      'Registered in your name and your account, so you always own it',
+      'I manage renewals, DNS and transfers for you',
+      'Help choosing a name, and moving one you already have',
+    ],
+  },
+  {
+    title: 'Email',
+    items: [
+      'Addresses at your own domain, such as info@yourgroup.org',
+      'Often that just means sending and receiving from the Gmail you already use; where you need more, full mailboxes',
+      'SPF, DKIM and DMARC set up properly, so your mail reaches inboxes instead of spam',
+    ],
+  },
+  {
+    title: 'Websites',
+    items: [
+      'Fast, mobile-first sites with near-zero hosting cost',
+      'Easy for your team to update',
+      'Domain, email and site together, if that suits you',
+    ],
+  },
+];
+
+const bigger = [
+  { href: '/services#health-it', label: 'Health IT & Architecture' },
+  { href: '/services#disaster-technology', label: 'Disaster Technology' },
+  { href: '/services#crafted-software', label: 'Custom Applications' },
+];
+---
+
+{domain && (
+  <section class="border-b bg-muted/30">
+    <div class="container max-w-5xl mx-auto px-4 py-6">
+      <p class="text-lg">
+        <strong class="font-semibold">{domain}</strong> is held by Vashon Software.
+      </p>
+      <p class="mt-2 text-sm text-muted-foreground leading-relaxed">
+        Looking for the group or project that used this name? <a href="/contact" class="text-primary hover:underline">Let me know</a>
+        and I'll point you to it. Interested in the name itself? Ask; it may be available to the right group.
+      </p>
+    </div>
+  </section>
+)}
+
+<section class="py-20 md:py-28">
+  <div class="container max-w-5xl mx-auto px-4">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl font-bold tracking-tight md:text-5xl">Domains, email and websites</h1>
+      <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+        For small businesses, nonprofits and community groups: your own domain, email that
+        arrives, and a site if you want one. Set up to fit what you need, by someone local.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {offers.map((offer) => (
+        <div class="rounded-lg border p-6">
+          <h2 class="text-xl font-semibold">{offer.title}</h2>
+          <ul class="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed">
+            {offer.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-16 border-t bg-muted/20">
+  <div class="container max-w-5xl mx-auto px-4">
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-bold md:text-3xl">You own it</h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Too many groups have lost their domain when the volunteer who registered it moved on.
+        Your domain and email accounts are registered to you, with me as the manager. If you
+        ever leave, everything stays with you.
+      </p>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        There are no fixed packages. We start with a short conversation about what you need,
+        and I suggest the simplest setup that does it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<slot />
+
+<section class="py-16 border-t">
+  <div class="container max-w-5xl mx-auto px-4">
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-bold md:text-3xl">Bigger projects</h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Vashon Software also designs and builds larger systems:
+      </p>
+      <ul class="mt-4 flex flex-wrap gap-3 text-sm">
+        {bigger.map((link) => (
+          <li>
+            <a href={link.href} class="inline-block rounded-md border px-4 py-2 hover:bg-muted transition-colors">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<CTA
+  title="Need a domain, email or a site?"
+  description="Tell me what you have and what you need. Most small projects get a same-week response."
+  cta={{ href: '/contact', label: 'Contact John' }}
+/>
