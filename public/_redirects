@@ -1,0 +1,5 @@
+# Parked domains 301 to /domains/<domain>/ (e.g. /domains/bikevashon.org/).
+# Serve the one /domains/ page for each; the page reads the domain from the path.
+# Separate paths let Cloudflare Web Analytics count each domain.
+/domains/:name/ /domains/ 200
+/domains/:name /domains/ 200

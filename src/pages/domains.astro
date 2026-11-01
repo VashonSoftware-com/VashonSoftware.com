@@ -2,8 +2,9 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CTA from '@/components/sections/CTA.astro';
 
-// Landing page for parked domains. Cloudflare 301s each parked domain here as
-// /domains?from=<host>; the script below names that domain in the banner.
+// Landing page for parked domains. Cloudflare 301s each parked domain to
+// /domains/<host>/; public/_redirects serves this page there, and the script
+// below names that domain in the banner.
 
 const offers = [
   {
@@ -124,8 +125,8 @@ const bigger = [
 </BaseLayout>
 
 <script>
-  // Name the parked domain the visitor came from. Only plain domain names are shown.
-  const from = new URLSearchParams(location.search).get('from')?.toLowerCase().replace(/^www\./, '');
+  // Name the parked domain the visitor came from (/domains/<host>/). Only plain domain names are shown.
+  const from = location.pathname.match(/^\/domains\/([^/]+)\/?$/)?.[1]?.toLowerCase().replace(/^www\./, '');
   if (from && /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(from) && from.length <= 253) {
     const banner = document.getElementById('from-banner');
     const name = document.getElementById('from-domain');
