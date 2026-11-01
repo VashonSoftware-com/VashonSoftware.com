@@ -146,13 +146,15 @@ VS goes live 2026-11-03 (deploy hook secret is set). CC status:
 
 | Date | Post | Slug |
 |---|---|---|
-| 2026-11-03 | A1 "No spaghetti" as a check | `architecture-pass-rangertrak` |
+| 2026-11-01 (Sun) | A1 "No spaghetti" as a check | `architecture-pass-rangertrak` |
 | 2026-11-10 | B1 Stories, not pedigrees | `stories-not-pedigrees` |
-| 2026-11-17 | C2 The Great Depression is not a diagnosis | `great-depression-is-not-a-diagnosis` |
+| 2026-11-17 | C1 Never auto-delete, always auto-flag | `never-auto-delete-always-auto-flag` |
 | 2026-11-24 | B2 Dead only on evidence | `dead-only-on-evidence` |
-| 2026-12-01 | C3 Fix it at the source | `fix-it-at-the-source` |
+| 2026-12-01 | C2 The Great Depression is not a diagnosis | `great-depression-is-not-a-diagnosis` |
+| 2026-12-08 | C3 Fix it at the source | `fix-it-at-the-source` |
+| 2026-12-15 | A2 The layout shift only PageSpeed could see | `layout-shift-only-pagespeed-could-see` |
 
-Open: C2/C3 show "Part 2/3" while C1 waits for the repo to go public (John to decide).
+2026-10-31 (John, Q-VS-11/14): series C reordered so it reads in order; A2 and C1 approved; A1 moved up to 11-01.
 
 ## 5. Order
 

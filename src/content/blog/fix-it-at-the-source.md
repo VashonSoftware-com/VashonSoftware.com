@@ -1,7 +1,7 @@
 ---
 title: "Fix it at the source: working with the desktop app, not around it"
 description: "A privacy tool for family trees could clean every export forever, or point you at the one note to fix in the program you already use. Why I chose the second, rejected automatic reimport after checking how the import really works, and never 'fix' a name."
-pubDate: 2026-12-01
+pubDate: 2026-12-08
 tags: ["architecture", "privacy", "genealogy", "adr", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 3 }
 ---
@@ -118,7 +118,8 @@ rejected, with the reason, so nobody builds it by accident later. Then make your
 footprint as small as you can: change only what the person approved, and leave the rest
 exactly as you found it.
 
-The code goes public soon.
+The code is at [github.com/VashonSoftware-com/gedcom-privacy-guard](https://github.com/VashonSoftware-com/gedcom-privacy-guard),
+MIT-licensed, and in beta.
 
 ---
 

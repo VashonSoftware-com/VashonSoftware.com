@@ -1,7 +1,7 @@
 ---
 title: '"No spaghetti" as a check, not a hope: an architecture pass on a live Angular app'
 description: "Three answers to one question, a decision record that had quietly stopped, and no linter at all. How we added a business-rules layer to RangerTrak without a rewrite, and what still didn't work."
-pubDate: 2026-11-03
+pubDate: 2026-11-01
 tags: ["architecture", "angular", "eslint", "rangertrak"]
 series: { name: "Architecture in practice", part: 1 }
 ---

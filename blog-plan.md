@@ -1,6 +1,6 @@
 # VashonSoftware.com blog plan: the architecture series
 
-**Status:** draft for John's review · **Updated:** 2026-10-29 (Claude Opus 5.5)
+**Status:** draft for John's review · **Updated:** 2026-10-31 (Claude Opus 5.5)
 **Open questions:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\Questions for John.md`
 **Co-hosting with Cornelisons.com and GEDCOM Privacy Guard (who hosts what, shared front matter, tasks per session):** `D:\Projects\VashonSoftware.com\VashonSoftware.com\blog-cohosting.md`
 **Main source so far:** `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\VashonSoftware post - RangerTrak architecture pass - running notes.md`
@@ -26,20 +26,24 @@ Daily rebuild: `.github/workflows/scheduled-publish.yml` (needs secret `CF_PAGES
 as `src/content/blog/layout-shift-only-pagespeed-could-see.md` (`draft: true`, placeholder
 pubDate 2026-12-15, ~1,200 words; fix code checked against RangerTrak commit `15c79379`).
 
+**Done 2026-10-31:** John answered Q-VS-11 to 14 (all yes). Schedule, every week: A1 **Sun 11-01**
+(moved up, John: "start tomorrow"), B1 11-10, C1 11-17, B2 11-24, C2 12-01, C3 12-08, A2 12-15
+(`blog-cohosting.md` section 4c). C2/C3 now end with the repo link. LinkedIn posts for C1 and A2
+added; all approved. The deploy hook secret is set and the daily rebuild (06:00 Pacific) works.
+
 Next:
-1. **John:** create the Cloudflare Pages deploy hook (vashonsoftware, branch main) and save it as
-   GitHub secret `CF_PAGES_DEPLOY_HOOK`; answer Q-VS-11 (series C order), Q-VS-12 (LinkedIn
-   posts), Q-VS-13 (C2/C3 "goes public soon" line), Q-VS-14 (A2).
-2. **2026-11-03 morning:** check the A1 link opens, re-measure the ⟳ numbers, post A1's LinkedIn post.
-3. **Draft A4** ("Copies of knowledge rot", ~800 words) from the running notes (10-02, 10-13).
+1. **John, each posting day:** open the post link, re-check the ⟳ numbers, post the LinkedIn post
+   from `linkedin-posts.md` (link in the first comment), add it to Featured.
+2. **Draft A4** ("Copies of knowledge rot", ~800 words) from the running notes (10-02, 10-13), for
+   12-22 or after the holidays.
+3. A week after A1: check reach in `D:\Projects\VashonSoftware.com\LinkedinAnayltics\`.
 
 **Done 2026-10-29 (C1):** GPG P0 done and the repo is public (`0.4.0b1`), so **C1 drafted** as
 `src/content/blog/never-auto-delete-always-auto-flag.md` (`draft: true`, placeholder pubDate
 2026-12-08, ~1,390 words). Every code claim checked against the GPG repo (tests, `samefile`,
-`--force`, line checks, action priority, sample note). Waiting on John: approval and Q-VS-11
-(series order: C1 is part 1 but would publish after parts 2 and 3).
+`--force`, line checks, action priority, sample note). Approved 2026-10-31; live 11-17.
 
-Note: the blog is empty in production until A1 goes live on 2026-11-03.
+Note: the blog is empty in production until A1 goes live on 2026-11-01.
 Still open: Q-VS-10 (a ROADMAP fix in the GEDCOM Privacy Guard repo; doesn't block anything here).
 
 ## 1. The blog scene: who publishes what

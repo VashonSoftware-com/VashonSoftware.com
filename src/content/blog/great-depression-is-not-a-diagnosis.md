@@ -1,7 +1,7 @@
 ---
 title: "The Great Depression is not a diagnosis: the limits of keyword scanning"
 description: "A family-tree privacy scanner flagged the Great Depression as a mental-health finding. Fixing that taught me where word lists stop working, why the report must never guess who someone is, and what an AI scanner would have to respect."
-pubDate: 2026-11-17
+pubDate: 2026-12-01
 tags: ["architecture", "privacy", "genealogy", "python", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 2 }
 ---
@@ -133,7 +133,8 @@ beats a cleverer one without it. Make the wrong answers cheap to dismiss, never 
 guessing, and when you add the clever scanner, put its answers next to the simple ones, not in
 place of them.
 
-The code goes public soon.
+The code is at [github.com/VashonSoftware-com/gedcom-privacy-guard](https://github.com/VashonSoftware-com/gedcom-privacy-guard),
+MIT-licensed, and in beta.
 
 ---
 

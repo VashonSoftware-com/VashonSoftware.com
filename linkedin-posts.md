@@ -1,6 +1,6 @@
 # LinkedIn posts for the blog series
 
-**Written:** 2026-10-29 (Claude Opus 5.5) · **Status:** drafts for John's review
+**Written:** 2026-10-29 (Claude Opus 5.5) · **Status:** approved by John 2026-10-31 (Q-VS-12); C1 and A2 added 2026-10-31
 **Schedule:** `D:\Projects\VashonSoftware.com\VashonSoftware.com\blog-cohosting.md` section 4c.
 
 **How to post** (from `D:\sys\john\docs\_Obsidian\JobSearch\Content Strategy\Content Strategy - Current State.md`, section 6):
@@ -16,7 +16,7 @@ the blog post against the repo) the morning you post.
 
 ---
 
-## A1 · Tue 2026-11-03 · "No spaghetti" as a check, not a hope
+## A1 · Sun 2026-11-01 · "No spaghetti" as a check, not a hope
 
 ⟳ 702 warnings, 44 domain files, 0 errors / 468 files, map component 1,521 lines.
 
@@ -92,38 +92,35 @@ The site itself: https://cornelisons.com
 
 ---
 
-## C2 · Tue 2026-11-17 · The Great Depression is not a diagnosis
+## C1 · Tue 2026-11-17 · Never auto-delete, always auto-flag
 
-**Body** (~345 words)
+**Body** (~320 words)
 
-My privacy scanner flagged the Great Depression as a mental-health finding.
+My privacy tool could delete what it finds. On purpose, it doesn't.
 
-GEDCOM Privacy Guard is a small open-source tool for genealogists. Before you share a family tree, it flags notes that shouldn't go along with it: illness, arrests, rumors, phone numbers. Harmless about someone who died in 1890. Not harmless about your living aunt.
+GEDCOM Privacy Guard scans a family-tree export for notes that shouldn't be shared: a living cousin's diagnosis, an arrest, a rumor written down as fact. Its first decision record says it in five words: never auto-delete, always auto-flag.
 
-It's a keyword scanner, and the first real export taught me its limits within a minute. "They lost the farm in the Great Depression." "He wrote home from WWII prison camps." Neither is about anyone's health or record. Both were flagged.
+Why not just remove the matches? Because a keyword doesn't understand context. "Institutionalized" can mean a hospital, an orphanage or a college. An automatic deletion on a false positive is a silent data-loss bug in decades of someone's research, found years later, if ever. A false positive in a review list costs two seconds to mark "keep".
 
-What helped, in order:
-• Show enough context to judge. Wider snippets, with the match highlighted. Most false positives became a two-second "keep". It's the cheapest fix: accept the scanner will be wrong, and make being wrong cheap.
-• Make the matcher less naive: whole words, wildcards, and exception phrases such as "prisoner of war".
+So the tool finds, a person decides, and only then does it write a new file:
 
-Where word lists stop working:
-• Exceptions go phrase by phrase, and English has an endless supply of the next phrase.
-• Tightening one way loosens the other. A false positive costs a reviewer seconds. A false negative is the failure the tool exists to prevent.
-• The worst disclosures have no keywords. "He was never the same after he came home, and the family stopped talking about it."
+1. scan writes a review spreadsheet. Close the laptop, send it to the cousin who knows that branch, come back next week. The decision lives in a file, not a dialog that's gone once clicked.
 
-That last one is what a language model is good at. So I wrote down its constraints before writing any code: off by default (it sends text off the machine), its findings beside the keyword findings and never instead of them, the same interface as every other scanner, and the person still decides.
+2. The review screen is Excel or Google Sheets. Every genealogist already has one. The matched words are highlighted in the snippet, and the action column comes first, with a dropdown. A blank means keep, and a typo stops the run rather than being guessed at.
 
-One more rule, for the report itself: the columns that say who a note is about are filled only from the file, never guessed. A guessed identity in a privacy report is a confident wrong answer about which living person a sensitive note describes.
+3. A spreadsheet invites probing. GEDCOM text is untrusted input, and a cell starting with = is a formula. Every cell is written as text, with a test that tries.
 
-If a person reviews your tool's output, a simple scanner with good context often beats a clever one without it.
+4. "The original is never touched" is enforced, not promised. The tool refuses to write over its inputs (compared as files, not strings), won't replace a half-finished review without --force, and stops with no output if the spreadsheet no longer matches the file. Each rule has a test. I held this post until they did.
 
-Link in the first comment.
+When a tool's mistakes can't be undone, automate the finding and leave the deciding to a person. And don't publish a safety promise until the code enforces it.
 
-#Privacy #Genealogy #SoftwareArchitecture
+Part 1 of a short series. Link in the first comment.
+
+#Privacy #SoftwareArchitecture #Genealogy
 
 **First comment**
 
-The full post: https://vashonsoftware.com/blog/great-depression-is-not-a-diagnosis/
+The full post: https://vashonsoftware.com/blog/never-auto-delete-always-auto-flag/
 The code (open source, beta): https://github.com/VashonSoftware-com/gedcom-privacy-guard
 
 ---
@@ -164,7 +161,44 @@ Part 1, on why I built the site: https://vashonsoftware.com/blog/stories-not-ped
 
 ---
 
-## C3 · Tue 2026-12-01 · Fix it at the source
+## C2 · Tue 2026-12-01 · The Great Depression is not a diagnosis
+
+**Body** (~345 words)
+
+My privacy scanner flagged the Great Depression as a mental-health finding.
+
+GEDCOM Privacy Guard is a small open-source tool for genealogists. Before you share a family tree, it flags notes that shouldn't go along with it: illness, arrests, rumors, phone numbers. Harmless about someone who died in 1890. Not harmless about your living aunt.
+
+It's a keyword scanner, and the first real export taught me its limits within a minute. "They lost the farm in the Great Depression." "He wrote home from WWII prison camps." Neither is about anyone's health or record. Both were flagged.
+
+What helped, in order:
+• Show enough context to judge. Wider snippets, with the match highlighted. Most false positives became a two-second "keep". It's the cheapest fix: accept the scanner will be wrong, and make being wrong cheap.
+• Make the matcher less naive: whole words, wildcards, and exception phrases such as "prisoner of war".
+
+Where word lists stop working:
+• Exceptions go phrase by phrase, and English has an endless supply of the next phrase.
+• Tightening one way loosens the other. A false positive costs a reviewer seconds. A false negative is the failure the tool exists to prevent.
+• The worst disclosures have no keywords. "He was never the same after he came home, and the family stopped talking about it."
+
+That last one is what a language model is good at. So I wrote down its constraints before writing any code: off by default (it sends text off the machine), its findings beside the keyword findings and never instead of them, the same interface as every other scanner, and the person still decides.
+
+One more rule, for the report itself: the columns that say who a note is about are filled only from the file, never guessed. A guessed identity in a privacy report is a confident wrong answer about which living person a sensitive note describes.
+
+If a person reviews your tool's output, a simple scanner with good context often beats a clever one without it.
+
+Link in the first comment.
+
+#Privacy #Genealogy #SoftwareArchitecture
+
+**First comment**
+
+The full post: https://vashonsoftware.com/blog/great-depression-is-not-a-diagnosis/
+The code (open source, beta): https://github.com/VashonSoftware-com/gedcom-privacy-guard
+Part 1, on the review-first design: https://vashonsoftware.com/blog/never-auto-delete-always-auto-flag/
+
+---
+
+## C3 · Tue 2026-12-08 · Fix it at the source
 
 **Body** (~330 words)
 
@@ -192,3 +226,39 @@ Link in the first comment.
 
 The full post: https://vashonsoftware.com/blog/fix-it-at-the-source/
 The code (open source, beta): https://github.com/VashonSoftware-com/gedcom-privacy-guard
+
+---
+
+## A2 · Tue 2026-12-15 · The layout shift only PageSpeed could see
+
+**Body** (~320 words)
+
+PageSpeed gave my app a layout shift score of 0.49 on every run. Nine local runs said 0.
+
+RangerTrak is an open-source, offline-first Angular app for emergency-response volunteers. Mobile PageSpeed blamed the whole shift on the start page's <main>. Locally I tried simulated and real throttling, 8× and 16× CPU slowdown, delayed fonts, delayed lazy chunks, even real Linux Chrome in Docker. Nothing.
+
+One run did show a real shift: a font swap widened a button and wrapped a row. I fixed it and shipped it. PageSpeed said 0.492. I had fixed what I could measure and assumed it was what had been reported.
+
+Two questions cracked it:
+
+1. What movement gives that number? A font nudge scores in the hundredths. Near 0.5 on a full-screen element means it moved a long way.
+
+2. How does the lab measure? PageSpeed loads at full speed and models a slow phone afterwards. Every one of my reproductions added real slowness. If the bug only happened on a fast load, I'd been hiding it.
+
+An unthrottled probe caught it at once. With zoneless Angular, RouterOutlet creates the page, but its first update pass (the @if around the header) runs one task later. On a fast load the browser painted in that gap: <main> without its header, then a 137-pixel header pushing everything down.
+
+The fix was three lines: run change detection in the outlet's activate event, so the first update happens before the first paint. CLS 0.492 → 0.002, Performance 50 → 75.
+
+What I took from it:
+• When a lab score won't reproduce, find out how the lab measures before adding throttle settings.
+• Work backwards from the number.
+• Prove the probe can fail before trusting it when it passes.
+
+Link and the code in the first comment.
+
+#Angular #WebPerformance #SoftwareArchitecture
+
+**First comment**
+
+The full post: https://vashonsoftware.com/blog/layout-shift-only-pagespeed-could-see/
+RangerTrak's code (AGPL): https://github.com/SteadyEOC/RangerTrak
