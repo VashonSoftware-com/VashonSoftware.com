@@ -1,7 +1,7 @@
 ---
 title: "Dead only on evidence: the living-person rule as code"
 description: "A family tree is full of people with no death date, and many of them are alive. The rule that keeps them off a public website is about a hundred lines of JavaScript, written down once and shared by two tools."
-pubDate: 2026-11-24
+pubDate: 2026-11-09
 tags: ["architecture", "privacy", "genealogy", "testing", "cornelisons-com"]
 series: { name: "Building a family history site that keeps the living private", part: 2 }
 ---
@@ -140,7 +140,7 @@ page's text or in the public search index.
 
 ## One rules file, two tools
 
-I'm also building [GEDCOM Privacy Guard](/blog/great-depression-is-not-a-diagnosis), a scanner
+I'm also building [GEDCOM Privacy Guard](https://github.com/VashonSoftware-com/gedcom-privacy-guard), a scanner
 that flags sensitive notes in a GEDCOM file before you share it. It needs the same answer to
 "who is alive?". Rather than let the two drift apart, the rules and their reasons live in one
 document in that repo, and both tools follow it. A change goes into that document first, then

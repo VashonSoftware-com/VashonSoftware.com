@@ -1,7 +1,7 @@
 ---
 title: "Stories, not pedigrees: why build your own family history site"
 description: "FamilySearch and Ancestry already hold the family tree. What they don't hold is the stories. Here is why I built a small static site for those instead, with the genealogy program kept as the one master copy of the facts."
-pubDate: 2026-11-10
+pubDate: 2026-11-03
 tags: ["architecture", "genealogy", "astro", "privacy", "cornelisons-com"]
 series: { name: "Building a family history site that keeps the living private", part: 1 }
 ---

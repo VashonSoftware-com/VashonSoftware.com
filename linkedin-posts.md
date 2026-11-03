@@ -59,7 +59,7 @@ RangerTrak's code (AGPL): https://github.com/SteadyEOC/RangerTrak
 
 ---
 
-## B1 · Tue 2026-11-10 · Stories, not pedigrees
+## B1 · Tue 2026-11-03 · Stories, not pedigrees
 
 ⟳ 57 people on the public site.
 
@@ -125,7 +125,7 @@ The code (open source, beta): https://github.com/VashonSoftware-com/gedcom-priva
 
 ---
 
-## B2 · Tue 2026-11-24 · Dead only on evidence
+## B2 · Mon 2026-11-09 · Dead only on evidence
 
 ⟳ 16 tests.
 
