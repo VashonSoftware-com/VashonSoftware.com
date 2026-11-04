@@ -61,6 +61,8 @@ RangerTrak's code (AGPL): https://github.com/SteadyEOC/RangerTrak
 
 ## B1 · Tue 2026-11-03 · Stories, not pedigrees
 
+✅ **Posted 2026-11-04:** https://lnkd.in/p/gBGFP7a3
+
 ⟳ 57 people on the public site.
 
 **Body** (~290 words)
