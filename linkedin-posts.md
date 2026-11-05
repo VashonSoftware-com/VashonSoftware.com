@@ -18,6 +18,8 @@ the blog post against the repo) the morning you post.
 
 ## A1 · Sun 2026-11-01 · "No spaghetti" as a check, not a hope
 
+✅ **Posted 2026-11-05:** https://lnkd.in/p/gZbaDqzX · reach check in Outlook 2026-11-12 08:00
+
 ⟳ 702 warnings, 44 domain files, 0 errors / 468 files, map component 1,521 lines.
 
 **Body** (~330 words)
