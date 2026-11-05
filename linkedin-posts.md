@@ -9,7 +9,9 @@
 2. Paste the body as a native text post. **No link in the body.**
 3. Straight away, add the "First comment" text as a comment on your own post.
 4. Add the blog post to LinkedIn Featured.
-5. A week later, check reach in `D:\Projects\VashonSoftware.com\LinkedinAnayltics\`.
+5. A week later, check reach. **domainAnalytics owns this** (`D:\Projects\domainAnalytics\README.md`,
+   "LinkedIn creator analytics"): export, then run its `linkedin_import.py`. Sessions here only
+   log the posted link above each post and add the week-later Outlook reminder.
 
 **Re-measure on the day:** numbers marked ⟳ can drift. Check them against the blog post (and
 the blog post against the repo) the morning you post.
