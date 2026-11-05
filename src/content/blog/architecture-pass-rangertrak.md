@@ -12,6 +12,9 @@ and radio traffic. It runs on whatever phone or laptop is at hand, often with no
 people rely on it during real incidents. The code is open source under the AGPL:
 [github.com/SteadyEOC/RangerTrak](https://github.com/SteadyEOC/RangerTrak).
 
+![A RangerTrak printable map from a missing-person search exercise near the Grand Canyon's South Rim. Each team's radio-log positions are plotted as coloured markers with routes from older to newer entries, range rings around the command post, minutes-since-check-in badges, a legend, and an incident title block.](../../assets/blog/rangertrak-missing-person-map.webp)
+*Sample RangerTrak output: the printable incident map from a missing-person training exercise.*
+
 This post is about one month of architecture work on it, from 1 October to 29 October 2026,
 with the numbers measured on the days they happened. The short version: **we made "no
 spaghetti" a check the build enforces, rather than a hope the team holds.** Most of that worked.
