@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .file { position: absolute; width: 170px; text-align: center; font-family: 'Geist Mono'; font-size: 17px; padding: 14px 8px; }
+  .file small { font-family: 'Geist'; }
+  .cmd { position: absolute; font-family: 'Geist Mono'; font-size: 15px; color: var(--green); font-weight: 600; }
+  .sheet { position: absolute; left: 330px; top: 200px; width: 540px; background: #fff; border: 2px solid #8fb89a; border-radius: 8px; overflow: hidden; font-size: 15px; }
+  .sheet table { border-collapse: collapse; width: 100%; }
+  .sheet th { background: #1e6b3a; color: #fff; font-weight: 600; text-align: left; padding: 7px 9px; font-size: 14px; }
+  .sheet td { border-top: 1px solid #dfe5df; padding: 8px 9px; vertical-align: top; }
+  .sheet td.act { width: 98px; font-family: 'Geist Mono'; font-weight: 650; background: #fbf6e8; border-right: 2px solid #e2c98f; }
+  .sheet td.who { width: 120px; }
+  .who small { display: block; color: var(--muted); font-size: 12.5px; }
+  .caption { position: absolute; left: 300px; top: 412px; width: 600px; font-size: 16px; color: var(--muted); text-align: center; }
+  .lock { position: absolute; left: 56px; top: 420px; width: 200px; font-size: 15.5px; color: var(--green); font-weight: 600; text-align: center; }
+</style></head><body>
+<div class="kicker">A privacy tool that refuses to decide for you <span class="dot">•</span> Part 1</div>
+<h1>Never auto-delete, <em>always auto-flag</em></h1>
+
+<div class="box file g" style="left:56px; top:260px">family.ged <small>original</small></div>
+<div class="lock">🔒 opened read-only,<br>never written</div>
+
+<span class="cmd" style="left:238px; top:240px">scan →</span>
+
+<div class="sheet"><table>
+  <tr><th>action ▾</th><th>person</th><th>snippet</th></tr>
+  <tr><td class="act" style="color:var(--red)">redact</td><td class="who">John Smith<small>1901–1978</small></td><td>struggled with <span class="hl">alcoholism</span> for much of…</td></tr>
+  <tr><td class="act" style="color:var(--muted)">&nbsp;</td><td class="who">Mary Jones<small>1880–1952</small></td><td>lost the farm in the Great <span class="hl">Depression</span></td></tr>
+  <tr><td class="act" style="color:var(--blue)">privatize</td><td class="who">Robert Smith<small>b. 1931</small></td><td>was <span class="hl">arrested</span> in 1956 after…</td></tr>
+</table></div>
+<div class="caption">👤 A person decides each row. <b>A blank means keep.</b> A typo stops the run.</div>
+
+<div style="position:absolute; left:300px; top:470px; width:600px; text-align:center; font-size:16px"><span class="pill g">keep / blank</span> <span class="pill r">redact</span> <span class="pill a">rewrite:&lt;text&gt;</span> <span class="pill" style="background:var(--blue);color:#fff">privatize</span></div>
+<span class="cmd" style="left:888px; top:240px">redact →</span>
+<div class="box file a" style="left:974px; top:260px">family-shared.ged <small>a new file</small></div>
+
+<svg class="wires" width="1200" height="630">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#17572b"/></marker></defs>
+  <g stroke="#17572b" stroke-width="3" fill="none">
+    <path d="M228 290 L 326 290" marker-end="url(#ah)"/>
+    <path d="M872 290 L 970 290" marker-end="url(#ah)"/>
+  </g>
+</svg>
+
+<div class="foot"><span><b>GEDCOM Privacy Guard</b> · ADR-001 · find, a person decides, then write a new file</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

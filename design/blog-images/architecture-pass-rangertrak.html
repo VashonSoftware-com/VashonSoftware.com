@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .col { position: absolute; top: 172px; width: 500px; }
+  .left { left: 56px; } .right { left: 644px; }
+  .colhead { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .colhead.bad { color: var(--red); } .colhead.good { color: var(--green); }
+  .comp { position: absolute; width: 150px; text-align: center; font-size: 17px; padding: 9px 6px; }
+  .check { display: block; font-size: 13px; color: var(--red); margin-top: 3px; font-family: 'Geist Mono'; }
+  .layer { position: absolute; left: 0; width: 500px; text-align: center; font-size: 19px; }
+  .rule { position: absolute; font-size: 14.5px; color: var(--red); font-family: 'Geist Mono'; background: var(--paper); padding: 2px 6px; border-radius: 6px; }
+  .divider { position: absolute; left: 598px; top: 176px; width: 2px; height: 380px; background: var(--line); }
+</style></head><body>
+<div class="kicker">Architecture in practice <span class="dot">•</span> RangerTrak</div>
+<h1>"No spaghetti" as a check <em>the build enforces</em></h1>
+
+<div class="divider"></div>
+
+<div class="col left">
+  <div class="colhead bad">Before: one question, answered three ways</div>
+</div>
+<!-- before: three components, each with own check, all reaching into storage -->
+<div class="box comp r" style="left:56px; top:230px">Entry page<span class="check">canLoadDemoData()</span></div>
+<div class="box comp r" style="left:231px; top:230px">Readiness pill<span class="check">untouched roster?</span></div>
+<div class="box comp r" style="left:406px; top:230px">Demo loader<span class="check">marker in storage</span></div>
+<div class="box comp" style="left:56px; top:420px; width:240px; border-style:dashed">localStorage / IndexedDB</div>
+<div class="box comp" style="left:330px; top:420px; width:226px; border-style:dashed">Map component<span style="display:block;font-size:13px;color:var(--muted)">2,852 lines</span></div>
+<div style="position:absolute; left:56px; top:500px; width:500px; font-size:16px; color:var(--muted)">No linter: <span class="mono">tslint</span>, deprecated 2019, not even installed.</div>
+
+<div class="col right">
+  <div class="colhead good">After: one layer, two import rules</div>
+</div>
+<div class="box layer" style="left:644px; top:230px">Components</div>
+<div class="box layer b" style="left:644px; top:328px">Services <small>persistence, Angular, Leaflet</small></div>
+<div class="box layer g" style="left:644px; top:440px; font-weight:650">src/app/domain/ <small>framework-free rules · usage-state.ts: "is this real?"</small></div>
+
+<span class="rule" style="left:782px; top:291px">✗ component → storage</span>
+<span class="rule" style="left:782px; top:404px">✗ domain → Angular, Leaflet, storage</span>
+
+<svg class="wires" width="1200" height="630">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#17572b"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b23b2a"/></marker>
+  </defs>
+  <!-- tangled before -->
+  <g stroke="#b23b2a" stroke-width="2.2" fill="none" opacity=".75">
+    <path d="M131 292 C 120 350, 200 380, 150 420" marker-end="url(#ar)"/>
+    <path d="M306 292 C 330 360, 120 360, 220 420" marker-end="url(#ar)"/>
+    <path d="M481 292 C 470 360, 300 330, 260 420" marker-end="url(#ar)"/>
+    <path d="M131 292 C 200 360, 400 340, 420 420" marker-end="url(#ar)"/>
+    <path d="M481 292 C 520 350, 470 380, 480 420" marker-end="url(#ar)"/>
+    <path d="M306 292 C 290 360, 380 380, 360 420" marker-end="url(#ar)"/>
+  </g>
+  <!-- clean after: arrows point down only -->
+  <g stroke="#17572b" stroke-width="3" fill="none">
+    <path d="M760 280 L760 326" marker-end="url(#ah)"/>
+    <path d="M760 386 L760 438" marker-end="url(#ah)"/>
+    <path d="M1080 280 C 1120 330, 1120 400, 1080 438" marker-end="url(#ah)"/>
+  </g>
+</svg>
+
+<div class="foot"><span><b>ESLint boundary rules gate the deploy</b> · 8 violations found, fixed the same day</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

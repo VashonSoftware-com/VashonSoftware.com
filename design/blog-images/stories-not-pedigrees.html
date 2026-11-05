@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .pipe { position: absolute; left: 56px; top: 168px; display: flex; align-items: center; gap: 0; }
+  .pipe .box { font-size: 17px; padding: 9px 13px; white-space: nowrap; }
+  .arrow { color: var(--green); font-size: 26px; font-weight: 700; padding: 0 8px; }
+  .shot { position: absolute; left: 520px; top: 252px; width: 624px; height: 320px; border-radius: 10px 10px 0 0;
+          overflow: hidden; border: 2px solid #9aa39b; border-bottom: none; background: #fff; box-shadow: 0 8px 26px rgba(0,0,0,.18); }
+  .bar { height: 26px; background: #e7e9e4; display: flex; align-items: center; gap: 6px; padding: 0 10px; }
+  .bar i { width: 10px; height: 10px; border-radius: 50%; background: #c9ccc6; display: block; }
+  .bar span { margin-left: 10px; font-size: 13px; color: var(--muted); background: #fff; border-radius: 6px; padding: 1px 10px; }
+  .shot img { width: 760px; display: block; }
+  .points { position: absolute; left: 56px; top: 262px; width: 430px; font-size: 20px; line-height: 1.35; }
+  .points li { list-style: none; margin-bottom: 15px; padding-left: 30px; position: relative; }
+  .points li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+  .points b { color: var(--green); }
+  .story { position: absolute; left: 920px; top: 160px; width: 224px; font-size: 16px; }
+</style></head><body>
+<div class="kicker">Building a family history site <span class="dot">•</span> Part 1</div>
+<h1>Stories, not pedigrees</h1>
+
+<div class="pipe">
+  <div class="box g">Legacy <small>the master copy</small></div><span class="arrow">→</span>
+  <div class="box mono">GEDCOM</div><span class="arrow">→</span>
+  <div class="box mono">build script</div><span class="arrow">→</span>
+  <div class="box mono">people.json</div><span class="arrow">→</span>
+  <div class="box a">static site</div>
+</div>
+
+<ul class="points">
+  <li><b>One source of truth.</b> Fix it in Legacy; the next export fixes the site.</li>
+  <li><b>Stories come first.</b> Facts only as far as a story needs them.</li>
+  <li><b>Static and rebuilt on push.</b> Nothing to attack at runtime.</li>
+  <li><b>Link out</b> to FamilySearch for the full pedigree.</li>
+</ul>
+
+<div class="shot">
+  <div class="bar"><i></i><i></i><i></i><span>cornelisons.com</span></div>
+  <img src="shots/cornelisons.png" alt="">
+</div>
+
+<div class="foot"><span><b>cornelisons.com</b> · Astro + Cloudflare Pages · privacy rules are code, and the build fails when one breaks</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

@@ -2,6 +2,7 @@
 title: "The layout shift only PageSpeed could see"
 description: "PageSpeed scored a 0.49 layout shift on every run, and nine local runs couldn't reproduce it. The cause was one task's gap in how zoneless Angular renders a routed page. The fix was three lines; finding it meant questioning how the lab measures."
 pubDate: 2026-12-15
+image: /images/blog/layout-shift-only-pagespeed-could-see.png
 tags: ["architecture", "angular", "performance", "rangertrak"]
 series: { name: "Architecture in practice", part: 2 }
 ---

@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .person { position: absolute; left: 56px; top: 300px; width: 190px; text-align: center; }
+  .q { position: absolute; left: 318px; width: 506px; font-size: 18px; padding: 11px 16px; }
+  .q .n { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: #fff;
+          text-align: center; line-height: 26px; font-size: 15px; font-weight: 700; margin-right: 8px; }
+  .yes { position: absolute; font-size: 15px; font-weight: 700; color: var(--green); }
+  .out { position: absolute; left: 870px; width: 274px; font-size: 20px; text-align: center; padding: 16px; }
+  .ev { font-family: 'Geist Mono'; font-size: 14px; color: var(--muted); display: block; margin-top: 6px; }
+</style></head><body>
+<div class="kicker">Building a family history site <span class="dot">•</span> Part 2</div>
+<h1>Dead only on evidence. <em>No evidence means living.</em></h1>
+
+<div class="box person">A person in the family tree <small>often with no death date</small></div>
+
+<div class="box q" style="top:180px"><span class="n">1</span>Death, burial or cremation record?</div>
+<div class="box q" style="top:262px"><span class="n">2</span>Any event of their own over <b>110 years</b> ago?</div>
+<div class="box q" style="top:344px"><span class="n">3</span>A parent's event <b>170+</b> years ago, or a child's <b>95+</b>?</div>
+
+<div class="box out g" style="top:196px"><b>Deceased</b> <span class="ev">evidence: "DEAT 1950", "child's event 1871"</span></div>
+<div class="box out r" style="top:438px"><b>Living: kept private</b> <span class="ev">evidence: "no proof of death"</span></div>
+<div class="box q" style="left:56px; top:470px; border-style:dashed; color:var(--muted); font-size:16px">"AFT 1850" proves nothing · ranges use the <b>latest</b> year</div>
+
+<svg class="wires" width="1200" height="630">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#17572b"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b23b2a"/></marker></defs>
+  <g stroke="#17572b" stroke-width="2.5" fill="none">
+    <path d="M246 330 C 280 330, 280 205, 316 205" marker-end="url(#ah)"/>
+    <path d="M246 335 C 280 335, 280 288, 316 288" marker-end="url(#ah)"/>
+    <path d="M246 340 C 280 340, 280 370, 316 370" marker-end="url(#ah)"/>
+    <path d="M826 205 L 866 230" marker-end="url(#ah)"/>
+    <path d="M826 288 L 866 240" marker-end="url(#ah)"/>
+    <path d="M826 370 L 866 250" marker-end="url(#ah)"/>
+  </g>
+  <path d="M553 392 C 560 430, 760 470, 866 475" stroke="#b23b2a" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+</svg>
+<span class="yes" style="left:812px; top:172px">any yes</span>
+<span class="yes" style="left:720px; top:420px; color:var(--red)">all no</span>
+
+<div class="foot"><span><b>~100 lines of JavaScript</b> · one rules file shared by two tools · every answer records why</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

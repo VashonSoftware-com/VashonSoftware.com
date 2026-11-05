@@ -2,6 +2,7 @@
 title: "Dead only on evidence: the living-person rule as code"
 description: "A family tree is full of people with no death date, and many of them are alive. The rule that keeps them off a public website is about a hundred lines of JavaScript, written down once and shared by two tools."
 pubDate: 2026-11-09
+image: /images/blog/dead-only-on-evidence.png
 tags: ["architecture", "privacy", "genealogy", "testing", "cornelisons-com"]
 series: { name: "Building a family history site that keeps the living private", part: 2 }
 ---

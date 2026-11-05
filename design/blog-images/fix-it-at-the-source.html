@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .panel { position: absolute; top: 172px; width: 520px; height: 390px; }
+  .left { left: 56px; } .right { left: 624px; }
+  .ph { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .ph.bad { color: var(--red); } .ph.good { color: var(--green); }
+  .n { position: absolute; font-size: 16px; padding: 8px 12px; text-align: center; }
+  .x { position: absolute; font-size: 15px; color: var(--red); }
+  .divider { position: absolute; left: 598px; top: 176px; width: 2px; height: 380px; background: var(--line); }
+  .bracket { font-family: 'Geist Mono'; background: var(--green-soft); border-radius: 4px; padding: 0 4px; color: var(--green); font-weight: 650; }
+</style></head><body>
+<div class="kicker">A privacy tool that refuses to decide for you <span class="dot">•</span> Part 3</div>
+<h1>Fix it at the source, <em>not on every export</em></h1>
+<div class="divider"></div>
+
+<div class="panel left"><div class="ph bad">The treadmill: clean every export</div></div>
+<div class="box n" style="left:56px; top:300px; width:150px">Master file <small>note still inside</small></div>
+<div class="box n r" style="left:300px; top:226px; width:230px">clean → FamilySearch</div>
+<div class="box n r" style="left:300px; top:300px; width:230px">clean → a cousin</div>
+<div class="box n r" style="left:300px; top:374px; width:230px">clean → printed book</div>
+<div class="box n r" style="left:300px; top:448px; width:230px; border-style:dashed">skipped in a hurry</div>
+<div class="x" style="left:56px; top:500px; width:220px">…every destination, every year</div>
+
+<div class="panel right"><div class="ph good">Fix it once, in the program of record</div></div>
+<div class="box n" style="left:624px; top:226px; width:220px">Review worklist <small>which person, note, phrase</small></div>
+<div class="box n g" style="left:900px; top:226px; width:244px">Edit in Legacy, Ctrl-P<br><span class="bracket">[[like this]]</span></div>
+<div class="box n g" style="left:900px; top:330px; width:244px">Every future export<br>respects it</div>
+<div class="x" style="left:624px; top:430px; width:520px; line-height:1.6; font-size:16px">
+  <span class="strike" style="color:var(--ink)">Auto-reimport</span> rejected (ADR-003)<br>
+  <span class="strike" style="color:var(--ink)">Upload to Ancestry</span> button skips the scan<br>
+  <span class="strike" style="color:var(--ink)">Fix a name</span> never: not yours to fix</div>
+
+<svg class="wires" width="1200" height="630">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#17572b"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b23b2a"/></marker></defs>
+  <g stroke="#b23b2a" stroke-width="2.2" fill="none">
+    <path d="M206 320 C 250 320, 250 248, 296 248" marker-end="url(#ar)"/>
+    <path d="M206 323 L 296 322" marker-end="url(#ar)"/>
+    <path d="M206 326 C 250 326, 250 396, 296 396" marker-end="url(#ar)"/>
+    <path d="M206 330 C 240 330, 240 470, 296 470" marker-end="url(#ar)" stroke-dasharray="6 5"/>
+  </g>
+  <g stroke="#17572b" stroke-width="3" fill="none">
+    <path d="M846 254 L 896 254" marker-end="url(#ah)"/>
+    <path d="M1022 284 L 1022 326" marker-end="url(#ah)"/>
+  </g>
+</svg>
+
+<div class="foot"><span><b>GEDCOM Privacy Guard</b> · the genealogy program is the system of record</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

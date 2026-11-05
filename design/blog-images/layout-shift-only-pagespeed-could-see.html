@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .row { position: absolute; left: 56px; width: 1088px; height: 168px; }
+  .label { position: absolute; left: 0; top: 0; font-size: 19px; font-weight: 700; }
+  .task { position: absolute; top: 34px; height: 52px; border-radius: 10px; font-size: 16px; padding: 7px 12px; line-height: 1.2; border: 2px solid; }
+  .paint { position: absolute; top: 24px; width: 4px; height: 72px; background: var(--amber); border-radius: 2px; }
+  .paintlbl { position: absolute; top: 98px; font-size: 14px; color: #8a5a17; font-weight: 600; white-space: nowrap; }
+  .frame { position: absolute; top: 2px; width: 120px; height: 150px; border: 2px solid #9aa39b; border-radius: 8px; background: #fff; overflow: hidden; }
+  .frame .hdr { height: 34px; background: #12233b; }
+  .frame .main { margin: 6px; height: 90px; background: #dde6f0; border-radius: 4px; font-size: 11px; color: #456; padding: 4px; }
+  .score { position: absolute; white-space: nowrap; font-size: 30px; font-weight: 800; }
+  .score small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .05em; }
+</style></head><body>
+<div class="kicker">Architecture in practice <span class="dot">•</span> RangerTrak <span class="dot">•</span> zoneless Angular</div>
+<h1>The layout shift <em>only PageSpeed could see</em></h1>
+
+<!-- BEFORE -->
+<div class="row" style="top:166px">
+  <div class="label" style="color:var(--red)">Before</div>
+  <div class="task b" style="left:0; width:330px">Task 1: RouterOutlet creates page<br><span class="mono" style="font-size:13px">&lt;main&gt; built, header @if not run</span></div>
+  <div class="paint" style="left:346px"></div><div class="paintlbl" style="left:288px">browser paints here</div>
+  <div class="task a" style="left:364px; width:410px">Task 2: first update pass (~130 ms)<br><span class="mono" style="font-size:13px">137 px header appears, &lt;main&gt; drops</span></div>
+  <div class="frame" style="left:792px"><div class="main" style="margin-top:20px">&lt;main&gt;<br>first frame:<br>no header</div></div>
+  <div class="score" style="left:940px; top:40px; color:var(--red)">CLS 0.492<small>POOR · PERF 50</small></div>
+</div>
+
+<!-- AFTER -->
+<div class="row" style="top:376px">
+  <div class="label" style="color:var(--green)">After: three lines</div>
+  <div class="task g" style="left:0; width:540px">Task 1: create page, then <span class="mono">(activate)</span> → <span class="mono">appRef.tick()</span><br><span class="mono" style="font-size:13px">header and &lt;main&gt; rendered in the same task</span></div>
+  <div class="paint" style="left:556px"></div><div class="paintlbl" style="left:498px">browser paints here</div>
+  <div class="frame" style="left:792px"><div class="hdr"></div><div class="main">&lt;main&gt;<br>first frame:<br>finished page</div></div>
+  <div class="score" style="left:940px; top:40px; color:var(--green)">CLS 0.002<small>GOOD · PERF 75</small></div>
+</div>
+
+<div class="foot"><span><b>Find out how the lab measures</b> · simulated throttling loads at full speed, so the gap showed</span><span class="tag">vashonsoftware.com</span></div>
+</body></html>

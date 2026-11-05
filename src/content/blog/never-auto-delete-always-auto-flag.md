@@ -2,6 +2,7 @@
 title: "Never auto-delete, always auto-flag: a privacy tool that leaves the decision to you"
 description: "A scanner that finds sensitive notes in a family tree could delete them for you. Mine only flags them, puts them in a spreadsheet for a person to decide, then writes a new file. Why, and how the code makes 'the original is never touched' true."
 pubDate: 2026-11-17
+image: /images/blog/never-auto-delete-always-auto-flag.png
 tags: ["architecture", "privacy", "genealogy", "python", "adr", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 1 }
 ---

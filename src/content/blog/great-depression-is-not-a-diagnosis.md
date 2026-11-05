@@ -2,6 +2,7 @@
 title: "The Great Depression is not a diagnosis: the limits of keyword scanning"
 description: "A family-tree privacy scanner flagged the Great Depression as a mental-health finding. Fixing that taught me where word lists stop working, why the report must never guess who someone is, and what an AI scanner would have to respect."
 pubDate: 2026-12-01
+image: /images/blog/great-depression-is-not-a-diagnosis.png
 tags: ["architecture", "privacy", "genealogy", "python", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 2 }
 ---

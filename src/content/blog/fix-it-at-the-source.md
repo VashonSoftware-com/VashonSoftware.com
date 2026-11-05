@@ -2,6 +2,7 @@
 title: "Fix it at the source: working with the desktop app, not around it"
 description: "A privacy tool for family trees could clean every export forever, or point you at the one note to fix in the program you already use. Why I chose the second, rejected automatic reimport after checking how the import really works, and never 'fix' a name."
 pubDate: 2026-12-08
+image: /images/blog/fix-it-at-the-source.png
 tags: ["architecture", "privacy", "genealogy", "adr", "gedcom-privacy-guard"]
 series: { name: "A privacy tool that refuses to decide for you", part: 3 }
 ---
