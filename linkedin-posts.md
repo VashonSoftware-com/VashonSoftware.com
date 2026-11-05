@@ -13,6 +13,10 @@
    "LinkedIn creator analytics"): export, then run its `linkedin_import.py`. Sessions here only
    log the posted link above each post and add the week-later Outlook reminder.
 
+**Format is parsed** by `D:\Projects\domainAnalytics\linkedin_import.py` (2026-11-05). Keep:
+the `## ID · YYYY-MM-DD · Title` heading, the `✅ **Posted YYYY-MM-DD:** <link>` line, and the
+hashtag line as the last line of each body (LinkedIn builds the post URL from the hashtags).
+
 **Re-measure on the day:** numbers marked ⟳ can drift. Check them against the blog post (and
 the blog post against the repo) the morning you post.
 
