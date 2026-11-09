@@ -1,0 +1,262 @@
+---
+// The blog list: every post on one page, with search (Pagefind), tag and series filters and sort.
+// Filters live in the query string (?q=&tag=&series=&sort=) so a filtered view can be linked.
+// Without JavaScript it is still a complete, newest-first list.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostRow from '@/components/blog/PostRow.astro';
+import { getPublishedPosts, sortNewestFirst } from '@/lib/posts';
+
+const posts = sortNewestFirst(await getPublishedPosts());
+
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+}
+const tags = [...tagCounts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+const seriesNames = [...new Set(posts.map((p) => p.data.series?.name).filter(Boolean))].sort() as string[];
+
+const selectClass =
+  'h-9 rounded-md border border-border bg-background px-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40';
+---
+
+<BaseLayout
+  title="Blog"
+  description="Architecture notes from real projects: how RangerTrak, a family history site and a genealogy privacy tool were built, and why."
+>
+  <div class="container max-w-4xl mx-auto py-12 sm:py-16">
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Blog</h1>
+      <p class="text-sm text-muted-foreground max-w-2xl">
+        Architecture notes from real projects: how RangerTrak, a family history site and a
+        genealogy privacy tool were built, and why.
+      </p>
+    </header>
+
+    <form id="blog-filters" class="space-y-3 mb-4" role="search" onsubmit="return false">
+      <div class="flex flex-col sm:flex-row gap-2">
+        <label class="sr-only" for="blog-q">Search posts</label>
+        <input
+          id="blog-q"
+          type="search"
+          name="q"
+          placeholder="Search posts…"
+          autocomplete="off"
+          class={`${selectClass} w-full sm:flex-1 px-3`}
+        />
+        <div class="flex gap-2 min-w-0">
+          {
+            seriesNames.length > 0 && (
+              <>
+                <label class="sr-only" for="blog-series">
+                  Series
+                </label>
+                <select id="blog-series" name="series" class={`${selectClass} min-w-0 flex-1 sm:flex-none sm:max-w-56`}>
+                  <option value="">All series</option>
+                  {seriesNames.map((name) => (
+                    <option value={name}>{name}</option>
+                  ))}
+                </select>
+              </>
+            )
+          }
+          <label class="sr-only" for="blog-sort">Sort</label>
+          <select id="blog-sort" name="sort" class={`${selectClass} shrink-0`}>
+            <option value="new">Newest first</option>
+            <option value="old">Oldest first</option>
+            <option value="series">By series</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter by tag">
+        <button type="button" class="tag-chip" data-tag="" aria-pressed="true">All</button>
+        {
+          tags.map(([tag, count]) => (
+            <button type="button" class="tag-chip" data-tag={tag} aria-pressed="false">
+              {tag} <span class="opacity-60">{count}</span>
+            </button>
+          ))
+        }
+      </div>
+    </form>
+
+    <p id="blog-status" class="text-xs text-muted-foreground mb-2" aria-live="polite">
+      {posts.length} posts
+    </p>
+
+    <div id="blog-list" class="divide-y divide-border">
+      {posts.map((post) => <PostRow post={post} />)}
+    </div>
+
+    <p id="blog-empty" class="hidden py-12 text-center text-sm text-muted-foreground">
+      No posts match. <button type="button" id="blog-clear" class="underline hover:text-primary">Clear filters</button>
+    </p>
+
+    <p class="mt-10 text-xs text-muted-foreground">
+      <a href="/tags/" class="hover:text-primary">All tags</a>
+      <span aria-hidden="true"> · </span>
+      <a href="/rss.xml" class="hover:text-primary">RSS feed</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .tag-chip {
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.7rem;
+    line-height: 1.25rem;
+    color: var(--color-muted-foreground);
+    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+  }
+  .tag-chip:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .tag-chip[aria-pressed='true'] {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+</style>
+
+<script>
+  type Sort = 'new' | 'old' | 'series';
+  interface PagefindResult {
+    data: () => Promise<{ url: string }>;
+  }
+  interface Pagefind {
+    search: (q: string) => Promise<{ results: PagefindResult[] }>;
+  }
+
+  const list = document.getElementById('blog-list')!;
+  const rows = [...list.querySelectorAll<HTMLElement>('.post-row')];
+  const q = document.getElementById('blog-q') as HTMLInputElement;
+  const seriesSel = document.getElementById('blog-series') as HTMLSelectElement | null;
+  const sortSel = document.getElementById('blog-sort') as HTMLSelectElement;
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.tag-chip')];
+  const status = document.getElementById('blog-status')!;
+  const empty = document.getElementById('blog-empty')!;
+
+  const slash = (u: string) => (u.endsWith('/') ? u : `${u}/`);
+
+  // Pagefind's index exists only in a build (pnpm build); in dev, search falls back to
+  // matching titles, summaries, tags and series.
+  let pagefind: Pagefind | null | undefined;
+  async function loadPagefind(): Promise<Pagefind | null> {
+    if (pagefind !== undefined) return pagefind;
+    try {
+      const path = '/pagefind/pagefind.js';
+      pagefind = (await import(/* @vite-ignore */ path)) as Pagefind;
+    } catch {
+      pagefind = null;
+    }
+    return pagefind;
+  }
+
+  let tag = '';
+  let searchToken = 0;
+
+  async function searchUrls(query: string): Promise<Set<string> | null> {
+    if (!query) return null;
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const found = new Set(
+      rows.filter((r) => words.every((w) => r.dataset.text!.includes(w))).map((r) => r.dataset.url!),
+    );
+    const pf = await loadPagefind();
+    if (pf) {
+      const { results } = await pf.search(query);
+      const data = await Promise.all(results.map((r) => r.data()));
+      for (const d of data) found.add(slash(new URL(d.url, location.href).pathname));
+    }
+    return found;
+  }
+
+  function sortRows(sort: Sort) {
+    const date = (r: HTMLElement) => Date.parse(r.dataset.date!);
+    const sorted = [...rows].sort((a, b) => {
+      if (sort === 'old') return date(a) - date(b);
+      if (sort === 'series') {
+        const sa = a.dataset.series!;
+        const sb = b.dataset.series!;
+        if (sa !== sb) return !sa ? 1 : !sb ? -1 : sa.localeCompare(sb);
+        if (sa) return Number(a.dataset.part) - Number(b.dataset.part);
+      }
+      return date(b) - date(a);
+    });
+    list.append(...sorted);
+  }
+
+  function writeUrl() {
+    const params = new URLSearchParams();
+    if (q.value.trim()) params.set('q', q.value.trim());
+    if (tag) params.set('tag', tag);
+    if (seriesSel?.value) params.set('series', seriesSel.value);
+    if (sortSel.value !== 'new') params.set('sort', sortSel.value);
+    const qs = params.toString();
+    history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+  }
+
+  async function apply() {
+    const token = ++searchToken;
+    const query = q.value.trim();
+    const matches = await searchUrls(query);
+    if (token !== searchToken) return; // a newer keystroke won
+
+    const series = seriesSel?.value ?? '';
+    let shown = 0;
+    for (const r of rows) {
+      const ok =
+        (!tag || r.dataset.tags!.split('|').includes(tag)) &&
+        (!series || r.dataset.series === series) &&
+        (!matches || matches.has(r.dataset.url!));
+      r.hidden = !ok;
+      if (ok) shown += 1;
+    }
+    for (const c of chips) c.setAttribute('aria-pressed', String(c.dataset.tag === tag));
+    sortRows(sortSel.value as Sort);
+
+    const filtered = Boolean(query || tag || series);
+    status.textContent = filtered ? `${shown} of ${rows.length} posts` : `${rows.length} posts`;
+    empty.classList.toggle('hidden', shown > 0);
+    writeUrl();
+  }
+
+  function setTag(next: string) {
+    tag = tag === next ? '' : next;
+    apply();
+  }
+
+  // Start from the query string
+  const params = new URLSearchParams(location.search);
+  q.value = params.get('q') ?? '';
+  tag = params.get('tag') ?? '';
+  if (seriesSel) seriesSel.value = params.get('series') ?? '';
+  if (['new', 'old', 'series'].includes(params.get('sort') ?? '')) sortSel.value = params.get('sort')!;
+  if (q.value || tag || seriesSel?.value || sortSel.value !== 'new') apply();
+
+  let debounce: number | undefined;
+  q.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = window.setTimeout(apply, 200);
+  });
+  q.addEventListener('focus', () => void loadPagefind(), { once: true });
+  seriesSel?.addEventListener('change', apply);
+  sortSel.addEventListener('change', apply);
+  for (const c of chips) c.addEventListener('click', () => setTag(c.dataset.tag!));
+  // Tag links inside rows filter in place instead of reloading
+  list.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('.tag-link');
+    if (!link) return;
+    e.preventDefault();
+    tag = '';
+    setTag(link.dataset.tag!);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.getElementById('blog-clear')!.addEventListener('click', () => {
+    q.value = '';
+    tag = '';
+    if (seriesSel) seriesSel.value = '';
+    apply();
+  });
+</script>

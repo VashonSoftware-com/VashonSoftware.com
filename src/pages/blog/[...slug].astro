@@ -51,9 +51,9 @@ const canonicalHost = post.data.canonical
   author={post.data.author}
   canonical={post.data.canonical}
 >
-  <article class="pb-12">
+  <article class="pb-12" data-pagefind-body>
     <div class="container max-w-3xl mx-auto pt-12 mb-8">
-      <a
+      <a data-pagefind-ignore
         href="/blog"
         class="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
       >
@@ -148,7 +148,7 @@ const canonicalHost = post.data.canonical
         <Content />
       </div>
 
-      <footer class="mt-12 pt-8 border-t">
+      <footer class="mt-12 pt-8 border-t" data-pagefind-ignore="all">
         <nav class="flex items-center justify-between gap-8">
           {
             prevPost ? (

@@ -1,0 +1,90 @@
+---
+// One compact row in a blog list: thumbnail, title, date, reading time, summary, series, tags.
+// The title link stretches over the whole row; tag links sit above it so they stay clickable.
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, readingMinutes, thumbFor } from '@/lib/posts';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  // Where tag chips link: the /blog filter (default) or the /tags/<tag> page
+  tagHref?: (tag: string) => string;
+}
+
+const { post, tagHref = (tag: string) => `/blog/?tag=${encodeURIComponent(tag)}` } = Astro.props;
+const { title, description, pubDate, tags, series } = post.data;
+const thumb = thumbFor(post);
+const minutes = readingMinutes(post);
+const url = `/blog/${post.id}/`;
+---
+
+<article
+  class="post-row group relative flex gap-3 sm:gap-4 py-3 sm:px-3 sm:-mx-3 rounded-lg transition-colors hover:bg-accent/50"
+  data-url={url}
+  data-date={pubDate.toISOString()}
+  data-title={title}
+  data-tags={tags.join('|')}
+  data-series={series?.name ?? ''}
+  data-part={series?.part ?? ''}
+  data-text={`${title} ${description} ${tags.join(' ')} ${series?.name ?? ''}`.toLowerCase()}
+>
+  {
+    thumb ? (
+      <img
+        src={thumb}
+        alt=""
+        width="480"
+        height="252"
+        loading="lazy"
+        decoding="async"
+        class="shrink-0 self-start w-24 sm:w-32 aspect-[480/252] object-cover rounded-md border border-border bg-muted"
+      />
+    ) : (
+      <div
+        aria-hidden="true"
+        class="shrink-0 self-start w-24 sm:w-32 aspect-[480/252] rounded-md border border-border bg-muted"
+      />
+    )
+  }
+  <div class="min-w-0 flex-1">
+    <h2 class="text-[0.9rem] sm:text-[0.95rem] font-semibold leading-snug tracking-tight">
+      <a
+        href={url}
+        class="group-hover:text-primary transition-colors after:absolute after:inset-0 after:content-['']"
+      >
+        {title}
+      </a>
+    </h2>
+    <p class="mt-0.5 text-[0.7rem] text-muted-foreground">
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      <span aria-hidden="true"> · </span>{minutes} min read
+      {
+        series && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>
+              {series.name}, part {series.part}
+            </span>
+          </>
+        )
+      }
+    </p>
+    <p class="mt-1 text-[0.8rem] leading-snug text-muted-foreground line-clamp-2 sm:line-clamp-1">{description}</p>
+    {
+      tags.length > 0 && (
+        <ul class="relative z-10 mt-1.5 flex flex-wrap gap-1" aria-label="Tags">
+          {tags.map((tag) => (
+            <li>
+              <a
+                href={tagHref(tag)}
+                data-tag={tag}
+                class="tag-link inline-block rounded-full border border-border px-1.5 py-0 text-[0.65rem] leading-4 text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+              >
+                {tag}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>

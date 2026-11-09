@@ -9,6 +9,8 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     author: z.string().default('John Cornelison'),
     image: z.string().optional(),
+    // List thumbnail; defaults to /images/blog/thumbs/<image name>.webp (scripts/make-thumbs.mjs)
+    thumb: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     series: z.object({ name: z.string(), part: z.number().int().positive() }).optional(),
