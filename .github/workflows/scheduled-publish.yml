@@ -7,7 +7,9 @@ name: Scheduled publish
 
 on:
   schedule:
-    - cron: '0 14 * * *' # 14:00 UTC = 06:00 Pacific (07:00 in summer)
+    # GitHub often starts scheduled runs 4-7 hours late, so start early enough
+    # that a late run still finishes before the morning.
+    - cron: '0 9 * * *' # 09:00 UTC = 01:00 Pacific (02:00 in summer)
   workflow_dispatch:
 
 jobs:
