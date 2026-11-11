@@ -1,0 +1,303 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+// What every small-business site includes, grouped so a reader can scan by concern.
+const included = [
+  {
+    title: 'You own it',
+    slug: 'ownership',
+    items: [
+      ['Your domain, in your name', 'Registered at cost, with auto-renew on. Owner privacy (your name and address hidden from public look-ups) is included free.'],
+      ['Your accounts, or mine on your behalf', 'The site can live in your own free GitHub and Cloudflare accounts, with me as an administrator, or I can run it for you. You can switch later.'],
+      ['Your files', 'The site is ordinary, readable files (HTML, CSS, Markdown), not a format tied to one company. Any web developer can pick it up, and you can move it anywhere.'],
+      ['No platform licence', 'Nothing to keep paying a builder for, and nothing lost if you stop paying me.'],
+    ],
+  },
+  {
+    title: 'Nothing gets lost',
+    slug: 'history',
+    items: [
+      ['A full change history', 'Every change, yours or mine, is recorded with its date (git). Any earlier version can be looked at or put back.'],
+      ['Backups kept elsewhere', 'Besides the copy at GitHub, a backup is kept on separate storage (on a care plan).'],
+      ['Old links keep working', 'When moving from an old site, every old page address is sent on to its new page, so search results and bookmarks still work.'],
+      ['The old site stays as a fallback', 'Until the new one is live and checked.'],
+    ],
+  },
+  {
+    title: 'Fast and easy to find',
+    slug: 'speed',
+    items: [
+      ['Fast on phones', 'Target of 95+ in Google PageSpeed for speed, accessibility, best practices and SEO, measured before launch.'],
+      ['Search-engine basics done', 'Page titles and descriptions, a sitemap, tidy addresses and sharing previews for Facebook, LinkedIn and texts.'],
+      ['Accessible', 'Built to WCAG 2.2 AA: readable contrast, keyboard use, screen-reader labels. Light and dark mode.'],
+      ['Served worldwide', 'Hosted on Cloudflare’s network, free at small-site sizes.'],
+    ],
+  },
+  {
+    title: 'Secure by default',
+    slug: 'security',
+    items: [
+      ['HTTPS, renewed automatically', 'The padlock in the address bar, with nothing to renew by hand.'],
+      ['Nothing to patch', 'No server, database or plugins for anyone to break into or keep updated.'],
+      ['Spam-protected contact form', 'Messages come to your email. Your address and phone are hidden from scrapers.'],
+      ['Security headers and a privacy page', 'The page says plainly what the site collects (usually very little).'],
+    ],
+  },
+  {
+    title: 'You know how it’s doing',
+    slug: 'monitoring',
+    items: [
+      ['Visitor statistics without cookies', 'So no cookie banner is needed.'],
+      ['A monthly visitor email', 'Visits, top pages and where people came from, in plain numbers.'],
+      ['Watched automatically', 'An uptime monitor, an alert if an update fails to publish, and a weekly check for broken links to other sites.'],
+    ],
+  },
+  {
+    title: 'Email and domains',
+    slug: 'email',
+    items: [
+      ['Email at your domain', 'you@yourbusiness.com, forwarded to the inbox you already use.'],
+      ['Extra domains', 'Other names you own (misspellings, old names) are sent to the main site.'],
+    ],
+  },
+];
+
+const options = [
+  {
+    title: 'Editing it yourself',
+    items: [
+      ['Browser editor', 'Change words, photos and lists from any browser, with no software to install. Each save is recorded in the change history, so a mistake can be undone.'],
+      ['Site tools page', 'A small private admin page for your site: open the editor, see whether your last change published, recent site checks, and a button to report a problem or ask for a change.'],
+      ['Editing guide', 'Written around your own pages, with screenshots.'],
+    ],
+  },
+  {
+    title: 'More on the site',
+    items: [
+      ['Full-site search', ''],
+      ['Blog or news section, with tags', ''],
+      ['Extra forms', 'Orders, booking requests, sign-ups.'],
+      ['Payment buttons', 'Stripe or PayPal, for a few products or deposits. Larger stores: see below.'],
+      ['Booking', 'Linking or embedding Calendly, Square and the like.'],
+      ['Mailing-list sign-up', ''],
+      ['A collection or catalogue', 'Items with tags and filters, a page for each, bulk photo upload.'],
+      ['Members-only or family pages', 'Behind a sign-in.'],
+      ['A second language', ''],
+    ],
+  },
+  {
+    title: 'Email beyond forwarding',
+    items: [
+      ['A full mailbox at your domain', 'On a small, reliable mail host, for about $10 a year.'],
+      ['Google Workspace', 'Set up at Google’s own price.'],
+      ['Moving old mail across', ''],
+    ],
+  },
+  {
+    title: 'Ongoing care',
+    items: [
+      ['Care plans: yearly, quarterly or monthly', 'A full check (speed, accessibility, security, links, renewals), updates, an off-site backup and a short report on each visit, plus some change time each year.'],
+      ['No plan', 'The site keeps running, and the monthly visitor email and alerts continue. Changes are billed by the hour.'],
+    ],
+  },
+  {
+    title: 'Other work',
+    items: [
+      ['A new design or restyle', ''],
+      ['Writing or entering content', 'Typing, photo editing, captions.'],
+      ['Rescuing a lost site', 'Rebuilding from the Internet Archive when the old host or login is gone.'],
+    ],
+  },
+];
+
+// Comparison. Builder prices: typical published US prices, annual billing, November 2026.
+const compareCols = ['This approach', 'Wix', 'Squarespace', 'GoDaddy builder'];
+const compareRows: { label: string; cells: string[] }[] = [
+  {
+    label: 'Ongoing cost',
+    cells: [
+      'Hosting $0; a .com domain about $11/yr at cost; optional care plan',
+      'About $17–39/mo for plans with your own domain and no ads',
+      'About $16–39/mo',
+      'About $10–15/mo to start, more at renewal',
+    ],
+  },
+  {
+    label: 'One-time cost',
+    cells: ['Setup, quoted in writing', 'None (you build it)', 'None (you build it)', 'None (you build it)'],
+  },
+  {
+    label: 'Who owns the site',
+    cells: ['You: files, domain and accounts', 'You own your content; the site runs only on Wix', 'You own your content; the site runs only on Squarespace', 'You own your content; the site runs only on GoDaddy'],
+  },
+  {
+    label: 'Moving elsewhere',
+    cells: ['Copy the files to any host', 'Classic Wix sites can’t be exported; a rebuild is needed', 'Partial export (pages and blog posts); design is rebuilt', 'No site export; a rebuild is needed'],
+  },
+  {
+    label: 'If you stop paying',
+    cells: ['The site keeps running; only the domain renewal is needed', 'Falls back to a free Wix address with Wix ads', 'The site goes offline', 'The site goes offline'],
+  },
+  {
+    label: 'Change history and undo',
+    cells: ['Every change, kept permanently, with who made it', 'Restore an earlier saved version of the whole site', 'Limited', 'Limited'],
+  },
+  {
+    label: 'Speed on phones',
+    cells: ['Measured, with a 95+ target', 'Varies with the template and apps', 'Usually reasonable', 'Varies'],
+  },
+  {
+    label: 'Changing the words yourself',
+    cells: ['Browser editor (words, photos, lists)', 'Drag-and-drop, very flexible', 'Drag-and-drop, polished', 'Drag-and-drop, simple'],
+  },
+  {
+    label: 'Changing the layout yourself',
+    cells: ['Ask me (layout is set when built)', 'Yes', 'Yes', 'Yes'],
+  },
+  {
+    label: 'Who you call',
+    cells: ['Me, a local person who built it', 'Support centre', 'Support centre', 'Support centre'],
+  },
+];
+---
+
+<BaseLayout
+  title="What a Vashon Software website includes"
+  description="What every small-business website from Vashon Software includes, what's optional, and how that compares with Wix, Squarespace and GoDaddy."
+>
+  <!-- Header -->
+  <section class="py-20 md:py-24">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <p class="text-sm font-medium text-muted-foreground"><a href="/services" class="hover:underline">Services</a> / Websites</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight md:text-5xl">What your website includes</h1>
+        <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+          Every small site I build comes with the same foundations. They cost little once set up,
+          so they aren't sold as extras. Beyond that, you pick only the options you need.
+        </p>
+        <nav aria-label="On this page" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <a href="#included" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Always included</a>
+          <a href="#options" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Options</a>
+          <a href="#compare" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Compared with Wix, Squarespace, GoDaddy</a>
+          <a href="#builder" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">When a builder is the better fit</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Included -->
+  <section id="included" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold md:text-3xl">Always included</h2>
+      <p class="mt-2 text-muted-foreground max-w-2xl">On every site, large or small.</p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {included.map((group) => (
+          <div id={group.slug} class="rounded-lg border bg-card p-6">
+            <h3 class="font-semibold text-lg mb-4">{group.title}</h3>
+            <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              {group.items.map(([name, desc]) => (
+                <li><span class="font-medium text-foreground">{name}.</span> {desc}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-muted-foreground max-w-2xl">
+        Also included: a three-month satisfaction guarantee from launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Options -->
+  <section id="options" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold md:text-3xl">Options</h2>
+      <p class="mt-2 text-muted-foreground max-w-2xl">
+        Add what fits, now or later. Each is quoted separately, so you can start small.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {options.map((group) => (
+          <div class="rounded-lg border bg-card p-6">
+            <h3 class="font-semibold text-lg mb-4">{group.title}</h3>
+            <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              {group.items.map(([name, desc]) => (
+                <li>
+                  <span class="font-medium text-foreground">{name}{desc ? '.' : ''}</span>
+                  {desc && ` ${desc}`}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section id="compare" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Compared with Wix, Squarespace and GoDaddy</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Site builders are good products. The main difference is the arrangement: with a
+          builder you rent the site month by month; here you pay once to have it built, then
+          own it outright and run it nearly free.
+        </p>
+      </div>
+      <div class="mt-8 overflow-x-auto rounded-lg border">
+        <table class="w-full min-w-[44rem] text-sm">
+          <caption class="sr-only">Comparison of this approach with three website builders</caption>
+          <thead class="bg-muted/40">
+            <tr>
+              <th scope="col" class="p-3 text-left font-semibold w-44"><span class="sr-only">Feature</span></th>
+              {compareCols.map((col, i) => (
+                <th scope="col" class={`p-3 text-left font-semibold ${i === 0 ? 'text-primary' : ''}`}>{col}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {compareRows.map((row) => (
+              <tr class="border-t align-top">
+                <th scope="row" class="p-3 text-left font-medium">{row.label}</th>
+                {row.cells.map((cell, i) => (
+                  <td class={`p-3 leading-relaxed ${i === 0 ? 'bg-primary/5 text-foreground' : 'text-muted-foreground'}`}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs text-muted-foreground max-w-3xl">
+        Builder prices are typical published US prices with annual billing, as of November 2026.
+        Plans, prices and features change often, so check each company's own pricing page.
+        Introductory prices usually rise at renewal.
+      </p>
+    </div>
+  </section>
+
+  <!-- Honest fit -->
+  <section id="builder" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">When a builder is the better fit</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">I'll say so if one of these is you:</p>
+        <ul class="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed list-disc pl-5">
+          <li>You want to rearrange layouts and design pages yourself, often.</li>
+          <li>You need a full online store with stock, shipping and tax. Shopify or Squarespace Commerce handle that better than custom work at this size.</li>
+          <li>You'd rather have no setup cost and accept the monthly fee.</li>
+        </ul>
+        <p class="mt-6 text-muted-foreground leading-relaxed">
+          If you already have a Wix, Squarespace or GoDaddy site and want to move, I can carry the
+          content across and keep its old addresses working.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Want to talk about your site?"
+    description="Tell me what you have now and what you'd like it to do. I'll reply with a plain written quote."
+    cta={{ href: '/contact', label: 'Get in Touch' }}
+  />
+</BaseLayout>

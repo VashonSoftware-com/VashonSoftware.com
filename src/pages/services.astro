@@ -28,6 +28,12 @@ const serviceGroups = [
           'Creative design that your team can manage and update without developer involvement — all at an economical price.',
       },
       {
+        title: 'What Every Site Includes',
+        description:
+          'Ownership, change history, backups, speed, security and monthly visitor reports, plus the options and a plain comparison with Wix, Squarespace and GoDaddy.',
+        href: '/websites',
+      },
+      {
         title: 'Example Sites',
         description:
           'VashonSoftware.com, eoc.online, Mesh101.com, VashonMesh.com, MadeInParadiseRocks.com, VashonTaiChi.com, VashonMassage.com, Cornelisons.com, VashonBePrepared, VashonEOC, and many others over the years.',
@@ -310,7 +316,9 @@ const serviceGroups = [
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {group.services.map((service) => (
               <div class="rounded-lg border bg-card p-6 hover:shadow-md transition-shadow">
-                <h3 class="font-semibold text-lg mb-2">{service.title}</h3>
+                <h3 class="font-semibold text-lg mb-2">
+                  {service.href ? <a href={service.href} class="underline underline-offset-4 hover:text-primary">{service.title} →</a> : service.title}
+                </h3>
                 <p class="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
               </div>
             ))}
