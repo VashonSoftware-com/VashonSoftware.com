@@ -78,7 +78,7 @@ const options = [
       ['Full-site search', ''],
       ['Blog or news section, with tags', ''],
       ['Extra forms', 'Orders, booking requests, sign-ups.'],
-      ['Payment buttons', 'Stripe or PayPal, for a few products or deposits. Larger stores: see below.'],
+      ['Payment buttons', 'Stripe or PayPal, for a few products or deposits. Larger stores: see the comparison.'],
       ['Booking', 'Linking or embedding Calendly, Square and the like.'],
       ['Mailing-list sign-up', ''],
       ['A collection or catalogue', 'Items with tags and filters, a page for each, bulk photo upload.'],
@@ -87,23 +87,10 @@ const options = [
     ],
   },
   {
-    title: 'Email beyond forwarding',
+    title: 'Email and other work',
     items: [
-      ['A full mailbox at your domain', 'On a small, reliable mail host, for about $10 a year.'],
-      ['Google Workspace', 'Set up at Google’s own price.'],
+      ['A full mailbox at your domain', 'On a small, reliable mail host, for about $10 a year; or Google Workspace at Google’s price.'],
       ['Moving old mail across', ''],
-    ],
-  },
-  {
-    title: 'Ongoing care',
-    items: [
-      ['Care plans: yearly, quarterly or monthly', 'A full check (speed, accessibility, security, links, renewals), updates, an off-site backup and a short report on each visit, plus some change time each year.'],
-      ['No plan', 'The site keeps running, and the monthly visitor email and alerts continue. Changes are billed by the hour.'],
-    ],
-  },
-  {
-    title: 'Other work',
-    items: [
       ['A new design or restyle', ''],
       ['Writing or entering content', 'Typing, photo editing, captions.'],
       ['Rescuing a lost site', 'Rebuilding from the Internet Archive when the old host or login is gone.'],
@@ -111,60 +98,155 @@ const options = [
   },
 ];
 
-// Comparison. Builder prices: typical published US prices, annual billing, November 2026.
-const compareCols = ['This approach', 'Wix', 'Squarespace', 'GoDaddy builder'];
-const compareRows: { label: string; cells: string[] }[] = [
+// Care plans. ✓ / — / text per column.
+const careCols = ['No plan', 'Yearly', 'Quarterly', 'Total care (monthly)'];
+const careRows: { label: string; cells: string[] }[] = [
+  { label: 'Site keeps running, monthly visitor email, automatic alerts', cells: ['✓', '✓', '✓', '✓'] },
+  { label: 'Full health check (below)', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
+  { label: 'Software updates', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
+  { label: 'Backup kept off GitHub, test-restored', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
+  { label: 'Short written report', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
+  { label: 'Call to talk it over', cells: ['—', 'Yearly', 'Yearly', 'Quarterly'] },
+  { label: 'Change time included', cells: ['Billed hourly', '1 hour a year', '2 hours a year', '1 hour a month'] },
+  { label: 'When something breaks', cells: ['Hourly, best effort', 'Best effort', 'Best effort', 'Next working day'] },
+];
+
+const healthCheck = [
+  ['Speed', 'Google PageSpeed on phone and desktop, compared with last time.'],
+  ['Accessibility', 'Automated WCAG checks plus a keyboard and screen-reader spot check.'],
+  ['Security', 'HTTPS certificate, security-header grade, nothing exposed that shouldn’t be.'],
+  ['Links and forms', 'Broken links, a test message through each form.'],
+  ['Search', 'Sitemap, page titles, sharing previews, Google Search Console warnings.'],
+  ['Renewals', 'Domain and certificate dates, so nothing lapses.'],
+  ['Backups', 'A fresh off-site copy, and a test that it restores.'],
+];
+
+const checkTools = [
+  { name: 'PageSpeed Insights', by: 'Google', url: 'https://pagespeed.web.dev/', what: 'speed, accessibility, SEO basics' },
+  { name: 'HTTP Observatory', by: 'Mozilla (MDN)', url: 'https://developer.mozilla.org/en-US/observatory', what: 'security headers' },
+  { name: 'SSL Server Test', by: 'Qualys SSL Labs', url: 'https://www.ssllabs.com/ssltest/', what: 'the HTTPS certificate and its setup' },
+];
+
+// Platform comparison. Typical published US prices, annual billing, November 2026.
+const compareCols = ['Typical running cost', 'Up-front', 'Who changes it', 'Moving it later', 'If you stop paying', 'Who keeps it updated and secure', 'Best for'];
+const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
-    label: 'Ongoing cost',
-    cells: [
-      'Hosting $0; a .com domain about $11/yr at cost; optional care plan',
-      'About $17–39/mo for plans with your own domain and no ads',
-      'About $16–39/mo',
-      'About $10–15/mo to start, more at renewal',
+    name: 'Built and owned (this page)',
+    ours: true,
+    cells: ['Hosting $0; a .com about $11/yr; optional care plan', 'Setup, quoted in writing', 'You (words, photos) or me; layout changes by me', 'Copy the files to any host', 'Keeps running; just renew the domain', 'Nothing to patch; checked on a care plan', 'Small businesses wanting low running costs, ownership and a person to call'],
+  },
+  {
+    name: 'Wix',
+    cells: ['About $17–39/mo', 'None (you build it)', 'You, drag-and-drop', 'Classic sites can’t be exported', 'Falls back to a Wix address with ads', 'Wix', 'People who enjoy designing their own pages'],
+  },
+  {
+    name: 'Squarespace',
+    cells: ['About $16–39/mo', 'None (you build it)', 'You, drag-and-drop', 'Partial: pages and posts; design is rebuilt', 'Site goes offline', 'Squarespace', 'Polished portfolios and small shops'],
+  },
+  {
+    name: 'GoDaddy builder',
+    cells: ['About $10–15/mo to start; more at renewal', 'None (you build it)', 'You, simple editor', 'No export', 'Site goes offline', 'GoDaddy', 'A quick, simple first site'],
+  },
+  {
+    name: 'WordPress.com',
+    cells: ['About $4–25/mo; more for a store', 'None (you build it)', 'You, block editor', 'Exports to any WordPress host', 'Drops to the free plan (ads, no own domain)', 'WordPress.com', 'Blogs and writing-heavy sites'],
+  },
+  {
+    name: 'WordPress, self-hosted',
+    cells: ['About $200–800/yr for hosting, theme and plugins', 'Often a developer', 'You, block editor', 'Moves to any WordPress host', 'Offline when hosting lapses', 'You or a paid maintainer: regular core, theme and plugin updates', 'Large content sites with someone to maintain them'],
+  },
+  {
+    name: 'Webflow',
+    cells: ['From about $15/mo per site', 'Usually a designer', 'A designer; you edit content', 'Partial: code export, content as CSV', 'Custom domain stops working', 'Webflow', 'Design-led sites built by a designer'],
+  },
+  {
+    name: 'Shopify',
+    cells: ['From $29/mo, plus card fees', 'None, or a developer', 'You', 'Products and orders export; design doesn’t', 'Store closes', 'Shopify', 'Real online stores: stock, shipping, tax'],
+  },
+  {
+    name: 'Square Online',
+    cells: ['Free plan (Square branding), or from $49/mo; card fees', 'None (you build it)', 'You', 'No site export', 'Free plan continues', 'Square', 'Shops and cafés already using Square'],
+  },
+  {
+    name: 'Google Sites',
+    cells: ['Free; domain extra', 'None (you build it)', 'You, simple editor', 'No usable export', 'Free', 'Google', 'Clubs, classes and simple internal pages'],
+  },
+];
+
+// "Which approach fits?" questions. Each answer adds points to approaches; highest wins.
+type Key = 'owned' | 'builder' | 'wpcom' | 'wpself' | 'webflow' | 'shopify' | 'square' | 'gsites';
+const questions: { id: string; q: string; answers: { label: string; pts: Partial<Record<Key, number>>; tier?: string }[] }[] = [
+  {
+    id: 'purpose',
+    q: 'What does the site mainly need to do?',
+    answers: [
+      { label: 'Tell people who we are and how to reach us', pts: { owned: 3, builder: 2, gsites: 1, wpcom: 1 }, tier: 'A' },
+      { label: 'Show a portfolio, gallery or catalogue', pts: { owned: 3, builder: 2, webflow: 1 }, tier: 'C' },
+      { label: 'Publish articles or news often', pts: { wpcom: 3, wpself: 2, owned: 2, builder: 1 } },
+      { label: 'Sell many products online', pts: { shopify: 7, builder: 2, square: 2, owned: -2 } },
+      { label: 'Take orders for a shop or café already on Square', pts: { square: 5, shopify: 1 } },
     ],
   },
   {
-    label: 'One-time cost',
-    cells: ['Setup, quoted in writing', 'None (you build it)', 'None (you build it)', 'None (you build it)'],
+    id: 'editor',
+    q: 'Who will make changes?',
+    answers: [
+      { label: 'Rarely needed; someone else can do it', pts: { owned: 3 }, tier: 'A' },
+      { label: 'Me: words and photos', pts: { owned: 2, builder: 2, wpcom: 2, shopify: 1, square: 1 }, tier: 'B' },
+      { label: 'Me: I want to redesign pages often', pts: { builder: 4, wpcom: 2, webflow: 1, square: 1, shopify: 1, owned: -2 } },
+      { label: 'A web designer or a team', pts: { webflow: 5, owned: 2, wpself: 2 } },
+    ],
   },
   {
-    label: 'Who owns the site',
-    cells: ['You: files, domain and accounts', 'You own your content; the site runs only on Wix', 'You own your content; the site runs only on Squarespace', 'You own your content; the site runs only on GoDaddy'],
+    id: 'money',
+    q: 'How would you rather pay?',
+    answers: [
+      { label: 'Once to build it, then very little', pts: { owned: 3, wpself: 1, gsites: 2 } },
+      { label: 'A monthly fee, with no setup cost', pts: { builder: 3, wpcom: 2, square: 2, shopify: 1, gsites: 1, owned: -2 } },
+      { label: 'Either is fine', pts: {} },
+    ],
   },
   {
-    label: 'Moving elsewhere',
-    cells: ['Copy the files to any host', 'Classic Wix sites can’t be exported; a rebuild is needed', 'Partial export (pages and blog posts); design is rebuilt', 'No site export; a rebuild is needed'],
+    id: 'own',
+    q: 'How much does owning it, and being free to move it, matter?',
+    answers: [
+      { label: 'A lot', pts: { owned: 3, wpself: 3, wpcom: 1, builder: -2, gsites: -1, square: -1 } },
+      { label: 'Somewhat', pts: { owned: 1, wpself: 1 } },
+      { label: 'Not much', pts: { builder: 1, gsites: 1 } },
+    ],
   },
   {
-    label: 'If you stop paying',
-    cells: ['The site keeps running; only the domain renewal is needed', 'Falls back to a free Wix address with Wix ads', 'The site goes offline', 'The site goes offline'],
-  },
-  {
-    label: 'Change history and undo',
-    cells: ['Every change, kept permanently, with who made it', 'Restore an earlier saved version of the whole site', 'Limited', 'Limited'],
-  },
-  {
-    label: 'Speed on phones',
-    cells: ['Measured, with a 95+ target', 'Varies with the template and apps', 'Usually reasonable', 'Varies'],
-  },
-  {
-    label: 'Changing the words yourself',
-    cells: ['Browser editor (words, photos, lists)', 'Drag-and-drop, very flexible', 'Drag-and-drop, polished', 'Drag-and-drop, simple'],
-  },
-  {
-    label: 'Changing the layout yourself',
-    cells: ['Ask me (layout is set when built)', 'Yes', 'Yes', 'Yes'],
-  },
-  {
-    label: 'Who you call',
-    cells: ['Me, a local person who built it', 'Support centre', 'Support centre', 'Support centre'],
+    id: 'upkeep',
+    q: 'Who should look after updates and security?',
+    answers: [
+      { label: 'Someone else, please', pts: { owned: 3, builder: 1, shopify: 1, square: 1, wpself: -3 } },
+      { label: 'I can follow instructions', pts: { builder: 1, wpcom: 1, gsites: 1 } },
+      { label: 'I’m happy to run updates myself', pts: { wpself: 3, webflow: 1 } },
+    ],
   },
 ];
+
+const results: Record<Key, { title: string; why: string; next: string; href?: string }> = {
+  owned: { title: 'A site built for you, and owned by you', why: 'Low running costs, nothing to patch, and a person to call. You pay once for the build.', next: 'See what’s included below, then get in touch for a quote.', href: '/contact' },
+  builder: { title: 'A site builder: Squarespace or Wix', why: 'You want to design and rearrange pages yourself and prefer a monthly fee to a setup cost.', next: 'Squarespace for polish, Wix for flexibility. I can help set one up or move content in.' },
+  wpcom: { title: 'WordPress.com', why: 'Good for regular writing, with an export path to any WordPress host later.', next: 'Start on a paid plan so you can use your own domain.' },
+  wpself: { title: 'Self-hosted WordPress', why: 'Maximum control and a huge plugin choice, if someone keeps it updated.', next: 'Budget for good hosting and regular updates, or a maintenance plan.' },
+  webflow: { title: 'Webflow, with a designer', why: 'A design-led site where a designer builds it and you edit the content.', next: 'Hire a Webflow designer; ask about code export before you start.' },
+  shopify: { title: 'Shopify', why: 'Stock, shipping and tax are its job. Custom work rarely beats it for a real store.', next: 'Start on Basic. A built-and-owned site can link to the store if you want both.' },
+  square: { title: 'Square Online', why: 'If you already take payments with Square, the online shop connects to it directly.', next: 'Try the free plan first.' },
+  gsites: { title: 'Google Sites', why: 'Free and simple, good enough for a club, class or internal page.', next: 'Add your own domain for a few dollars a year.' },
+};
+
+const tierNames: Record<string, string> = {
+  A: 'Most likely the Essentials package: I make changes on request.',
+  B: 'Most likely the Self-edit package: you change words and photos in the browser.',
+  C: 'Most likely the Collection package: items with tags, filters and a page each.',
+};
 ---
 
 <BaseLayout
   title="What a Vashon Software website includes"
-  description="What every small-business website from Vashon Software includes, what's optional, and how that compares with Wix, Squarespace and GoDaddy."
+  description="What every small-business website from Vashon Software includes, the options and care plans, a quick 'which approach fits?' quiz, and a comparison with Wix, Squarespace, WordPress, Shopify and other builders."
 >
   <!-- Header -->
   <section class="py-20 md:py-24">
@@ -177,12 +259,65 @@ const compareRows: { label: string; cells: string[] }[] = [
           so they aren't sold as extras. Beyond that, you pick only the options you need.
         </p>
         <nav aria-label="On this page" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <a href="#fit" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Which approach fits you?</a>
           <a href="#included" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Always included</a>
           <a href="#options" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Options</a>
-          <a href="#compare" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Compared with Wix, Squarespace, GoDaddy</a>
-          <a href="#builder" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">When a builder is the better fit</a>
+          <a href="#care" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Care plans</a>
+          <a href="#check" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Check your current site</a>
+          <a href="#compare" class="underline underline-offset-4 hover:text-foreground text-muted-foreground">Compared with other platforms</a>
         </nav>
       </div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="fit" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Which approach fits you?</h2>
+        <p class="mt-2 text-muted-foreground">
+          Five questions. The suggestion may well be a platform other than mine; that's the point.
+        </p>
+      </div>
+      <form id="fit-form" class="mt-8 grid gap-6 lg:grid-cols-[1fr_22rem]" onsubmit="return false">
+        <div class="space-y-6">
+          {questions.map((question, qi) => (
+            <fieldset class="rounded-lg border bg-card p-5">
+              <legend class="px-1 font-semibold">{qi + 1}. {question.q}</legend>
+              <div class="mt-3 grid gap-2">
+                {question.answers.map((a, ai) => (
+                  <label class="flex items-start gap-3 rounded-md border px-3 py-2 text-sm cursor-pointer hover:bg-muted/40 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                    <input
+                      type="radio"
+                      name={question.id}
+                      value={ai}
+                      class="mt-1 accent-primary"
+                      data-pts={JSON.stringify(a.pts)}
+                      data-tier={a.tier ?? ''}
+                    />
+                    <span>{a.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ))}
+        </div>
+        <aside class="lg:sticky lg:top-24 self-start rounded-lg border bg-card p-6" aria-live="polite">
+          <h3 class="text-sm font-medium uppercase tracking-wide text-muted-foreground">Suggested approach</h3>
+          <div id="fit-empty" class="mt-3 text-sm text-muted-foreground">
+            Answer the questions to see a suggestion. <span id="fit-count">0</span> of {questions.length} answered.
+          </div>
+          <div id="fit-result" class="mt-3 hidden">
+            <p id="fit-title" class="text-xl font-semibold"></p>
+            <p id="fit-why" class="mt-2 text-sm text-muted-foreground leading-relaxed"></p>
+            <p id="fit-tier" class="mt-2 text-sm hidden"></p>
+            <p id="fit-next" class="mt-3 text-sm"></p>
+            <p class="mt-4 text-sm text-muted-foreground">Also worth a look: <span id="fit-runner" class="font-medium text-foreground"></span></p>
+            <a id="fit-cta" href="/contact" class="mt-5 inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-5 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">Talk it over</a>
+            <p class="mt-4 text-xs text-muted-foreground">A starting point, not a verdict. Your answers stay in your browser.</p>
+          </div>
+        </aside>
+      </form>
     </div>
   </section>
 
@@ -234,34 +369,104 @@ const compareRows: { label: string; cells: string[] }[] = [
     </div>
   </section>
 
-  <!-- Comparison -->
-  <section id="compare" class="py-16 border-t">
+  <!-- Care plans -->
+  <section id="care" class="py-16 border-t">
     <div class="container max-w-5xl mx-auto px-4">
       <div class="max-w-2xl">
-        <h2 class="text-2xl font-bold md:text-3xl">Compared with Wix, Squarespace and GoDaddy</h2>
+        <h2 class="text-2xl font-bold md:text-3xl">Care plans</h2>
         <p class="mt-4 text-muted-foreground leading-relaxed">
-          Site builders are good products. The main difference is the arrangement: with a
-          builder you rent the site month by month; here you pay once to have it built, then
-          own it outright and run it nearly free.
+          A site with nothing to patch needs little looking after, so a plan is optional. What a plan
+          adds is regular check-ups, a report, and some change time. Pick how often.
         </p>
       </div>
       <div class="mt-8 overflow-x-auto rounded-lg border">
-        <table class="w-full min-w-[44rem] text-sm">
-          <caption class="sr-only">Comparison of this approach with three website builders</caption>
+        <table class="w-full min-w-[40rem] text-sm">
+          <caption class="sr-only">What each care plan includes</caption>
           <thead class="bg-muted/40">
             <tr>
-              <th scope="col" class="p-3 text-left font-semibold w-44"><span class="sr-only">Feature</span></th>
-              {compareCols.map((col, i) => (
-                <th scope="col" class={`p-3 text-left font-semibold ${i === 0 ? 'text-primary' : ''}`}>{col}</th>
+              <th scope="col" class="p-3 text-left font-semibold"><span class="sr-only">Included</span></th>
+              {careCols.map((col, i) => (
+                <th scope="col" class={`p-3 text-left font-semibold ${i === careCols.length - 1 ? 'text-primary' : ''}`}>{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {compareRows.map((row) => (
+            {careRows.map((row) => (
               <tr class="border-t align-top">
                 <th scope="row" class="p-3 text-left font-medium">{row.label}</th>
-                {row.cells.map((cell, i) => (
-                  <td class={`p-3 leading-relaxed ${i === 0 ? 'bg-primary/5 text-foreground' : 'text-muted-foreground'}`}>{cell}</td>
+                {row.cells.map((cell) => (
+                  <td class={`p-3 ${cell === '—' ? 'text-muted-foreground' : ''}`}>{cell === '—' ? <span aria-label="not included">—</span> : cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 rounded-lg border bg-card p-6">
+        <h3 class="font-semibold text-lg mb-4">What a health check covers</h3>
+        <ul class="grid gap-3 sm:grid-cols-2 text-sm text-muted-foreground leading-relaxed">
+          {healthCheck.map(([name, desc]) => (
+            <li><span class="font-medium text-foreground">{name}.</span> {desc}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Check your site -->
+  <section id="check" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Check your current site</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          These free tools run the same core tests as the health check. Paste in your address.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {checkTools.map((t) => (
+          <a href={t.url} rel="noopener" target="_blank" class="rounded-lg border bg-card p-5 hover:shadow-md transition-shadow">
+            <span class="font-semibold">{t.name} ↗</span>
+            <span class="block text-xs text-muted-foreground">{t.by}</span>
+            <span class="mt-2 block text-sm text-muted-foreground">Checks {t.what}.</span>
+          </a>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-muted-foreground max-w-2xl">
+        Prefer a person? <a href="/contact" class="underline underline-offset-4 text-foreground">Send me your address</a>
+        and I'll run a full check and reply with a plain-English summary, free.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section id="compare" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Compared with other platforms</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          These are good products, each best at something. The main difference is the arrangement:
+          with a builder you rent the site month by month; here you pay once to have it built, then
+          own it and run it nearly free.
+        </p>
+      </div>
+      <div class="mt-8 overflow-x-auto rounded-lg border">
+        <table class="w-full min-w-[64rem] text-sm">
+          <caption class="sr-only">Comparison of website platforms</caption>
+          <thead class="bg-muted/40">
+            <tr>
+              <th scope="col" class="sticky left-0 z-10 bg-muted p-3 text-left font-semibold w-40">Platform</th>
+              {compareCols.map((col) => (
+                <th scope="col" class="p-3 text-left font-semibold">{col}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {platforms.map((p) => (
+              <tr class={`border-t align-top ${p.ours ? 'bg-primary/5' : ''}`}>
+                <th scope="row" class={`sticky left-0 z-10 p-3 text-left font-medium ${p.ours ? 'bg-card text-primary' : 'bg-background'}`}>{p.name}</th>
+                {p.cells.map((cell) => (
+                  <td class={`p-3 leading-relaxed ${p.ours ? 'text-foreground' : 'text-muted-foreground'}`}>{cell}</td>
                 ))}
               </tr>
             ))}
@@ -269,27 +474,23 @@ const compareRows: { label: string; cells: string[] }[] = [
         </table>
       </div>
       <p class="mt-4 text-xs text-muted-foreground max-w-3xl">
-        Builder prices are typical published US prices with annual billing, as of November 2026.
-        Plans, prices and features change often, so check each company's own pricing page.
-        Introductory prices usually rise at renewal.
+        Prices are typical published US prices with annual billing, as of November 2026. Plans, prices
+        and features change often, so check each company's own pricing page. Introductory prices usually
+        rise at renewal. Self-hosted WordPress costs vary most, with hosting and premium plugins.
       </p>
-    </div>
-  </section>
 
-  <!-- Honest fit -->
-  <section id="builder" class="py-16 border-t bg-muted/20">
-    <div class="container max-w-5xl mx-auto px-4">
-      <div class="max-w-2xl">
-        <h2 class="text-2xl font-bold md:text-3xl">When a builder is the better fit</h2>
-        <p class="mt-4 text-muted-foreground leading-relaxed">I'll say so if one of these is you:</p>
-        <ul class="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed list-disc pl-5">
-          <li>You want to rearrange layouts and design pages yourself, often.</li>
-          <li>You need a full online store with stock, shipping and tax. Shopify or Squarespace Commerce handle that better than custom work at this size.</li>
+      <div class="mt-10 max-w-2xl">
+        <h3 class="text-xl font-semibold">When another platform is the better fit</h3>
+        <p class="mt-3 text-muted-foreground leading-relaxed">I'll say so if one of these is you:</p>
+        <ul class="mt-3 space-y-2 text-sm text-muted-foreground leading-relaxed list-disc pl-5">
+          <li>You want to rearrange layouts and design pages yourself, often: Squarespace or Wix.</li>
+          <li>You need a full online store with stock, shipping and tax: Shopify, or Square Online if you already use Square.</li>
+          <li>You publish a lot and have someone to keep it updated: WordPress.</li>
           <li>You'd rather have no setup cost and accept the monthly fee.</li>
         </ul>
-        <p class="mt-6 text-muted-foreground leading-relaxed">
-          If you already have a Wix, Squarespace or GoDaddy site and want to move, I can carry the
-          content across and keep its old addresses working.
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          If you have a site on one of these and want to move, I can carry the content across and keep
+          its old addresses working.
         </p>
       </div>
     </div>
@@ -301,3 +502,43 @@ const compareRows: { label: string; cells: string[] }[] = [
     cta={{ href: '/contact', label: 'Get in Touch' }}
   />
 </BaseLayout>
+
+<script define:vars={{ results, tierNames, total: questions.length }}>
+  const form = document.getElementById('fit-form');
+  const $ = (id) => document.getElementById(id);
+  function update() {
+    const checked = [...form.querySelectorAll('input[type=radio]:checked')];
+    $('fit-count').textContent = String(checked.length);
+    if (checked.length < total) {
+      $('fit-empty').classList.remove('hidden');
+      $('fit-result').classList.add('hidden');
+      return;
+    }
+    const score = {};
+    const tiers = [];
+    for (const input of checked) {
+      const pts = JSON.parse(input.dataset.pts || '{}');
+      for (const [k, v] of Object.entries(pts)) score[k] = (score[k] || 0) + v;
+      if (input.dataset.tier) tiers.push(input.dataset.tier);
+    }
+    const ranked = Object.keys(results).sort((a, b) => (score[b] || 0) - (score[a] || 0));
+    const top = results[ranked[0]];
+    $('fit-title').textContent = top.title;
+    $('fit-why').textContent = top.why;
+    $('fit-next').textContent = top.next;
+    $('fit-runner').textContent = results[ranked[1]].title;
+    const tierEl = $('fit-tier');
+    if (ranked[0] === 'owned' && tiers.length) {
+      // The highest tier any answer implies (C > B > A).
+      const tier = tiers.sort().at(-1);
+      tierEl.textContent = tierNames[tier];
+      tierEl.classList.remove('hidden');
+    } else {
+      tierEl.classList.add('hidden');
+    }
+    $('fit-empty').classList.add('hidden');
+    $('fit-result').classList.remove('hidden');
+  }
+  form.addEventListener('change', update);
+  update();
+</script>
