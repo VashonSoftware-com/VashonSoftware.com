@@ -1,0 +1,609 @@
+<title>VashonSoftware.com Restructure</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~68ch) with wider bands for mockups; proposal uses the site's own sage/forest + amber palette. */
+:root {
+  --bg: oklch(98.5% 0.004 145);
+  --fg: oklch(18% 0.025 145);
+  --muted: oklch(46% 0.03 145);
+  --line: oklch(88% 0.022 145);
+  --panel: oklch(95.5% 0.014 145);
+  --accent: oklch(37% 0.13 145);
+  --accent-soft: oklch(91% 0.04 145);
+  --rec: oklch(37% 0.13 145);
+  --font-body: 'Geist', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-head: 'Geist', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(20% 0.026 55); --fg: oklch(93% 0.014 75); --muted: oklch(70% 0.02 65);
+    --line: oklch(34% 0.04 55); --panel: oklch(24% 0.032 55); --accent: oklch(78% 0.13 65);
+    --accent-soft: oklch(30% 0.05 60); --rec: oklch(78% 0.13 65); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: oklch(20% 0.026 55); --fg: oklch(93% 0.014 75); --muted: oklch(70% 0.02 65);
+  --line: oklch(34% 0.04 55); --panel: oklch(24% 0.032 55); --accent: oklch(78% 0.13 65);
+  --accent-soft: oklch(30% 0.05 60); --rec: oklch(78% 0.13 65); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body);
+  font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 40px 80px; display: grid; gap: 56px; }
+.prose { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--font-head); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; }
+h2 { font-size: 1.4rem; font-weight: 600; line-height: 1.3; }
+h3 { font-size: 1.05rem; font-weight: 600; }
+p { margin: 0; }
+section { display: grid; gap: 18px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.1rem; color: var(--muted); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.85rem; color: var(--muted); }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--panel); padding: 0.1em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.rec { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bg); background: var(--rec); padding: 2px 8px; border-radius: 999px; vertical-align: middle; }
+.summary { border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; display: grid; gap: 10px; max-width: 72ch; }
+.summary ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* Sitemap */
+.sitemap { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.node { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; background: var(--bg); min-width: 0; }
+.node .url { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+.node h3 { font-size: 1rem; }
+.node ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 0.88rem; }
+.node li { padding-left: 14px; position: relative; }
+.node li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 7px; border-top: 1px solid var(--muted); }
+.node li .url { display: block; }
+.node .later { color: var(--muted); font-style: italic; }
+.utility { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; }
+.chip { border: 1px dashed var(--line); border-radius: 999px; padding: 3px 12px; color: var(--muted); font-family: var(--font-mono); font-size: 0.78rem; }
+.chip.merge { border-style: solid; color: var(--fg); background: var(--accent-soft); border-color: transparent; }
+
+/* Tables */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; min-width: 640px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; background: var(--panel); font-size: 0.8rem; }
+tr:last-child td { border-bottom: 0; }
+td .url { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+
+/* Option cards */
+.options { display: grid; gap: 16px; }
+.option { border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.option.is-rec { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.option-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+.proscons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; font-size: 0.88rem; }
+.proscons b { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
+
+/* ---------- Mockup frames: each depicts the live site in its LIGHT theme, so colors are fixed on purpose ---------- */
+.frame { border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; color: #1a2420; min-width: 0; }
+.frame-bar { display: flex; gap: 6px; align-items: center; padding: 7px 10px; background: #eceeec; border-bottom: 1px solid #dcdfdc; font-family: var(--font-mono); font-size: 0.7rem; color: #66706a; }
+.frame-bar i { width: 8px; height: 8px; border-radius: 50%; background: #c9cdc9; display: inline-block; }
+.frame-bar span { margin-left: 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* Nav mockups */
+.navmock { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #f8faf8; border-bottom: 1px solid #dde5de; flex-wrap: wrap; font-family: 'Geist', system-ui, sans-serif; }
+.navmock .logo { font-weight: 700; color: #1f5a32; font-size: 0.95rem; margin-right: auto; font-family: 'Montserrat', sans-serif; }
+.navmock nav { display: flex; gap: 4px; flex-wrap: wrap; font-size: 0.82rem; }
+.navmock nav a { color: #46524a; text-decoration: none; padding: 4px 9px; border-radius: 5px; }
+.navmock nav a.on { background: #e1ebe2; color: #14231a; }
+.navmock .btn { background: #1f5a32; color: #f3f8f3; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
+.navmock .caret::after { content: " ▾"; font-size: 0.7em; }
+.dropdown { margin: 0 16px 14px auto; width: min(320px, calc(100% - 32px)); border: 1px solid #dde5de; border-radius: 8px; background: #fff; padding: 8px; display: grid; gap: 2px; font-family: 'Geist', system-ui, sans-serif; position: relative; top: -2px; box-shadow: 0 8px 20px rgba(20,40,25,0.08); }
+.dropdown div { padding: 7px 10px; border-radius: 5px; font-size: 0.82rem; }
+.dropdown div:first-child { background: #eef4ee; }
+.dropdown small { display: block; color: #6b766e; font-size: 0.74rem; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; padding: 16px; font-family: 'Geist', system-ui, sans-serif; }
+.door { border: 1px solid #dde5de; border-radius: 8px; padding: 14px; display: grid; gap: 6px; }
+.door b { font-size: 0.95rem; color: #14231a; }
+.door span { font-size: 0.8rem; color: #5b675f; }
+
+/* Heading specimens */
+.specimens { display: grid; gap: 18px; }
+.specimen { display: grid; gap: 0; }
+.spec-label { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; padding: 10px 0; }
+.spec-body { padding: 28px 28px 30px; display: grid; gap: 14px; }
+.spec-body .crumb { font-size: 13px; }
+.spec-body .h1 { margin: 0; text-wrap: balance; }
+.spec-body .lead { font-size: 17px; line-height: 1.6; color: #4d5a52; max-width: 56ch; margin: 0; }
+.spec-body .h2 { margin: 14px 0 0; text-wrap: balance; }
+.spec-body .p { font-size: 15px; line-height: 1.6; color: #4d5a52; max-width: 60ch; margin: 0; }
+.spec-body { font-family: 'Geist', system-ui, sans-serif; }
+
+/* S0 today: Montserrat 700, 72px at lg (text-6xl at 120% root) */
+.s0 .h1 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(40px, 7vw, 72px); line-height: 1.05; letter-spacing: -0.02em; color: #14231a; }
+.s0 .h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 36px; letter-spacing: -0.02em; color: #14231a; }
+.s0 .lead { font-size: 21.6px; }
+.s0 .crumb { display: none; }
+/* S1 calm sans */
+.s1 .crumb { color: #5b6b60; }
+.s1 .crumb a { color: #2a6b40; text-decoration: none; }
+.s1 .h1 { font-weight: 600; font-size: 40px; line-height: 1.15; letter-spacing: -0.015em; color: #14231a; }
+.s1 .h2 { font-weight: 600; font-size: 24px; letter-spacing: -0.01em; color: #14231a; }
+/* S2 serif headings */
+.s2 .crumb { color: #5b6b60; font-size: 14px; }
+.s2 .h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 42px; line-height: 1.15; color: #17251c; letter-spacing: -0.005em; }
+.s2 .h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 26px; color: #17251c; }
+/* S3 field manual */
+.s3 { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+.s3 .crumb { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2a6b40; }
+.s3 .h1 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 36px; line-height: 1.2; color: #15201a; letter-spacing: -0.01em; }
+.s3 .lead, .s3 .p { font-family: 'IBM Plex Sans', sans-serif; }
+.s3 .h2 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 20px; color: #15201a; border-top: 1px solid #cfd8d1; padding-top: 14px; display: flex; gap: 12px; align-items: baseline; }
+.s3 .h2 small { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b766e; font-weight: 400; }
+
+/* Style direction page mockups */
+.directions { display: grid; gap: 22px; }
+.dir-label { display: grid; gap: 4px; padding: 10px 0; }
+.dir-label .swatches { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.sw { width: 26px; height: 26px; border-radius: 5px; border: 1px solid rgba(0,0,0,0.12); }
+.page { display: grid; }
+.page .pnav { display: flex; align-items: center; gap: 14px; padding: 12px 22px; flex-wrap: wrap; font-size: 13px; }
+.page .pnav .logo { margin-right: auto; font-weight: 700; }
+.page .pnav nav { display: flex; gap: 14px; flex-wrap: wrap; }
+.page .phero { padding: 30px 22px 26px; display: grid; gap: 12px; }
+.page .phero h4 { margin: 0; text-wrap: balance; max-width: 22ch; }
+.page .phero p { margin: 0; max-width: 54ch; font-size: 15px; line-height: 1.6; }
+.page .pbtns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.page .pbtn { padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; }
+.page .ptiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; padding: 0 22px 26px; }
+.page .tile { padding: 14px; display: grid; gap: 6px; align-content: start; }
+.page .tile b { font-size: 14px; }
+.page .tile span { font-size: 12.5px; line-height: 1.5; }
+.page .pstrip { padding: 14px 22px; font-size: 13px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* D1 refined island green */
+.d1 { background: #f9fbf9; color: #17251c; font-family: 'Geist', system-ui, sans-serif; }
+.d1 .pnav { border-bottom: 1px solid #dfe7e0; }
+.d1 .pnav .logo { color: #1f5a32; font-family: 'Montserrat', sans-serif; }
+.d1 .pnav nav span { color: #4f5c54; }
+.d1 .phero h4 { font-weight: 600; font-size: 30px; line-height: 1.2; letter-spacing: -0.015em; }
+.d1 .phero p { color: #4f5c54; }
+.d1 .pbtn.a { background: #1f5a32; color: #f3f8f3; }
+.d1 .pbtn.b { border: 1px solid #cfdcd1; color: #1f5a32; }
+.d1 .tile { border: 1px solid #dfe7e0; border-radius: 8px; background: #fff; }
+.d1 .tile span { color: #5b675f; }
+.d1 .pstrip { background: #eef4ee; color: #3d4a42; }
+
+/* D2 sound & cedar: cool water blue-grey ground, cedar-brown accent, serif headings */
+.d2 { background: #f3f6f7; color: #1c2a33; font-family: 'Geist', system-ui, sans-serif; }
+.d2 .pnav { background: #1f3a48; color: #e6eef1; }
+.d2 .pnav .logo { font-family: 'Source Serif 4', serif; font-weight: 600; color: #fff; }
+.d2 .pnav nav span { color: #b9cad2; }
+.d2 .phero { background: #1f3a48; color: #eef4f6; padding-bottom: 34px; }
+.d2 .phero h4 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 32px; line-height: 1.2; }
+.d2 .phero p { color: #c2d2d9; }
+.d2 .pbtn.a { background: #b8743f; color: #fff; }
+.d2 .pbtn.b { border: 1px solid #5c7987; color: #eef4f6; }
+.d2 .ptiles { margin-top: -16px; }
+.d2 .tile { background: #fff; border-radius: 6px; box-shadow: 0 1px 2px rgba(20,40,50,0.08), 0 4px 14px rgba(20,40,50,0.06); }
+.d2 .tile b { font-family: 'Source Serif 4', serif; font-size: 16px; font-weight: 600; color: #1f3a48; }
+.d2 .tile span { color: #52636c; }
+.d2 .pstrip { color: #52636c; border-top: 1px solid #dbe3e6; }
+.d2 .pstrip b { color: #8a5228; font-weight: 600; }
+
+/* D3 spec sheet: white, graphite, single green, Plex + mono labels, ruled rows instead of cards */
+.d3 { background: #ffffff; color: #1b1f1d; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+.d3 .pnav { border-bottom: 2px solid #1b1f1d; font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+.d3 .pnav .logo { font-family: 'IBM Plex Sans', sans-serif; text-transform: none; letter-spacing: 0; font-size: 14px; }
+.d3 .pnav nav span { color: #4b524e; }
+.d3 .phero .k { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #2a7a45; }
+.d3 .phero h4 { font-weight: 600; font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; }
+.d3 .phero p { color: #4b524e; }
+.d3 .pbtn.a { background: #1b1f1d; color: #fff; border-radius: 2px; }
+.d3 .pbtn.b { border: 1px solid #1b1f1d; color: #1b1f1d; border-radius: 2px; }
+.d3 .ptiles { gap: 0; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); border-top: 1px solid #d7dcd9; margin: 0 22px 26px; padding: 0; }
+.d3 .tile { border-bottom: 1px solid #d7dcd9; padding: 14px 14px 14px 0; }
+.d3 .tile .k { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #2a7a45; letter-spacing: 0.08em; text-transform: uppercase; }
+.d3 .tile span { color: #555c58; }
+.d3 .pstrip { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #4b524e; background: #f2f4f3; }
+
+.phases { display: grid; gap: 12px; }
+.phase { display: grid; grid-template-columns: 7.5rem 1fr; gap: 6px 18px; padding: 14px 0; border-top: 1px solid var(--line); }
+.phase:first-child { border-top: 0; }
+.phase .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); padding-top: 3px; }
+.phase div { min-width: 0; display: grid; gap: 6px; }
+@media (max-width: 560px) {
+  .phase { grid-template-columns: 1fr; }
+  .spec-body { padding: 20px 18px 22px; }
+}
+.decisions { display: grid; gap: 10px; counter-reset: q; margin: 0; padding: 0; list-style: none; }
+.decisions li { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 4px; }
+.decisions li b { font-weight: 600; }
+.decisions li span { color: var(--muted); font-size: 0.9rem; }
+pre { margin: 0; background: var(--panel); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.55; }
+</style>
+
+<div class="wrap">
+
+<header style="display:grid;gap:14px">
+  <div class="eyebrow">Proposal · draft for review</div>
+  <h1>Restructuring VashonSoftware.com: four service pages, one About &amp; Contact, calmer headings</h1>
+  <p class="lede">The Services page now holds six different stories on one long scroll. This splits it into four pages, each aimed at one kind of client. It folds About and Contact into a single page and tones down the headings. It also sketches three overall style directions to aim for later.</p>
+  <div class="meta"><span>Prepared 11 Nov 2026</span><span>Repo: <code>D:\Projects\VashonSoftware.com\VashonSoftware.com</code></span><span>Nothing changed on the site yet</span></div>
+</header>
+
+<section class="summary">
+  <h2>Recommendations</h2>
+  <ol>
+    <li><b>Four top-level service pages:</b> Websites, Software, Emergency Tech, Consulting. Only Websites gets subpages now, because it is the only area with enough content. <code>/services</code> stays as a short hub so old links keep working.</li>
+    <li><b>One "About &amp; Contact" page</b> at <code>/about</code>, with the form at the top right. <code>/contact</code> redirects to <code>/about#contact</code>. The nav loses two links and keeps the "Contact John" button.</li>
+    <li><b>Fix headings first, separately from any restyle.</b> Move every heading's size into two shared components and drop the 120% root font size. After that, a full restyle is a change to one file plus the tokens.</li>
+    <li><b>Style direction to aim for:</b> start with A (refined current look). Choose between B and C later, once the new pages exist and there is real content to judge them on.</li>
+  </ol>
+</section>
+
+<hr>
+
+<!-- ================= 1. SITEMAP ================= -->
+<section>
+  <div class="eyebrow">1 · Site structure</div>
+  <h2>Proposed sitemap</h2>
+  <p class="prose">Each service page answers one kind of visitor. The local small-business owner goes to Websites. The organization that needs something built goes to Software. The emergency manager goes to Emergency Tech. The recruiter or CTO goes to Consulting. The "Small &amp; Local Projects" list is split up across the pages it belongs to, so a local visitor sees it on the page they land on.</p>
+
+  <div class="sitemap">
+    <div class="node">
+      <span class="url">/websites</span>
+      <h3>Websites &amp; Hosting</h3>
+      <ul>
+        <li>Overview, "Which approach fits you?", example sites</li>
+        <li>What's included<span class="url">/websites/included</span></li>
+        <li>Care plans &amp; site check<span class="url">/websites/care-plans</span></li>
+        <li>Compared with Wix, Squarespace…<span class="url">/websites/compare</span></li>
+        <li>Domains &amp; email<span class="url">/domains (stays put)</span></li>
+      </ul>
+    </div>
+    <div class="node">
+      <span class="url">/software</span>
+      <h3>Custom Software</h3>
+      <ul>
+        <li>Custom applications</li>
+        <li>Microservices &amp; containers</li>
+        <li>AI / small language models</li>
+        <li>Secure IoT, data analytics</li>
+        <li>Scripts &amp; small tools (local)</li>
+        <li class="later">Later: /software/ai when there's more to say</li>
+      </ul>
+    </div>
+    <div class="node">
+      <span class="url">/emergency</span>
+      <h3>Emergency &amp; Disaster Tech</h3>
+      <ul>
+        <li>EOC software, ICS / NIMS / NRF</li>
+        <li>Response, recovery, risk tools</li>
+        <li>Projects: EOC.online, RangerTrak, VashonMesh, OpenFEMA client (moved from About)</li>
+        <li class="later">Later: one subpage per project if they grow</li>
+      </ul>
+    </div>
+    <div class="node">
+      <span class="url">/consulting</span>
+      <h3>Architecture &amp; Health IT</h3>
+      <ul>
+        <li>Health IT &amp; interoperability</li>
+        <li>Architecture modernization (DDD, Team Topologies…)</li>
+        <li>Representative work</li>
+        <li>How to engage, tech consults (local)</li>
+        <li class="later">Later: split Health IT / Architecture</li>
+      </ul>
+    </div>
+  </div>
+  <div class="utility">
+    <span class="chip">/ home: routes to the four</span>
+    <span class="chip">/services: short hub, keeps old anchors</span>
+    <span class="chip">/blog</span>
+    <span class="chip merge">/about: About &amp; Contact</span>
+    <span class="chip">/contact → /about#contact</span>
+    <span class="chip">/privacy (footer)</span>
+  </div>
+</section>
+
+<!-- ================= 2. CONTENT MAP ================= -->
+<section>
+  <div class="eyebrow">2 · Where today's content goes</div>
+  <h2>Content mapping</h2>
+  <p class="prose">Almost nothing needs to be written from scratch. Most of the work is moving sections and writing a short intro for each new page.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Today</th><th>Moves to</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Services · intro paragraphs<br><span class="url">services.astro:122-146</span></td><td>Home hero and <code>/services</code> hub</td><td>The "since 2010 / 30+ years" line already appears on Home; keep one copy.</td></tr>
+        <tr><td>Services · Healthcare IT &amp; Architecture Modernization<br><span class="url">#health-it</span></td><td><code>/consulting</code></td><td>Moves as a whole; it is already a complete page.</td></tr>
+        <tr><td>Services · Small &amp; Local Projects</td><td>Split</td><td>Refresh / new site / domains → Websites. Custom script → Software. Tech consult → Consulting. "Emergency / off-hours help" → Care plans plus a line on Home.</td></tr>
+        <tr><td>Services · Websites group</td><td><code>/websites</code> overview</td><td>The tech-stack card becomes a short "How it's built" note; the example-sites card becomes a proper example list.</td></tr>
+        <tr><td>Services · Crafted Software group</td><td><code>/software</code></td><td>Healthcare IT card moves to Consulting instead.</td></tr>
+        <tr><td>Services · Disaster Technology group</td><td><code>/emergency</code></td><td>Add the project cards from About.</td></tr>
+        <tr><td>Websites page (546 lines, one scroll)</td><td><code>/websites</code> + 3 subpages</td><td>Fit quiz and Overview stay on top; Always included + Options → <code>/included</code>; Care plans + Check your site → <code>/care-plans</code>; Comparison → <code>/compare</code>.</td></tr>
+        <tr><td>About · bio, credentials, projects</td><td><code>/about</code> (merged)</td><td>Credentials become a compact two-column list; projects move to Emergency and Software, and About links to them.</td></tr>
+        <tr><td>Contact · details, "what to expect", form</td><td><code>/about#contact</code></td><td>Form becomes a shared component also used at the end of each service page.</td></tr>
+        <tr><td>Footer service links (8, mostly <code>/services#…</code>)</td><td>Four links to the new pages</td><td>"Mobile Apps", "Cloud Solutions", "E-commerce &amp; CMS" have no content behind them; drop them or write it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= 3. NAV ================= -->
+<section>
+  <div class="eyebrow">3 · Navigation</div>
+  <h2>Three ways to lay out the header</h2>
+  <div class="options">
+
+    <div class="option is-rec">
+      <div class="option-head"><h3>A. Flat: four services + Blog</h3><span class="rec">Recommended</span></div>
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>vashonsoftware.com/websites</span></div>
+        <div class="navmock">
+          <span class="logo">Vashon Software</span>
+          <nav><a class="on">Websites</a><a>Software</a><a>Emergency Tech</a><a>Consulting</a><a>Blog</a></nav>
+          <span class="btn">Contact John</span>
+        </div>
+      </div>
+      <div class="proscons">
+        <div><b>For</b>Every service is one click from anywhere. No dropdown code, works the same on phones. Same number of links as today.</div>
+        <div><b>Against</b>About has no nav link; it relies on the button, the footer and a "Who you'll work with" strip on each page.</div>
+      </div>
+    </div>
+
+    <div class="option">
+      <div class="option-head"><h3>B. Services menu</h3></div>
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>vashonsoftware.com</span></div>
+        <div class="navmock">
+          <span class="logo">Vashon Software</span>
+          <nav><a class="on caret">Services</a><a>About</a><a>Blog</a></nav>
+          <span class="btn">Contact John</span>
+        </div>
+        <div class="dropdown">
+          <div>Websites &amp; Hosting<small>Sites, domains, email, care plans</small></div>
+          <div>Custom Software<small>Apps, AI, IoT, data</small></div>
+          <div>Emergency Tech<small>EOC software, field tools</small></div>
+          <div>Architecture &amp; Health IT<small>Consulting, staff augmentation</small></div>
+        </div>
+      </div>
+      <div class="proscons">
+        <div><b>For</b>Short header; room to show one line of description per service; About keeps a visible link.</div>
+        <div><b>Against</b>Services hidden behind a click; needs a small script or <code>&lt;details&gt;</code> for keyboard and touch.</div>
+      </div>
+    </div>
+
+    <div class="option">
+      <div class="option-head"><h3>C. Two doors: local vs. organizations</h3></div>
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>vashonsoftware.com</span></div>
+        <div class="navmock">
+          <span class="logo">Vashon Software</span>
+          <nav><a>For local businesses</a><a>For organizations</a><a>Blog</a></nav>
+          <span class="btn">Contact John</span>
+        </div>
+        <div class="doors">
+          <div class="door"><b>For local businesses</b><span>Websites, domains &amp; email, fixes, small tools, tech consults</span></div>
+          <div class="door"><b>For organizations</b><span>Custom software, emergency tech, architecture &amp; Health IT consulting</span></div>
+        </div>
+      </div>
+      <div class="proscons">
+        <div><b>For</b>Matches the two audiences in the refresh spec; very clear for island visitors.</div>
+        <div><b>Against</b>Hides the four service names one level down; worse for search and for recruiters looking for "Health IT".</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. ABOUT + CONTACT ================= -->
+<section>
+  <div class="eyebrow">4 · About &amp; Contact</div>
+  <h2>Shrinking About and Contact</h2>
+  <div class="options">
+    <div class="option is-rec">
+      <div class="option-head"><h3>A. Merge into one page at /about</h3><span class="rec">Recommended</span></div>
+      <p>Two columns. Left: a short bio and photo, then the credentials as a compact list. Right, sticky on desktop: phone, email, "what to expect" and the form (<code>id="contact"</code>). The header button goes to <code>/about#contact</code>. Each service page ends with the same small "Talk to John" block, so most visitors never need the page at all.</p>
+      <div class="proscons">
+        <div><b>For</b>One page instead of two. The people who want to know who John is are mostly the same people about to get in touch.</div>
+        <div><b>Against</b>Needs a redirect for <code>/contact</code> (one line in <code>public/_redirects</code>), and existing email signatures pointing at /contact go through it.</div>
+      </div>
+    </div>
+    <div class="option">
+      <div class="option-head"><h3>B. Keep both, drop both from the nav</h3></div>
+      <p>No merge; About and Contact move to the footer, the button still goes to /contact. Least work, but the pages stay as thin as they are now.</p>
+    </div>
+    <div class="option">
+      <div class="option-head"><h3>C. Merge into /contact as "Work with John"</h3></div>
+      <p>Same as A, but the form leads and the bio follows. Better if most traffic is ready to get in touch; worse for recruiters who search for "about".</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ================= 5. HEADINGS ================= -->
+<section>
+  <div class="eyebrow">5 · Headings</div>
+  <h2>Why the headings feel dramatic, and three calmer options</h2>
+  <p class="prose">Three things stack up. The root font size is 120% (<code>globals.css:100</code>), so every rem is 19.2px. Page titles use <code>text-4xl md:text-5xl lg:text-6xl</code>, which comes out at 72px on a laptop. And they are set in Montserrat Bold, a wide display face, with 80–112px of padding above. Each page also writes its own sizes inline, so there is no single place to change them.</p>
+  <p class="prose">Every specimen below shows the same <code>/websites</code> header at real pixel size.</p>
+
+  <div class="specimens">
+    <div class="specimen">
+      <div class="spec-label"><h3>Today</h3><span class="eyebrow">Montserrat 700 · h1 72px · h2 36px · lead 21.6px</span></div>
+      <div class="frame"><div class="spec-body s0">
+        <p class="crumb">Services / Websites</p>
+        <p class="h1">Websites &amp; hosting</p>
+        <p class="lead">Modern, fast sites you own outright, with backups, change history and monthly visitor reports.</p>
+        <p class="h2">Always included</p>
+        <p class="p">Every site comes with its domain registered to you, nightly backups, and a 100 PageSpeed score.</p>
+      </div></div>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-label"><h3>1 · Calm sans</h3><span class="rec">Quick win</span><span class="eyebrow">Geist 600 · h1 40px · h2 24px · breadcrumb</span></div>
+      <div class="frame"><div class="spec-body s1">
+        <p class="crumb"><a>Services</a> / Websites</p>
+        <p class="h1">Websites &amp; hosting</p>
+        <p class="lead">Modern, fast sites you own outright, with backups, change history and monthly visitor reports.</p>
+        <p class="h2">Always included</p>
+        <p class="p">Every site comes with its domain registered to you, nightly backups, and a 100 PageSpeed score.</p>
+      </div></div>
+      <p class="prose" style="font-size:.9rem;color:var(--muted);padding-top:8px">Uses the body font you already load, so no new download. Keeps Montserrat for the logo only. Smallest change, and fits any later direction.</p>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-label"><h3>2 · Serif headings</h3><span class="eyebrow">Source Serif 4 600 · h1 42px · h2 26px</span></div>
+      <div class="frame"><div class="spec-body s2">
+        <p class="crumb">Services / Websites</p>
+        <p class="h1">Websites &amp; hosting</p>
+        <p class="lead">Modern, fast sites you own outright, with backups, change history and monthly visitor reports.</p>
+        <p class="h2">Always included</p>
+        <p class="p">Every site comes with its domain registered to you, nightly backups, and a 100 PageSpeed score.</p>
+      </div></div>
+      <p class="prose" style="font-size:.9rem;color:var(--muted);padding-top:8px">Warmer and more personal; reads like a person, not a startup. Adds one font file (~40 KB, self-hosted like the others). Pairs with direction B below.</p>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-label"><h3>3 · Field manual</h3><span class="eyebrow">IBM Plex Sans 600 · h1 36px · h2 20px with rule · mono labels</span></div>
+      <div class="frame"><div class="spec-body s3">
+        <p class="crumb">Services · Websites &amp; hosting</p>
+        <p class="h1">Websites &amp; hosting</p>
+        <p class="lead">Modern, fast sites you own outright, with backups, change history and monthly visitor reports.</p>
+        <p class="h2">Always included <small>Every plan</small></p>
+        <p class="p">Every site comes with its domain registered to you, nightly backups, and a 100 PageSpeed score.</p>
+      </div></div>
+      <p class="prose" style="font-size:.9rem;color:var(--muted);padding-top:8px">Technical and precise, like an ICS form or a spec sheet. Speaks to the emergency-management and architecture audience. Pairs with direction C below.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:10px">Do this part regardless of which option wins</h3>
+  <p class="prose">Add two small components, <code>PageHeader.astro</code> (eyebrow or breadcrumb, h1, lead) and <code>SectionHeader.astro</code> (h2, optional subtitle), and replace the inline sizes on every page. Set the sizes once in <code>globals.css</code>:</p>
+  <pre>html { font-size: 106.25%; }            /* 17px, was 120% = 19.2px */
+
+@layer components {
+  .page-title    { font-size: clamp(2rem, 1.6rem + 1.4vw, 2.5rem);
+                   font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
+  .section-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+  .eyebrow       { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+}
+/* hero padding: py-12 md:py-16 instead of py-20 md:py-28 */</pre>
+  <p class="prose">Changing the root size shrinks everything by about 11%, including body text and spacing. That's probably welcome, but the pages need a look afterwards. A safer first step is to keep 120% and change only the heading sizes.</p>
+</section>
+
+<hr>
+
+<!-- ================= 6. STYLE DIRECTIONS ================= -->
+<section>
+  <div class="eyebrow">6 · Longer term</div>
+  <h2>Three overall style directions</h2>
+  <p class="prose">Each one is the new Home page in the light theme, with the four service tiles. These are targets to react to, not finished designs. All three keep the existing stack: Tailwind tokens in <code>globals.css</code>, light and dark themes, no added JavaScript.</p>
+
+  <div class="directions">
+    <div>
+      <div class="dir-label">
+        <div class="option-head"><h3>A · Island Green, refined</h3><span class="rec">Start here</span></div>
+        <span style="color:var(--muted);font-size:.9rem">Today's palette and dark amber theme, kept. Calm sans headings, smaller hero, cards only for the four service tiles, tinted band for the local-help strip.</span>
+        <div class="swatches"><span class="sw" style="background:#f9fbf9"></span><span class="sw" style="background:#17251c"></span><span class="sw" style="background:#1f5a32"></span><span class="sw" style="background:#eef4ee"></span><span class="sw" style="background:#d79a4a"></span></div>
+      </div>
+      <div class="frame page d1">
+        <div class="pnav"><span class="logo">Vashon Software</span><nav><span>Websites</span><span>Software</span><span>Emergency Tech</span><span>Consulting</span><span>Blog</span></nav></div>
+        <div class="phero">
+          <h4>Websites, software and emergency tech, built to last</h4>
+          <p>One architect on Vashon Island with 30+ years of experience. Small fixes to full system designs since 2010.</p>
+          <div class="pbtns"><span class="pbtn a">Contact John</span><span class="pbtn b">See websites</span></div>
+        </div>
+        <div class="ptiles">
+          <div class="tile"><b>Websites &amp; Hosting</b><span>Fast sites you own, with care plans and email.</span></div>
+          <div class="tile"><b>Custom Software</b><span>Apps, AI, IoT and data tools.</span></div>
+          <div class="tile"><b>Emergency Tech</b><span>EOC software that works offline.</span></div>
+          <div class="tile"><b>Architecture &amp; Health IT</b><span>Modernization and HIE consulting.</span></div>
+        </div>
+        <div class="pstrip">Local and in a hurry? Same-week replies for small jobs · 206.914.3050</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="dir-label">
+        <h3>B · Sound &amp; Cedar</h3>
+        <span style="color:var(--muted);font-size:.9rem">Puget Sound blue-grey with a cedar-brown accent and serif headings. More personal and more local; the dark band gives the hero weight without large type. Dark theme would deepen the blue and keep the cedar.</span>
+        <div class="swatches"><span class="sw" style="background:#f3f6f7"></span><span class="sw" style="background:#1f3a48"></span><span class="sw" style="background:#b8743f"></span><span class="sw" style="background:#52636c"></span><span class="sw" style="background:#ffffff"></span></div>
+      </div>
+      <div class="frame page d2">
+        <div class="pnav"><span class="logo">Vashon Software</span><nav><span>Websites</span><span>Software</span><span>Emergency Tech</span><span>Consulting</span><span>Blog</span></nav></div>
+        <div class="phero">
+          <h4>Websites, software and emergency tech, built to last</h4>
+          <p>One architect on Vashon Island with 30+ years of experience. Small fixes to full system designs since 2010.</p>
+          <div class="pbtns"><span class="pbtn a">Contact John</span><span class="pbtn b">See websites</span></div>
+        </div>
+        <div class="ptiles">
+          <div class="tile"><b>Websites &amp; Hosting</b><span>Fast sites you own, with care plans and email.</span></div>
+          <div class="tile"><b>Custom Software</b><span>Apps, AI, IoT and data tools.</span></div>
+          <div class="tile"><b>Emergency Tech</b><span>EOC software that works offline.</span></div>
+          <div class="tile"><b>Architecture &amp; Health IT</b><span>Modernization and HIE consulting.</span></div>
+        </div>
+        <div class="pstrip"><b>Local and in a hurry?</b> Same-week replies for small jobs · 206.914.3050</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="dir-label">
+        <h3>C · Spec Sheet</h3>
+        <span style="color:var(--muted);font-size:.9rem">White and graphite with one green, IBM Plex with mono labels, ruled rows instead of cards, square buttons. Reads as engineering credibility; strongest for the Consulting and Emergency audiences, coolest for local shoppers.</span>
+        <div class="swatches"><span class="sw" style="background:#ffffff"></span><span class="sw" style="background:#1b1f1d"></span><span class="sw" style="background:#2a7a45"></span><span class="sw" style="background:#f2f4f3"></span><span class="sw" style="background:#d7dcd9"></span></div>
+      </div>
+      <div class="frame page d3">
+        <div class="pnav"><span class="logo">Vashon Software</span><nav><span>Websites</span><span>Software</span><span>Emergency</span><span>Consulting</span><span>Blog</span></nav></div>
+        <div class="phero">
+          <span class="k">Vashon Island, WA · since 2010</span>
+          <h4>Websites, software and emergency tech, built to last</h4>
+          <p>One architect with 30+ years of experience. Small fixes to full system designs.</p>
+          <div class="pbtns"><span class="pbtn a">Contact John</span><span class="pbtn b">See websites</span></div>
+        </div>
+        <div class="ptiles">
+          <div class="tile"><span class="k">Websites</span><b>Websites &amp; Hosting</b><span>Fast sites you own, with care plans and email.</span></div>
+          <div class="tile"><span class="k">Software</span><b>Custom Software</b><span>Apps, AI, IoT and data tools.</span></div>
+          <div class="tile"><span class="k">Emergency</span><b>Emergency Tech</b><span>EOC software that works offline.</span></div>
+          <div class="tile"><span class="k">Consulting</span><b>Architecture &amp; Health IT</b><span>Modernization and HIE consulting.</span></div>
+        </div>
+        <div class="pstrip">LOCAL &amp; URGENT → same-week replies · 206.914.3050</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ================= 7. PHASES ================= -->
+<section>
+  <div class="eyebrow">7 · Order of work</div>
+  <h2>Suggested phases</h2>
+  <p class="prose">Each phase can ship on its own, and the site stays consistent in between.</p>
+  <div class="phases">
+    <div class="phase"><span class="when">Phase 1 · S</span><div><h3>Heading components and calmer sizes</h3><p>Add <code>PageHeader</code> and <code>SectionHeader</code>, switch every page to them, apply heading option 1. Check PageSpeed (layout shift) and both themes.</p></div></div>
+    <div class="phase"><span class="when">Phase 2 · M</span><div><h3>Four service pages</h3><p>Create <code>/software</code>, <code>/emergency</code>, <code>/consulting</code>. Turn <code>/services</code> into a short hub that keeps the old anchor ids (<code>#health-it</code>, <code>#websites</code>…) on its cards. Update the nav, footer and Home's feature tiles (three → four).</p></div></div>
+    <div class="phase"><span class="when">Phase 3 · M</span><div><h3>Websites subpages</h3><p>Split <code>websites.astro</code> into overview plus <code>/included</code>, <code>/care-plans</code>, <code>/compare</code>. Add a small in-page nav strip shared by the four Websites pages. Fit quiz stays on the overview.</p></div></div>
+    <div class="phase"><span class="when">Phase 4 · S</span><div><h3>About &amp; Contact merge</h3><p>Shared <code>ContactForm</code> component; merged <code>/about</code>; <code>/contact /about#contact 301</code> in <code>public/_redirects</code>; "Talk to John" block at the end of each service page.</p></div></div>
+    <div class="phase"><span class="when">Phase 5 · L</span><div><h3>Full restyle (later)</h3><p>Pick a direction from section 6 and build it as tokens in <code>globals.css</code> plus the two header components. If Phase 1 is done, this touches few page files.</p></div></div>
+  </div>
+  <p class="prose" style="color:var(--muted);font-size:.9rem">S / M / L is relative size, one evening to a few sessions. Redirects: hash fragments can't be redirected server-side, which is why <code>/services</code> stays as a hub instead of a redirect. Sitemap and RSS regenerate on build.</p>
+</section>
+
+<!-- ================= 8. DECISIONS ================= -->
+<section>
+  <div class="eyebrow">8 · For John to decide</div>
+  <h2>Open decisions</h2>
+  <ol class="decisions">
+    <li><b>Nav layout: A (flat), B (Services menu) or C (two doors)?</b><span>Recommended: A.</span></li>
+    <li><b>Page names: "Consulting" or "Architecture &amp; Health IT"? "Emergency Tech" or "Disaster Technology"?</b><span>Short names for the nav, longer ones as page titles is one way to have both.</span></li>
+    <li><b>About &amp; Contact: merge at /about, keep both in the footer, or merge at /contact?</b><span>Recommended: merge at /about.</span></li>
+    <li><b>Headings: option 1, 2 or 3 for Phase 1? Keep 120% root size or drop to 17px?</b><span>Recommended: option 1, and try 17px on a branch first.</span></li>
+    <li><b>Footer links with no content behind them (Mobile Apps, Cloud Solutions, E-commerce &amp; CMS): drop or write?</b><span>Recommended: drop for now.</span></li>
+    <li><b>Style direction to aim for: A, B or C?</b><span>No rush; decide after Phase 3.</span></li>
+  </ol>
+</section>
+
+</div>

@@ -26,3 +26,12 @@
 ## Folder cleanup (2026-11-11)
 
 - **Q-VS-18 (2026-11-11):** Two IONOS mailbox exports from May 2026 are still at `D:\Projects\VashonSoftware.com\ionos.email-export-8629033.csv` and `.xlsx`. They list email addresses, account types and contracts. Is the MXroute/Cloudflare move finished? If so, should they move to the private domainManagement repo, or be deleted? ✅ 2026-11-11 **John:** moved them to the domainManagement project himself.
+
+## Site restructure (proposal: `D:\Projects\VashonSoftware.com\VashonSoftware.com\proposals\site-restructure.html`, also at https://claude.ai/artifact/FMyNZREFYDwRtYL3jzddN4)
+
+- **Q-VS-19 (2026-11-11):** Nav layout: A (flat: Websites · Software · Emergency Tech · Consulting · Blog + "Contact John" button), B (one "Services" dropdown), or C (two doors: local vs. organizations)? Recommended: A.
+- **Q-VS-20 (2026-11-11):** Page names: "Consulting" or "Architecture & Health IT"? "Emergency Tech" or "Disaster Technology"? (Short name in nav, long one as page title is an option.)
+- **Q-VS-21 (2026-11-11):** About & Contact: merge into one page at `/about` (with `/contact` redirecting to `/about#contact`), keep both but footer-only, or merge at `/contact`? Recommended: merge at `/about`.
+- **Q-VS-22 (2026-11-11):** Headings for phase 1: option 1 (calm sans), 2 (serif) or 3 (field manual)? And keep the 120% root font size, or drop to 17px? Recommended: option 1; try 17px on a branch first.
+- **Q-VS-23 (2026-11-11):** Footer links with no content behind them (Mobile Apps, Cloud Solutions, E-commerce & CMS): drop or write? Recommended: drop for now.
+- **Q-VS-24 (2026-11-11):** Longer-term style direction: A (Island Green refined), B (Sound & Cedar), or C (Spec Sheet)? No rush; decide after the new pages exist.
