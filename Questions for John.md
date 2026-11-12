@@ -25,4 +25,4 @@
 
 ## Folder cleanup (2026-11-11)
 
-- **Q-VS-18 (2026-11-11):** Two IONOS mailbox exports from May 2026 are still at `D:\Projects\VashonSoftware.com\ionos.email-export-8629033.csv` and `.xlsx`. They list email addresses, account types and contracts. Is the MXroute/Cloudflare move finished? If so, should they move to the private domainManagement repo, or be deleted?
+- **Q-VS-18 (2026-11-11):** Two IONOS mailbox exports from May 2026 are still at `D:\Projects\VashonSoftware.com\ionos.email-export-8629033.csv` and `.xlsx`. They list email addresses, account types and contracts. Is the MXroute/Cloudflare move finished? If so, should they move to the private domainManagement repo, or be deleted? ✅ 2026-11-11 **John:** moved them to the domainManagement project himself.
