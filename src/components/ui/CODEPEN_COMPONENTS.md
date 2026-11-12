@@ -232,6 +232,40 @@ Most original CodePen pens are available under Creative Commons licenses or prof
 <DigitalRain {characters} {density} {glowColor} />
 ```
 
+## Roadmap: candidate components
+
+Design ideas to build next, as Svelte components clients can choose from at design time. Shortcuts for most of these are in `D:\www-local\VashonSoftware.com\2026 CodePens to use`. Pens from that folder that are already built (Line Flower, WebGL Flowers, Cloud Generator, Elastic Pebbles, Manual Loader, Streaming Face, Text Stroke Animation) are listed in the Components Reference above. Check each pen's license and credit its author before a client site ships it.
+
+### Backgrounds and generative art
+
+- [ ] **Circle Hatching** (John's own pen): <https://codepen.io/JohnsPen/pen/jOYvOOq>
+- [ ] **Color Fields** (Dillo): <https://codepen.io/Dillo/pen/KKORmvE>
+- [ ] **Circle of Circles** (stoumann): <https://codepen.io/stoumann/pen/gOZexjr>
+- [ ] **3-axis sphere packing** (foretoo): <https://codepen.io/foretoo/pen/ExqQNwm>
+- [ ] **A cube thing, based on beesandbombs** (Alca): <https://codepen.io/Alca/pen/GRyBJZX>
+- [ ] **Worms** (supah): <https://codepen.io/supah/pen/KKGqjmL>
+- [ ] **Grainy, dithered gradient blob** (thebabydino): <https://codepen.io/thebabydino/pen/GRBrWeY>
+- [ ] **WebGL liquid masking** (ksenia-k): <https://codepen.io/ksenia-k/pen/dyaeGgO>
+
+### Text effects
+
+- [ ] **Falling Words** (gayane-gasparyan): <https://codepen.io/gayane-gasparyan/pen/LYJEoZM>
+- [ ] **Reveal text** (alig01): <https://codepen.io/alig01/pen/WNLGogV>
+- [ ] **Rainbow-coloured list with `:nth-of-type()`** (Rach Smith, article, not a pen): <https://rachsmith.com/create-a-rainbow-coloured-list-with-css/>
+
+### Cards, images and interaction
+
+- [ ] **Card with inner glow** (thebabydino): <https://codepen.io/thebabydino/pen/WNVPdJg>
+- [ ] **Image swap using anchor positioning** (cbolson): <https://codepen.io/cbolson/pen/dPXzbxM>
+- [ ] **Action bar: "follow the leader" magnifying lens** (una): <https://codepen.io/una/pen/ByoRXxa>
+- [ ] **ScrollTrigger keyhole animation** (natszafraniec; GSAP): <https://codepen.io/natszafraniec/pen/oNJxgLz>
+
+### Other Svelte component sources to draw from
+
+- Aceternity UI Svelte: <https://aceternity.sveltekit.io/>, including Wavy Background: <https://aceternity.sveltekit.io/components/wavy-background>
+- Flowbite (Tailwind content components): <https://flowbite.com/docs/getting-started/llm/>
+- shadcn/ui (design-system foundation): <https://ui.shadcn.com/>
+
 ## Future Enhancements
 
 - [ ] Component props for customization
