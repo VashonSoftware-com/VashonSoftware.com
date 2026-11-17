@@ -1,0 +1,64 @@
+---
+/**
+ * Page header: optional breadcrumb or eyebrow, the page's h1, and a lead paragraph.
+ * Sizes come from .page-title / .eyebrow in globals.css, so pages don't set their own.
+ *
+ * Slots: default = lead text (rendered in a <p> unless `leadAs="div"`),
+ *        "after" = buttons, in-page nav, etc. under the lead.
+ */
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  crumbs?: Crumb[];
+  leadAs?: 'p' | 'div';
+  /** Extra classes for the outer <section> (e.g. to change padding). */
+  class?: string;
+  /** Wrap in the standard section + container. Set false when the page provides its own. */
+  wrap?: boolean;
+}
+
+const { title, eyebrow, crumbs, leadAs = 'p', class: className = '', wrap = true } = Astro.props;
+const Lead = leadAs;
+const hasLead = Astro.slots.has('default');
+const Outer = wrap ? 'section' : 'div';
+---
+
+<Outer class:list={[wrap && 'pt-14 pb-12 md:pt-20 md:pb-14', className]}>
+  <div class:list={[wrap && 'container max-w-5xl mx-auto px-4']}>
+    <div class:list={[wrap && 'max-w-2xl']}>
+      {
+        crumbs && crumbs.length > 0 && (
+          <nav aria-label="Breadcrumb" class="eyebrow mb-3">
+            {crumbs.map((c, i) => (
+              <>
+                {i > 0 && <span aria-hidden="true"> / </span>}
+                {c.href ? (
+                  <a href={c.href} class="hover:text-foreground hover:underline underline-offset-4">
+                    {c.label}
+                  </a>
+                ) : (
+                  <span aria-current="page">{c.label}</span>
+                )}
+              </>
+            ))}
+          </nav>
+        )
+      }
+      {!crumbs && eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+      <h1 class="page-title">{title}</h1>
+      {
+        hasLead && (
+          <Lead class="mt-5 text-lg text-muted-foreground leading-relaxed">
+            <slot />
+          </Lead>
+        )
+      }
+      <slot name="after" />
+    </div>
+  </div>
+</Outer>

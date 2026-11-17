@@ -1,12 +1,19 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
 import CTA from '@/components/sections/CTA.astro';
 
 const localProjects = [
   { title: 'Website refresh or fix', desc: "Update an existing site, fix what's broken" },
   { title: 'New small site', desc: 'One-page to five-page business or portfolio site' },
-  { title: 'Domains & email', desc: 'Your own domain, registered to you, and email that reaches inboxes' },
-  { title: 'Tech consult', desc: 'An hour or two to get your project pointed in the right direction' },
+  {
+    title: 'Domains & email',
+    desc: 'Your own domain, registered to you, and email that reaches inboxes',
+  },
+  {
+    title: 'Tech consult',
+    desc: 'An hour or two to get your project pointed in the right direction',
+  },
   { title: 'Custom script or tool', desc: "Automate something that's wasting your time" },
   { title: 'Emergency / off-hours help', desc: 'When something breaks and you need it fixed fast' },
 ];
@@ -15,7 +22,8 @@ const serviceGroups = [
   {
     category: 'Websites',
     slug: 'websites',
-    description: 'Modern low-JS, static mobile-first sites with proven 100 PageSpeed scores for Performance, Accessibility, Best Practices & SEO.',
+    description:
+      'Modern low-JS, static mobile-first sites with proven 100 PageSpeed scores for Performance, Accessibility, Best Practices & SEO.',
     services: [
       {
         title: 'Performance-First Static Sites',
@@ -118,38 +126,33 @@ const serviceGroups = [
   title="Services — Vashon Software"
   description="Vashon Software services: websites, custom applications, disaster tech, and small local projects. Serving Vashon Island and the greater Seattle area since 2010."
 >
-  <!-- Page Header -->
-  <section class="py-20 md:py-28">
-    <div class="container max-w-5xl mx-auto px-4">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">Services</h1>
-        <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-          I've been at this since 2010 — finding the right tech for the job, not just the
-          trendiest one. Agile, modular, and built to grow, minus the buzzword bingo. Whether
-          it's a five-page site or a multi-service architecture, I keep it creative, simple, and
-          built to last.
-        </p>
-        <p class="mt-4 text-muted-foreground leading-relaxed">
-          I'm John Cornelison — principal architect and one-person shop — bringing 30+ years
-          across healthcare IT, emergency management, and commercial software to every engagement.
-        </p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <a
-            href="/contact"
-            class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            Discuss Your Project
-          </a>
-        </div>
+  <PageHeader title="Services" leadAs="div">
+    <p>
+      I've been at this since 2010 — finding the right tech for the job, not just the trendiest one.
+      Agile, modular, and built to grow, minus the buzzword bingo. Whether it's a five-page site or
+      a multi-service architecture, I keep it creative, simple, and built to last.
+    </p>
+    <p class="mt-4 text-base">
+      I'm John Cornelison — principal architect and one-person shop — bringing 30+ years across
+      healthcare IT, emergency management, and commercial software to every engagement.
+    </p>
+    <div slot="after">
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Discuss Your Project
+        </a>
       </div>
     </div>
-  </section>
+  </PageHeader>
 
   <!-- Healthcare IT & Architecture Modernization -->
   <section id="health-it" class="py-16 border-t bg-muted/20">
     <div class="container max-w-5xl mx-auto px-4">
       <div class="max-w-2xl">
-        <h2 class="text-2xl font-bold md:text-3xl">Healthcare IT &amp; Architecture Modernization</h2>
+        <h2 class="section-title">Healthcare IT &amp; Architecture Modernization</h2>
         <p class="mt-4 text-muted-foreground leading-relaxed">
           Thirty years of enterprise architecture experience — including hands-on work inside
           federal health systems, health information exchanges, and clinical EHR integrations.
@@ -162,30 +165,29 @@ const serviceGroups = [
           <h3 class="font-semibold text-lg mb-4">Health IT &amp; Interoperability</h3>
           <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <li>
-              <span class="font-medium text-foreground">HIE Architecture &amp; Leadership</span> —
-              Technical lead for the South Sound Health Information Exchange (SSHIE); architecture,
-              ONC onboarding compliance, partner communications, NHIN briefings, and use case
-              specification.
+              <span class="font-medium text-foreground">HIE Architecture &amp; Leadership</span> — Technical
+              lead for the South Sound Health Information Exchange (SSHIE); architecture, ONC onboarding
+              compliance, partner communications, NHIN briefings, and use case specification.
             </li>
             <li>
-              <span class="font-medium text-foreground">EHR Integration</span> — Direct
-              integration-layer work with Epic's gateway (via InterSystems HealthShare/MultiCare at
-              Madigan), AHLTA, Essentris, CHCS, and GE Centricity PACS. Hands-on, not adjacent.
+              <span class="font-medium text-foreground">EHR Integration</span> — Direct integration-layer
+              work with Epic's gateway (via InterSystems HealthShare/MultiCare at Madigan), AHLTA, Essentris,
+              CHCS, and GE Centricity PACS. Hands-on, not adjacent.
             </li>
             <li>
-              <span class="font-medium text-foreground">Clinical Interoperability Standards</span> —
-              HL7, C32/CCD/C84/C62, NwHIN/NHIN Direct, CONNECT. Designed ED-specific document
-              exchange use cases: C32 on patient arrival, C84/C62 on discharge.
+              <span class="font-medium text-foreground">Clinical Interoperability Standards</span> — HL7,
+              C32/CCD/C84/C62, NwHIN/NHIN Direct, CONNECT. Designed ED-specific document exchange use
+              cases: C32 on patient arrival, C84/C62 on discharge.
             </li>
             <li>
-              <span class="font-medium text-foreground">SSO &amp; Context Management</span> —
-              Microsoft/Sentillion CCOW-compliant single sign-on across disconnected clinical
-              systems; DoD CAC smart card integration (MiCARE PHR).
+              <span class="font-medium text-foreground">SSO &amp; Context Management</span> — Microsoft/Sentillion
+              CCOW-compliant single sign-on across disconnected clinical systems; DoD CAC smart card integration
+              (MiCARE PHR).
             </li>
             <li>
               <span class="font-medium text-foreground">Federal &amp; Regulated Environments</span> —
-              DIACAP, SDL, DOJ SDLC, TATRC-funded projects. Comfortable in VA, DoD, and
-              federal-adjacent health IT contexts.
+              DIACAP, SDL, DOJ SDLC, TATRC-funded projects. Comfortable in VA, DoD, and federal-adjacent
+              health IT contexts.
             </li>
           </ul>
           <p class="mt-4 text-xs text-muted-foreground">
@@ -203,35 +205,34 @@ const serviceGroups = [
           </p>
           <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <li>
-              <span class="font-medium text-foreground">Domain-Driven Design (DDD)</span> — Bounded
-              contexts, domain events, and strategic design to decompose legacy monoliths into
-              maintainable, independently deployable services.
+              <span class="font-medium text-foreground">Domain-Driven Design (DDD)</span> — Bounded contexts,
+              domain events, and strategic design to decompose legacy monoliths into maintainable, independently
+              deployable services.
             </li>
             <li>
               <span class="font-medium text-foreground">EventStorming &amp; Domain Discovery</span> —
-              Collaborative workshops to surface domain models, identify boundaries, and build
-              shared understanding across technical and business teams.
+              Collaborative workshops to surface domain models, identify boundaries, and build shared
+              understanding across technical and business teams.
             </li>
             <li>
-              <span class="font-medium text-foreground">Team Topologies</span> — Aligning team
-              structures and interaction modes with software architecture for sustainable delivery.
-              Conway's Law applied intentionally.
+              <span class="font-medium text-foreground">Team Topologies</span> — Aligning team structures
+              and interaction modes with software architecture for sustainable delivery. Conway's Law
+              applied intentionally.
             </li>
             <li>
               <span class="font-medium text-foreground">Microservices &amp; API Architecture</span> —
-              MEAN/.NET stacks, Docker/Kubernetes, Azure/AWS/GCP. Enterprise integration patterns,
-              BizTalk SOA message brokering, and modern API design.
+              MEAN/.NET stacks, Docker/Kubernetes, Azure/AWS/GCP. Enterprise integration patterns, BizTalk
+              SOA message brokering, and modern API design.
             </li>
             <li>
-              <span class="font-medium text-foreground">Cloud Migration &amp; Modernization</span> —
-              Azure, AWS, and Google Cloud; CI/CD pipelines; Cloudflare Pages and Workers for modern
-              edge-deployed architectures.
+              <span class="font-medium text-foreground">Cloud Migration &amp; Modernization</span> — Azure,
+              AWS, and Google Cloud; CI/CD pipelines; Cloudflare Pages and Workers for modern edge-deployed
+              architectures.
             </li>
             <li>
-              <span class="font-medium text-foreground">AI/LLM Integration</span> — Active, current
-              experience evaluating and integrating Copilot, Claude, GPT, and Gemini into
-              development and operational workflows. Early work on an emergency-management LLM
-              ontology.
+              <span class="font-medium text-foreground">AI/LLM Integration</span> — Active, current experience
+              evaluating and integrating Copilot, Claude, GPT, and Gemini into development and operational
+              workflows. Early work on an emergency-management LLM ontology.
             </li>
           </ul>
         </div>
@@ -240,10 +241,16 @@ const serviceGroups = [
       <div class="mt-6 rounded-lg border bg-card p-6">
         <h3 class="font-semibold text-lg mb-3">Representative Work</h3>
         <ul class="space-y-2 text-sm text-muted-foreground leading-relaxed">
-          <li>Implemented Federal Health Architecture for Franciscan, MultiCare &amp; Madigan Regional HIO</li>
+          <li>
+            Implemented Federal Health Architecture for Franciscan, MultiCare &amp; Madigan Regional
+            HIO
+          </li>
           <li>Designed the MERIT message broker architecture for WRMC (BizTalk SOA)</li>
           <li>Contributed to the Phuket Provincial Intelligent Operations Center architecture</li>
-          <li>Built and maintains EOC.online — open-source microservice platform for emergency operations</li>
+          <li>
+            Built and maintains EOC.online — open-source microservice platform for emergency
+            operations
+          </li>
         </ul>
       </div>
 
@@ -251,20 +258,24 @@ const serviceGroups = [
         <h3 class="font-semibold text-lg mb-3">How to Engage</h3>
         <ul class="space-y-2 text-sm text-muted-foreground leading-relaxed">
           <li>
-            <span class="font-medium text-foreground">Senior consulting &amp; staff augmentation</span>
+            <span class="font-medium text-foreground"
+              >Senior consulting &amp; staff augmentation</span
+            >
             — architecture advisory, technical lead, hands-on development
           </li>
           <li>
-            <span class="font-medium text-foreground">Architecture reviews &amp; second opinions</span>
+            <span class="font-medium text-foreground"
+              >Architecture reviews &amp; second opinions</span
+            >
             — assess what you have, recommend a path
           </li>
           <li>
-            <span class="font-medium text-foreground">Short-term &amp; project-based</span> —
-            discovery sprints, proof-of-concept work, targeted fixes
+            <span class="font-medium text-foreground">Short-term &amp; project-based</span> — discovery
+            sprints, proof-of-concept work, targeted fixes
           </li>
           <li>
-            <span class="font-medium text-foreground">Healthcare IT contract roles</span> — HIE, EHR
-            integration, federal health systems
+            <span class="font-medium text-foreground">Healthcare IT contract roles</span> — HIE, EHR integration,
+            federal health systems
           </li>
         </ul>
         <a
@@ -281,15 +292,19 @@ const serviceGroups = [
   <section class="py-16 border-t">
     <div class="container max-w-5xl mx-auto px-4">
       <div class="max-w-2xl">
-        <h2 class="text-2xl font-bold md:text-3xl">Small &amp; Local Projects</h2>
+        <h2 class="section-title">Small &amp; Local Projects</h2>
         <p class="mt-4 text-muted-foreground leading-relaxed">
           Need something smaller? I take on one-off and short-term engagements for local businesses,
           nonprofits, and individuals:
         </p>
         <ul class="mt-4 space-y-3 text-sm text-muted-foreground">
-          {localProjects.map((item) => (
-            <li><span class="font-medium text-foreground">{item.title}</span> — {item.desc}</li>
-          ))}
+          {
+            localProjects.map((item) => (
+              <li>
+                <span class="font-medium text-foreground">{item.title}</span> — {item.desc}
+              </li>
+            ))
+          }
         </ul>
         <p class="mt-6 text-sm text-muted-foreground">
           Reach out and describe what you need. Most small projects get a same-week response.
@@ -310,14 +325,20 @@ const serviceGroups = [
       <section id={group.slug} class="py-16 border-t">
         <div class="container max-w-5xl mx-auto px-4">
           <div class="mb-10">
-            <h2 class="text-2xl font-bold md:text-3xl">{group.category}</h2>
+            <h2 class="section-title">{group.category}</h2>
             <p class="mt-2 text-muted-foreground">{group.description}</p>
           </div>
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {group.services.map((service) => (
               <div class="rounded-lg border bg-card p-6 hover:shadow-md transition-shadow">
                 <h3 class="font-semibold text-lg mb-2">
-                  {service.href ? <a href={service.href} class="underline underline-offset-4 hover:text-primary">{service.title} →</a> : service.title}
+                  {service.href ? (
+                    <a href={service.href} class="underline underline-offset-4 hover:text-primary">
+                      {service.title} →
+                    </a>
+                  ) : (
+                    service.title
+                  )}
                 </h3>
                 <p class="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
               </div>

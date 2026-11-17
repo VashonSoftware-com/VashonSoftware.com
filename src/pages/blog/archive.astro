@@ -19,7 +19,7 @@ function formatDate(date: Date) {
 <BaseLayout title="Blog Archive" description="Complete archive of all blog posts">
   <div class="container max-w-4xl mx-auto py-16">
     <div class="mb-16">
-      <h1 class="text-6xl font-bold tracking-tight mb-6">Archive</h1>
+      <h1 class="page-title mb-6">Archive</h1>
       <p class="text-xl text-muted-foreground">Complete list of all blog posts.</p>
     </div>
 
@@ -35,7 +35,7 @@ function formatDate(date: Date) {
                 >
                   {formatDate(post.data.pubDate)}
                 </time>
-                <h2 class="text-xl font-bold group-hover:text-primary transition-colors">
+                <h2 class="text-xl group-hover:text-primary transition-colors">
                   {post.data.title}
                 </h2>
               </div>

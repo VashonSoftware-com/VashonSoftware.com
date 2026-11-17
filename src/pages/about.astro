@@ -1,24 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
 ---
 
 <BaseLayout
   title="About John Cornelison — Vashon Software"
   description="About John Cornelison — 30+ years in software, IBM, U.S. Army healthcare IT, FEMA graduate, and founding president of VashonBePrepared. Based on Vashon Island, WA."
 >
-  <!-- Hero -->
-  <section class="py-20 md:py-28">
-    <div class="container max-w-5xl mx-auto px-4">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-          About John Cornelison
-        </h1>
-        <p class="mt-6 text-xl text-muted-foreground leading-relaxed">
-          Software architect, emergency tech builder, and Vashon islander since 2005.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageHeader title="About John Cornelison">
+    Software architect, emergency tech builder, and Vashon islander since 2005.
+  </PageHeader>
 
   <!-- Bio -->
   <section class="py-12 border-t">
@@ -46,7 +37,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <!-- Credentials -->
   <section class="py-12 border-t">
     <div class="container max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-bold mb-8">Background & Credentials</h2>
+      <h2 class="section-title mb-8">Background & Credentials</h2>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {
           [
@@ -72,7 +63,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <!-- Open Source Projects -->
   <section class="py-12 border-t">
     <div class="container max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-bold mb-2">Projects I've Built</h2>
+      <h2 class="section-title mb-2">Projects I've Built</h2>
       <p class="text-muted-foreground mb-8">
         Just a few of the open-source tools I've developed and maintain:
       </p>
