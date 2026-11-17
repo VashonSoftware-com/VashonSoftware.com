@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+---
+
+<BaseLayout
+  title="Architecture & Health IT"
+  description="Architecture and health IT consulting from John Cornelison, Vashon Software: HIE leadership, EHR integration, clinical interoperability standards, domain-driven design and architecture modernization."
+>
+  <PageHeader title="Architecture & Health IT">
+    Thirty years of enterprise architecture experience — including hands-on work inside federal
+    health systems, health information exchanges, and clinical EHR integrations. Available for
+    senior consulting, staff augmentation, and architecture advisory roles.
+  </PageHeader>
+
+  <section id="health-it" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-semibold text-lg mb-4">Health IT &amp; Interoperability</h3>
+          <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <li>
+              <span class="font-medium text-foreground">HIE Architecture &amp; Leadership</span> — Technical
+              lead for the South Sound Health Information Exchange (SSHIE); architecture, ONC onboarding
+              compliance, partner communications, NHIN briefings, and use case specification.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">EHR Integration</span> — Direct integration-layer
+              work with Epic's gateway (via InterSystems HealthShare/MultiCare at Madigan), AHLTA, Essentris,
+              CHCS, and GE Centricity PACS. Hands-on, not adjacent.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">Clinical Interoperability Standards</span> — HL7,
+              C32/CCD/C84/C62, NwHIN/NHIN Direct, CONNECT. Designed ED-specific document exchange use
+              cases: C32 on patient arrival, C84/C62 on discharge.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">SSO &amp; Context Management</span> — Microsoft/Sentillion
+              CCOW-compliant single sign-on across disconnected clinical systems; DoD CAC smart card integration
+              (MiCARE PHR).
+            </li>
+            <li>
+              <span class="font-medium text-foreground">Federal &amp; Regulated Environments</span> —
+              DIACAP, SDL, DOJ SDLC, TATRC-funded projects. Comfortable in VA, DoD, and federal-adjacent
+              health IT contexts.
+            </li>
+          </ul>
+          <p class="mt-4 text-xs text-muted-foreground">
+            HIMSS member · MS-HUG (Microsoft Healthcare Users Group) member · CONNECT-a-thon
+            participant
+          </p>
+        </div>
+
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-semibold text-lg mb-4">Architecture Modernization</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            Experienced in the full socio-technical scope of modernization — not just the
+            technology, but the organizational alignment, domain modeling, and change management
+            that make it stick.
+          </p>
+          <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <li>
+              <span class="font-medium text-foreground">Domain-Driven Design (DDD)</span> — Bounded contexts,
+              domain events, and strategic design to decompose legacy monoliths into maintainable, independently
+              deployable services.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">EventStorming &amp; Domain Discovery</span> —
+              Collaborative workshops to surface domain models, identify boundaries, and build shared
+              understanding across technical and business teams.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">Team Topologies</span> — Aligning team structures
+              and interaction modes with software architecture for sustainable delivery. Conway's Law
+              applied intentionally.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">Microservices &amp; API Architecture</span> —
+              MEAN/.NET stacks, Docker/Kubernetes, Azure/AWS/GCP. Enterprise integration patterns, BizTalk
+              SOA message brokering, and modern API design.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">Cloud Migration &amp; Modernization</span> — Azure,
+              AWS, and Google Cloud; CI/CD pipelines; Cloudflare Pages and Workers for modern edge-deployed
+              architectures.
+            </li>
+            <li>
+              <span class="font-medium text-foreground">AI/LLM Integration</span> — Active, current experience
+              evaluating and integrating Copilot, Claude, GPT, and Gemini into development and operational
+              workflows. Early work on an emergency-management LLM ontology.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-lg border bg-card p-6">
+        <h3 class="font-semibold text-lg mb-3">Representative Work</h3>
+        <ul class="space-y-2 text-sm text-muted-foreground leading-relaxed">
+          <li>
+            Implemented Federal Health Architecture for Franciscan, MultiCare &amp; Madigan Regional
+            HIO
+          </li>
+          <li>Designed the MERIT message broker architecture for WRMC (BizTalk SOA)</li>
+          <li>Contributed to the Phuket Provincial Intelligent Operations Center architecture</li>
+          <li>
+            Built and maintains EOC.online — open-source microservice platform for emergency
+            operations
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-6 max-w-2xl">
+        <h3 class="font-semibold text-lg mb-3">How to Engage</h3>
+        <ul class="space-y-2 text-sm text-muted-foreground leading-relaxed">
+          <li>
+            <span class="font-medium text-foreground"
+              >Senior consulting &amp; staff augmentation</span
+            >
+            — architecture advisory, technical lead, hands-on development
+          </li>
+          <li>
+            <span class="font-medium text-foreground"
+              >Architecture reviews &amp; second opinions</span
+            >
+            — assess what you have, recommend a path
+          </li>
+          <li>
+            <span class="font-medium text-foreground">Short-term &amp; project-based</span> — discovery
+            sprints, proof-of-concept work, targeted fixes
+          </li>
+          <li>
+            <span class="font-medium text-foreground">Healthcare IT contract roles</span> — HIE, EHR integration,
+            federal health systems
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <TalkToJohn />
+</BaseLayout>

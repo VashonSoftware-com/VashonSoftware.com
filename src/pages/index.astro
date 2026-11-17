@@ -3,26 +3,29 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Features from '@/components/sections/Features.astro';
 import CTA from '@/components/sections/CTA.astro';
+import { serviceAreas } from '@/data/services';
 
-const services = [
+const services = serviceAreas.map((s) => ({
+  title: s.title,
+  description: s.tile,
+  icon: s.icon,
+  href: s.href,
+}));
+
+const localProjects = [
+  { title: 'Website refresh or fix', desc: "Update an existing site, fix what's broken" },
+  { title: 'New small site', desc: 'One-page to five-page business or portfolio site' },
   {
-    title: 'Websites',
-    description:
-      'Modern low-JS, static mobile-first sites with proven 100 PageSpeed scores for Performance, Accessibility, Best Practices & SEO. Creative design, user editable — all at an economical price.',
-    icon: 'globe',
+    title: 'Domains & email',
+    desc: 'Your own domain, registered to you, and email that reaches inboxes',
+    href: '/domains',
   },
   {
-    title: 'Crafted Software',
-    description:
-      'Microservices-based custom applications using C#, TypeScript, Python, C++ and more. AI with Small Language Models for GIS & IoT, Secure IoT Development, and Data Analytics on modern cloud solutions.',
-    icon: 'zap',
+    title: 'Tech consult',
+    desc: 'An hour or two to get your project pointed in the right direction',
   },
-  {
-    title: 'Disaster Technology',
-    description:
-      'ICS, NIMS & NRF-based solutions for Emergency Operations Centers. Resilient systems that operate independently of the cloud — but leverage it when available.',
-    icon: 'shield',
-  },
+  { title: 'Custom script or tool', desc: "Automate something that's wasting your time" },
+  { title: 'Emergency / off-hours help', desc: 'When something breaks and you need it fixed fast' },
 ];
 ---
 
@@ -34,12 +37,13 @@ const services = [
     title="I'm John Cornelison — software architect, Vashon islander, one-person studio."
     subtitle="30+ years building websites, custom software, and emergency technology. <mark>Founded in 2010</mark>, Vashon Software takes on projects of any size — from a quick site fix to a complex system architecture."
     primaryCta={{ href: '/contact', label: 'Get in Touch' }}
-    secondaryCta={{ href: '/services', label: 'Our Services' }}
+    secondaryCta={{ href: '#what-i-build', label: 'What I Build' }}
   />
 
   <Features
+    id="what-i-build"
     title="What I build"
-    subtitle="Websites, crafted software, and disaster technology — delivered with expertise across the full technology stack."
+    subtitle="Websites, crafted software, emergency management tech, and architecture consulting — across the full technology stack."
     features={services}
   />
 
@@ -52,19 +56,13 @@ const services = [
           Not every project needs a big agency. I work with Vashon businesses, nonprofits, and
           neighbors on:
         </p>
-        <ul class="mt-4 space-y-2 text-muted-foreground">
+        <ul class="mt-4 space-y-3 text-muted-foreground">
           {
-            [
-              'Website fixes, updates, and refreshes',
-              'One-page sites and landing pages',
-              'Small custom tools and automations',
-              'Tech consulting and second opinions',
-              'Helping you get unstuck on a project',
-            ].map((item) => (
-              <li class="flex items-center gap-2">
+            localProjects.map((item) => (
+              <li class="flex items-start gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4 text-primary shrink-0"
+                  class="mt-1.5 h-4 w-4 text-primary shrink-0"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -75,7 +73,19 @@ const services = [
                 >
                   <path d="M20 6 9 17l-5-5" />
                 </svg>
-                {item}
+                <span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      class="font-medium text-foreground underline underline-offset-4 hover:text-primary"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    <span class="font-medium text-foreground">{item.title}</span>
+                  )}{' '}
+                  — {item.desc}
+                </span>
               </li>
             ))
           }

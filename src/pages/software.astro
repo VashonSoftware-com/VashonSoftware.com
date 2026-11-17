@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ServiceCards from '@/components/ServiceCards.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+
+const cards = [
+  {
+    title: 'Microservices & Containerized Systems',
+    description:
+      'Microservices-based architectural design on containerized systems — scalable, maintainable, and built for long-term operation.',
+  },
+  {
+    title: 'Custom Applications',
+    description:
+      'Bespoke software using C#, TypeScript, Python, C++, pnpm, SQL & NoSQL — designed around your workflows and delivered with clean, maintainable code.',
+  },
+  {
+    title: 'Artificial Intelligence',
+    description:
+      'Small Language Models (SLMs) applied to GIS & Geomatics, IoT, and domain-specific problem solving — practical AI without the overhead.',
+  },
+  {
+    title: 'Secure IoT Development',
+    description:
+      'End-to-end IoT solutions with security designed in from the ground up — from edge devices to data pipelines.',
+  },
+  {
+    title: 'Data Analytics',
+    description:
+      'Data analytics solutions deployed across a variety of cloud platforms — turning raw data into actionable insight.',
+  },
+  {
+    title: 'Small Tools & Automations',
+    description:
+      "A custom script or tool to automate something that's wasting your time. Local and one-off projects welcome.",
+  },
+];
+---
+
+<BaseLayout
+  title="Crafted Software"
+  description="Custom software from Vashon Software: microservices, custom applications, small language models for GIS and IoT, secure IoT and data analytics. John Cornelison, Vashon Island, WA."
+>
+  <PageHeader title="Crafted Software">
+    Custom applications engineered with modern architectures and technologies to fit your exact
+    requirements, from a small automation to a multi-service system.
+  </PageHeader>
+
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="What I build" class="mb-10" />
+      <ServiceCards cards={cards} />
+      <p class="mt-10 max-w-2xl text-muted-foreground leading-relaxed">
+        Building inside a health system or modernizing a large platform? See <a
+          href="/architecture"
+          class="text-primary underline underline-offset-4">Architecture &amp; Health IT</a
+        >.
+      </p>
+    </div>
+  </section>
+
+  <TalkToJohn />
+</BaseLayout>

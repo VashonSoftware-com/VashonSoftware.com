@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ServiceCards from '@/components/ServiceCards.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+
+const cards = [
+  {
+    title: 'Emergency Operations Centers',
+    description:
+      'Software solutions focused on small & international EOCs — systems that are NOT reliant on the cloud but can leverage those abilities when the Internet is available, even intermittently.',
+  },
+  {
+    title: 'ICS / NIMS / NRF Based Solutions',
+    description:
+      'Incident Command System (ICS), National Incident Management System (NIMS) & National Response Framework (NRF) compliant platforms for structured emergency response.',
+  },
+  {
+    title: 'Emergency Response Systems',
+    description:
+      'Coordination tools and communication platforms built for high-stress, high-stakes situations where reliability is non-negotiable.',
+  },
+  {
+    title: 'Data Recovery Solutions',
+    description:
+      'Automated backup pipelines and recovery workflows ensuring your data and services can be restored quickly after any incident.',
+  },
+  {
+    title: 'Risk Assessment Tools',
+    description:
+      'Tools for identifying, evaluating, and mitigating risks before they become incidents — built for operational teams in the field.',
+  },
+];
+
+const projects = [
+  {
+    title: 'RangerTrak',
+    href: 'https://www.RangerTrak.org',
+    description:
+      'Angular PWA for Search & Rescue member tracking — works without cell or internet coverage.',
+  },
+  {
+    title: 'EOC.online',
+    href: 'https://eoc.online',
+    description: 'Open-source microservice platform for emergency operations.',
+  },
+  {
+    title: 'Mesh101',
+    href: 'https://mesh101.com',
+    description:
+      'LoRa radio mesh network using LoRaWAN, MeshCore & Meshtastic for off-grid communications.',
+  },
+];
+---
+
+<BaseLayout
+  title="Emergency Management Tech"
+  description="Emergency management technology from Vashon Software: ICS, NIMS and NRF-based tools for Emergency Operations Centers that keep working without the cloud. John Cornelison, Vashon Island, WA."
+>
+  <PageHeader title="Emergency Management Tech">
+    Mission-critical software for Emergency Operations Centers — resilient by design, reliable when
+    it matters most.
+  </PageHeader>
+
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="What I build" class="mb-10" />
+      <ServiceCards cards={cards} />
+    </div>
+  </section>
+
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader
+        title="Projects"
+        subtitle="Open-source tools I've built and maintain."
+        class="mb-10"
+      />
+      <ServiceCards cards={projects} />
+    </div>
+  </section>
+
+  <TalkToJohn />
+</BaseLayout>

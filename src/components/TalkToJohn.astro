@@ -1,0 +1,37 @@
+---
+/** "Talk to John" block that closes each service page. */
+interface Props {
+  title?: string;
+  text?: string;
+  label?: string;
+}
+
+const {
+  title = 'Talk to John',
+  text = "You'll reach me directly, not a sales team. Describe what you need and I typically reply within one business day.",
+  label = 'Contact John',
+} = Astro.props;
+---
+
+<section class="py-16 border-t bg-muted/20">
+  <div class="container max-w-5xl mx-auto px-4">
+    <div class="max-w-2xl">
+      <h2 class="section-title">{title}</h2>
+      <p class="mt-3 text-muted-foreground leading-relaxed">{text}</p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          {label}
+        </a>
+        <a
+          href="tel:+12069143050"
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+        >
+          Call or text 206.914.3050
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

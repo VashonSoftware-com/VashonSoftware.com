@@ -13,27 +13,21 @@
  */
 import Logo from './Logo.astro';
 import ObfuscatedEmail from './ObfuscatedEmail.astro';
+import { serviceAreas } from '@/data/services';
 
 const { variant = 'boxed' } = Astro.props;
 
 const footerLinks = {
   pages: [
     { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
     { href: '/privacy', label: 'Privacy' },
   ],
   services: [
-    { href: '/services#health-it', label: 'Health IT & Architecture' },
-    { href: '/services#crafted-software', label: 'Custom Applications' },
-    { href: '/services#crafted-software', label: 'Mobile Apps' },
-    { href: '/services#crafted-software', label: 'Cloud Solutions' },
-    { href: '/services#websites', label: 'Web Development' },
-    { href: '/services#websites', label: 'E-commerce & CMS' },
+    ...serviceAreas.map((s) => ({ href: s.href, label: s.nav })),
     { href: '/domains', label: 'Domains & Email' },
-    { href: '/services#disaster-technology', label: 'Disaster Technology' },
   ],
 };
 

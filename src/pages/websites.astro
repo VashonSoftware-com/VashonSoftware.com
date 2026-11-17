@@ -1,7 +1,27 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ServiceCards from '@/components/ServiceCards.astro';
 import CTA from '@/components/sections/CTA.astro';
+
+const howCards = [
+  {
+    title: 'Performance-First Static Sites',
+    description:
+      'Reliable Svelte and Angular component-focused solutions using Astro, Eleventy, Hugo, Decap, Nunjucks, HTML5, CSS3+, TypeScript, and Markdown — with modern versioning & CI/CD pipelines.',
+  },
+  {
+    title: 'Creative Design & User Editable',
+    description:
+      'Creative design that your team can manage and update without developer involvement — all at an economical price.',
+  },
+  {
+    title: 'Example Sites',
+    description:
+      'VashonSoftware.com, eoc.online, Mesh101.com, VashonMesh.com, MadeInParadiseRocks.com, VashonTaiChi.com, VashonMassage.com, Cornelisons.com, VashonBePrepared, VashonEOC, and many others over the years.',
+  },
+];
 
 // What every small-business site includes, grouped so a reader can scan by concern.
 const included = [
@@ -494,10 +514,7 @@ const tierNames: Record<string, string> = {
   title="What a Vashon Software website includes"
   description="What every small-business website from Vashon Software includes, the options and care plans, a quick 'which approach fits?' quiz, and a comparison with Wix, Squarespace, WordPress, Shopify and other builders."
 >
-  <PageHeader
-    title="What your website includes"
-    crumbs={[{ label: 'Services', href: '/services' }, { label: 'Websites' }]}
-  >
+  <PageHeader title="What your website includes" eyebrow="Websites">
     Every small site I build comes with the same foundations. They cost little once set up, so they
     aren't sold as extras. Beyond that, you pick only the options you need.
     <nav slot="after" aria-label="On this page" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
@@ -529,6 +546,11 @@ const tierNames: Record<string, string> = {
         href="#compare"
         class="underline underline-offset-4 hover:text-foreground text-muted-foreground"
         >Compared with other platforms</a
+      >
+      <a
+        href="#how"
+        class="underline underline-offset-4 hover:text-foreground text-muted-foreground"
+        >How I build them</a
       >
     </nav>
   </PageHeader>
@@ -841,6 +863,13 @@ const tierNames: Record<string, string> = {
           keep its old addresses working.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section id="how" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="How I build them" class="mb-10" />
+      <ServiceCards cards={howCards} />
     </div>
   </section>
 
