@@ -137,7 +137,8 @@ VS goes live 2026-11-03 (deploy hook secret is set). CC status:
 | B1 Stories, not pedigrees | CC | VS | CC | approved; VS 2026-11-10; CC copy drafted (v0.2.43) |
 | B2 Dead only on evidence | CC | VS | CC | approved; VS 2026-11-24 (after C2, which it links to); CC copy drafted (v0.2.43; C2 link points to VS for now) |
 | B4 Make the build refuse to leak | CC | VS | CC | not started |
-| C2 The Great Depression is not a diagnosis | GPG | VS | CC | approved; VS 2026-11-17; CC copy to add |
+| C1 Never auto-delete, always auto-flag | GPG | VS | CC | VS live 2026-11-17; CC copy live 2026-11-17 (v0.2.54, John: "crosspost") |
+| C2 The Great Depression is not a diagnosis | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
 | C3 Fix it at the source | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
 | What your family tree notes say about the living | GPG | CC | — | CC blog ready: GPG may draft |
 | How we checked our tree before putting it online | CC | CC | — | needs John's OK (living family) |
