@@ -2,3 +2,6 @@
 # Old Services hub: its content now lives on four service pages, linked from Home.
 /services    /    301
 /services/   /    301
+# Contact merged into About (2026-11-17).
+/contact     /about#contact    301
+/contact/    /about#contact    301

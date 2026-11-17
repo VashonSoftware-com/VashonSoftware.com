@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import ObfuscatedEmail from '@/components/ObfuscatedEmail.astro';
 ---
 
 <BaseLayout
-  title="About John Cornelison — Vashon Software"
-  description="About John Cornelison — 30+ years in software, IBM, U.S. Army healthcare IT, FEMA graduate, and founding president of VashonBePrepared. Based on Vashon Island, WA."
+  title="About John Cornelison"
+  description="About John Cornelison, and how to reach him: 30+ years in software, IBM, U.S. Army healthcare IT, FEMA graduate, and founding president of VashonBePrepared. Based on Vashon Island, WA."
 >
   <PageHeader title="About John Cornelison">
     Software architect, emergency tech builder, and Vashon islander since 2005.
@@ -112,22 +114,133 @@ import PageHeader from '@/components/PageHeader.astro';
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16 border-t">
+  <!-- Contact (was /contact; /contact redirects here) -->
+  <section id="contact" class="py-16 border-t bg-muted/20 scroll-mt-24">
     <div class="container max-w-5xl mx-auto px-4">
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          Hire Me for a Project
-        </a>
-        <a
-          href="/#what-i-build"
-          class="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          See what I build
-        </a>
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <h2 class="section-title">Get in touch</h2>
+          <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+            You reach me directly, not a support queue. I typically respond within one business day.
+            For faster response, call or text:
+            <a href="tel:+12069143050" class="text-primary hover:underline font-medium"
+              >206.914.3050</a
+            >.
+          </p>
+
+          <div class="mt-10 space-y-6">
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="mt-1 shrink-0 rounded-md border p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold">Email</p>
+                <ObfuscatedEmail
+                  user="inquiry"
+                  domain="VashonSoftware.com"
+                  class="text-muted-foreground hover:text-primary transition-colors"
+                />
+              </div>
+            </div>
+
+            <!-- Location hint -->
+            <div class="flex items-start gap-4">
+              <div class="mt-1 shrink-0 rounded-md border p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold">Location</p>
+                <p class="text-muted-foreground">Vashon Island, Washington</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- What to expect -->
+          <div class="mt-12 rounded-lg border bg-muted/40 p-6">
+            <h3 class="text-base font-semibold mb-3">What to expect</h3>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                Response within one business day
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                Free initial consultation
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-primary shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                No-obligation project scoping
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <ContactForm />
+        </div>
       </div>
     </div>
   </section>
