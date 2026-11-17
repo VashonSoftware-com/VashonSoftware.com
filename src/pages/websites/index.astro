@@ -1,0 +1,240 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ServiceCards from '@/components/ServiceCards.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+import WebsitesNav from '@/components/WebsitesNav.astro';
+import { checkTools, howCards, questions, results, tierNames } from '@/data/websites';
+
+const more = [
+  {
+    href: '/websites/included',
+    title: 'What’s included',
+    text: 'The foundations every site gets (ownership, history, speed, security, monitoring, email), and the options you can add.',
+  },
+  {
+    href: '/websites/care-plans',
+    title: 'Care plans',
+    text: 'Optional yearly, quarterly or monthly check-ups, with a report and some change time. What a health check covers.',
+  },
+  {
+    href: '/websites/compare',
+    title: 'Compared with other platforms',
+    text: 'Wix, Squarespace, WordPress, Shopify and others side by side: running cost, who changes it, and what happens if you stop paying.',
+  },
+];
+---
+
+<BaseLayout
+  title="Websites"
+  description="Small-business websites from Vashon Software: fast, owned by you, nothing to patch. A quick 'which approach fits?' quiz, what's included, care plans, and a comparison with other builders."
+>
+  <PageHeader title="Websites you own" eyebrow="Websites">
+    Every small site I build comes with the same foundations. They cost little once set up, so they
+    aren't sold as extras. Beyond that, you pick only the options you need.
+    <WebsitesNav slot="after" />
+  </PageHeader>
+
+  <!-- Quiz -->
+  <section id="fit" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="section-title">Which approach fits you?</h2>
+        <p class="mt-2 text-muted-foreground">
+          Five questions. The suggestion may well be a platform other than mine; that's the point.
+        </p>
+      </div>
+      <form id="fit-form" class="mt-8 grid gap-6 lg:grid-cols-[1fr_22rem]" onsubmit="return false">
+        <div class="space-y-6">
+          {
+            questions.map((question, qi) => (
+              <fieldset class="rounded-lg border bg-card p-5">
+                <legend class="px-1 font-semibold">
+                  {qi + 1}. {question.q}
+                </legend>
+                <div class="mt-3 grid gap-2">
+                  {question.answers.map((a, ai) => (
+                    <label class="flex items-start gap-3 rounded-md border px-3 py-2 text-sm cursor-pointer hover:bg-muted/40 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                      <input
+                        type="radio"
+                        name={question.id}
+                        value={ai}
+                        class="mt-1 accent-primary"
+                        data-pts={JSON.stringify(a.pts)}
+                        data-tier={a.tier ?? ''}
+                      />
+                      <span>{a.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            ))
+          }
+        </div>
+        <aside
+          class="lg:sticky lg:top-24 self-start rounded-lg border bg-card p-6"
+          aria-live="polite"
+        >
+          <h3 class="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+            Suggested approach
+          </h3>
+          <div id="fit-empty" class="mt-3 text-sm text-muted-foreground">
+            Answer the questions to see a suggestion. <span id="fit-count">0</span> of {
+              questions.length
+            } answered.
+          </div>
+          <div id="fit-result" class="mt-3 hidden">
+            <p id="fit-title" class="text-xl font-semibold"></p>
+            <p id="fit-why" class="mt-2 text-sm text-muted-foreground leading-relaxed"></p>
+            <p id="fit-tier" class="mt-2 text-sm hidden"></p>
+            <p id="fit-next" class="mt-3 text-sm"></p>
+            <p class="mt-4 text-sm text-muted-foreground">
+              Also worth a look: <span id="fit-runner" class="font-medium text-foreground"></span>
+            </p>
+            <a
+              id="fit-cta"
+              href="/about#contact"
+              class="mt-5 inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-5 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >Talk it over</a
+            >
+            <p class="mt-4 text-xs text-muted-foreground">
+              A starting point, not a verdict. Your answers stay in your browser.
+            </p>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <!-- The other Websites pages -->
+  <section class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="More detail" class="mb-10" />
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          more.map((m) => (
+            <a
+              href={m.href}
+              class="group rounded-lg border bg-card p-6 hover:shadow-md transition-shadow"
+            >
+              <h3 class="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                {m.title} →
+              </h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">{m.text}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Check your site -->
+  <section id="check" class="py-16 border-t bg-muted/20">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="section-title">Check your current site</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          To look for yourself, these free tools run the same core tests as the health check. Paste
+          in your address.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {
+          checkTools.map((t) => (
+            <a
+              href={t.url}
+              rel="noopener"
+              target="_blank"
+              class="rounded-lg border bg-card p-5 hover:shadow-md transition-shadow"
+            >
+              <span class="font-semibold">{t.name} ↗</span>
+              <span class="block text-xs text-muted-foreground">{t.by}</span>
+              <span class="mt-2 block text-sm text-muted-foreground">Checks {t.what}.</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm text-muted-foreground max-w-2xl">
+        Every proposal I write starts with a full health check of your current site, free: the
+        scores, what's already good, and what needs fixing, in plain English. After launch the same
+        checks show the before and after. <a
+          href="/about#contact"
+          class="underline underline-offset-4 text-foreground">Ask for a proposal</a
+        >.
+      </p>
+    </div>
+  </section>
+
+  <section id="how" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="How I build them" class="mb-10" />
+      <ServiceCards cards={howCards} />
+    </div>
+  </section>
+
+  <TalkToJohn
+    title="Want to talk about your site?"
+    text="Tell me what you have now and what you'd like it to do. I'll reply with a plain written quote."
+  />
+</BaseLayout>
+
+<script define:vars={{ results, tierNames, total: questions.length }}>
+  const form = document.getElementById('fit-form');
+  const $ = (id) => document.getElementById(id);
+  function update() {
+    const checked = [...form.querySelectorAll('input[type=radio]:checked')];
+    $('fit-count').textContent = String(checked.length);
+    if (checked.length < total) {
+      $('fit-empty').classList.remove('hidden');
+      $('fit-result').classList.add('hidden');
+      return;
+    }
+    const score = {};
+    const tiers = [];
+    for (const input of checked) {
+      const pts = JSON.parse(input.dataset.pts || '{}');
+      for (const [k, v] of Object.entries(pts)) score[k] = (score[k] || 0) + v;
+      if (input.dataset.tier) tiers.push(input.dataset.tier);
+    }
+    const ranked = Object.keys(results).sort((a, b) => (score[b] || 0) - (score[a] || 0));
+    const top = results[ranked[0]];
+    $('fit-title').textContent = top.title;
+    $('fit-why').textContent = top.why;
+    $('fit-next').textContent = top.next;
+    $('fit-runner').textContent = results[ranked[1]].title;
+    const tierEl = $('fit-tier');
+    if (ranked[0] === 'owned' && tiers.length) {
+      // The highest tier any answer implies (C > B > A).
+      const tier = tiers.sort().at(-1);
+      tierEl.textContent = tierNames[tier];
+      tierEl.classList.remove('hidden');
+    } else {
+      tierEl.classList.add('hidden');
+    }
+    $('fit-empty').classList.add('hidden');
+    $('fit-result').classList.remove('hidden');
+  }
+  form.addEventListener('change', update);
+  update();
+</script>
+
+<script is:inline>
+  // Sections that moved to their own pages; keeps old /websites#... links working.
+  (() => {
+    const moved = {
+      included: '/websites/included',
+      options: '/websites/included#options',
+      ownership: '/websites/included#ownership',
+      history: '/websites/included#history',
+      speed: '/websites/included#speed',
+      security: '/websites/included#security',
+      monitoring: '/websites/included#monitoring',
+      email: '/websites/included#email',
+      care: '/websites/care-plans',
+      compare: '/websites/compare',
+    };
+    const to = moved[location.hash.slice(1)];
+    if (to) location.replace(to);
+  })();
+</script>

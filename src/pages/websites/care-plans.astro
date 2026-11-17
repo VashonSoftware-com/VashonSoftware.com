@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+import WebsitesNav from '@/components/WebsitesNav.astro';
+import { careCols, careRows, healthCheck } from '@/data/websites';
+---
+
+<BaseLayout
+  title="Website care plans"
+  description="Optional care plans for Vashon Software websites: yearly, quarterly or monthly health checks, software updates, off-site backups, a short report and included change time."
+>
+  <PageHeader
+    title="Care plans"
+    crumbs={[{ label: 'Websites', href: '/websites' }, { label: 'Care plans' }]}
+  >
+    A site with nothing to patch needs little looking after, so a plan is optional. What a plan adds
+    is regular check-ups, a report, and some change time. Pick how often.
+    <WebsitesNav slot="after" />
+  </PageHeader>
+
+  <!-- Care plans -->
+  <section id="care" class="py-16 border-t" aria-label="Care plans">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="overflow-x-auto rounded-lg border">
+        <table class="w-full min-w-[40rem] text-sm">
+          <caption class="sr-only">What each care plan includes</caption>
+          <thead class="bg-muted/40">
+            <tr>
+              <th scope="col" class="p-3 text-left font-semibold"
+                ><span class="sr-only">Included</span></th
+              >
+              {
+                careCols.map((col, i) => (
+                  <th
+                    scope="col"
+                    class={`p-3 text-left font-semibold ${i === careCols.length - 1 ? 'text-primary' : ''}`}
+                  >
+                    {col}
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              careRows.map((row) => (
+                <tr class="border-t align-top">
+                  <th scope="row" class="p-3 text-left font-medium">
+                    {row.label}
+                  </th>
+                  {row.cells.map((cell) => (
+                    <td class={`p-3 ${cell === '—' ? 'text-muted-foreground' : ''}`}>
+                      {cell === '—' ? <span aria-label="not included">—</span> : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 rounded-lg border bg-card p-6">
+        <h3 class="font-semibold text-lg mb-4">What a health check covers</h3>
+        <ul class="grid gap-3 sm:grid-cols-2 text-sm text-muted-foreground leading-relaxed">
+          {
+            healthCheck.map(([name, desc]) => (
+              <li>
+                <span class="font-medium text-foreground">{name}.</span> {desc}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <TalkToJohn
+    title="Questions about a plan?"
+    text="Ask which plan suits your site, or whether you need one at all. I typically reply within one business day."
+  />
+</BaseLayout>

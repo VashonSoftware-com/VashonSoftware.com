@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import TalkToJohn from '@/components/TalkToJohn.astro';
+import WebsitesNav from '@/components/WebsitesNav.astro';
+import { included, options } from '@/data/websites';
+---
+
+<BaseLayout
+  title="What a website includes"
+  description="What every small-business website from Vashon Software includes: you own it, full change history, fast and accessible, secure by default, cookie-free statistics, email at your domain. Plus the options you can add."
+>
+  <PageHeader
+    title="What’s included"
+    crumbs={[{ label: 'Websites', href: '/websites' }, { label: 'What’s included' }]}
+  >
+    On every site, large or small. Beyond these, add only the options you need.
+    <WebsitesNav slot="after" />
+  </PageHeader>
+
+  <!-- Included -->
+  <section id="included" class="py-16 border-t bg-muted/20" aria-label="Always included">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          included.map((group) => (
+            <div id={group.slug} class="rounded-lg border bg-card p-6">
+              <h3 class="font-semibold text-lg mb-4">{group.title}</h3>
+              <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                {group.items.map(([name, desc]) => (
+                  <li>
+                    <span class="font-medium text-foreground">{name}.</span> {desc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm text-muted-foreground max-w-2xl">
+        Also included: a three-month satisfaction guarantee from launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Options -->
+  <section id="options" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <h2 class="section-title">Options</h2>
+      <p class="mt-2 text-muted-foreground max-w-2xl">
+        Add what fits, now or later. Each is quoted separately, so you can start small.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          options.map((group) => (
+            <div class="rounded-lg border bg-card p-6">
+              <h3 class="font-semibold text-lg mb-4">{group.title}</h3>
+              <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                {group.items.map(([name, desc]) => (
+                  <li>
+                    <span class="font-medium text-foreground">
+                      {name}
+                      {desc ? '.' : ''}
+                    </span>
+                    {desc && ` ${desc}`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <TalkToJohn
+    title="Want a quote?"
+    text="Tell me what you have now and which options matter to you. I'll reply with a plain written quote."
+  />
+</BaseLayout>

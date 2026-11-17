@@ -1,0 +1,33 @@
+---
+/** Strip that links the four Websites pages. Sits in PageHeader's "after" slot. */
+const pages = [
+  { href: '/websites', label: 'Overview' },
+  { href: '/websites/included', label: 'What’s included' },
+  { href: '/websites/care-plans', label: 'Care plans' },
+  { href: '/websites/compare', label: 'Compared with other platforms' },
+];
+
+const current = new URL(Astro.request.url).pathname.replace(/\/$/, '') || '/';
+---
+
+<nav aria-label="Websites pages" class="mt-8 flex flex-wrap gap-2 text-sm">
+  {
+    pages.map((p) => {
+      const active = current === p.href;
+      return (
+        <a
+          href={p.href}
+          aria-current={active ? 'page' : undefined}
+          class:list={[
+            'rounded-full border px-4 py-1.5 font-medium transition-colors',
+            active
+              ? 'border-primary bg-primary/10 text-foreground'
+              : 'text-muted-foreground hover:text-foreground hover:bg-accent/60',
+          ]}
+        >
+          {p.label}
+        </a>
+      );
+    })
+  }
+</nav>
