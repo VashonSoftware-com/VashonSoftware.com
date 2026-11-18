@@ -2,6 +2,113 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ServiceCards from '@/components/ServiceCards.astro';
+
+const steps = [
+  {
+    title: 'Listen before drawing',
+    body: 'A listening tour across the organization: engineers, operators, users and leadership. I ask what people dread changing, what takes ten times longer than it should, and what they have given up asking for. Then I draw what is actually there (C4 context and container diagrams), not what the old documents say.',
+    source: 'Nick Tune, Architecture Modernization · Simon Brown, C4 model',
+  },
+  {
+    title: 'Tie the work to business outcomes',
+    body: 'Modernization is not a rewrite with feature parity. I start from why: competitors moving faster, growth the system can no longer carry, poor UX, costly internal tooling. Wardley Maps show which parts of the value chain are evolving toward commodity and which are worth custom work.',
+    source: 'Simon Wardley, Wardley Mapping · Jonathan Smart, Better Value Sooner Safer Happier',
+  },
+  {
+    title: 'Find the real domain boundaries',
+    body: 'Big Picture EventStorming puts the business timeline on a wall, so the boundaries come from how the work flows, not from the current code. Domain Storytelling replays real workflows. The result is a set of bounded contexts with low change coupling between them.',
+    source: 'Alberto Brandolini, EventStorming · Eric Evans, Domain-Driven Design',
+  },
+  {
+    title: 'Invest where it differentiates',
+    body: 'Not every part of the system deserves the same money. Core Domain Charts separate what makes the business distinctive (build it well) from what is supporting or generic (simplify it, or buy it).',
+    source: 'Nick Tune, Core Domain Charts',
+  },
+  {
+    title: 'Align teams with the architecture',
+    body: 'Systems end up shaped like the organizations that build them, so I design both on purpose: stream-aligned teams that own a domain end to end, platform teams that remove friction, and clear interaction modes between them.',
+    source: "Matthew Skelton & Manuel Pais, Team Topologies · Conway's Law",
+  },
+  {
+    title: 'Migrate in slices, and keep it honest',
+    body: 'Deliver a first real slice within three to six months, then scale what works. Strangler-fig migration and anti-corruption layers let old and new run side by side. Architectural fitness functions in the build stop the new structure from quietly eroding.',
+    source:
+      'Martin Fowler, Strangler Fig · Ford, Parsons & Kua, Building Evolutionary Architectures',
+  },
+];
+
+const debtSignals = [
+  {
+    title: 'Ask the people in the code',
+    description:
+      'Pain interviews are the fastest signal and need no tooling. Engineers know which modules nobody dares touch.',
+  },
+  {
+    title: 'Mine the git history',
+    description:
+      'Files that change every sprint and are also complex are where debt costs the most. Ugly code nobody has touched in three years can usually wait.',
+  },
+  {
+    title: 'Measure delivery, not just code',
+    description:
+      'DORA metrics (deployment frequency, lead time, change failure rate, time to restore) expose coupling, testing and observability debt before anyone reads a line of code.',
+  },
+  {
+    title: 'Static analysis and coverage',
+    description:
+      'Complexity, duplication, outdated dependencies and test coverage give a baseline, and a way to show the trend improving.',
+  },
+  {
+    title: 'Compare intended to actual',
+    description:
+      'A current-state C4 audit next to the intended design: shared databases, direct calls that should go through an API, undocumented integrations. The gaps are the debt.',
+  },
+  {
+    title: 'Keep a debt register',
+    description:
+      'Each item scored by business impact × change frequency ÷ cost to fix, so the priorities can be defended in business terms rather than engineering taste.',
+  },
+];
+
+const books = [
+  {
+    title: 'Fundamentals of Software Architecture',
+    description:
+      'Neal Ford & Mark Richards. Architecture characteristics, styles and trade-off analysis. I wrote a 90+ page synthesis of it.',
+  },
+  {
+    title: 'Software Architecture: The Hard Parts',
+    description:
+      'Ford, Richards, Sadalage & Dehghani. Pulling distributed systems apart: data ownership, service granularity, sagas and contracts.',
+  },
+  {
+    title: 'Architecture Modernization',
+    description:
+      'Nick Tune. The socio-technical playbook behind the steps above: listening tours, EventStorming, Core Domain Charts, Team Topologies.',
+  },
+  {
+    title: 'Software Systems Architecture',
+    description:
+      'Nick Rozanski & Eoin Woods. Stakeholder-driven viewpoints and perspectives for describing large systems rigorously.',
+  },
+  {
+    title: 'Collaborative Software Design',
+    description:
+      'van Kelle, Verschatse & Baas-Schwegler. Building architectural agreement across teams you do not control.',
+  },
+  {
+    title: 'Patterns of Enterprise Application Architecture',
+    description:
+      'Martin Fowler. Domain Model, Repository, Data Mapper: the reasons behind the patterns modern frameworks take for granted.',
+  },
+  {
+    title: 'Enterprise Integration Patterns',
+    description:
+      'Gregor Hohpe & Bobby Woolf. Patterns I implemented directly in the MERIT message broker at Madigan.',
+  },
+];
 ---
 
 <BaseLayout
@@ -57,7 +164,10 @@ import TalkToJohn from '@/components/TalkToJohn.astro';
           <p class="text-sm text-muted-foreground leading-relaxed mb-4">
             Experienced in the full socio-technical scope of modernization — not just the
             technology, but the organizational alignment, domain modeling, and change management
-            that make it stick.
+            that make it stick. See <a
+              href="#approach"
+              class="underline underline-offset-4 hover:text-primary">how I approach it</a
+            >.
           </p>
           <ul class="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <li>
@@ -82,8 +192,7 @@ import TalkToJohn from '@/components/TalkToJohn.astro';
             </li>
             <li>
               <span class="font-medium text-foreground">Cloud Migration &amp; Modernization</span> — Azure,
-              AWS, and Google Cloud; CI/CD pipelines; Cloudflare Pages and Workers for modern edge-deployed
-              architectures.
+              AWS, and Google Cloud; CI/CD pipelines; Cloudflare Workers for modern edge-deployed architectures.
             </li>
             <li>
               <span class="font-medium text-foreground">AI/LLM Integration</span> — Active, current experience
@@ -135,6 +244,52 @@ import TalkToJohn from '@/components/TalkToJohn.astro';
           </li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section id="approach" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader
+        title="How I approach modernization"
+        subtitle="A repeatable method built on published, field-tested work, not a framework I made up. Each step names where it comes from."
+        class="mb-10"
+      />
+      <ol class="grid gap-6 md:grid-cols-2">
+        {
+          steps.map((step, i) => (
+            <li class="rounded-lg border bg-card p-6">
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="text-2xl font-semibold text-primary tabular-nums">{i + 1}</span>
+                <h3 class="font-semibold text-lg">{step.title}</h3>
+              </div>
+              <p class="text-sm text-muted-foreground leading-relaxed">{step.body}</p>
+              <p class="mt-3 text-xs text-muted-foreground italic">{step.source}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="technical-debt" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader title="Weighing technical debt" class="mb-10">
+        Technical debt is not all equal. Some is load-bearing and dangerous; some is ugly but
+        stable. The job is telling them apart and making the case in business terms. I combine six
+        signals:
+      </SectionHeader>
+      <ServiceCards cards={debtSignals} />
+    </div>
+  </section>
+
+  <section id="foundations" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <SectionHeader
+        title="The bookshelf behind the methods"
+        subtitle="Books I have read closely and apply in practice."
+        class="mb-10"
+      />
+      <ServiceCards cards={books} />
     </div>
   </section>
 
