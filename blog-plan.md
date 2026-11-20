@@ -178,6 +178,20 @@ baseline.
 say about the living"), isn't architecture. It goes on Cornelisons.com only (Q-VS-8), as a note for the
 Cornelisons.com sessions, and links to C1.
 
+## 3c. Series D: Architecture by the numbers (from RangerTrak's 2026-11 decomposition)
+
+**Added 2026-11-20 (RangerTrak blog session, Opus; John Q132/Q133: all publishable, full posts only here, one plain-words post on rangertrak.com linking to these).** Source: `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\Architecture decomposition 2026-11.md` and the running notes' 11-20 sections. All five are drafted, `draft: true`, waiting on Q-VS-26 to 28. Thread: measure, fix what multiplies before the release, leave a check behind.
+
+| # | Post (slug) | Angle | Placeholder date |
+| --- | --- | --- | --- |
+| D1 | measuring-an-angular-app-instead-of-guessing | A 120-line script, import graph, Martin's I; what it found, what it can't tell you | 2026-12-22 |
+| D2 | data-in-answer-out | What seven weeks of a pure domain layer bought (97% coverage), what it cost, the gap it left | 2026-12-29 |
+| D3 | the-second-form-that-copied-the-first | E-332's copied save step; `domain/entry-build.ts`; typed save | 2027-01-05 |
+| D4 | shared-is-not-an-architecture | The catch-all folder, barrel cycle (11-10), `check:layers` with a list that can only shrink | 2027-01-12 |
+| D5 | god-components-in-a-field-app | Radio Log's four jobs; mapLeaflet regrowth; fix what multiplies before a release, what's big after | 2027-01-19 |
+
+Re-measure on publish day: the post-1.0 splits (Q1-Q7 in the source) may have started, and line counts drift. The rangertrak.com post (`D:\Projects\_SteadyEOC\Rangertrak\rangertrak-com-site\drafts\under-the-hood-before-1-0.html`) links all five and goes out after D1 is live.
+
 ## 4. Publishing rules for all series
 
 - **Nothing confidential crosses.** The running notes and internal docs stay private. Code from
