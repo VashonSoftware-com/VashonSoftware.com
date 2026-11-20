@@ -230,7 +230,4 @@ on a live app that people were using the whole time.
 
 ---
 
-*Numbers are as of the dates given, from the public repository. I worked through this with
-Claude (Anthropic's AI model) as a pair: it helped find the duplicate checks, drafted the
-decision-record entries and the lint configuration, and ran the measurements. The
-guidance, recommendations and decisions are mine, and I reviewed every change.*
+*Numbers are as of the dates given, from the public repository.*
