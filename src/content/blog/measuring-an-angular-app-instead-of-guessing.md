@@ -4,7 +4,6 @@ description: "One 120-line script, an import graph and Robert Martin's instabili
 pubDate: 2026-12-22
 tags: ["architecture", "angular", "metrics", "rangertrak"]
 series: { name: "Architecture by the numbers", part: 1 }
-draft: true
 ---
 
 Late one evening I asked a question about my own app that I couldn't answer from memory: *do

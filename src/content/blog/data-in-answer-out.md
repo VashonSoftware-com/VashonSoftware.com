@@ -4,7 +4,6 @@ description: "In October, RangerTrak's business rules moved into a framework-fre
 pubDate: 2026-12-29
 tags: ["architecture", "angular", "testing", "rangertrak"]
 series: { name: "Architecture by the numbers", part: 2 }
-draft: true
 ---
 
 In [part 1](/blog/measuring-an-angular-app-instead-of-guessing) I measured

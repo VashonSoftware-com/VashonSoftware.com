@@ -4,7 +4,6 @@ description: "A catch-all folder depended on by 18 of 21 areas, two barrels that
 pubDate: 2027-01-12
 tags: ["architecture", "angular", "ci", "rangertrak"]
 series: { name: "Architecture by the numbers", part: 4 }
-draft: true
 ---
 
 Every Angular app I've worked on has a `shared/` folder, and in every one it started as a good

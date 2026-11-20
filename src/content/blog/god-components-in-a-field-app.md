@@ -4,7 +4,6 @@ description: "RangerTrak's Radio Log component injects 24 dependencies and does 
 pubDate: 2027-01-19
 tags: ["architecture", "angular", "refactoring", "rangertrak"]
 series: { name: "Architecture by the numbers", part: 5 }
-draft: true
 ---
 
 Every app that lives long enough grows a few components that do everything. In

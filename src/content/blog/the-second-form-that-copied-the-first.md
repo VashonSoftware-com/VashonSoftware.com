@@ -4,7 +4,6 @@ description: "RangerTrak's business rules were pure functions with 97% coverage.
 pubDate: 2027-01-05
 tags: ["architecture", "angular", "refactoring", "rangertrak"]
 series: { name: "Architecture by the numbers", part: 3 }
-draft: true
 ---
 
 [Part 2](/blog/data-in-answer-out) ended on a gap. [RangerTrak](https://rangertrak.com)'s
