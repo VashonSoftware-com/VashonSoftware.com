@@ -180,7 +180,7 @@ Cornelisons.com sessions, and links to C1.
 
 ## 3c. Series D: Architecture by the numbers (from RangerTrak's 2026-11 decomposition)
 
-**Added 2026-11-20 (RangerTrak blog session, Opus; John Q132/Q133: all publishable, full posts only here, one plain-words post on rangertrak.com linking to these).** Source: `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\Architecture decomposition 2026-11.md` and the running notes' 11-20 sections. **Approved 2026-11-20 (Q-VS-26 to 28): `draft` removed, scheduled on the dates below; own series; no AI note.** Still to do before each date: a hero image (`image:`) and a LinkedIn post in `linkedin-posts.md`. Thread: measure, fix what multiplies before the release, leave a check behind.
+**Added 2026-11-20 (RangerTrak blog session, Opus; John Q132/Q133: all publishable, full posts only here, one plain-words post on rangertrak.com linking to these).** Source: `D:\Projects\_SteadyEOC\Rangertrak\rangertrak-InternalDocs\Architecture decomposition 2026-11.md` and the running notes' 11-20 sections. **Approved 2026-11-20 (Q-VS-26 to 28): `draft` removed, scheduled on the dates below; own series; no AI note.** Still to do before each date: a hero image (`image:`) and a LinkedIn post in `linkedin-posts.md` (Outlook reminder 12-18 09:00 for this; pushed `465bba7`). Thread: measure, fix what multiplies before the release, leave a check behind.
 
 | # | Post (slug) | Angle | Placeholder date |
 | --- | --- | --- | --- |
