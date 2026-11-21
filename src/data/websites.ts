@@ -365,7 +365,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
       'Hosting $0; a .com about $11/yr; optional care plan',
       'Setup, quoted in writing',
       'You (words, photos) or me; layout changes by me',
-      'Copy the files to any host',
+      'Copy the files to any host. Built with open-source tools as plain HTML, CSS and minimal JavaScript, which any web professional can easily edit',
       'Keeps running; just renew the domain',
       'Nothing to patch; checked on a care plan',
       'Small businesses wanting low running costs, ownership and a person to call',
