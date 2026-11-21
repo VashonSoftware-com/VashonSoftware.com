@@ -5,7 +5,15 @@ import SectionHeader from '@/components/SectionHeader.astro';
 import ServiceCards from '@/components/ServiceCards.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
 import WebsitesNav from '@/components/WebsitesNav.astro';
-import { checkTools, howCards, questions, results, tierNames } from '@/data/websites';
+import {
+  checkTools,
+  contrastRows,
+  howCards,
+  questions,
+  results,
+  tierNames,
+  whyCards,
+} from '@/data/websites';
 
 const more = [
   {
@@ -28,13 +36,70 @@ const more = [
 
 <BaseLayout
   title="Websites"
-  description="Small-business websites from Vashon Software: fast, owned by you, nothing to patch. A quick 'which approach fits?' quiz, what's included, care plans, and a comparison with other builders."
+  description="Small-business websites from Vashon Software: owned by you, fast everywhere, built with modern tools, looked after by a real person. How that differs from Wix or Squarespace, what's included, care plans, and a 'which approach fits?' quiz."
 >
   <PageHeader title="Websites you own" eyebrow="Websites">
-    Every small site I build comes with the same foundations. They cost little once set up, so they
-    aren't sold as extras. Beyond that, you pick only the options you need.
+    Drag-and-drop builders rent you a website. I build one that's yours: your name on the address,
+    your files, fast on every phone, and a real person looking after it.
     <WebsitesNav slot="after" />
   </PageHeader>
+
+  <!-- Why it's different -->
+  <section id="why" class="py-16 border-t">
+    <div class="container max-w-5xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="section-title">Why it's different from a site builder</h2>
+        <p class="mt-2 text-muted-foreground">
+          Wix, Squarespace and the rest are quick to start. The trade-offs show up later, when you
+          want to move, speed up, or get help.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {
+          whyCards.map((c) => (
+            <article id={`why-${c.slug}`} class="rounded-lg border bg-card p-6">
+              <h3 class="font-semibold text-lg">{c.title}</h3>
+              <p class="mt-1 text-sm font-medium text-primary">{c.lead}</p>
+              <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 overflow-x-auto rounded-lg border">
+        <table class="w-full text-sm">
+          <caption class="sr-only">A site builder compared with a site built and owned by you</caption>
+          <thead class="bg-muted/40 text-left">
+            <tr>
+              <th scope="col" class="p-3 font-medium"><span class="sr-only">Question</span></th>
+              <th scope="col" class="p-3 font-medium">Drag-and-drop builder</th>
+              <th scope="col" class="p-3 font-medium">Built and owned</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              contrastRows.map(([label, builder, owned]) => (
+                <tr class="border-t">
+                  <th scope="row" class="p-3 text-left font-medium align-top">{label}</th>
+                  <td class="p-3 text-muted-foreground align-top">{builder}</td>
+                  <td class="p-3 align-top">{owned}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-sm text-muted-foreground">
+        Platform by platform, with running costs: <a
+          href="/websites/compare"
+          class="underline underline-offset-4 text-foreground">compared with other platforms</a
+        >. Everything every site gets: <a
+          href="/websites/included"
+          class="underline underline-offset-4 text-foreground">what's included</a
+        >.
+      </p>
+    </div>
+  </section>
 
   <!-- Quiz -->
   <section id="fit" class="py-16 border-t bg-muted/20">

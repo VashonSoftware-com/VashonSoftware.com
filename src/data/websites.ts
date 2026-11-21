@@ -1,5 +1,43 @@
 /** Content for the four Websites pages (/websites, /websites/included, /care-plans, /compare). */
 
+// /websites opening: why a built-and-owned site differs from a drag-and-drop builder.
+export const whyCards = [
+  {
+    title: 'You own it',
+    slug: 'ownership',
+    lead: 'Your domain, your accounts, your files.',
+    text: 'A builder rents you a site: stop paying and it goes dark, and the design can’t come with you. Here the address is registered in your name, the site is ordinary files any developer can read, and nothing stops working if you stop paying me.',
+  },
+  {
+    title: 'Fast everywhere',
+    slug: 'speed',
+    lead: 'Pages ready before your visitor’s thumb moves.',
+    text: 'No page-building engine running behind every visit: just finished pages, served from Cloudflare’s network close to each visitor. Each site is measured with Google PageSpeed (target 95+ on a phone) before launch and at every check-up, against your old site’s scores.',
+  },
+  {
+    title: 'Modern, not trendy',
+    slug: 'tech',
+    lead: 'Today’s best tools, chosen to last.',
+    text: 'Built with Astro and plain web standards, every change recorded in git, published automatically. No plugins or database to patch, cookie-free statistics, accessibility to WCAG 2.2 AA, light and dark mode. Hosting is free at small-site sizes.',
+  },
+  {
+    title: 'A person, not a help desk',
+    slug: 'service',
+    lead: 'You talk to the one who built it.',
+    text: 'Plain written quotes and reports. Monitoring alerts come to me, often before you’d notice. On a care plan I check your site’s speed, security, links, forms and backups and tell you what I found, in plain English.',
+  },
+];
+
+// Short contrast table under the cards (full comparison on /websites/compare).
+export const contrastRows: [string, string, string][] = [
+  ['Who owns the address and files', 'The platform holds the site; you rent it', 'You do, in your name'],
+  ['If you stop paying', 'The site goes offline', 'It keeps running (hosting is free)'],
+  ['Moving later', 'Start again elsewhere', 'Copy the files; any developer can take over'],
+  ['Speed', 'Shared engine, heavy scripts', 'Finished pages from a global network'],
+  ['Updates and security', 'Up to the platform, or you (WordPress)', 'Nothing to patch; checked on a care plan'],
+  ['Help', 'Support tickets and forums', 'Me, by email, phone or in person'],
+];
+
 export const howCards = [
   {
     title: 'Performance-First Static Sites',
@@ -71,11 +109,15 @@ export const included = [
       ],
       [
         'Search-engine basics done',
-        'Page titles and descriptions, a sitemap, tidy addresses and sharing previews for Facebook, LinkedIn and texts.',
+        'Page titles and descriptions, a sitemap, tidy addresses and sharing previews for Facebook, LinkedIn and texts. Set up in Google Search Console and Bing, so problems show up early.',
+      ],
+      [
+        'On Google Maps, in your name',
+        'For local businesses and nonprofits: your Google Business Profile checked and claimed with you as owner, your hours and area marked up for search engines, a review link with a QR code, and a one-page guide to looking after it.',
       ],
       [
         'Accessible',
-        'Built to WCAG 2.2 AA: readable contrast, keyboard use, screen-reader labels. Light and dark mode.',
+        'Built to WCAG 2.2 AA: readable contrast, keyboard use, screen-reader labels. Light and dark mode. An accessibility page says so, and how visitors can report a problem.',
       ],
       ['Served worldwide', 'Hosted on Cloudflare’s network, free at small-site sizes.'],
     ],
@@ -139,7 +181,10 @@ export const options = [
         'Site tools page',
         'A small private admin page for your site: open the editor, see whether your last change published, recent site checks, and a button to report a problem or ask for a change.',
       ],
-      ['Editing guide', 'Written around your own pages, with screenshots.'],
+      [
+        'Editing guide and video',
+        'Written around your own pages, with screenshots, plus a short video of making a change on your own site.',
+      ],
     ],
   },
   {
