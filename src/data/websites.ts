@@ -1,6 +1,50 @@
 /** Content for the four Websites pages (/websites, /websites/included, /care-plans, /compare). */
 
-// /websites opening: why a built-and-owned site differs from a drag-and-drop builder.
+// /websites welcome: a guide to what's on offer, so first-time visitors can find their place.
+export const offerCards = [
+  {
+    title: 'A new website',
+    text: 'Starting from nothing, or from a page on Facebook. We talk about what you need, and I build a site that’s simple to run.',
+    href: '#fit',
+    link: 'A few questions to get started',
+  },
+  {
+    title: 'Refresh the site you have',
+    text: 'Slow, dated, hard to change, or stuck on a builder you’ve outgrown. I keep what works, move your content, and old links keep working.',
+    href: '#fit',
+    link: 'A few questions to get started',
+  },
+  {
+    title: 'Looking after a site',
+    text: 'Already happy with your site? Optional check-ups cover speed, security, links, forms and backups, with a plain-English report.',
+    href: '/websites/care-plans',
+    link: 'Care plans',
+  },
+  {
+    title: 'Just curious',
+    text: 'No plans yet? Run your site through the same free tests I use, or read how a site you own compares with Wix or Squarespace.',
+    href: '#check',
+    link: 'Check your current site',
+  },
+];
+
+// /websites welcome: how working together goes, in three steps.
+export const steps = [
+  {
+    title: 'We talk',
+    text: 'By email, phone or over coffee. Tell me what you have and what you’d like it to do. No obligation.',
+  },
+  {
+    title: 'A free check and a written quote',
+    text: 'I test your current site (if you have one) and send a plain quote: what I’d do, what it costs, and what it costs to run.',
+  },
+  {
+    title: 'I build it, you own it',
+    text: 'You see it before it goes live. Afterwards it’s yours: your address, your files, and me to call if you need help.',
+  },
+];
+
+// /websites: why a built-and-owned site differs from a drag-and-drop builder.
 export const whyCards = [
   {
     title: 'You own it',
@@ -30,11 +74,19 @@ export const whyCards = [
 
 // Short contrast table under the cards (full comparison on /websites/compare).
 export const contrastRows: [string, string, string][] = [
-  ['Who owns the address and files', 'The platform holds the site; you rent it', 'You do, in your name'],
+  [
+    'Who owns the address and files',
+    'The platform holds the site; you rent it',
+    'You do, in your name',
+  ],
   ['If you stop paying', 'The site goes offline', 'It keeps running (hosting is free)'],
   ['Moving later', 'Start again elsewhere', 'Copy the files; any developer can take over'],
   ['Speed', 'Shared engine, heavy scripts', 'Finished pages from a global network'],
-  ['Updates and security', 'Up to the platform, or you (WordPress)', 'Nothing to patch; checked on a care plan'],
+  [
+    'Updates and security',
+    'Up to the platform, or you (WordPress)',
+    'Nothing to patch; checked on a care plan',
+  ],
   ['Help', 'Support tickets and forums', 'Me, by email, phone or in person'],
 ];
 
