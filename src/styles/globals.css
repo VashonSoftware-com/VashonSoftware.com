@@ -18,19 +18,11 @@
   font-display: swap;
 }
 
-/* Heading fonts (OFL-1.1, latin subset, from Fontsource). Swap --font-heading to try the other. */
+/* Heading font (OFL-1.1, latin subset, from Fontsource). Chosen by John 2026-11-21 (Q-VS-25). */
 @font-face {
   font-family: 'Bricolage Grotesque';
   src: url('/fonts/BricolageGrotesque-Variable.woff2') format('woff2');
   font-weight: 200 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2');
-  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
