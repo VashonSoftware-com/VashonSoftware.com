@@ -204,6 +204,14 @@ export const options = [
         'Items with tags and filters, a page for each, bulk photo upload.',
       ],
       ['Members-only or family pages', 'Behind a sign-in.'],
+      [
+        'Locked to secure connections',
+        'Your domain added to the list built into every major browser, so they always use HTTPS, even on a first visit. Hard to undo, so it’s your choice.',
+      ],
+      [
+        'A security grade report',
+        'Your site’s HTTPS setup graded by Qualys SSL Labs, anything below A+ fixed, and a link you can share.',
+      ],
       ['A second language', ''],
     ],
   },
@@ -278,6 +286,12 @@ export const checkTools = [
     by: 'Qualys SSL Labs',
     url: 'https://www.ssllabs.com/ssltest/',
     what: 'the HTTPS certificate and its setup',
+  },
+  {
+    name: 'HSTS Preload List',
+    by: 'Chromium project',
+    url: 'https://hstspreload.org/',
+    what: 'whether browsers always use HTTPS for your domain',
   },
 ];
 
