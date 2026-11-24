@@ -99,6 +99,12 @@
 
 html {
   font-size: 106.25%; /* 17px */
+  scroll-padding-top: 6rem; /* in-page links land below the sticky header */
+}
+
+/* Websites pages also have a sticky section bar under the header. */
+html:has(nav[aria-label='Websites pages']) {
+  scroll-padding-top: 9rem;
 }
 
 body {

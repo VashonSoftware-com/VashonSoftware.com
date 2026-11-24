@@ -1,5 +1,14 @@
 ---
-/** Strip that links the four Websites pages. Sits in PageHeader's "after" slot. */
+/**
+ * Bar that links the four Websites pages. Placed right after PageHeader (not inside it),
+ * so it can stick under the site header while the page scrolls.
+ */
+interface Props {
+  /** Container width, to line up with the page's content. */
+  width?: string;
+}
+const { width = 'max-w-5xl' } = Astro.props;
+
 const pages = [
   { href: '/websites', label: 'Overview' },
   { href: '/websites/included', label: 'What’s included' },
@@ -10,24 +19,36 @@ const pages = [
 const current = new URL(Astro.request.url).pathname.replace(/\/$/, '') || '/';
 ---
 
-<nav aria-label="Websites pages" class="mt-8 flex flex-wrap gap-2 text-sm">
-  {
-    pages.map((p) => {
-      const active = current === p.href;
-      return (
-        <a
-          href={p.href}
-          aria-current={active ? 'page' : undefined}
-          class:list={[
-            'rounded-full border px-4 py-1.5 font-medium transition-colors',
-            active
-              ? 'border-primary bg-primary/10 text-foreground'
-              : 'text-muted-foreground hover:text-foreground hover:bg-accent/60',
-          ]}
-        >
-          {p.label}
-        </a>
-      );
-    })
-  }
+<nav
+  aria-label="Websites pages"
+  class="sticky top-20 z-40 border-y bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80"
+>
+  <div class:list={['container mx-auto px-4', width]}>
+    <div class="flex items-center gap-2 overflow-x-auto py-2 text-sm whitespace-nowrap">
+      <a
+        href="/websites"
+        class="mr-2 hidden sm:inline font-semibold text-foreground hover:underline underline-offset-4"
+        >Websites</a
+      >
+      {
+        pages.map((p) => {
+          const active = current === p.href;
+          return (
+            <a
+              href={p.href}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'rounded-full border px-3 py-1 font-medium transition-colors',
+                active
+                  ? 'border-primary bg-primary/10 text-foreground'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent/60',
+              ]}
+            >
+              {p.label}
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
 </nav>
