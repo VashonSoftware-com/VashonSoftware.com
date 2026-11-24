@@ -81,7 +81,11 @@ export const contrastRows: [string, string, string][] = [
   ],
   ['If you stop paying', 'The site goes offline', 'It keeps running (hosting is free)'],
   ['Moving later', 'Start again elsewhere', 'Copy the files; any developer can take over'],
-  ['Speed', 'Shared engine, heavy scripts', 'Finished pages from a global network'],
+  [
+    'Speed and test scores',
+    'Shared engine, heavy scripts; phone scores often well below 90',
+    'Finished pages from a global network; 95+ PageSpeed target, measured at launch and every check-up',
+  ],
   [
     'Updates and security',
     'Up to the platform, or you (WordPress)',
@@ -285,28 +289,62 @@ export const options = [
   },
 ];
 
-// Care plans. ✓ / — / text per column.
-export const careCols = ['No plan', 'Yearly', 'Quarterly', 'Total care (monthly)'];
+// Care plans: one column per plan, with its name, what it is, and its price, so the
+// frequency of each item never has to stand in for the plan's name.
+export const carePlans: {
+  name: string;
+  tagline: string;
+  price: string;
+  perYear: string;
+  featured?: boolean;
+}[] = [
+  { name: 'No plan', tagline: 'Included with every site', price: '$0', perYear: '' },
+  {
+    name: 'Care',
+    tagline: 'Automated, monthly',
+    price: '$10/month',
+    perYear: '$120 a year',
+  },
+  {
+    name: 'Care + review',
+    tagline: 'A person checks it, quarterly',
+    price: '$30/month',
+    perYear: '$360 a year',
+    featured: true,
+  },
+  {
+    name: 'Total care',
+    tagline: 'Hands-on, monthly',
+    price: 'By quote',
+    perYear: 'Depends on the site',
+  },
+];
+// ✓ / — / text per plan, in carePlans order.
 export const careRows: { label: string; cells: string[] }[] = [
   {
-    label: 'Site keeps running, monthly visitor email, automatic alerts',
+    label: 'Site keeps running, monthly visitor email, uptime alerts',
     cells: ['✓', '✓', '✓', '✓'],
   },
-  { label: 'Full health check (below)', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
-  { label: 'Software updates', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
   {
-    label: 'Backup kept off GitHub, test-restored',
-    cells: ['—', 'Yearly', 'Quarterly', 'Monthly'],
+    label: 'Automated health report: speed, security, links, renewals, with trends',
+    cells: ['—', 'Monthly', 'Monthly', 'Monthly'],
   },
-  { label: 'Short written report', cells: ['—', 'Yearly', 'Quarterly', 'Monthly'] },
-  { label: 'Call to talk it over', cells: ['—', 'Yearly', 'Yearly', 'Quarterly'] },
+  { label: 'Backup kept off GitHub', cells: ['—', 'Monthly', 'Monthly', 'Monthly'] },
+  { label: 'Backup test-restored', cells: ['—', '—', 'Quarterly', 'Monthly'] },
+  { label: 'Full health check by me (below)', cells: ['—', '—', 'Quarterly', 'Monthly'] },
+  { label: 'Software updates', cells: ['—', '—', 'Quarterly', 'Monthly'] },
+  {
+    label: 'Written note from me',
+    cells: ['—', '—', 'Quarterly', 'Monthly'],
+  },
+  { label: 'Call to talk it over', cells: ['—', '—', 'Yearly', 'Quarterly'] },
   {
     label: 'Change time included',
-    cells: ['Billed hourly', '1 hour a year', '2 hours a year', '1 hour a month'],
+    cells: ['Billed hourly', 'Billed hourly', '1 hour a year', '1 hour a month'],
   },
   {
     label: 'When something breaks',
-    cells: ['Hourly, best effort', 'Best effort', 'Best effort', 'Next working day'],
+    cells: ['Hourly, best effort', 'Hourly, best effort', 'Best effort', 'First in line, usually the next working day'],
   },
 ];
 
@@ -358,6 +396,7 @@ export const compareCols = [
   'You own it and can move it',
   'Keeps running if you stop paying',
   'No software patching for you',
+  'Speed and test scores',
   'Best for',
 ];
 export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[] = [
@@ -374,6 +413,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       },
       { mark: 'yes', text: 'Keeps running; just renew the domain' },
       { mark: 'yes', text: 'Nothing to patch: no plugins or database' },
+      { mark: 'yes', text: 'Target 95+ in Google PageSpeed on phones; security and HTTPS graded; re-measured at every check-up' },
       'Small businesses wanting low running costs, ownership and a person to call',
     ],
   },
@@ -386,6 +426,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'no', text: 'Classic sites can’t be exported' },
       { mark: 'no', text: 'Falls back to a Wix address with ads' },
       { mark: 'yes', text: 'Wix does it' },
+      { mark: 'partly', text: 'Heavy scripts; phone scores often well below 90. Security headers are Wix’s choice' },
       'People who enjoy designing their own pages',
     ],
   },
@@ -398,6 +439,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'partly', text: 'Pages and posts export; design is rebuilt' },
       { mark: 'no', text: 'Site goes offline' },
       { mark: 'yes', text: 'Squarespace does it' },
+      { mark: 'partly', text: 'Phone scores often well below 90; few speed or security settings you can change' },
       'Polished portfolios and small shops',
     ],
   },
@@ -410,6 +452,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'no', text: 'No export' },
       { mark: 'no', text: 'Site goes offline' },
       { mark: 'yes', text: 'GoDaddy does it' },
+      { mark: 'partly', text: 'Phone scores often well below 90; few settings you can change' },
       'A quick, simple first site',
     ],
   },
@@ -422,6 +465,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'yes', text: 'Exports to any WordPress host' },
       { mark: 'partly', text: 'Drops to the free plan (ads, no own domain)' },
       { mark: 'yes', text: 'WordPress.com does it' },
+      { mark: 'partly', text: 'Depends on theme and plugins; higher plans allow tuning' },
       'Blogs and writing-heavy sites',
     ],
   },
@@ -434,6 +478,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'yes', text: 'Moves to any WordPress host' },
       { mark: 'no', text: 'Offline when hosting lapses' },
       { mark: 'no', text: 'You or a paid maintainer: regular core, theme and plugin updates' },
+      { mark: 'partly', text: 'Can be fast with work; theme, plugins and host decide' },
       'Large content sites with someone to maintain them',
     ],
   },
@@ -446,6 +491,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'partly', text: 'Code exports; content as CSV' },
       { mark: 'no', text: 'Custom domain stops working' },
       { mark: 'yes', text: 'Webflow does it' },
+      { mark: 'partly', text: 'Can score well; animations and scripts often lower phone scores' },
       'Design-led sites built by a designer',
     ],
   },
@@ -458,6 +504,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'partly', text: 'Products and orders export; design doesn’t' },
       { mark: 'no', text: 'Store closes' },
       { mark: 'yes', text: 'Shopify does it' },
+      { mark: 'partly', text: 'Theme and each added app slow it; Shopify sets security headers' },
       'Real online stores: stock, shipping, tax',
     ],
   },
@@ -470,6 +517,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'no', text: 'No site export' },
       { mark: 'partly', text: 'Free plan continues, with Square branding' },
       { mark: 'yes', text: 'Square does it' },
+      { mark: 'partly', text: 'Phone scores often well below 90; few settings you can change' },
       'Shops and cafés already using Square',
     ],
   },
@@ -482,8 +530,75 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
       { mark: 'no', text: 'No usable export' },
       { mark: 'yes', text: 'Free, so nothing to stop paying' },
       { mark: 'yes', text: 'Google does it' },
+      { mark: 'partly', text: 'Simple pages; no control over speed or security settings' },
       'Clubs, classes and simple internal pages',
     ],
+  },
+];
+
+// "What a built site can do": built in, added from a service, or passed on to a better tool.
+// Draft for John's review (Q-VS-30).
+export type Fit = 'built' | 'added' | 'elsewhere';
+export const canDo: { need: string; fit: Fit; how: string }[] = [
+  {
+    need: 'Search, blog or news, galleries, a catalogue, a second language',
+    fit: 'built',
+    how: 'Part of the site itself, with nothing extra to pay for.',
+  },
+  {
+    need: 'Contact, order-request and sign-up forms',
+    fit: 'built',
+    how: 'Spam-protected; messages come to your email.',
+  },
+  {
+    need: 'Private pages for a family, board or small group',
+    fit: 'built',
+    how: 'A sign-in in front of those pages (Cloudflare Access, free for up to 50 people).',
+  },
+  {
+    need: 'A few products, deposits or donations',
+    fit: 'added',
+    how: 'Stripe or PayPal buttons; Zeffy for nonprofit donations.',
+  },
+  {
+    need: 'Booking, appointments and event tickets',
+    fit: 'added',
+    how: 'Calendly, Square Appointments, Eventbrite or similar, linked or shown on your pages.',
+  },
+  {
+    need: 'Mailing list',
+    fit: 'added',
+    how: 'A sign-up form on the site; the list and the emails live in Mailchimp, Kit or Buttondown.',
+  },
+  {
+    need: 'An online store with stock, shipping and tax',
+    fit: 'elsewhere',
+    how: 'Shopify. Your site can link to the store or show a few products from it.',
+  },
+  {
+    need: 'Point of sale and inventory for a shop or café',
+    fit: 'elsewhere',
+    how: 'Square, or Shopify POS. The site shows hours and links to online ordering.',
+  },
+  {
+    need: 'Member accounts: sign-ups, profiles, paid memberships',
+    fit: 'elsewhere',
+    how: 'Ghost, Memberful or Squarespace Member Areas.',
+  },
+  {
+    need: 'Online courses, forums or a community',
+    fit: 'elsewhere',
+    how: 'Teachable or Podia for courses; Discourse, Circle or a Facebook group for discussion.',
+  },
+  {
+    need: 'Marketing campaigns and ads',
+    fit: 'elsewhere',
+    how: 'A marketer, plus your mailing-list service. The site is ready for them: fast pages, sharing previews, statistics.',
+  },
+  {
+    need: 'Daily publishing by several writers',
+    fit: 'elsewhere',
+    how: 'WordPress or Ghost.',
   },
 ];
 
