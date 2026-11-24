@@ -362,7 +362,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
     name: 'Built and owned (this page)',
     ours: true,
     cells: [
-      'Hosting $0; a .com about $11/yr; optional care plan',
+      'About $11/yr: hosting $0, a .com domain about $11/yr; care plan optional',
       'Setup, quoted in writing',
       'You (words, photos) or me; layout changes by me',
       'Copy the files to any host; plain HTML/CSS/JS from open-source tools, editable by any web professional',
@@ -374,7 +374,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Wix',
     cells: [
-      'About $17–39/mo',
+      'About $204–468/yr ($17–39/mo)',
       'None (you build it)',
       'You, drag-and-drop',
       'Classic sites can’t be exported',
@@ -386,7 +386,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Squarespace',
     cells: [
-      'About $16–39/mo',
+      'About $192–468/yr ($16–39/mo)',
       'None (you build it)',
       'You, drag-and-drop',
       'Partial: pages and posts; design is rebuilt',
@@ -398,7 +398,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'GoDaddy builder',
     cells: [
-      'About $10–15/mo to start; more at renewal',
+      'About $120–180/yr ($10–15/mo) to start; more at renewal',
       'None (you build it)',
       'You, simple editor',
       'No export',
@@ -410,7 +410,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'WordPress.com',
     cells: [
-      'About $4–25/mo; more for a store',
+      'About $48–300/yr ($4–25/mo); more for a store',
       'None (you build it)',
       'You, block editor',
       'Exports to any WordPress host',
@@ -434,7 +434,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Webflow',
     cells: [
-      'From about $15/mo per site',
+      'From about $180/yr ($15/mo) per site',
       'Usually a designer',
       'A designer; you edit content',
       'Partial: code export, content as CSV',
@@ -446,7 +446,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Shopify',
     cells: [
-      'From $29/mo, plus card fees',
+      'From $348/yr ($29/mo), plus card fees',
       'None, or a developer',
       'You',
       'Products and orders export; design doesn’t',
@@ -458,7 +458,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Square Online',
     cells: [
-      'Free plan (Square branding), or from $49/mo; card fees',
+      '$0 on the free plan (Square branding), or from $588/yr ($49/mo); card fees',
       'None (you build it)',
       'You',
       'No site export',
@@ -470,7 +470,7 @@ export const platforms: { name: string; ours?: boolean; cells: string[] }[] = [
   {
     name: 'Google Sites',
     cells: [
-      'Free; domain extra',
+      'About $11/yr: free, plus a domain',
       'None (you build it)',
       'You, simple editor',
       'No usable export',
