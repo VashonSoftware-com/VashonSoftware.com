@@ -49,6 +49,14 @@
   --color-input: oklch(86% 0.028 145);
   --color-ring: oklch(37% 0.13 145);
 
+  /* Yes / partly / no tints for comparison tables. Always paired with a mark and words. */
+  --color-good: oklch(93% 0.06 145);
+  --color-good-foreground: oklch(40% 0.13 145);
+  --color-warn: oklch(94% 0.07 85);
+  --color-warn-foreground: oklch(48% 0.12 70);
+  --color-bad: oklch(93% 0.045 25);
+  --color-bad-foreground: oklch(50% 0.17 27);
+
   --radius: 0.5rem;
 
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -77,6 +85,12 @@
   --color-border: oklch(35% 0.042 55);
   --color-input: oklch(35% 0.042 55);
   --color-ring: oklch(74% 0.13 65);
+  --color-good: oklch(30% 0.05 145);
+  --color-good-foreground: oklch(82% 0.13 145);
+  --color-warn: oklch(32% 0.06 80);
+  --color-warn-foreground: oklch(85% 0.13 85);
+  --color-bad: oklch(30% 0.06 25);
+  --color-bad-foreground: oklch(78% 0.13 25);
 }
 
 * {

@@ -3,7 +3,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
 import WebsitesNav from '@/components/WebsitesNav.astro';
-import { compareCols, platforms } from '@/data/websites';
+import { compareCols, platforms, type Mark } from '@/data/websites';
+
+// Tint plus a mark and a word, so the meaning never rests on color alone.
+const markStyle: Record<Mark, { bg: string; fg: string; icon: string; label: string }> = {
+  yes: { bg: 'bg-good', fg: 'text-good-foreground', icon: '✓', label: 'Yes' },
+  partly: { bg: 'bg-warn', fg: 'text-warn-foreground', icon: '~', label: 'Partly' },
+  no: { bg: 'bg-bad', fg: 'text-bad-foreground', icon: '✗', label: 'No' },
+};
 
 // The table has nine columns, so let it use wide screens instead of scrolling sideways.
 const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
@@ -56,13 +63,23 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
                   >
                     {p.name}
                   </th>
-                  {p.cells.map((cell) => (
-                    <td
-                      class={`p-3 xl:p-4 leading-relaxed ${p.ours ? 'text-foreground' : 'text-muted-foreground'}`}
-                    >
-                      {cell}
-                    </td>
-                  ))}
+                  {p.cells.map((cell) =>
+                    typeof cell === 'string' ? (
+                      <td
+                        class={`p-3 xl:p-4 leading-relaxed ${p.ours ? 'text-foreground' : 'text-muted-foreground'}`}
+                      >
+                        {cell}
+                      </td>
+                    ) : (
+                      <td class={`p-3 xl:p-4 leading-relaxed text-foreground ${markStyle[cell.mark].bg}`}>
+                        <span class={`font-semibold ${markStyle[cell.mark].fg}`}>
+                          <span aria-hidden="true">{markStyle[cell.mark].icon} </span>
+                          {markStyle[cell.mark].label}:
+                        </span>{' '}
+                        {cell.text}
+                      </td>
+                    ),
+                  )}
                 </tr>
               ))
             }
@@ -73,7 +90,11 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
         Prices are typical published US prices with annual billing, as of November 2026. Plans,
         prices and features change often, so check each company's own pricing page. Introductory
         prices usually rise at renewal. Self-hosted WordPress costs vary most, with hosting and
-        premium plugins.
+        premium plugins. Care plans aren't in the table: builders keep their own software updated,
+        but nobody checks your site or reports on it. My <a
+          href="/websites/care-plans"
+          class="underline underline-offset-4 hover:text-foreground">care plans</a
+        > are optional.
       </p>
 
       <div class="mt-10 max-w-2xl">
