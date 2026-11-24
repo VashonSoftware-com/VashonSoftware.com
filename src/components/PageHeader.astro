@@ -20,16 +20,26 @@ interface Props {
   class?: string;
   /** Wrap in the standard section + container. Set false when the page provides its own. */
   wrap?: boolean;
+  /** Max-width classes for the container, so wide pages can line up with their content. */
+  width?: string;
 }
 
-const { title, eyebrow, crumbs, leadAs = 'p', class: className = '', wrap = true } = Astro.props;
+const {
+  title,
+  eyebrow,
+  crumbs,
+  leadAs = 'p',
+  class: className = '',
+  wrap = true,
+  width = 'max-w-5xl',
+} = Astro.props;
 const Lead = leadAs;
 const hasLead = Astro.slots.has('default');
 const Outer = wrap ? 'section' : 'div';
 ---
 
 <Outer class:list={[wrap && 'pt-14 pb-12 md:pt-20 md:pb-14', className]}>
-  <div class:list={[wrap && 'container max-w-5xl mx-auto px-4']}>
+  <div class:list={[wrap && `container ${width} mx-auto px-4`]}>
     <div class:list={[wrap && 'max-w-2xl']}>
       {
         crumbs && crumbs.length > 0 && (

@@ -4,6 +4,9 @@ import PageHeader from '@/components/PageHeader.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
 import WebsitesNav from '@/components/WebsitesNav.astro';
 import { compareCols, platforms } from '@/data/websites';
+
+// The table has nine columns, so let it use wide screens instead of scrolling sideways.
+const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
 ---
 
 <BaseLayout
@@ -13,6 +16,7 @@ import { compareCols, platforms } from '@/data/websites';
   <PageHeader
     title="Compared with other platforms"
     crumbs={[{ label: 'Websites', href: '/websites' }, { label: 'Compared' }]}
+    width={wide}
   >
     These are good products, each best at something. The main difference is the arrangement: with a
     builder you rent the site month by month; here you pay once to have it built, then own it and
@@ -22,18 +26,20 @@ import { compareCols, platforms } from '@/data/websites';
 
   <!-- Comparison -->
   <section id="compare" class="py-16 border-t" aria-label="Platform comparison">
-    <div class="container max-w-5xl mx-auto px-4">
+    <div class:list={['container mx-auto px-4', wide]}>
       <div class="overflow-x-auto rounded-lg border">
-        <table class="w-full min-w-[64rem] text-sm">
+        <table class="w-full min-w-[64rem] text-sm xl:text-base">
           <caption class="sr-only">Comparison of website platforms</caption>
           <thead class="bg-muted/40">
             <tr>
-              <th scope="col" class="sticky left-0 z-10 bg-muted p-3 text-left font-semibold w-40"
+              <th
+                scope="col"
+                class="sticky left-0 z-10 bg-muted p-3 xl:p-4 text-left font-semibold w-40 xl:w-48"
                 >Platform</th
               >
               {
                 compareCols.map((col) => (
-                  <th scope="col" class="p-3 text-left font-semibold">
+                  <th scope="col" class="p-3 xl:p-4 text-left font-semibold">
                     {col}
                   </th>
                 ))
@@ -46,13 +52,13 @@ import { compareCols, platforms } from '@/data/websites';
                 <tr class={`border-t align-top ${p.ours ? 'bg-primary/5' : ''}`}>
                   <th
                     scope="row"
-                    class={`sticky left-0 z-10 p-3 text-left font-medium ${p.ours ? 'bg-card text-primary' : 'bg-background'}`}
+                    class={`sticky left-0 z-10 p-3 xl:p-4 text-left font-medium ${p.ours ? 'bg-card text-primary' : 'bg-background'}`}
                   >
                     {p.name}
                   </th>
                   {p.cells.map((cell) => (
                     <td
-                      class={`p-3 leading-relaxed ${p.ours ? 'text-foreground' : 'text-muted-foreground'}`}
+                      class={`p-3 xl:p-4 leading-relaxed ${p.ours ? 'text-foreground' : 'text-muted-foreground'}`}
                     >
                       {cell}
                     </td>
@@ -63,7 +69,7 @@ import { compareCols, platforms } from '@/data/websites';
           </tbody>
         </table>
       </div>
-      <p class="mt-4 text-xs text-muted-foreground max-w-3xl">
+      <p class="mt-4 text-xs xl:text-sm text-muted-foreground max-w-3xl">
         Prices are typical published US prices with annual billing, as of November 2026. Plans,
         prices and features change often, so check each company's own pricing page. Introductory
         prices usually rise at renewal. Self-hosted WordPress costs vary most, with hosting and
@@ -75,7 +81,7 @@ import { compareCols, platforms } from '@/data/websites';
         <p class="mt-3 text-muted-foreground leading-relaxed">
           I'll say so if one of these is you:
         </p>
-        <ul class="mt-3 space-y-2 text-sm text-muted-foreground leading-relaxed list-disc pl-5">
+        <ul class="mt-3 space-y-2 text-sm xl:text-base text-muted-foreground leading-relaxed list-disc pl-5">
           <li>
             You want to rearrange layouts and design pages yourself, often: Squarespace or Wix.
           </li>
