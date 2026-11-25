@@ -398,7 +398,12 @@ export const checkTools = [
 // Platform comparison. Typical published US prices, annual billing, November 2026.
 // A cell is plain text, or a yes / partly / no mark with a short note (shown tinted).
 export type Mark = 'yes' | 'partly' | 'no';
-export type CompareCell = string | { mark: Mark; text: string };
+// `label` replaces the default Yes / Partly / No word (the cost column uses Low / Medium / High).
+export type CompareCell = string | { mark: Mark; text: string; label?: string };
+// Running cost bands, by the usual plan: low under $100/yr, medium $100–400, high $400+.
+const low = (text: string): CompareCell => ({ mark: 'yes', label: 'Low', text });
+const mid = (text: string): CompareCell => ({ mark: 'partly', label: 'Medium', text });
+const high = (text: string): CompareCell => ({ mark: 'no', label: 'High', text });
 export const compareCols = [
   'Typical running cost',
   'Up-front',
@@ -414,7 +419,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
     name: 'Built and owned (this page)',
     ours: true,
     cells: [
-      'About $12/yr: hosting $0, a .com domain about $12/yr',
+      low('About $12/yr: hosting $0, a .com domain about $12/yr'),
       'Setup, quoted in writing',
       'You (words, photos) or me; layout changes by me',
       {
@@ -430,7 +435,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Wix',
     cells: [
-      'About $204–468/yr ($17–39/mo)',
+      mid('About $204–468/yr ($17–39/mo)'),
       'None (you build it)',
       'You, drag-and-drop',
       { mark: 'no', text: 'Classic sites can’t be exported' },
@@ -443,7 +448,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Squarespace',
     cells: [
-      'About $192–468/yr ($16–39/mo)',
+      mid('About $192–468/yr ($16–39/mo)'),
       'None (you build it)',
       'You, drag-and-drop',
       { mark: 'partly', text: 'Pages and posts export; design is rebuilt' },
@@ -456,7 +461,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'GoDaddy builder',
     cells: [
-      'About $120–180/yr ($10–15/mo) to start; more at renewal',
+      mid('About $120–180/yr ($10–15/mo) to start; more at renewal'),
       'None (you build it)',
       'You, simple editor',
       { mark: 'no', text: 'No export' },
@@ -469,7 +474,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'WordPress.com',
     cells: [
-      'About $48–300/yr ($4–25/mo); more for a store',
+      mid('About $48–300/yr ($4–25/mo); more for a store'),
       'None (you build it)',
       'You, block editor',
       { mark: 'yes', text: 'Exports to any WordPress host' },
@@ -482,7 +487,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'WordPress, self-hosted',
     cells: [
-      'About $200–800/yr for hosting, theme and plugins',
+      high('About $200–800/yr for hosting, theme and plugins'),
       'Often a developer',
       'You, block editor',
       { mark: 'yes', text: 'Moves to any WordPress host' },
@@ -495,7 +500,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Webflow',
     cells: [
-      'From about $180/yr ($15/mo) per site',
+      mid('From about $180/yr ($15/mo) per site'),
       'Usually a designer',
       'A designer; you edit content',
       { mark: 'partly', text: 'Code exports; content as CSV' },
@@ -508,7 +513,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Shopify',
     cells: [
-      'From $348/yr ($29/mo), plus card fees',
+      high('From $348/yr ($29/mo), plus card fees'),
       'None, or a developer',
       'You',
       { mark: 'partly', text: 'Products and orders export; design doesn’t' },
@@ -521,7 +526,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Square Online',
     cells: [
-      '$0 on the free plan (Square branding), or from $588/yr ($49/mo); card fees',
+      mid('$0 on the free plan (Square branding), or from $588/yr ($49/mo); card fees'),
       'None (you build it)',
       'You',
       { mark: 'no', text: 'No site export' },
@@ -534,7 +539,7 @@ export const platforms: { name: string; ours?: boolean; cells: CompareCell[] }[]
   {
     name: 'Google Sites',
     cells: [
-      'About $12/yr: free, plus a domain',
+      low('About $12/yr: free, plus a domain'),
       'None (you build it)',
       'You, simple editor',
       { mark: 'no', text: 'No usable export' },

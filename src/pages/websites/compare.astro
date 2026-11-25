@@ -80,7 +80,7 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
                       <td class={`p-3 xl:p-4 leading-relaxed text-foreground ${markStyle[cell.mark].bg}`}>
                         <span class={`font-semibold ${markStyle[cell.mark].fg}`}>
                           <span aria-hidden="true">{markStyle[cell.mark].icon} </span>
-                          {markStyle[cell.mark].label}:
+                          {cell.label ?? markStyle[cell.mark].label}:
                         </span>{' '}
                         {cell.text}
                       </td>
@@ -93,7 +93,8 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
         </table>
       </div>
       <p class="mt-4 text-xs xl:text-sm text-muted-foreground max-w-3xl">
-        Prices are typical published US prices with annual billing, as of November 2026. Plans,
+        Running cost is marked by the usual plan: low under $100 a year, medium $100–400, high
+        $400 or more. Prices are typical published US prices with annual billing, as of November 2026. Plans,
         prices and features change often, so check each company's own pricing page. Introductory
         prices usually rise at renewal. Self-hosted WordPress costs vary most, with hosting and
         premium plugins. Care plans aren't in the table: builders keep their own software updated,
@@ -106,6 +107,25 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
           class="underline underline-offset-4 hover:text-foreground">same free tests I use</a
         >.
       </p>
+
+      <aside
+        class="mt-8 max-w-3xl rounded-lg border bg-primary/5 p-5 xl:p-6 flex flex-col sm:flex-row sm:items-center gap-4"
+        aria-label="Check your own site"
+      >
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">How does your site compare?</h3>
+          <p class="mt-1 text-muted-foreground leading-relaxed">
+            Check it free at How’s my site?: speed, security, accessibility, search, domain and
+            email settings, and privacy, in one plain-English report. Works for a site on any
+            platform; no signup, about 30 seconds.
+          </p>
+        </div>
+        <a
+          href="https://howsmy.site/"
+          class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
+          >Check yours at HowsMy.Site</a
+        >
+      </aside>
 
       <div class="mt-12 max-w-4xl">
         <h3 class="text-xl font-semibold">What a built site can do, and what I pass on</h3>
