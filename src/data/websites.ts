@@ -323,7 +323,7 @@ export const carePlans: {
     },
   },
   {
-    name: 'Total care',
+    name: 'SiteCare Complete',
     tagline: 'Hands-on, monthly',
     price: 'By quote',
     perYear: 'Depends on the site',
