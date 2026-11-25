@@ -297,6 +297,8 @@ export const carePlans: {
   price: string;
   perYear: string;
   featured?: boolean;
+  /** Stripe Payment Links (Vashon Software account, created 2026-11-24). */
+  buy?: { monthly: string; yearly: string };
 }[] = [
   { name: 'No plan', tagline: 'Included with every site', price: '$0', perYear: '' },
   {
@@ -304,6 +306,10 @@ export const carePlans: {
     tagline: 'Automated, monthly',
     price: '$10/month',
     perYear: 'or $100 a year (2 months free)',
+    buy: {
+      monthly: 'https://buy.stripe.com/cNi9ATaLd6M3f3n6Xt33W00',
+      yearly: 'https://buy.stripe.com/9B67sLaLd1rJcVfgy333W01',
+    },
   },
   {
     name: 'SiteCare + Review',
@@ -311,6 +317,10 @@ export const carePlans: {
     price: '$30/month',
     perYear: 'or $300 a year (2 months free)',
     featured: true,
+    buy: {
+      monthly: 'https://buy.stripe.com/7sYcN5cTlc6ndZj81x33W02',
+      yearly: 'https://buy.stripe.com/4gMdR906z2vNdZj95B33W03',
+    },
   },
   {
     name: 'Total care',
