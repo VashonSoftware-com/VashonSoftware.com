@@ -1,0 +1,100 @@
+---
+// Where the SiteCare Stripe Payment Links send buyers after paying (set as each link's
+// "after payment" redirect). The same links are reused on howsmy.site, so buyers can arrive
+// from either site. Kept out of search results and the sitemap.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import GreenNote from '@/components/GreenNote.astro';
+
+const steps = [
+  {
+    title: 'Your receipt',
+    text: 'Stripe has emailed a receipt to the address you gave at checkout. It will show as VASHON SOFTWARE on your card statement.',
+  },
+  {
+    title: 'I’ll be in touch',
+    text: 'I’ll email you, usually within one working day, to confirm your site’s address and ask for anything I need to set up monitoring and backups. I’m a one-person business, so if I’m away it may take a little longer.',
+  },
+  {
+    title: 'Your first report',
+    text: 'Monitoring starts as soon as your site is set up, and your first health report arrives within a month. Alerts come to me, often before you’d notice a problem.',
+  },
+];
+---
+
+<BaseLayout
+  title="Thank you"
+  description="Thanks for choosing a SiteCare plan from Vashon Software. Here is what happens next."
+  noindex
+>
+  <PageHeader title="Thank you" crumbs={[{ label: 'Websites', href: '/websites' }, { label: 'Care plans', href: '/websites/care-plans' }, { label: 'Thank you' }]}>
+    Your SiteCare plan is confirmed. Thanks for trusting me with your website.
+  </PageHeader>
+
+  <section class="py-12 border-t" aria-labelledby="next">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 id="next" class="text-2xl font-semibold">What happens next</h2>
+      <ol class="mt-6 space-y-5">
+        {
+          steps.map((s, i) => (
+            <li class="flex gap-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold">
+                {i + 1}
+              </span>
+              <div>
+                <h3 class="font-semibold">{s.title}</h3>
+                <p class="mt-1 text-muted-foreground leading-relaxed">{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="mt-10 rounded-lg border bg-primary/5 p-5 xl:p-6">
+        <h2 class="text-lg font-semibold">Check your site any time</h2>
+        <p class="mt-1 text-muted-foreground leading-relaxed">
+          Your reports use the same checks as <a
+            href="https://howsmy.site/"
+            class="underline underline-offset-4 text-foreground">How’s my site?</a
+          >, my free checkup. Run it yourself whenever you like, or try it on another site you look
+          after.
+        </p>
+        <form action="https://howsmy.site/" method="get" class="mt-4 flex flex-col sm:flex-row gap-2 sm:max-w-md">
+          <label for="hms-url" class="sr-only">Website address</label>
+          <input
+            id="hms-url"
+            name="url"
+            type="text"
+            inputmode="url"
+            autocomplete="url"
+            placeholder="yoursite.com"
+            required
+            class="flex-1 min-w-0 rounded-md border bg-background px-3 py-2.5 text-foreground placeholder:text-muted-foreground"
+          />
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
+            >Check at HowsMy.Site</button
+          >
+        </form>
+      </div>
+
+      <div class="mt-10 space-y-3 text-muted-foreground leading-relaxed">
+        <p>
+          <span class="font-medium text-foreground">Change or cancel any time.</span> Switch plans,
+          update your card, see receipts or cancel at <a
+            href="https://billing.stripe.com/p/login/cNi9ATaLd6M3f3n6Xt33W00"
+            class="underline underline-offset-4 text-foreground">Manage your plan</a
+          >. Your plan renews automatically until you cancel.
+        </p>
+        <p>
+          <span class="font-medium text-foreground">Questions, or need something fixed now?</span>
+          <a href="/about#contact" class="underline underline-offset-4 text-foreground">Send me a message</a>
+          and I’ll reply as soon as I can.
+        </p>
+      </div>
+
+      <GreenNote class="mt-8" />
+    </div>
+  </section>
+</BaseLayout>

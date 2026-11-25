@@ -42,6 +42,8 @@ interface Props {
   publishedTime?: Date;
   author?: string;
   canonical?: string;
+  /** Keep this page out of search results (e.g. the post-checkout thank-you page). */
+  noindex?: boolean;
 }
 
 const {
@@ -52,6 +54,7 @@ const {
   publishedTime,
   author,
   canonical,
+  noindex = false,
 } = Astro.props;
 
 // Pages pass a short title; the site name is added unless it is already there (Home).
@@ -77,6 +80,7 @@ const fullTitle = /Vashon Software/.test(title) ? title : `${title} | Vashon Sof
       publishedTime={publishedTime}
       author={author}
       canonical={canonical}
+      noindex={noindex}
     />
     <script is:inline>
       // Prevent flash of wrong theme - respects explicit user choice over system preference
