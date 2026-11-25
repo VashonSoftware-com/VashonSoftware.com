@@ -339,17 +339,17 @@ export const careRows: { label: string; cells: string[] }[] = [
     label: 'Automated health report: speed, security, links, renewals, with trends',
     cells: ['—', 'Monthly', 'Monthly', 'Monthly'],
   },
-  { label: 'Backup kept off GitHub', cells: ['—', 'Monthly', 'Monthly', 'Monthly'] },
-  { label: 'Backup test-restored', cells: ['—', '—', 'Quarterly', 'Monthly'] },
+  { label: 'Off-site backup*', cells: ['—', 'Monthly', 'Monthly', 'Monthly'] },
+  { label: 'Backup test-restored*', cells: ['—', '—', 'Quarterly', 'Monthly'] },
   { label: 'Full health check by me (below)', cells: ['—', '—', 'Quarterly', 'Monthly'] },
-  { label: 'Software updates', cells: ['—', '—', 'Quarterly', 'Monthly'] },
+  { label: 'Software updates*', cells: ['—', '—', 'Quarterly', 'Monthly'] },
   {
     label: 'Written note from me',
     cells: ['—', '—', 'Quarterly', 'Monthly'],
   },
   { label: 'Call to talk it over', cells: ['—', '—', 'Yearly', 'Quarterly'] },
   {
-    label: 'Change time included',
+    label: 'Help time included (changes or a walk-through, below)',
     cells: ['Billed hourly', 'Billed hourly', '1 hour a year', '1 hour a month'],
   },
   {
