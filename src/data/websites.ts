@@ -300,13 +300,13 @@ export const carePlans: {
 }[] = [
   { name: 'No plan', tagline: 'Included with every site', price: '$0', perYear: '' },
   {
-    name: 'Care',
+    name: 'SiteCare',
     tagline: 'Automated, monthly',
     price: '$10/month',
     perYear: 'or $100 a year (2 months free)',
   },
   {
-    name: 'Care + review',
+    name: 'SiteCare + Review',
     tagline: 'A person checks it, quarterly',
     price: '$30/month',
     perYear: 'or $300 a year (2 months free)',
