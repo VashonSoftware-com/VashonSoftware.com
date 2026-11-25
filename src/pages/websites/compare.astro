@@ -120,11 +120,25 @@ const wide = 'max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]';
             platform; no signup, about 30 seconds.
           </p>
         </div>
-        <a
-          href="https://howsmy.site/"
-          class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
-          >Check yours at HowsMy.Site</a
-        >
+        <!-- Plain GET form: howsmy.site reads ?url= and runs the check straight away. -->
+        <form action="https://howsmy.site/" method="get" class="flex flex-col sm:flex-row gap-2 sm:w-[26rem]">
+          <label for="hms-url" class="sr-only">Your website address</label>
+          <input
+            id="hms-url"
+            name="url"
+            type="text"
+            inputmode="url"
+            autocomplete="url"
+            placeholder="yoursite.com"
+            required
+            class="flex-1 min-w-0 rounded-md border bg-background px-3 py-2.5 text-foreground placeholder:text-muted-foreground"
+          />
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
+            >Check yours at HowsMy.Site</button
+          >
+        </form>
       </aside>
 
       <div class="mt-12 max-w-4xl">
