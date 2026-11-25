@@ -12,6 +12,7 @@
  * ```
  */
 import Logo from './Logo.astro';
+import GreenNote from './GreenNote.astro';
 import ObfuscatedEmail from './ObfuscatedEmail.astro';
 import { serviceAreas } from '@/data/services';
 
@@ -138,6 +139,7 @@ const containerClass =
 
     <!-- Copyright -->
     <div class="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+      <GreenNote class="mx-auto mb-6 text-left" />
       <p>&copy; {new Date().getFullYear()} Vashon Software. All rights reserved.</p>
     </div>
   </div>
