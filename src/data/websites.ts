@@ -303,13 +303,13 @@ export const carePlans: {
     name: 'Care',
     tagline: 'Automated, monthly',
     price: '$10/month',
-    perYear: '$120 a year',
+    perYear: 'or $100 a year (2 months free)',
   },
   {
     name: 'Care + review',
     tagline: 'A person checks it, quarterly',
     price: '$30/month',
-    perYear: '$360 a year',
+    perYear: 'or $300 a year (2 months free)',
     featured: true,
   },
   {
