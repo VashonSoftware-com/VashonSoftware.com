@@ -1,0 +1,39 @@
+---
+// Renewable-energy and carbon-removal note (Q-VS-33, John 2026-11-24).
+// Cloudflare claim checked 2026-11-24: 100% renewable by annual matching, not zero impact.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<p class:list={['flex gap-3 text-sm text-muted-foreground leading-relaxed max-w-3xl', className]}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="20"
+    height="20"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-good-foreground)]"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M2 12h20"></path>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+    ></path>
+  </svg>
+  <span>
+    My own servers have run on wind and hydro power since 2001. The sites I build are hosted on <a
+      href="https://www.cloudflare.com/impact/"
+      class="underline underline-offset-4 text-foreground">Cloudflare</a
+    >, which buys renewable energy to match all the electricity its network uses each year. And
+    0.5% of every payment to Vashon Software goes to carbon removal through <a
+      href="https://climate.stripe.com/"
+      class="underline underline-offset-4 text-foreground">Stripe Climate</a
+    >.
+  </span>
+</p>
