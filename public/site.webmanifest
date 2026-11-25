@@ -19,8 +19,8 @@
             "type": "image/png"
         },
         {
-            "src": "/vashonsoftwarelogo.png",
-            "sizes": "2000x2000",
+            "src": "/icons/logo-512.png",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ]
