@@ -275,7 +275,7 @@ RangerTrak's code (AGPL): https://github.com/SteadyEOC/RangerTrak
 
 ---
 
-## C4 · Tue 2026-12-22 · One engine, two front doors
+## C4 · TBD · One engine, two front doors
 
 Drafted 2026-11-26 (not yet approved; date tentative, see `blog-cohosting.md` 4c).
 
