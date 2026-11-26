@@ -358,6 +358,15 @@ export const careRows: { label: string; cells: string[] }[] = [
   },
 ];
 
+// Client comments from emails; first names only (John, 2026-11-25).
+export const clientComments: { quote: string; name: string }[] = [
+  {
+    quote: 'Mahalo for all your work!! The site looks and works great, such an improvement!',
+    name: 'Pat',
+  },
+  { quote: 'You have done sooo much – it’s amazing!!', name: 'Wendra' },
+];
+
 export const healthCheck = [
   ['Speed', 'Google PageSpeed on phone and desktop, compared with last time.'],
   ['Accessibility', 'Automated WCAG checks plus a keyboard and screen-reader spot check.'],

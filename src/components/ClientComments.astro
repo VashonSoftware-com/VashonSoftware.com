@@ -1,0 +1,30 @@
+---
+// Short client comments from emails, signed with first names only (John, 2026-11-25).
+import { clientComments } from '@/data/websites';
+
+interface Props {
+  title?: string;
+  class?: string;
+}
+const { title = 'What clients say', class: className } = Astro.props;
+---
+
+<section class:list={['py-16 border-t', className]} aria-labelledby="client-comments">
+  <div class="container max-w-5xl mx-auto px-4">
+    <h2 id="client-comments" class="text-2xl font-semibold mb-8">{title}</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        clientComments.map((c) => (
+          <figure class="rounded-lg border bg-card p-6">
+            <blockquote class="text-base leading-relaxed">
+              <p>“{c.quote}”</p>
+            </blockquote>
+            <figcaption class="mt-4 text-sm text-muted-foreground">
+              — <span class="font-medium text-foreground">{c.name}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

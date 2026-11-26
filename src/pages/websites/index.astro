@@ -6,6 +6,7 @@ import ServiceCards from '@/components/ServiceCards.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
 import WebsitesNav from '@/components/WebsitesNav.astro';
 import GreenNote from '@/components/GreenNote.astro';
+import ClientComments from '@/components/ClientComments.astro';
 import {
   checkTools,
   contrastRows,
@@ -315,6 +316,8 @@ const more = [
       <ServiceCards cards={howCards} />
     </div>
   </section>
+
+  <ClientComments class="bg-muted/20" />
 
   <TalkToJohn
     title="Want to talk about your site?"

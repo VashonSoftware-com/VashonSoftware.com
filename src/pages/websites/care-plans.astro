@@ -4,6 +4,7 @@ import PageHeader from '@/components/PageHeader.astro';
 import TalkToJohn from '@/components/TalkToJohn.astro';
 import WebsitesNav from '@/components/WebsitesNav.astro';
 import GreenNote from '@/components/GreenNote.astro';
+import ClientComments from '@/components/ClientComments.astro';
 import { Image } from 'astro:assets';
 import logoSrc from '@/assets/logo-navbar-128.png';
 import { carePlans, careRows, healthCheck } from '@/data/websites';
@@ -169,6 +170,8 @@ const cellTint = (i: number) => (i === featured ? 'bg-primary/5' : '');
       </div>
     </div>
   </section>
+
+  <ClientComments class="bg-muted/20" />
 
   <TalkToJohn
     title="Questions about a plan?"
