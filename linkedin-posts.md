@@ -272,3 +272,65 @@ Link and the code in the first comment.
 
 The full post: https://vashonsoftware.com/blog/layout-shift-only-pagespeed-could-see/
 RangerTrak's code (AGPL): https://github.com/SteadyEOC/RangerTrak
+
+---
+
+## C4 · Tue 2026-12-22 · One engine, two front doors
+
+Drafted 2026-11-26 (not yet approved; date tentative, see `blog-cohosting.md` 4c).
+
+⟳ 13 MB first visit, 192k people ~95 s in the browser vs ~37 s native, 160+ tests (ADR-010, 2026-10-29).
+
+**Body** (~280 words)
+
+In July I wrote a decision record saying my privacy tool would have two engines. In October I threw that half away.
+
+GEDCOM Privacy Guard flags the notes in a family-tree export that shouldn't be shared. It started as a Python command-line tool. It had to reach iPads and genealogists who will never type pipx install, so the plan was a second engine in TypeScript for the browser, mirroring the Python one rule for rule.
+
+Then I went looking for testers. They needed a web page now, not after a port of the parser, the 1980s character encodings, the scanner, the redactor and the Excel report, plus all their tests.
+
+So the web page runs the same Python package in the browser, with Pyodide (CPython compiled to WebAssembly) in a Web Worker. One small module turns file paths into JSON for the React interface.
+
+What it cost:
+• About 13 MB on the first visit, cached after.
+• A 192,000-person tree takes about 95 seconds instead of 37.
+• Two toolchains in the build.
+
+What it bought:
+• One engine. A rule fix reaches the CLI and the web page in the same commit.
+• The tests the Python code already had (160+, plus fuzzing) cover the web page too.
+• The privacy promise stays checkable: no server, a Content-Security-Policy that allows no outside connections, and it works with Wi-Fi off.
+
+The lesson: I wrote the first decision for the platforms. I should have written it for the people. Before rewriting a well-tested library for a new runtime, check whether you can take it with you.
+
+Part 4 of a short series. Link in the first comment.
+
+#SoftwareArchitecture #WebAssembly #Python
+
+**First comment**
+
+The full post: https://vashonsoftware.com/blog/one-engine-two-front-doors/
+Try it: https://gedcomtools.com
+The code (open source, beta): https://github.com/VashonSoftware-com/gedcom-privacy-guard
+
+---
+
+# Facebook posts (not parsed by linkedin_import.py)
+
+## Facebook · genealogists' launch · goes with cornelisons.com/blog/check-your-tree-before-you-share-it
+
+Drafted 2026-11-26 (not yet approved). For John's page and genealogy groups that allow tool posts (Technology for Genealogy). Post after the Cornelisons.com post is live.
+
+Before you share your family tree, do you know what's in the notes?
+
+Every GEDCOM you upload or send to a cousin carries every note with it: a diagnosis, a hospital stay, an arrest, a rumor from a reunion, a phone number. Fine about great-great-grandpa. Not always fine about the living.
+
+I wrote a free page that reads your GEDCOM export and lists the notes worth a second look, with the words highlighted. For each one you choose: keep it, remove just those words, remove the note, or rewrite it. Then it gives you a cleaned copy. Your original isn't changed.
+
+Your file never leaves your computer. The checking happens in your browser; nothing is uploaded. (Try it with Wi-Fi off once the page has loaded.) No sign-up, no fee.
+
+It's a beta, tested mostly on Legacy exports so far. If you use RootsMagic, Family Tree Maker, Gramps or Ancestry, I'd love to hear how it does with yours.
+
+https://gedcomtools.com
+
+More about it: https://cornelisons.com/blog/check-your-tree-before-you-share-it/

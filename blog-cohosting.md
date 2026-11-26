@@ -9,7 +9,7 @@
 |---|---|---|
 | **VS** — VashonSoftware.com | `D:\Projects\VashonSoftware.com\VashonSoftware.com` | Host. Canonical home of every architecture/developer post. Owns `blog-plan.md` and this file. |
 | **CC** — Cornelisons.com | `D:\Projects\Cornelisons.com` | Host and author. Genealogy posts for families and genealogists. Author of series B (the site build). Copies of series B and genealogy-facing C posts. |
-| **GPG** — GEDCOM Privacy Guard | `D:\Projects\Genealogy\gedcom-privacy-guard` | Author. First source of posts (series C and the genealogists' post). Hosts nothing. |
+| **GPG** — GEDCOM Privacy Guard | `D:\Projects\Genealogy\GedcomTools\gedcom-privacy-guard` | Author. First source of posts (series C and the genealogists' post). Hosts nothing. |
 
 ## 0. CC to-do before the first copy (CC update, 2026-10-30)
 
@@ -140,6 +140,8 @@ VS goes live 2026-11-03 (deploy hook secret is set). CC status:
 | C1 Never auto-delete, always auto-flag | GPG | VS | CC | VS live 2026-11-17; CC copy live 2026-11-17 (v0.2.54, John: "crosspost") |
 | C2 The Great Depression is not a diagnosis | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
 | C3 Fix it at the source | GPG | VS | CC | approved; VS 2026-12-01; CC copy to add |
+| C4 One engine, two front doors | GPG | VS | CC? | drafted 2026-11-26 (`one-engine-two-front-doors.md`, `draft: true`, pubDate 12-22 tentative); LinkedIn text in `linkedin-posts.md`; John to read in `dev` |
+| Check your family tree before you share it (gedcomtools.com launch, for genealogists) | GPG | CC | — | drafted 2026-11-26 in CC's `src/content/blog/check-your-tree-before-you-share-it.md`, `draft: true`, pubDate 12-01 tentative; Facebook text at the end of `linkedin-posts.md`; John to read in `dev` |
 | What your family tree notes say about the living | GPG | CC | — | CC blog ready: GPG may draft |
 | How we checked our tree before putting it online | CC | CC | — | needs John's OK (living family) |
 
@@ -154,6 +156,7 @@ VS goes live 2026-11-03 (deploy hook secret is set). CC status:
 | 2026-12-01 | C2 The Great Depression is not a diagnosis | `great-depression-is-not-a-diagnosis` |
 | 2026-12-08 | C3 Fix it at the source | `fix-it-at-the-source` |
 | 2026-12-15 | A2 The layout shift only PageSpeed could see | `layout-shift-only-pagespeed-could-see` |
+| 2026-12-22 (tentative) | C4 One engine, two front doors | `one-engine-two-front-doors` |
 
 2026-10-31 (John, Q-VS-11/14): series C reordered so it reads in order; A2 and C1 approved; A1 moved up to 11-01.
 2026-11-03 (John): B1 moved up to 11-03 and B2 to Mon 11-09, on both sites; B2's GEDCOM Privacy Guard link now goes to the repo (C2 isn't live until 12-01).

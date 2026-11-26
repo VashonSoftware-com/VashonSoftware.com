@@ -120,8 +120,8 @@ post 2 (an Angular internals bug) will travel further among Angular developers o
 plus an optional sixth (John asked for 3–6). Same thread as series A: the privacy rules are code,
 and the build fails when one breaks. Sources: `D:\Projects\Cornelisons.com\README.md`,
 `D:\Projects\Cornelisons.com\docs\adr\0001-family-sites.md`,
-`D:\Projects\Genealogy\gedcom-privacy-guard\docs\PRIVACY-RULES.md` (ADR-007/008) and
-`D:\Projects\Genealogy\gedcom-privacy-guard\docs\ARCHITECTURE.md`.
+`D:\Projects\Genealogy\GedcomTools\gedcom-privacy-guard\docs\PRIVACY-RULES.md` (ADR-007/008) and
+`D:\Projects\Genealogy\GedcomTools\gedcom-privacy-guard\docs\ARCHITECTURE.md`.
 
 | # | Post | Covers | Ready? |
 |---|---|---|---|
@@ -141,7 +141,7 @@ relatives, no circle membership, and real ancestors only where they already appe
 fifth. They cover the design decisions behind the tool, not the family. The thread: **the
 tool flags, the person decides, and the original is never touched.** Series B is about the
 site build; series C is about the scanner, so B5 shrinks to a pointer. Sources, all in
-`D:\Projects\Genealogy\gedcom-privacy-guard\`: `docs\ARCHITECTURE.md`, `docs\adr`–`008`,
+`D:\Projects\Genealogy\GedcomTools\gedcom-privacy-guard\`: `docs\ARCHITECTURE.md`, `docs\adr`–`008`,
 `ROADMAP.md` (its "Goal 2" developer post becomes C1).
 
 | # | Post | Covers | Ready? | Length |
@@ -149,7 +149,7 @@ site build; series C is about the scanner, so B5 shrinks to a pointer. Sources, 
 | C1 | **Never auto-delete, always auto-flag** | ADR-001: flag, review, then write a *new* file; a spreadsheet as the review UI (CSV → XLSX with highlighted matches, ADR-006); `keep` / `redact` / `rewrite` / `privatize` actions; idempotent scans | Yes | ~1,200 words |
 | C2 | **The Great Depression is not a diagnosis: the limits of keyword scanning** | Real false positives ("the Great Depression", "WWII prison camps"); the context columns that tell same-name relatives apart, filled only from the file and never guessed; why this argues for an LLM scanner with per-family sensitivity, and how its scores must sit beside the deterministic ones | Yes | ~1,000 words |
 | C3 | **Fix it at the source: working with the desktop app, not around it** | ADR-002 (Legacy's `[[ ]]` privacy marker), ADR-003 (automated reimport rejected after checking how Legacy imports really work), the one-click upload button that skips the checkpoint, never "fixing" name casing | Yes | ~1,000 words |
-| C4 | **One spec, two runtimes: a Python CLI and an in-browser app** | ADR-004/005: the platform goal (iPad and Android) as a constraint; the file never leaves the device; React + TS + Vite on Cloudflare Pages; the 154 MB / 192k-person baseline (10.1 s); one shared rules file with the Cornelisons build (ADR-007/008) | When the web version is live | ~1,200 words |
+| C4 | **One engine, two front doors: running a Python CLI in the browser** (was "One spec, two runtimes") | ADR-004's two-engine plan reversed by ADR-010: the same Python package in Pyodide; testers as the real constraint; CSP and offline as a checkable privacy promise; 13 MB / ~95 s vs ~37 s costs; Workers static assets at gedcomtools.com | Drafted 2026-11-26 (`one-engine-two-front-doors.md`) | ~1,250 words |
 | C5 (optional) | **Evaluating an LLM privacy scanner** | Building the `LLMScanner`: a labelled fixture set, false positives and false negatives against the keyword baseline, sensitivity profiles | When it's built; could be the evals post (H2) evidence | ~1,200 words |
 
 **Timing (revised 2026-10-29, Q-VS-9):** the ROADMAP said to wait for 1.0. Waiting for all of
