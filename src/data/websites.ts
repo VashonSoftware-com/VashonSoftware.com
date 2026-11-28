@@ -371,7 +371,7 @@ export const clientComments: { quote: string; name: string; wide?: boolean; star
   },
   {
     quote: 'Mahalo for all your work!! The site looks and works great, such an improvement!',
-    name: 'Pat',
+    name: 'Patrick Thompson',
   },
   { quote: 'You have done sooo much – it’s amazing!!', name: 'Wendra' },
 ];
