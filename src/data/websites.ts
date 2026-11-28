@@ -359,7 +359,15 @@ export const careRows: { label: string; cells: string[] }[] = [
 ];
 
 // Client comments from emails; first names only (John, 2026-11-25).
-export const clientComments: { quote: string; name: string }[] = [
+// wide: spans both columns (long quotes).
+export const clientComments: { quote: string; name: string; wide?: boolean }[] = [
+  {
+    // Stefan's 5-star review email, 2026-11-28, word for word.
+    quote:
+      'John at Vashon Software did a fantastic job rebuilding my website this fall. So much so that I had him re-do the 3 other sites I manage as well. In all cases John was super easy to work with and came up with numerous creative ideas to make the sites even better than I had imagined. And to top it off, he’s affordable and very responsive.',
+    name: 'Stefan',
+    wide: true,
+  },
   {
     quote: 'Mahalo for all your work!! The site looks and works great, such an improvement!',
     name: 'Pat',
