@@ -1,5 +1,5 @@
 ---
-// Short client comments from emails, signed with first names only (John, 2026-11-25).
+// Short client comments from emails, signed with full names (John, 2026-11-28).
 import { clientComments } from '@/data/websites';
 
 interface Props {
@@ -16,6 +16,11 @@ const { title = 'What clients say', class: className } = Astro.props;
       {
         clientComments.map((c) => (
           <figure class:list={['rounded-lg border bg-card p-6', c.wide && 'md:col-span-2']}>
+            {c.stars && (
+              <p class="mb-3 text-lg tracking-wider text-amber-500" role="img" aria-label={`${c.stars} out of 5 stars`}>
+                {'★'.repeat(c.stars)}
+              </p>
+            )}
             <blockquote class="text-base leading-relaxed">
               <p>“{c.quote}”</p>
             </blockquote>
